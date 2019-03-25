@@ -1,0 +1,9 @@
+-8|47|shrek outline.png|False|False|
+-14|109|shrek ear.png|False|False|
+386|110|shrek ear.png|False|True|
+132|152|shrek eye.png|False|False|
+171|188|shrek nose.png|False|False|
+126|292|shrek mouth.png|False|False|
+258|152|shrek eye.png|False|True|
+133|93|shrek eyebrow.png|False|True|
+254|93|shrek eyebrow.png|False|False|

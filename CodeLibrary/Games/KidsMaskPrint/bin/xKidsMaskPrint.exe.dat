@@ -1,0 +1,205 @@
+<configuration>
+  <appSettings>
+    <add key="Remain" value="31" />
+    <add key="BuyPackShowNext" value="True" />
+    <add key="Users" value="fredÿbillyÿdeniseÿfrankÿmarkÿjjjÿggg" />
+  </appSettings>
+  <Bookmarks->
+  </Bookmarks->
+  <TemplatesMenu->
+  </TemplatesMenu->
+  <UserTemplates>
+  </UserTemplates>
+  <AllUserTemplates>
+  </AllUserTemplates>
+  <DebugReports>
+    <add key="Report0" value="" />
+    <add key="ItemCount" value="-1" />
+  </DebugReports>
+  <UserSettings-Jules>
+    <add key="MaskFile3" value="" />
+    <add key="MaskFileDesc3" value="" />
+    <add key="LastSaved" value="" />
+    <add key="MaskFile1" value="" />
+    <add key="MaskFileDesc1" value="" />
+    <add key="Colours" value="Two" />
+    <add key="MaskFile0" value="" />
+    <add key="MaskFileDesc0" value="" />
+    <add key="MaskFile2" value="" />
+    <add key="MaskFileDesc2" value="" />
+    <add key="MaskFile4" value="" />
+    <add key="MaskFileDesc4" value="" />
+    <add key="MaskFile5" value="" />
+    <add key="MaskFileDesc5" value="" />
+  </UserSettings-Jules>
+  <UserSettings-Fred>
+    <add key="MaskFile0" value="" />
+    <add key="MaskFileDesc0" value="" />
+    <add key="MaskFile1" value="" />
+    <add key="MaskFileDesc1" value="" />
+    <add key="MaskFile2" value="" />
+    <add key="MaskFileDesc2" value="" />
+    <add key="MaskFile3" value="" />
+    <add key="MaskFileDesc3" value="" />
+    <add key="MaskFile4" value="" />
+    <add key="MaskFileDesc4" value="" />
+    <add key="MaskFile5" value="" />
+    <add key="MaskFileDesc5" value="" />
+    <add key="LastSaved" value="" />
+  </UserSettings-Fred>
+  <UserSettings-Fred2>
+    <add key="MaskFile0" value="" />
+    <add key="MaskFileDesc0" value="" />
+    <add key="MaskFile1" value="" />
+    <add key="MaskFileDesc1" value="" />
+    <add key="MaskFile2" value="" />
+    <add key="MaskFileDesc2" value="" />
+    <add key="MaskFile3" value="" />
+    <add key="MaskFileDesc3" value="" />
+    <add key="MaskFile4" value="" />
+    <add key="MaskFileDesc4" value="" />
+    <add key="MaskFile5" value="" />
+    <add key="MaskFileDesc5" value="" />
+    <add key="LastSaved" value="" />
+  </UserSettings-Fred2>
+  <UserSettings-WWWWWWWWWW>
+    <add key="MaskFile0" value="" />
+    <add key="MaskFileDesc0" value="" />
+    <add key="MaskFile1" value="" />
+    <add key="MaskFileDesc1" value="" />
+    <add key="MaskFile2" value="" />
+    <add key="MaskFileDesc2" value="" />
+    <add key="MaskFile3" value="" />
+    <add key="MaskFileDesc3" value="" />
+    <add key="MaskFile4" value="" />
+    <add key="MaskFileDesc4" value="" />
+    <add key="MaskFile5" value="" />
+    <add key="MaskFileDesc5" value="" />
+    <add key="LastSaved" value="" />
+  </UserSettings-WWWWWWWWWW>
+  <UserSettings-Fred3>
+    <add key="MaskFile0" value="" />
+    <add key="MaskFileDesc0" value="" />
+    <add key="MaskFile1" value="" />
+    <add key="MaskFileDesc1" value="" />
+    <add key="MaskFile2" value="" />
+    <add key="MaskFileDesc2" value="" />
+    <add key="MaskFile3" value="" />
+    <add key="MaskFileDesc3" value="" />
+    <add key="MaskFile4" value="" />
+    <add key="MaskFileDesc4" value="" />
+    <add key="MaskFile5" value="" />
+    <add key="MaskFileDesc5" value="" />
+    <add key="LastSaved" value="" />
+  </UserSettings-Fred3>
+  <UserSettings-Fred4>
+    <add key="MaskFile0" value="" />
+    <add key="MaskFileDesc0" value="" />
+    <add key="MaskFile1" value="" />
+    <add key="MaskFileDesc1" value="" />
+    <add key="MaskFile2" value="" />
+    <add key="MaskFileDesc2" value="" />
+    <add key="MaskFile3" value="" />
+    <add key="MaskFileDesc3" value="" />
+    <add key="MaskFile4" value="" />
+    <add key="MaskFileDesc4" value="" />
+    <add key="MaskFile5" value="" />
+    <add key="MaskFileDesc5" value="" />
+    <add key="LastSaved" value="" />
+  </UserSettings-Fred4>
+  <UserSettings-Fred5>
+    <add key="MaskFile0" value="" />
+    <add key="MaskFileDesc0" value="" />
+    <add key="MaskFile1" value="" />
+    <add key="MaskFileDesc1" value="" />
+    <add key="MaskFile2" value="" />
+    <add key="MaskFileDesc2" value="" />
+    <add key="MaskFile3" value="" />
+    <add key="MaskFileDesc3" value="" />
+    <add key="MaskFile4" value="" />
+    <add key="MaskFileDesc4" value="" />
+    <add key="MaskFile5" value="" />
+    <add key="MaskFileDesc5" value="" />
+    <add key="LastSaved" value="" />
+  </UserSettings-Fred5>
+  <UserSettings-Fred6>
+    <add key="MaskFile0" value="" />
+    <add key="MaskFileDesc0" value="" />
+    <add key="MaskFile1" value="" />
+    <add key="MaskFileDesc1" value="" />
+    <add key="MaskFile2" value="" />
+    <add key="MaskFileDesc2" value="" />
+    <add key="MaskFile3" value="" />
+    <add key="MaskFileDesc3" value="" />
+    <add key="MaskFile4" value="" />
+    <add key="MaskFileDesc4" value="" />
+    <add key="MaskFile5" value="" />
+    <add key="MaskFileDesc5" value="" />
+    <add key="LastSaved" value="" />
+  </UserSettings-Fred6>
+  <UserSettings-J33ules>
+    <add key="MaskFile0" value="" />
+    <add key="MaskFileDesc0" value="" />
+    <add key="MaskFile1" value="D:\CodeLibrary\Games\KidsMaskPrint\bin\Masks\jules-mask-1.Mask" />
+    <add key="MaskFileDesc1" value="Jules Mask 1" />
+    <add key="MaskFile2" value="" />
+    <add key="MaskFileDesc2" value="" />
+    <add key="MaskFile3" value="D:\CodeLibrary\Games\KidsMaskPrint\bin\Masks\jules-mask-3.Mask" />
+    <add key="MaskFileDesc3" value="Jules Mask 3" />
+    <add key="MaskFile4" value="" />
+    <add key="MaskFileDesc4" value="" />
+    <add key="MaskFile5" value="" />
+    <add key="MaskFileDesc5" value="" />
+    <add key="LastSaved" value="" />
+  </UserSettings-J33ules>
+  <UserSettings-Jule>
+    <add key="Colours" value="Two" />
+  </UserSettings-Jule>
+  <UserSettings-Denise>
+    <add key="Colours" value="Three" />
+    <add key="MaskFile1" value="D:\CodeLibrary\Games\KidsMaskPrint\bin\Masks\denise-mask-1.Mask" />
+    <add key="MaskFileDesc1" value="Denise Mask 1" />
+    <add key="MaskFile2" value="D:\CodeLibrary\Games\KidsMaskPrint\bin\Masks\denise-mask-2.Mask" />
+    <add key="MaskFileDesc2" value="Denise Mask 2" />
+    <add key="MaskFile3" value="D:\CodeLibrary\Games\KidsMaskPrint\bin\Masks\denise-mask-3.Mask" />
+    <add key="MaskFileDesc3" value="Denise Mask 3" />
+    <add key="LastSaved" value="D:\CodeLibrary\Games\KidsMaskPrint\bin\Masks\denise-mask-2.Mask" />
+    <add key="MaskFile4" value="D:\CodeLibrary\Games\KidsMaskPrint\bin\Masks\denise-mask-4.Mask" />
+    <add key="MaskFileDesc4" value="Denise Mask 4" />
+    <add key="MaskFile5" value="D:\CodeLibrary\Games\KidsMaskPrint\bin\Masks\denise-mask-5.Mask" />
+    <add key="MaskFileDesc5" value="Denise Mask 5" />
+    <add key="MaskFile6" value="D:\CodeLibrary\Games\KidsMaskPrint\bin\Masks\denise-mask-6.Mask" />
+    <add key="MaskFileDesc6" value="Denise Mask 6" />
+  </UserSettings-Denise>
+  <UserSettings-fred>
+    <add key="Colours" value="Two" />
+    <add key="LastSaved" value="" />
+  </UserSettings-fred>
+  <UserSettings-denise>
+    <add key="Colours" value="Two" />
+    <add key="MaskFile1" value="D:\CodeLibrary\Games\KidsMaskPrint\bin\Masks\denise-mask-1.Mask" />
+    <add key="MaskFileDesc1" value="denise Mask 1" />
+    <add key="LastSaved" value="" />
+    <add key="MaskFile2" value="D:\CodeLibrary\Games\KidsMaskPrint\bin\Masks\denise-mask-2.Mask" />
+    <add key="MaskFileDesc2" value="denise Mask 2" />
+    <add key="MaskFile3" value="D:\CodeLibrary\Games\KidsMaskPrint\bin\Masks\denise-mask-3.Mask" />
+    <add key="MaskFileDesc3" value="denise Mask 3" />
+    <add key="MaskFile4" value="D:\CodeLibrary\Games\KidsMaskPrint\bin\Masks\denise-mask-4.Mask" />
+    <add key="MaskFileDesc4" value="denise Mask 4" />
+  </UserSettings-denise>
+  <UserSettings-frank>
+    <add key="Colours" value="One" />
+  </UserSettings-frank>
+  <UserSettings-mark>
+    <add key="Colours" value="One" />
+  </UserSettings-mark>
+  <UserSettings-jjj>
+    <add key="Colours" value="One" />
+  </UserSettings-jjj>
+  <UserSettings-ggg>
+    <add key="Colours" value="One" />
+  </UserSettings-ggg>
+  <UserSettings-billy>
+    <add key="Colours" value="One" />
+  </UserSettings-billy>
+</configuration>

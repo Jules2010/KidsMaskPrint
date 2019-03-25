@@ -1,0 +1,9 @@
+29|-1|devil outline.png|False|False|
+150|178|devil eye.png|False|False|
+252|178|devil eye.png|False|True|
+202|237|devil nose.png|False|False|
+29|79|devil ear.png|False|False|
+415|80|devil ear.png|False|True|
+167|334|devil mouth.png|False|False|
+136|-1|devil horn.png|False|False|
+301|-1|devil horn.png|False|True|

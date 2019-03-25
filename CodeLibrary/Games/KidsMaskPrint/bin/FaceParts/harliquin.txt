@@ -1,0 +1,7 @@
+4|3|harliquin outline.png|False|False|
+258|197|harliquin eyebrow.png|False|False|
+137|197|harliquin eyebrow.png|False|True|
+142|238|harliquin eye.png|False|False|
+275|238|harliquin eye.png|False|True|
+191|238|harliquin nose.png|False|False|
+165|340|harliquin mouth.png|False|False|
