@@ -2807,17 +2807,17 @@ Imports System.IO
             .SelectedIndex = 2
         End With
 
-#If Debug Then
-        btnDebug = New Button()
-        With btnDebug
-            .Top = 520
-            .Left = 10
-            .Anchor = AnchorStyles.Top And AnchorStyles.Left
-            .Visible = True
-            .Text = "Debug"
-        End With
-        Me.Controls.Add(btnDebug)
-#End If
+        '#If Debug Then
+        '        btnDebug = New Button()
+        '        With btnDebug
+        '            .Top = 520
+        '            .Left = 10
+        '            .Anchor = AnchorStyles.Top And AnchorStyles.Left
+        '            .Visible = True
+        '            .Text = "Debug"
+        '        End With
+        '        Me.Controls.Add(btnDebug)
+        '#End If
 
         '--- 'JM 15/09/2005 ---
         'Load clown mask
