@@ -1,7 +1,0 @@
-13|-1|gollum outline.png|False|False|
-13|193|gollum ear.png|False|False|
-423|193|gollum ear.png|False|True|
-204|257|gollum nose.png|False|False|
-169|373|gollum mouth.png|False|False|
-84|226|gollum eye.png|False|False|
-283|226|gollum eye.png|False|True|
