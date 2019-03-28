@@ -418,7 +418,7 @@ Friend Module Main
             '--- 
 
             With gstrManifestSite(0)
-                .strSitePath = "http://www.kidsmaskprint.com"
+                .strSitePath = "http://www.example.com"
                 .strManifestDir = "updates/"
                 .strManifestFile = "kmp.xml"
             End With
@@ -724,7 +724,7 @@ Start:
             BetaSplash.Bullet2 = mstrBullet2
             BetaSplash.Bullet3 = mstrBullet3
             BetaSplash.Bullet4 = mstrBullet4
-            BetaSplash.BuyNowURL = "http://www.KidsMaskPrint.com/buy.php" 
+            BetaSplash.BuyNowURL = "http://www.example.com/buy.php" 
             BetaSplash.Owner = powner
             BetaSplash.ShowInTaskbar = True 
             BetaSplash.Icon = New System.Drawing.Icon( _

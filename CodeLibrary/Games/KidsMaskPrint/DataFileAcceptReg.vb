@@ -142,7 +142,7 @@ Friend Class DataFileAcceptReg
         Me.LinkLabel1.Size = New System.Drawing.Size(376, 16)
         Me.LinkLabel1.TabIndex = 7
         Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "http://www.KidsMaskPrint.com/buy.php"
+        Me.LinkLabel1.Text = "http://www.example.com/buy.php"
         '
         'DataFileAcceptReg
         '
@@ -199,7 +199,7 @@ Friend Class DataFileAcceptReg
     End Sub
     Private Sub LinkLabel1_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
 
-        BrowseToUrl("http://www.KidsMaskPrint.com/buy.php", Me)
+        BrowseToUrl("http://www.example.com/buy.php", Me)
 
     End Sub
     Private Sub btnOK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOK.Click

@@ -1497,7 +1497,7 @@ Imports System.IO
         'AddDebugComment("frmMain.mnuHelpSubscribe_Click - start") 
         gstrProbComtStack = "frmMain.mnuHelpSubscribe_Click - start" 
 
-        Dim NewsString As String = "mailto:newsletter@KidsMaskPrint.com?" & _
+        Dim NewsString As String = "mailto:newsletter@example.com?" & _
                 "subject=Newsletter Subscriptions Dept&body=Dear Sirs,  Kindly add me to your Kids Mask Print Newsletter!"
 
         Try
@@ -1598,7 +1598,7 @@ Imports System.IO
             dlgRes = MessageBox.Show("This feature is only available in the full version of this program" & CR() & CR() & _
                 "Would you like to visit our website to view purchasing options?", NameMe(""), MessageBoxButtons.YesNo, MessageBoxIcon.Information)
             If dlgRes = DialogResult.Yes Then
-                BrowseToUrl("http://www.KidsMaskPrint.com/buy.php", Me)
+                BrowseToUrl("http://www.example.com/buy.php", Me)
             End If
             Exit Sub
         End If
@@ -3830,7 +3830,7 @@ Imports System.IO
     Private Sub btnBuy_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBuy.Click
 
         AddDebugComment("Form1.btnBuy_Click") 
-        BrowseToUrl("http://www.KidsMaskPrint.com/buy.php", Me)
+        BrowseToUrl("http://www.example.com/buy.php", Me)
     End Sub
 
 

@@ -483,7 +483,7 @@ Friend Class PrintPreview
                 MessageBox.Show("You have " & intPrintAllows & " out of 5 uses of the print feature left in this trial." & CR() & CR() & _
                     "Would you like to visit our website to view purchasing options?", NameMe(""), MessageBoxButtons.YesNo, MessageBoxIcon.Information)
                 If dlgRes = DialogResult.Yes Then
-                    BrowseToUrl("http://www.KidsMaskPrint.com/buy.php", Me)
+                    BrowseToUrl("http://www.example.com/buy.php", Me)
                 End If
             End If
         End If

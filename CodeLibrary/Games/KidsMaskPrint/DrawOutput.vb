@@ -235,7 +235,7 @@ Friend Module DrawOutput
                     Dim WaterFont As New Font("Arial", 14) '2)
                     Dim Waterbrush As Brush = Brushes.LightGray
 
-                    g.DrawString("Visit www.KidsMaskPrint.com to buy and remove this text!", WaterFont, Waterbrush, 10, NumLine) ', 'ThisY)
+                    g.DrawString("Visit www.example.com to buy and remove this text!", WaterFont, Waterbrush, 10, NumLine) ', 'ThisY)
                 End If
             End If
 
