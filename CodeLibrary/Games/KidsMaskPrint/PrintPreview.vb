@@ -567,28 +567,12 @@ Friend Class PrintPreview
     End Sub
     Private Sub PrintPreview_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        'added 
         AddDebugComment("Preview.PrintPreview_Load - start")
 
         Me.Text = NameMe("Print Preview")
 
-        'Label1.BackColor = Color.FromArgb(0, Label1.BackColor) 
-
         ComboBox1.Items.AddRange(New Object() {Size1, Size2, Size3, Size4, Size5})
         ComboBox1.SelectedIndex = 0
-
-        ''Dim fixDoc As New Drawing.Printing.PrintDocument()
-        ''fixDoc.PrintController = New System.Drawing.Printing.StandardPrintController() 
-
-        ''If m_PageSettings Is Nothing Then
-        ''    MessageBox.Show("1")
-        ''    m_PageSettings = New System.Drawing.Printing.PageSettings()
-        ''End If
-
-        ''If fixDoc.PrinterSettings Is Nothing Then
-        ''    MessageBox.Show("2")
-        ''    fixDoc.PrinterSettings = New System.Drawing.Printing.PrinterSettings()
-        ''End If
 
         AddDebugComment("Preview.PrintPreview_Load - end")
 

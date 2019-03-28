@@ -451,14 +451,6 @@ Friend Class FacePartDiag
 
         Busy(Me, True) 
 
-        ''If rdoLeft.Checked = True Then
-        ''    mPositionSelection = FacePartEnums.ePositionSelection.Left
-        ''ElseIf rdoRight.Checked = True Then
-        ''    mPositionSelection = FacePartEnums.ePositionSelection.Right
-        ''Else
-        ''    mPositionSelection = FacePartEnums.ePositionSelection.Both
-        ''End If
-
         DisplayPreview(True) 
 
         Busy(Me, False) 
@@ -475,10 +467,8 @@ Friend Class FacePartDiag
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        'added 
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
-        'Me.Update()
 
     End Sub
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click

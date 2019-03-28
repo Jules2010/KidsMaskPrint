@@ -36,15 +36,7 @@ Friend Class Slots
             mFaceHash = Value
         End Set
     End Property
-    'Dim mFaceImage As Image
-    'Public Property FaceImage() As Image
-    '    Get
-    '        Return mFaceImage
-    '    End Get
-    '    Set(ByVal Value As Image)
-    '        mFaceImage = Value
-    '    End Set
-    'End Property
+
     Dim mFullImage As Image
     Friend Property FullImage() As Image
         Get

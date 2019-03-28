@@ -229,29 +229,21 @@ Friend Class SignIn
             mUsers = Microsoft.VisualBasic.Split(lstrUsersStr, ChrGet(255))
 
             'if users add them to an array
-            'Dim PositionArr(9) As Point
             Dim PositionArr(mUsers.GetUpperBound(0)) As Point 
 
             ObjPositing(PositionArr, btnOKClick.Height + 10, btnOKClick.Width + 10, 4, GreatestHeight)
-            'Dim xx(9) As BevelButton
-            'x'Dim xx(mUsers.GetUpperBound(0)) As BevelButton
             ReDim xx(mUsers.GetUpperBound(0)) 
 
             For lintArrInc = 0 To xx.GetUpperBound(0)
                 xx(lintArrInc) = New BevelButton()
                 With xx(lintArrInc)
-                    '.Left = PositionArr(lintArrInc).X + 100
-                    '.Top = PositionArr(lintArrInc).Y + 100
-                    '.Location = New Point(PositionArr(lintArrInc).X + 30, PositionArr(lintArrInc).Y + 30)
                     .Location = New Point(PositionArr(lintArrInc).X, PositionArr(lintArrInc).Y + 40)
-                    '.Visible = True
                     .FlatStyle = BevelButton.FlatStyleEx.Bevel
                     .BackColor = Color.Red
                     .ForeColor = Color.Gold
                     .Height = btnOKClick.Height
                     .Width = btnOKClick.Width
                     .Text = mUsers(lintArrInc)
-                    'Me.Controls.Add(xx(lintArrInc))
                     AddHandler xx(lintArrInc).Click, evOnClick
                     Panel2.Controls.Add(xx(lintArrInc))
                     lbooButtonsAdded = True 
@@ -264,34 +256,25 @@ Friend Class SignIn
 
         End If
 
-        'Panel1.Top = GreatestHeight + xx(0).Height + xx(0).Top
-        'Me.Width = xx(xx.GetUpperBound(0)).Left + btnOK.Width + xx(0).Left + 10
-
         If lbooButtonsAdded = True Then 
-
-            ''lblWhatsName.Text = "Add your name?"
             If Me.Width < LastButtonLeft + btnOKClick.Width + 4 Then
                 Me.Width = LastButtonLeft + btnOKClick.Width + 14
 
             End If
 
-            '''Panel2.Top = 0
             Panel2.Width = LastButtonLeft + btnOKClick.Width + 4
-            '--- 
+
             If Panel2.Width < Me.Width - 16 Then
                 Panel2.Width = Me.Width - 12 '16
             End If
-            '--- 
+
             lblSelectName.Width = Panel2.Width
             Panel2.Left = (Me.Width - Panel2.Width) / 2
-            'Panel2.Height = GreatestHeight + FirstBtnHeight
             Panel2.Height = GreatestHeight + FirstBtnHeight + 24 + 72 + 10 + 50 
-            'Panel1.Top = GreatestHeight + FirstBtnHeight + FirstBtnTop
             Me.Height = Panel2.Top + Panel2.Height + 30 
 
         End If
 
-        '--- 
         If lbooButtonsAdded = True Then
             'adjust left position of all buttons if less than 9
             Dim LeftAdj As Integer
@@ -308,10 +291,6 @@ Friend Class SignIn
                 xx(lintArrInc).Left += LeftAdj
             Next lintArrInc
         End If
-        '--- 
-
-        'SetBrushes() 
-        'lbListBox.SelectedIndex = 0 
 
         Me.Location = CentreMe(Me) 
 

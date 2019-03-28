@@ -24,24 +24,7 @@ Friend Class UsersGeneral
             mLoginInAs = Value
         End Set
     End Property
-    'Private mTranUserName As String
-    'Public Property TranUserName() As String
-    '    Get
-    '        Return mTranUserName
-    '    End Get
-    '    Set(ByVal Value As String)
-    '        mTranUserName = Value
-    '    End Set
-    'End Property
-    'Private mAltTranUserName As String
-    'Public Property AltTranUserName() As String
-    '    Get
-    '        Return mAltTranUserName
-    '    End Get
-    '    Set(ByVal Value As String)
-    '        mAltTranUserName = Value
-    '    End Set
-    'End Property
+
 #End Region
 
 #Region " Windows Form Designer generated code "
@@ -49,10 +32,7 @@ Friend Class UsersGeneral
     Friend Sub New()
         MyBase.New()
 
-        'This call is required by the Windows Form Designer.
         InitializeComponent()
-
-        'Add any initialization after the InitializeComponent() call
 
     End Sub
 

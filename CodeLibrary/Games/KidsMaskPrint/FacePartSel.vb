@@ -292,10 +292,6 @@ Public Class FacePartSel
 
         DisplayPreview()
 
-        'GetDataFileImageItem(ReturnNthStr( _
-        '   ListView1.SelectedItems(0).Tag, 1, "#"), ReturnNthStr(ListView1.SelectedItems(0).Tag, 2, "#"), _
-        '   mRetImage, mImageName)
-
         GetDataFileImageItem(ReturnNthStr( _
             ListView1.SelectedItems(0).Tag, 1, "#"), ReturnNthStr(ListView1.SelectedItems(0).Tag, 2, "#"), mRetPart, m_PieceName)
 
@@ -308,10 +304,8 @@ Public Class FacePartSel
             mPositionSelection = FacePartEnums.ePositionSelection.Both
         End If
 
-        '--- 
         m_SourceDataFileName = ReturnNthStr(ListView1.SelectedItems(0).Tag, 1, "#")
         m_DataFileItemNum = ReturnNthStr(ListView1.SelectedItems(0).Tag, 2, "#")
-        '--- 
 
         AddDebugComment("FacePartsSel.ListView1_Click - end") 
 

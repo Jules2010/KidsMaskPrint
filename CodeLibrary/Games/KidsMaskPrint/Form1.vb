@@ -3714,18 +3714,11 @@ Imports System.IO
 
         ReactivatePaintingBeforeDialog()
 
-        'AddDebugComment("frmMain.mnuToolsOptions_Click - end")
         gstrProbComtStack &= " #TOCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
     End Sub
     Private Sub SetDrawingLayout(ByVal UserName As String)
         
         Dim AppSettings As New InitalXMLConfig(InitalXMLConfig.XmlConfigType.UserSettings, UserName) 
-
-        'Dim lbooFloodfill As Boolean = CBool(GetSetting("FloodFillAndPalette", False, InitalXMLConfig.XmlConfigType.UserSettings, UserName))
-        'Dim lbooNoFloodfill As Boolean = CBool(GetSetting("LineAndColour", False, InitalXMLConfig.XmlConfigType.UserSettings, UserName))
-        'Dim lbooBlackLines As Boolean = CBool(GetSetting("BlackLines", True, InitalXMLConfig.XmlConfigType.UserSettings, UserName))
-        'Dim lbooBrushWidths As Boolean = CBool(GetSetting("BrushWidths", False, InitalXMLConfig.XmlConfigType.UserSettings, UserName))
-
         Dim lbooFloodfill As Boolean = CBool(AppSettings.GetValue("FloodFillAndPalette", "False")) 
         Dim lbooNoFloodfill As Boolean = CBool(AppSettings.GetValue("LineAndColour", "False")) 
         Dim lbooBlackLines As Boolean = CBool(AppSettings.GetValue("BlackLines", "True")) 

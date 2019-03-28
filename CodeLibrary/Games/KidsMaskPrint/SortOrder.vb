@@ -90,40 +90,7 @@ Imports System.Drawing.Drawing2D
         Debug(pPieces, pMousePath, pReverseMousePath, pUserPieces, pSortOrderForData, CodePos, "REMOVE")
 
     End Sub
-    'Friend Sub V1Upgrade(ByVal pPieces As ArrayList, ByVal pMousePath() As GraphicsPath, _
-    '    ByVal pReverseMousePath() As GraphicsPath, ByVal pUserPieces As FacePartStuctureDataFile, _
-    '    ByVal pSortOrderForData As SortOrderForData, ByVal CodePos As String)
 
-    '    Setvalues(pPieces, pMousePath, pReverseMousePath, pUserPieces, pSortOrderForData)
-
-    '    Dim lintarrInc As Integer
-    '    For lintarrInc = 0 To intPieceCount
-    '        DataType.Add(eDataType.PackPieces)
-    '    Next lintarrInc
-
-    '    For lintarrInc = 0 To intMousePathCount
-    '        DataType.Add(eDataType.NormalGraphicsPath)
-    '    Next lintarrInc
-
-    '    For lintarrInc = 0 To intRevMousePathCount
-    '        DataType.Add(eDataType.ReverseGraphicsPath)
-    '    Next lintarrInc
-
-    '    For lintarrInc = 0 To intUserPieceCount
-    '        DataType.Add(eDataType.UserPieces)
-    '    Next lintarrInc
-
-    '    Debug(pPieces, pMousePath, pReverseMousePath, pUserPieces, pSortOrderForData, CodePos, "V1Upgrade")
-
-    'End Sub
-    'Private Sub Setvalues(ByVal pPieces, ByVal pMousePath, ByVal pReverseMousePath, ByVal pUserPieces, ByVal pSortOrderForData)
-
-    '    Try : intPieceCount = pPieces.Count : Catch : intPieceCount = 0 : End Try
-    '    Try : intMousePathCount = pMousePath.GetUpperBound(0) : Catch : intMousePathCount = 0 : End Try
-    '    Try : intRevMousePathCount = pReverseMousePath.GetUpperBound(0) : Catch : intRevMousePathCount = 0 : End Try
-    '    Try : intUserPieceCount = pUserPieces.Parts.Count : Catch : intUserPieceCount = 0 : End Try
-
-    'End Sub
     Private Sub Debug(ByVal pPieces As ArrayList, ByVal pMousePath() As GraphicsPath, _
        ByVal pReverseMousePath() As GraphicsPath, ByVal pUserPieces As FacePartStuctureDataFile, _
        ByVal pSortOrderForData As SortOrderForData, ByVal CodePos As String, ByVal Func As String)

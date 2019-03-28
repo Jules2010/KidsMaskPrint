@@ -75,10 +75,6 @@ Friend Module Main
 
             bm = New Bitmap(bmp)
 
-            ''Try : System.IO.File.Delete(pstrDestFile) : Catch : End Try
-            'bm.Save(pstrDestFile, System.Drawing.Imaging.ImageFormat.Png)
-            ''bm.Save(pstrDestFile, System.Drawing.Imaging.ImageFormat.Jpeg)            
-
             Return bm
 
             image.Dispose()
@@ -99,16 +95,12 @@ Friend Module Main
         Dim inp As New IntPtr()
         Dim imgHeight, imgWidth As Double
 
-        Dim image As System.Drawing.Image = SoureImage 'System.Drawing.Image.FromFile(pstrSourceFile)
+        Dim image As System.Drawing.Image = SoureImage
 
         Dim bm As Bitmap = New Bitmap(image)
 
         imgHeight = bm.Height
         imgWidth = bm.Width
-
-        'Console.WriteLine("maxSize=" & maxSize)
-        'Console.WriteLine("   imgHeight=" & imgHeight & " imgWidth=" & imgWidth)
-
 
         If (imgWidth > maxSize Or imgHeight > maxSize) Then
             Dim deltaWidth As Double = imgWidth - maxSize
@@ -131,7 +123,6 @@ Friend Module Main
 
             imgWidth *= scaleFactor
             imgHeight *= scaleFactor
-            'Console.WriteLine("AF imgHeight=" & imgHeight & " imgWidth=" & imgWidth)
 
         End If
         Try
@@ -140,22 +131,12 @@ Friend Module Main
             Dim bmp As System.Drawing.Image = bm.GetThumbnailImage(w, h, Nothing, inp)
 
             bm = New Bitmap(bmp)
-
-            ''Try : System.IO.File.Delete(pstrDestFile) : Catch : End Try
-            'bm.Save(pstrDestFile, System.Drawing.Imaging.ImageFormat.Png)
-            ''bm.Save(pstrDestFile, System.Drawing.Imaging.ImageFormat.Jpeg)            
-            'Console.WriteLine("   imgHeight=" & h & " bm.Width=" & w)
-            'Console.WriteLine("RE imgHeight=" & bm.Height & " bm.Width=" & imgWidth)
-            'Console.WriteLine("")
-
             Return bm
 
             image.Dispose()
-            '''bm.Dispose()
             bmp.Dispose()
             image = Nothing 
             bmp = Nothing 
-            '''bm = Nothing 
         Catch ex As Exception
 
         End Try
@@ -340,26 +321,6 @@ Friend Module Main
                 End If
             End If
         End If
-
-
-
-        'Dim lstrFileStr As String
-        'Dim lstrPath As String = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly.Location.ToString()) & "\Help\Welcome.html"
-
-        'Dim OpenFile As FileStream = New FileStream(lstrPath, FileMode.Open, FileAccess.Read, FileShare.Read)             
-
-        'Dim StreamReader As StreamReader = New StreamReader(OpenFile)
-        'lstrFileStr = StreamReader.ReadToEnd '.Read 'Line()
-        'StreamReader.Close()
-        'OpenFile.Close()
-
-        'Dim RepStr As String = "Please remember you only have a 30 day evaluation. After this time you will be unable to use the program. <a href='http://www.mindwarp-consultancy-software.com/buy-products.html' target='_blank'>Click here to Buy!</a><BR><BR>"
-        'lstrFileStr = lstrFileStr.Replace(RepStr, "")
-
-        'Dim lintFreeFile As Integer = Microsoft.VisualBasic.FreeFile()
-        'Microsoft.VisualBasic.FileOpen(lintFreeFile, lstrPath, Microsoft.VisualBasic.OpenMode.Output)
-        'Microsoft.VisualBasic.Print(lintFreeFile, lstrFileStr)
-        'Microsoft.VisualBasic.FileClose(lintFreeFile)
 
     End Sub
     Friend Sub BlackKeys(ByRef lstrKeys() As String)
@@ -949,29 +910,24 @@ Start:
                         If Not de.Value Is Nothing Then
                             ReverseMousePaintBrush(RPB1Counter) = New PaintBrush()
                             ReverseMousePaintBrush(RPB1Counter).BrushColour = de.Value
-                            'Console.WriteLine(CType(de.Value, Color).ToKnownColor.ToString)
                             RPB1Counter += 1
                         Else
-                            'MessageBox.Show("here")
+                            '
                         End If
                     Case "JRBW"
                         If Not de.Value Is Nothing Then
                             ReverseMousePaintBrush(RPB2Counter).BrushWidth = de.Value
                             RPB2Counter += 1
                         Else
-                            'MessageBox.Show("here")
+                            '
                         End If
                     Case "ZZZZ" 'Else
-                        '--- 
 
-                        'Else
-
-                        Dim ThisPiece As New Piece() ' ("D:\desktopnt\scraps\flag.png")
+                        Dim ThisPiece As New Piece()
                         ThisPiece.SourceDataFileName = AppBasic.ReturnNthStr(de.Value, 1, "|") 
                         ThisPiece.DataFileItemNum = CInt(AppBasic.ReturnNthStr(de.Value, 2, "|")) 
                         ThisPiece.VertFlip = (CBool(AppBasic.ReturnNthStr(de.Value, 5, "|")))
                         ThisPiece.HorizFlip = (CBool(AppBasic.ReturnNthStr(de.Value, 6, "|")))
-                        ''ThisPiece.Bitmapname = AppBasic.ReturnNthStr(de.Value, 3, "|") 
                         ThisPiece.PieceName = AppBasic.ReturnNthStr(de.Value, 7, "|") 
 
                         'this next line checks to insure loaded pieces are licensed.
@@ -979,7 +935,7 @@ Start:
                         Dim lbooLicensedPieceFound As Boolean = False
 
                         If pLicensedFaceParts.Count > 0 Then 
-                            For lintArrInc = 0 To pLicensedFaceParts.Count - 1 'added -1 
+                            For lintArrInc = 0 To pLicensedFaceParts.Count - 1
                                 If pLicensedFaceParts(lintArrInc) = ThisPiece.PieceName Then
                                     lbooLicensedPieceFound = True
                                     Exit For
@@ -987,15 +943,9 @@ Start:
                             Next
                         End If 
                         If lbooLicensedPieceFound = True Then 
-                            '--- 
                             Dim TempPart As New KidsMaskPrint.Part()
-                            'GetDataFileImageItem(ThisPiece.SourceDataFileName, ThisPiece.DataFileItemNum, TempPart, Nothing)
-                            'GetDataFileImageItem(ThisPiece.SourceDataFileName, ThisPiece.DataFileItemNum, TempPart, Nothing)
                             GetDataPreviewImage(ThisPiece.SourceDataFileName, ThisPiece.DataFileItemNum, TempPart, Nothing, Nothing) 
                             ThisPiece.SetImageObj(TempPart.FullImage)
-                            '--- 
-
-                            ''ThisPiece.SetImage(mDir & AppBasic.ReturnNthStr(de.Value, 3, "|"))
                             Dim loc As New Point(CSng(AppBasic.ReturnNthStr(de.Value, 3, "|")), CSng(AppBasic.ReturnNthStr(de.Value, 4, "|")))
 
 
@@ -1010,26 +960,6 @@ Start:
             Throw New Exception(de.Key.ToString & " " & ex.ToString) 
         End Try 
 
-        '''--- 
-        '''If Not MousePointArray Is Nothing And Not MouseTypeArray Is Nothing Then
-        '''    pMousePath(0) = New GraphicsPath(MousePointArray(0), MouseTypeArray(0))
-        '''End If
-
-        ''If Not MousePointArray1 Is Nothing And Not MouseTypeArray1 Is Nothing Then
-        ''    pMousePath(1) = New GraphicsPath(MousePointArray1, MouseTypeArray1)
-        ''End If
-
-        ''If Not ReverseMousePointArray0 Is Nothing And Not ReverseMouseTypeArray0 Is Nothing Then
-        ''    pReverseMousePath(0) = New GraphicsPath(ReverseMousePointArray0, ReverseMouseTypeArray0)
-        ''End If
-
-        ''If Not ReverseMousePointArray1 Is Nothing And Not ReverseMouseTypeArray1 Is Nothing Then
-        ''    pReverseMousePath(1) = New GraphicsPath(ReverseMousePointArray1, ReverseMouseTypeArray1)
-        ''End If
-        '''--- 
-
-        '--- 
-
         AddDebugComment("Main.LoadMask - 7") 
 
         If Not MousePath Is Nothing Then
@@ -1042,7 +972,6 @@ Start:
                 End Try
             Next lintArrInc
 
-            'pMousePB = MousePaintBrush
         End If
 
         If Not MousePaintBrush Is Nothing Then 
@@ -1059,7 +988,6 @@ Start:
                 Catch
                 End Try
             Next lintArrInc
-            'pReverseMousePB = ReverseMousePaintBrush
         End If
 
         If Not ReverseMousePaintBrush Is Nothing Then 
@@ -1068,53 +996,9 @@ Start:
 
         '--- 
         AddDebugComment("Main.LoadMask - end") 
-        'DebugFile(pMousePath, pReverseMousePath, MousePaintBrush, ReverseMousePaintBrush)
-        'produce debug report of all loaded values
 
     End Function
-    'Public Function DebugFile(ByRef pMousePath() As GraphicsPath, _
-    'ByRef pReverseMousePath() As GraphicsPath, ByRef pMousePB() As PaintBrush, _
-    'ByRef pReverseMousePB() As PaintBrush)
-    '    Dim lintArrInc As Integer
-
-    '    Dim str As String
-
-    '    For lintArrInc = 0 To pMousePath.GetUpperBound(0)
-    '        Try : str &= "CMPP" & lintArrInc & " " & pMousePath(lintArrInc).PathPoints.ToString & CR() : Catch : End Try
-    '    Next lintArrInc
-
-
-    '    For lintArrInc = 0 To pMousePath.GetUpperBound(0)
-    '        Try : str &= "DMPT" & lintArrInc & " " & pMousePath(lintArrInc).PathTypes.ToString & CR() : Catch : End Try
-    '    Next lintArrInc
-
-    '    For lintArrInc = 0 To pMousePB.GetUpperBound(0)
-    '        Try : str &= "EMBC" & lintArrInc & " " & pMousePB(lintArrInc).BrushColour.ToString & CR() : Catch : End Try
-    '    Next lintArrInc
-
-    '    For lintArrInc = 0 To pMousePB.GetUpperBound(0)
-    '        Try : str &= "FMBW" & lintArrInc & " " & pMousePB(lintArrInc).BrushWidth.ToString & CR() : Catch : End Try
-    '    Next lintArrInc
-
-    '    For lintArrInc = 0 To pReverseMousePath.GetUpperBound(0)
-    '        Try : str &= "GRPP" & lintArrInc & " " & pReverseMousePath(lintArrInc).PathPoints.ToString & CR() : Catch : End Try
-    '    Next lintArrInc
-
-    '    For lintArrInc = 0 To pReverseMousePath.GetUpperBound(0)
-    '        Try : str &= "HRPT" & lintArrInc & " " & pReverseMousePath(lintArrInc).PathTypes.ToString & CR() : Catch : End Try
-    '    Next lintArrInc
-
-    '    For lintArrInc = 0 To pReverseMousePB.GetUpperBound(0)
-    '        Try : str &= "IRBC" & lintArrInc & " " & pReverseMousePB(lintArrInc).BrushColour.ToString & CR() : Catch : End Try
-    '    Next lintArrInc
-
-    '    For lintArrInc = 0 To pReverseMousePB.GetUpperBound(0)
-    '        Try : str &= "JRBW" & lintArrInc & " " & pReverseMousePB(lintArrInc).BrushWidth.ToString & CR() : Catch : End Try
-    '    Next lintArrInc
-
-    '    Console.WriteLine(str)
-
-    'End Function
+  
     Friend Sub SaveUserMask(ByVal pstrFileName As String, ByVal pHash As SortedList, ByVal pThumbNailFullImage As Image, _
         ByVal pUserPieces As FacePartStuctureDataFile, ByVal pSortOrderForData As SortOrderForData)
 
@@ -1132,20 +1016,7 @@ Start:
         FileFormatter.Serialize(FileStream, ResizeImageObj(pThumbNailFullImage, 75)) 
 
         AddDebugComment("KidsMaskPrint.SaveUserMask - 4") 
-        '''############### TESTING #############
-        ''Dim UserFacePartDatsStrutest As New FacePartStuctureDataFile()
-        ''Dim WitchFace As New Part()
-        ''With WitchFace
-        ''    .PartType = FacePartEnums.ePartType.Outline
-        ''    .FullImage = Image.FromFile("D:\CodeLibrary\Games\KMPDataFiles\bin\PackHalloween2004\Witch face.png")
-        ''    .ThumbImage = Image.FromFile("D:\CodeLibrary\Games\KMPDataFiles\bin\PackHalloween2004\Witch face.bmp")
-        ''    .FaceMaster = "Witch"
-        ''    .LeftPart = New Point(112, 156)
-        ''    .BothParts = False
-        ''End With
-        ''UserFacePartDatsStrutest.Parts.Add(WitchFace)
 
-        '''############### TESTING #############
 
         FileFormatter.Serialize(FileStream, pUserPieces) 
 
@@ -1161,9 +1032,6 @@ Start:
         Dim rijndael As New RijndaelManaged()
         'The RijndaelManaged.GenerateKey & GenerateIV creates a random key & 
         'initialization vector, good for testing, not good for production...
-
-        'rijndael.GenerateKey() ' create random key
-        'rijndael.GenerateIV() ' create random initialization vector  
 
         Dim key As Byte() = {89, 128, 147, 49, 7, 196, 76, 194, 33, 225, 176, 205, 207, 127, 137, 108, 200, 32, 234, 189, 212, 82, 152, 112, 25, 150, 91, 95, 10, 117, 248, 209}
         Dim iv As Byte() = {228, 63, 134, 217, 160, 206, 233, 198, 194, 17, 158, 98, 122, 16, 193, 216}
