@@ -12,24 +12,24 @@ Friend Class SignIn
             mSelectedUser = Value
         End Set
     End Property
-    Dim mUICol1 As Color 
-    Friend ReadOnly Property UICol1() As Color 
+    Dim mUICol1 As Color
+    Friend ReadOnly Property UICol1() As Color
         Get
             Return mUICol1
         End Get
     End Property
-    Dim mUICol2 As Color 
-    Friend ReadOnly Property UICol2() As Color 
+    Dim mUICol2 As Color
+    Friend ReadOnly Property UICol2() As Color
         Get
             Return mUICol2
         End Get
     End Property
-    Friend Enum Params 
+    Friend Enum Params
         None
         NewRequired
     End Enum
-    Dim mParam As Params = Params.None 
-    Friend ReadOnly Property Param() As Params 
+    Dim mParam As Params = Params.None
+    Friend ReadOnly Property Param() As Params
         Get
             Return mParam
         End Get
@@ -65,7 +65,7 @@ Friend Class SignIn
     Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents lblSelectName As System.Windows.Forms.Label
@@ -184,18 +184,18 @@ Friend Class SignIn
 #End Region
     Dim mUsers(0) As String
 
-    Private listBoxBrushes() As Brush 
-    Private lGradeCol1(4) As Color 
-    Private lGradeCol2(4) As Color 
+    Private listBoxBrushes() As Brush
+    Private lGradeCol1(4) As Color
+    Private lGradeCol2(4) As Color
     Dim evOnClick As New EventHandler(AddressOf NameBtnOnClick)
     Private Sub SignIn_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         'check DAT file for users, if no uses don't show buttons
-        Me.SuspendLayout() 
+        Me.SuspendLayout()
 
-        AddDebugComment("SignIn.SignIn_Load - start") 
+        AddDebugComment("SignIn.SignIn_Load - start")
 
-        Busy(Me, True) 
+        Busy(Me, True)
 
         Dim InitialConfig As New InitalXMLConfig(InitalXMLConfig.XmlConfigType.AppSettings)
         Dim lstrUsersStr As String
@@ -214,14 +214,14 @@ Friend Class SignIn
         Dim GreatestHeight As Integer
         Dim MinFormWidth As Integer = 304
         Dim lintArrInc As Integer
-        Dim lbooButtonsAdded As Boolean = False 
+        Dim lbooButtonsAdded As Boolean = False
 
         Dim xx() As BevelButton
 
         'If lstrUsersStr <> "" Then
-        lstrUsersStr = ReplaceAll(lstrUsersStr, ChrGet(255) & ChrGet(255), ChrGet(255)) 
+        lstrUsersStr = ReplaceAll(lstrUsersStr, ChrGet(255) & ChrGet(255), ChrGet(255))
 
-        If RightGet(lstrUsersStr, 1) = ChrGet(255) Then 
+        If RightGet(lstrUsersStr, 1) = ChrGet(255) Then
             lstrUsersStr = lstrUsersStr.Remove(lstrUsersStr.Length - 1, 1)
         End If
 
@@ -229,10 +229,10 @@ Friend Class SignIn
             mUsers = Microsoft.VisualBasic.Split(lstrUsersStr, ChrGet(255))
 
             'if users add them to an array
-            Dim PositionArr(mUsers.GetUpperBound(0)) As Point 
+            Dim PositionArr(mUsers.GetUpperBound(0)) As Point
 
             ObjPositing(PositionArr, btnOKClick.Height + 10, btnOKClick.Width + 10, 4, GreatestHeight)
-            ReDim xx(mUsers.GetUpperBound(0)) 
+            ReDim xx(mUsers.GetUpperBound(0))
 
             For lintArrInc = 0 To xx.GetUpperBound(0)
                 xx(lintArrInc) = New BevelButton()
@@ -246,7 +246,7 @@ Friend Class SignIn
                     .Text = mUsers(lintArrInc)
                     AddHandler xx(lintArrInc).Click, evOnClick
                     Panel2.Controls.Add(xx(lintArrInc))
-                    lbooButtonsAdded = True 
+                    lbooButtonsAdded = True
                 End With
             Next lintArrInc
             FirstBtnHeight = xx(0).Height
@@ -256,7 +256,7 @@ Friend Class SignIn
 
         End If
 
-        If lbooButtonsAdded = True Then 
+        If lbooButtonsAdded = True Then
             If Me.Width < LastButtonLeft + btnOKClick.Width + 4 Then
                 Me.Width = LastButtonLeft + btnOKClick.Width + 14
 
@@ -270,8 +270,8 @@ Friend Class SignIn
 
             lblSelectName.Width = Panel2.Width
             Panel2.Left = (Me.Width - Panel2.Width) / 2
-            Panel2.Height = GreatestHeight + FirstBtnHeight + 24 + 72 + 10 + 50 
-            Me.Height = Panel2.Top + Panel2.Height + 30 
+            Panel2.Height = GreatestHeight + FirstBtnHeight + 24 + 72 + 10 + 50
+            Me.Height = Panel2.Top + Panel2.Height + 30
 
         End If
 
@@ -292,44 +292,44 @@ Friend Class SignIn
             Next lintArrInc
         End If
 
-        Me.Location = CentreMe(Me) 
+        Me.Location = CentreMe(Me)
 
-        Busy(Me, False) 
+        Busy(Me, False)
 
-        AddDebugComment("SignIn.SignIn_Load - end") 
+        AddDebugComment("SignIn.SignIn_Load - end")
 
-        Me.ResumeLayout() 
+        Me.ResumeLayout()
 
     End Sub
     Private Sub NameBtnOnClick(ByVal sender As Object, ByVal e As EventArgs)
 
-        AddDebugComment("SignIn.NameBtnOnClick - start") 
+        AddDebugComment("SignIn.NameBtnOnClick - start")
 
-        lbListBox.Items.Clear() 
-        SetBrushes() 
+        lbListBox.Items.Clear()
+        SetBrushes()
 
         mSelectedUser = sender.text
-        lblName.Text = mSelectedUser 
+        lblName.Text = mSelectedUser
 
         lbListBox.Text = GetSetting("Colours", "One", InitalXMLConfig.XmlConfigType.UserSettings, mSelectedUser)
 
 
-        lbListBox.Enabled = True 
+        lbListBox.Enabled = True
         'Me.Close()
 
-        AddDebugComment("SignIn.NameBtnOnClick - end") 
+        AddDebugComment("SignIn.NameBtnOnClick - end")
 
     End Sub
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
-        AddDebugComment("SignIn.btnHelp_Click") 
-        
+        AddDebugComment("SignIn.btnHelp_Click")
+
         Help.ShowHelp(Me, GetHelpFile, GetHelpTopic(Main.HelpTopicEnum.SignIn))
 
     End Sub
     Private Sub btnOKClick_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOKClick.Click
 
-        AddDebugComment("SignIn.btnOKClick_Click - start") 
+        AddDebugComment("SignIn.btnOKClick_Click - start")
 
         If mSelectedUser <> "" Then
 
@@ -338,16 +338,16 @@ Friend Class SignIn
             Me.Close()
         End If
 
-        AddDebugComment("SignIn.btnOKClick_Click - start") 
+        AddDebugComment("SignIn.btnOKClick_Click - start")
 
     End Sub
     Private Sub SetBrushes()
 
-        AddDebugComment("SignIn.SetBrushes - start") 
+        AddDebugComment("SignIn.SetBrushes - start")
 
-        Me.lbListBox.Items.AddRange(New Object() {"One", "Two", "Three", "Four", "Five"}) 
+        Me.lbListBox.Items.AddRange(New Object() {"One", "Two", "Three", "Four", "Five"})
 
-        
+
         Dim r As Rectangle
         r = New Rectangle(0, 0, lbListBox.Width, lbListBox.ItemHeight)
 
@@ -356,7 +356,7 @@ Friend Class SignIn
         lGradeCol1(2) = Color.FromArgb(255, 187, 187) : lGradeCol2(2) = Color.FromArgb(255, 225, 225)
         lGradeCol1(3) = Color.FromArgb(192, 205, 254) : lGradeCol2(3) = Color.FromArgb(234, 238, 255)
         lGradeCol1(4) = Color.FromArgb(0, 255, 0) : lGradeCol2(4) = Color.FromArgb(255, 0, 0)
-        
+
         Dim lb1 As New LinearGradientBrush(r, lGradeCol1(0), lGradeCol2(0), LinearGradientMode.Horizontal)
         Dim lb2 As New LinearGradientBrush(r, lGradeCol1(1), lGradeCol2(1), LinearGradientMode.Horizontal)
         Dim lb3 As New LinearGradientBrush(r, lGradeCol1(2), lGradeCol2(2), LinearGradientMode.Horizontal)
@@ -365,11 +365,11 @@ Friend Class SignIn
 
         listBoxBrushes = New Brush() {lb1, lb2, lb3, lb4, lb5}
 
-        AddDebugComment("SignIn.SetBrushes - end") 
+        AddDebugComment("SignIn.SetBrushes - end")
 
     End Sub
     Private Sub lbListBox_DrawItem(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles lbListBox.DrawItem
-        
+
         Dim brush As Brush
         Dim Itemselected As Boolean
 
@@ -389,19 +389,19 @@ Friend Class SignIn
     End Sub
     Private Sub lbListBox_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles lbListBox.SelectedIndexChanged
 
-        AddDebugComment("SignIn.lbListBox_SelectedIndexChanged") 
+        AddDebugComment("SignIn.lbListBox_SelectedIndexChanged")
 
-        mUICol1 = lGradeCol1(lbListBox.SelectedIndex) 
-        mUICol2 = lGradeCol2(lbListBox.SelectedIndex) 
+        mUICol1 = lGradeCol1(lbListBox.SelectedIndex)
+        mUICol2 = lGradeCol2(lbListBox.SelectedIndex)
 
     End Sub
     Private Sub btnNew_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNew.Click
 
-        mParam = Params.NewRequired 
+        mParam = Params.NewRequired
         Me.Close()
 
     End Sub
     Private Sub SignIn_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-        Me.Invalidate() 
+        Me.Invalidate()
     End Sub
 End Class

@@ -12,10 +12,10 @@ Friend Class FloodFill
 
         Dim Bitmapbefore As Bitmap = raster.Clone
 
-        Dim mf As New MapFill() 
-        raster = mf.Fill(raster, New Point(iX, iY), iFColor) 
+        Dim mf As New MapFill()
+        raster = mf.Fill(raster, New Point(iX, iY), iFColor)
 
-        Return FloodFillClipImage(Bitmapbefore, raster, ClipTop, ClipLeft, iFColor) 
+        Return FloodFillClipImage(Bitmapbefore, raster, ClipTop, ClipLeft, iFColor)
 
     End Function
 
@@ -47,8 +47,8 @@ Friend Class FloodFill
                 For x = 0 To i.Width - 1
 
                     Dim white As Byte = 255
-                    If Color.op_Equality(iFColor, Color.White) = True Then 
-                        white = 254 
+                    If Color.op_Equality(iFColor, Color.White) = True Then
+                        white = 254
                     End If
                     Dim r As Byte = Marshal.ReadByte(bmd.Scan0, offset + (x * advance) + 2)
                     Dim g As Byte = Marshal.ReadByte(bmd.Scan0, offset + (x * advance) + 1)
@@ -83,7 +83,7 @@ Friend Class FloodFill
             Dim Width As Integer = (iright - ileft) + 4
             Dim Height As Integer = (ibottom - itop) + 4
 
-            If Width < 0 Or Height < 0 Then 
+            If Width < 0 Or Height < 0 Then
                 Width = (ileft - iright) + 4
                 Height = (itop - ibottom) + 4
             End If
@@ -92,11 +92,11 @@ Friend Class FloodFill
             Dim gr As Graphics = Graphics.FromImage(CroppedBitmap)
             gr.DrawImage(RetBitmap, New Rectangle(0, 0, Width, Height), New Rectangle(ileft, itop, Width, Height), GraphicsUnit.Pixel)
 
-            Top = itop 
-            Left = ileft 
+            Top = itop
+            Left = ileft
 
-            If Color.op_Equality(iFColor, Color.White) = True Then 
-                CroppedBitmap.MakeTransparent(Color.FromArgb(254, 254, 254)) 
+            If Color.op_Equality(iFColor, Color.White) = True Then
+                CroppedBitmap.MakeTransparent(Color.FromArgb(254, 254, 254))
             Else
                 CroppedBitmap.MakeTransparent(Color.White)
             End If

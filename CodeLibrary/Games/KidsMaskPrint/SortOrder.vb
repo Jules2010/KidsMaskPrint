@@ -1,5 +1,5 @@
 Imports System.Drawing.Drawing2D
-<DoNotObfuscateAttribute(), Serializable()> Friend Class SortOrderForData 
+<DoNotObfuscateAttribute(), Serializable()> Friend Class SortOrderForData
     Friend Enum eDataType
         PackPieces
         NormalGraphicsPath
@@ -14,7 +14,7 @@ Imports System.Drawing.Drawing2D
     Private intUserPieceCount As Integer
 
     Friend Sub New()
-        
+
         intPieceCount = 0
         intMousePathCount = 0
         intRevMousePathCount = 0
@@ -58,7 +58,7 @@ Imports System.Drawing.Drawing2D
         ByVal pReverseMousePath() As GraphicsPath, ByVal pUserPieces As FacePartStuctureDataFile, _
         ByVal pSortOrderForData As SortOrderForData, ByVal CodePos As String)
 
-        DataType.Reverse() 
+        DataType.Reverse()
 
         Dim lintArrInc As Integer
         Dim PiecesToRemove As Integer = intPieceCount - pPieces.Count
@@ -85,7 +85,7 @@ Imports System.Drawing.Drawing2D
             intUserPieceCount -= 1
         Next lintArrInc
 
-        DataType.Reverse() 
+        DataType.Reverse()
 
         Debug(pPieces, pMousePath, pReverseMousePath, pUserPieces, pSortOrderForData, CodePos, "REMOVE")
 

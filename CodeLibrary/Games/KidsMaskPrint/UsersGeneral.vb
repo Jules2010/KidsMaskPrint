@@ -1,4 +1,4 @@
-Friend Class UsersGeneral 
+Friend Class UsersGeneral
     Inherits System.Windows.Forms.Form
 
 #Region "Friend Properties"
@@ -15,8 +15,8 @@ Friend Class UsersGeneral
             mTranType = Value
         End Set
     End Property
-    Private mLoginInAs As String 
-    Friend Property LoginInAs() As String 
+    Private mLoginInAs As String
+    Friend Property LoginInAs() As String
         Get
             Return mLoginInAs
         End Get
@@ -50,7 +50,7 @@ Friend Class UsersGeneral
     Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     Friend WithEvents ListBox1 As System.Windows.Forms.ListBox
     Friend WithEvents btnOK As System.Windows.Forms.Button
@@ -102,9 +102,9 @@ Friend Class UsersGeneral
 
     Private Sub UsersGeneral_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        AddDebugComment("UsersGeneral.UsersGeneral_Load - start " & mTranType) 
+        AddDebugComment("UsersGeneral.UsersGeneral_Load - start " & mTranType)
 
-        SetBackcolors() 
+        SetBackcolors()
 
                 Select Case mTranType
             Case UserTranType.Delete
@@ -112,7 +112,7 @@ Friend Class UsersGeneral
             Case UserTranType.Rename
                 Me.Text = "Rename"
         End Select
-        
+
         If IsAboveOrEqualWinXp() = True Then
             btnOK.FlatStyle = FlatStyle.System
             btnCancel.FlatStyle = FlatStyle.System
@@ -129,13 +129,13 @@ Friend Class UsersGeneral
 
         InitialConfig = Nothing
 
-        AddDebugComment("UsersGeneral.UsersGeneral_Load - end") 
+        AddDebugComment("UsersGeneral.UsersGeneral_Load - end")
 
     End Sub
 
     Private Sub btnOK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOK.Click
 
-        AddDebugComment("UsersGeneral.btnOK_Click - start") 
+        AddDebugComment("UsersGeneral.btnOK_Click - start")
 
         Dim lintArrInc As Integer
 
@@ -145,28 +145,28 @@ Friend Class UsersGeneral
                     Dim dlgResult As DialogResult
                     dlgResult = MessageBox.Show("Do you want to delete user '" & ListBox1.Text & "' ?", NameMe(""), MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                     If dlgResult = DialogResult.Yes Then
-                        Busy(Me, True) 
+                        Busy(Me, True)
                         'mTranUserName = ListBox1.Text
                         For lintArrInc = 0 To 5
                             SaveSetting("MaskFile" & lintArrInc, "", InitalXMLConfig.XmlConfigType.UserSettings, ListBox1.Text)
                             SaveSetting("MaskFileDesc" & lintArrInc, "", InitalXMLConfig.XmlConfigType.UserSettings, ListBox1.Text)
                         Next lintArrInc
                         SaveSetting("LastSaved", "", InitalXMLConfig.XmlConfigType.UserSettings, ListBox1.Text)
-                        
+
                         Dim lstrAllUsers As String = GetSetting("Users", "", InitalXMLConfig.XmlConfigType.AppSettings, "") & ChrGet(255)
                         SaveSetting("Users", lstrAllUsers.Replace(ListBox1.Text & ChrGet(255), "").Replace(ChrGet(255) & _
                             ChrGet(255), ChrGet(255)), InitalXMLConfig.XmlConfigType.AppSettings, "")
-                        
-                        Busy(Me, False) 
+
+                        Busy(Me, False)
                     End If
                 Case UserTranType.Rename
                     Dim RenUser As New InputBox(True)
                     Dim NewUserName As String = RenUser.Display("Enter a new user name for user '" & _
                         ListBox1.Text & "'", NameMe(""), ListBox1.Text)
                     If NewUserName.Trim <> "" And NewUserName <> ListBox1.Text Then
-                        Busy(Me, True) 
+                        Busy(Me, True)
                         Dim OldUsername As String = ListBox1.Text
-                        
+
                         For lintArrInc = 0 To 5
                             Dim ThisMaskFile As String = GetSetting("MaskFile" & lintArrInc, "", InitalXMLConfig.XmlConfigType.UserSettings, OldUsername)
                             SaveSetting("MaskFile" & lintArrInc, "", InitalXMLConfig.XmlConfigType.UserSettings, OldUsername)
@@ -178,29 +178,29 @@ Friend Class UsersGeneral
                         Dim ThisLastSaved As String = GetSetting("LastSaved", "", InitalXMLConfig.XmlConfigType.UserSettings, OldUsername)
                         SaveSetting("LastSaved", "", InitalXMLConfig.XmlConfigType.UserSettings, OldUsername)
                         SaveSetting("LastSaved", ThisLastSaved, InitalXMLConfig.XmlConfigType.UserSettings, NewUserName)
-                        
+
                         Dim lstrAllUsers As String = GetSetting("Users", "", InitalXMLConfig.XmlConfigType.AppSettings, "") & ChrGet(255)
                         'SaveSetting("Users", lstrAllUsers.Replace(ListBox1.Text & ChrGet(255), "").Replace(ChrGet(255) & _
                         '    ChrGet(255), ChrGet(255)), InitalXMLConfig.XmlConfigType.AppSettings, "")
                         SaveSetting("Users", lstrAllUsers.Replace(ListBox1.Text & ChrGet(255), NewUserName).Replace(ChrGet(255) & _
-                                ChrGet(255), ChrGet(255)), InitalXMLConfig.XmlConfigType.AppSettings, "") 
-                        
+                                ChrGet(255), ChrGet(255)), InitalXMLConfig.XmlConfigType.AppSettings, "")
+
                         If mLoginInAs = OldUsername Then
                             mLoginInAs = NewUserName
                         End If
-                        Busy(Me, False) 
+                        Busy(Me, False)
                     End If
             End Select
             Me.Close()
         End If
 
-        AddDebugComment("UsersGeneral.btnOK_Click - end") 
+        AddDebugComment("UsersGeneral.btnOK_Click - end")
 
     End Sub
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
 
-        AddDebugComment("UsersGeneral.btnCancel_Click") 
+        AddDebugComment("UsersGeneral.btnCancel_Click")
         Me.Close()
 
     End Sub
@@ -212,20 +212,20 @@ Friend Class UsersGeneral
     End Sub
     Private Sub SetBackcolors()
 
-        AddDebugComment("UsersGeneral.SetBackcolors") 
+        AddDebugComment("UsersGeneral.SetBackcolors")
 
-        
+
         btnOK.BackColor = Color.FromArgb(0, btnOK.BackColor)
         btnCancel.BackColor = Color.FromArgb(0, btnCancel.BackColor)
 
     End Sub
 
     Private Sub UsersGeneral_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-        Me.Invalidate() 
+        Me.Invalidate()
     End Sub
 
     Private Sub UsersGeneral_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
-        
+
         If e.KeyCode = Keys.Escape Then
             btnCancel_Click(Nothing, Nothing)
         End If

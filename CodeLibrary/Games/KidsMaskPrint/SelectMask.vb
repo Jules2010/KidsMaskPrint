@@ -16,7 +16,7 @@ Friend Class SelectMask
             mRetMaskFile = Value
         End Set
     End Property
-    Dim mLicensedFaceParts As New ArrayList() 
+    Dim mLicensedFaceParts As New ArrayList()
     Friend Property LicensedFaceParts() As ArrayList
         Get
             Return mLicensedFaceParts
@@ -53,7 +53,7 @@ Friend Class SelectMask
     Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     Friend WithEvents ListView1 As System.Windows.Forms.ListView
     Friend WithEvents btnClose As System.Windows.Forms.Button
@@ -147,17 +147,17 @@ Friend Class SelectMask
 
     Private Sub btnClose_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClose.Click
 
-        AddDebugComment("SelectMask.btnClose_Click - start") 
+        AddDebugComment("SelectMask.btnClose_Click - start")
 
         mRetMaskFile = ""
         Me.Close()
 
-        AddDebugComment("SelectMask.btnClose_Click - end") 
+        AddDebugComment("SelectMask.btnClose_Click - end")
 
     End Sub
     Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
 
-        AddDebugComment("SelectMask.btnSelect_Click - start") 
+        AddDebugComment("SelectMask.btnSelect_Click - start")
 
         If ListView1.SelectedItems.Count > 1 Then
             ListView1_Click(Nothing, Nothing)
@@ -165,67 +165,67 @@ Friend Class SelectMask
 
         Me.Close()
 
-        AddDebugComment("SelectMask.btnSelect_Click - end") 
+        AddDebugComment("SelectMask.btnSelect_Click - end")
 
     End Sub
     Private Sub ListView1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ListView1.Click
 
-        AddDebugComment("SelectMask.ListView1_Click - start") 
+        AddDebugComment("SelectMask.ListView1_Click - start")
 
         DisplayPreview()
 
-        AddDebugComment("SelectMask.ListView1_Click - End") 
+        AddDebugComment("SelectMask.ListView1_Click - End")
 
     End Sub
     Private Sub DisplayPreview()
 
-        AddDebugComment("SelectMask.DisplayPreview - start") 
+        AddDebugComment("SelectMask.DisplayPreview - start")
 
-        Busy(Me, True) 
+        Busy(Me, True)
 
-        Try 
+        Try
 
             LoadMask(mDir & ListView1.SelectedItems(0).Tag, Nothing, picPreview.Image, True, Nothing, Nothing, _
-                Nothing, Nothing, mLicensedFaceParts, Nothing, Nothing) 
+                Nothing, Nothing, mLicensedFaceParts, Nothing, Nothing)
 
             mRetMaskFile = mDir & ListView1.SelectedItems(0).Tag
-        Catch 
+        Catch
             '
-        End Try 
+        End Try
 
-        Busy(Me, False) 
+        Busy(Me, False)
 
-        AddDebugComment("SelectMask.DisplayPreview - end") 
+        AddDebugComment("SelectMask.DisplayPreview - end")
 
     End Sub
 
     Private Sub SelectMask_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        AddDebugComment("SelectMask.SelectMask_Load - start") 
+        AddDebugComment("SelectMask.SelectMask_Load - start")
 
-        Busy(Me, True) 
+        Busy(Me, True)
 
-        Me.Text = NameMe("Load Mask") 
+        Me.Text = NameMe("Load Mask")
 
-        SetDirectory(mDir) 
+        SetDirectory(mDir)
 
                 If IsAboveOrEqualWinXp() = True Then
             btnBrowse.FlatStyle = FlatStyle.System
             btnSelect.FlatStyle = FlatStyle.System
             btnClose.FlatStyle = FlatStyle.System
         End If
-        
-        lblDirectory.BackColor = Color.FromArgb(0, lblDirectory.BackColor)     
 
-        Busy(Me, False) 
+        lblDirectory.BackColor = Color.FromArgb(0, lblDirectory.BackColor)
 
-        AddDebugComment("SelectMask.SelectMask_Load - end") 
+        Busy(Me, False)
+
+        AddDebugComment("SelectMask.SelectMask_Load - end")
 
     End Sub
     Private Sub SetDirectory(ByVal pDir As String)
 
-        ListView1.Items.Clear() 
-        picPreview.Image = Nothing 
+        ListView1.Items.Clear()
+        picPreview.Image = Nothing
 
         lblDirectory.Text = mDir
 
@@ -244,7 +244,7 @@ Friend Class SelectMask
             With pfile
                 Dim NiceName As String = .Name.Replace(.Extension, "")
                 Dim Temp As Image
-                LoadMask(pfile.FullName, Nothing, Temp, True, Nothing, Nothing, Nothing, Nothing, mLicensedFaceParts, Nothing, Nothing) 
+                LoadMask(pfile.FullName, Nothing, Temp, True, Nothing, Nothing, Nothing, Nothing, mLicensedFaceParts, Nothing, Nothing)
 
                 ImgList.Images.Add(Temp)
                 Dim item As New ListViewItem()
@@ -262,30 +262,30 @@ Friend Class SelectMask
         End If
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
-        
+
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
 
     End Sub
 
     Private Sub SelectMask_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-        Me.Invalidate() 
+        Me.Invalidate()
     End Sub
 
     Private Sub btnBrowse_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnBrowse.Click
-        
+
         Dim db As New WinOnly.DirBrowser()
         db.Description = "Choose a folder"
         db.StartLocation = 0
         db.Style = 1
         If db.ShowDialog = DialogResult.OK Then
-            mDir = db.ReturnPath & "\" 
+            mDir = db.ReturnPath & "\"
             SetDirectory(db.ReturnPath)
         End If
 
     End Sub
     Private Sub SelectMask_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
-        
+
         If e.KeyCode = Keys.Escape Then
             btnClose_Click(Nothing, Nothing)
         End If

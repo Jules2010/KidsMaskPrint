@@ -64,7 +64,7 @@ Friend Class Slots
         End Set
     End Property
 
-        Dim mLicensedFaceParts As New ArrayList() 
+        Dim mLicensedFaceParts As New ArrayList()
     Friend Property LicensedFaceParts() As ArrayList
         Get
             Return mLicensedFaceParts
@@ -74,8 +74,8 @@ Friend Class Slots
         End Set
     End Property
 
-    Dim lUserPieces As New FacePartStuctureDataFile() 
-    Friend Property UserPieces() As FacePartStuctureDataFile 
+    Dim lUserPieces As New FacePartStuctureDataFile()
+    Friend Property UserPieces() As FacePartStuctureDataFile
         Get
             Return lUserPieces
         End Get
@@ -83,8 +83,8 @@ Friend Class Slots
             lUserPieces = Value
         End Set
     End Property
-    Dim lSortOrderForData As New SortOrderForData() 
-    Friend Property SortOrderForData() As SortOrderForData 
+    Dim lSortOrderForData As New SortOrderForData()
+    Friend Property SortOrderForData() As SortOrderForData
         Get
             Return lSortOrderForData
         End Get
@@ -120,7 +120,7 @@ Friend Class Slots
     Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     Friend WithEvents lblTran As System.Windows.Forms.Label
     Friend WithEvents btnCancel As WinOnly.BevelButton
@@ -195,15 +195,15 @@ Friend Class Slots
     Dim lbooButtonSelected As Boolean = False
 
     Dim mDir As String = Path.GetDirectoryName( _
-        System.Reflection.Assembly.GetExecutingAssembly().Location) & "\Masks\" 
+        System.Reflection.Assembly.GetExecutingAssembly().Location) & "\Masks\"
 
     Private Sub Slots_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        AddDebugComment("Slots.Slots_Load - start") 
+        AddDebugComment("Slots.Slots_Load - start")
 
-        Busy(Me, True) 
+        Busy(Me, True)
 
-        Me.Text = NameMe("Slots") 
+        Me.Text = NameMe("Slots")
 
         Dim UserSettings As New InitalXMLConfig(InitalXMLConfig.XmlConfigType.UserSettings, mSelectedUser)
         Dim lintArrInc As Integer
@@ -228,13 +228,13 @@ Friend Class Slots
                 .TabIndex = lintArrInc + 1
                 .Tag = lintArrInc + 1
                 .ImageAlign = ContentAlignment.MiddleRight
-                .Font = New Font("Arial", 16, FontStyle.Bold) 
+                .Font = New Font("Arial", 16, FontStyle.Bold)
                                 .Text = ThisFileDesc '"Empty"
                 If IO.File.Exists(ThisFile) = True Then
                     Dim Temp As Image
                     'LoadMask(ThisFile, Nothing, Temp, True)
-                    'LoadMask(ThisFile, Nothing, Temp, True, Nothing, Nothing, Nothing, Nothing, mLicensedFaceParts) 
-                    LoadMask(ThisFile, Nothing, Temp, True, Nothing, Nothing, Nothing, Nothing, mLicensedFaceParts, Nothing, Nothing) 
+                    'LoadMask(ThisFile, Nothing, Temp, True, Nothing, Nothing, Nothing, Nothing, mLicensedFaceParts)
+                    LoadMask(ThisFile, Nothing, Temp, True, Nothing, Nothing, Nothing, Nothing, mLicensedFaceParts, Nothing, Nothing)
 
                     .Image = Temp
                 End If
@@ -256,14 +256,14 @@ Friend Class Slots
             lblTran.Text = "Save Mask"
         End If
 
-        Busy(Me, False) 
+        Busy(Me, False)
 
-        AddDebugComment("Slots.Slots_Load - end") 
+        AddDebugComment("Slots.Slots_Load - end")
 
     End Sub
     Private Sub NameBtnOnClick(ByVal sender As Object, ByVal e As EventArgs)
 
-        AddDebugComment("Slots.NameBtnOnClick - start") 
+        AddDebugComment("Slots.NameBtnOnClick - start")
 
         lbooButtonSelected = True
 
@@ -280,30 +280,30 @@ Friend Class Slots
                         Dim dlgRes As DialogResult
             If GetSetting("MaskFile" & sender.tag, "", InitalXMLConfig.XmlConfigType.UserSettings, mSelectedUser) <> "" Then
                 dlgRes = MessageBox.Show("Overwrite?", NameMe(""), MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                Application.DoEvents() 
+                Application.DoEvents()
                 If dlgRes <> DialogResult.Yes Then
                     Exit Sub
                 End If
             End If
-            
-            Busy(Me, True) 
+
+            Busy(Me, True)
 
             Dim FileName As String = mDir & MakeFileNameNice(SlotName, "Mask")
 
-            'SaveUserMask(FileName, FaceHash, mFullImage)  
-            SaveUserMask(FileName, FaceHash, mFullImage, lUserPieces, lSortOrderForData) 
+            'SaveUserMask(FileName, FaceHash, mFullImage)
+            SaveUserMask(FileName, FaceHash, mFullImage, lUserPieces, lSortOrderForData)
 
             SaveSetting("MaskFile" & sender.tag, FileName, InitalXMLConfig.XmlConfigType.UserSettings, mSelectedUser)
             SaveSetting("MaskFileDesc" & sender.tag, SlotName, InitalXMLConfig.XmlConfigType.UserSettings, mSelectedUser)
-            If mbooLastMask = True Then 
-                SaveSetting("LastSaved", FileName, InitalXMLConfig.XmlConfigType.UserSettings, mSelectedUser) 
-            End If 
-            Busy(Me, False) 
+            If mbooLastMask = True Then
+                SaveSetting("LastSaved", FileName, InitalXMLConfig.XmlConfigType.UserSettings, mSelectedUser)
+            End If
+            Busy(Me, False)
 
             Me.Close()
         End If
 
-        AddDebugComment("Slots.NameBtnOnClick - end") 
+        AddDebugComment("Slots.NameBtnOnClick - end")
 
     End Sub
     Private Sub NameBtnOnMouseEnter(ByVal sender As Object, ByVal e As EventArgs)
@@ -330,14 +330,14 @@ Friend Class Slots
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        
+
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
 
     End Sub
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
 
-        AddDebugComment("Slots.btnCancel_Click") 
+        AddDebugComment("Slots.btnCancel_Click")
 
         Me.Close()
 
@@ -345,19 +345,19 @@ Friend Class Slots
 
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
 
-        AddDebugComment("Slots.btnHelp_Click") 
+        AddDebugComment("Slots.btnHelp_Click")
 
-        
+
         Help.ShowHelp(Me, GetHelpFile, GetHelpTopic(Main.HelpTopicEnum.Slots))
 
     End Sub
 
     Private Sub Slots_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-        Me.Invalidate() 
+        Me.Invalidate()
     End Sub
 
     Private Sub Slots_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
-        
+
         If e.KeyCode = Keys.Escape Then
             btnCancel_Click(Nothing, Nothing)
         End If

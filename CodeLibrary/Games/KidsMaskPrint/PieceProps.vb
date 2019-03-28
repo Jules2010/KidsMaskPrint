@@ -40,7 +40,7 @@ Friend Class PieceProps
     Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     Friend WithEvents btnCancel As WinOnly.BevelButton
     Friend WithEvents btnDelete As WinOnly.BevelButton
@@ -93,22 +93,22 @@ Friend Class PieceProps
 #End Region
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
 
-        AddDebugComment("PieceProps.btnCancel_Click - start") 
+        AddDebugComment("PieceProps.btnCancel_Click - start")
 
         mTranType = ePieceTran.Cancel
         Me.Close()
 
-        AddDebugComment("PieceProps.btnCancel_Click - end") 
+        AddDebugComment("PieceProps.btnCancel_Click - end")
 
     End Sub
     Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
 
-        AddDebugComment("PieceProps.btnDelete_Click - start") 
+        AddDebugComment("PieceProps.btnDelete_Click - start")
 
         mTranType = ePieceTran.Delete
         Me.Close()
 
-        AddDebugComment("PieceProps.btnDelete_Click - end") 
+        AddDebugComment("PieceProps.btnDelete_Click - end")
 
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
@@ -120,7 +120,7 @@ Friend Class PieceProps
 
     Private Sub PieceProps_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        AddDebugComment("PieceProps.PieceProps_Load") 
+        AddDebugComment("PieceProps.PieceProps_Load")
 
     End Sub
 
@@ -129,7 +129,7 @@ Friend Class PieceProps
     End Sub
 
     Private Sub PieceProps_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
-        
+
         If e.KeyCode = Keys.Escape Then
             btnCancel_Click(Nothing, Nothing)
         End If

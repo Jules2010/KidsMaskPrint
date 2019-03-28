@@ -2,8 +2,8 @@
 'So I made my own :)
 
 '*** Acknowlegements  ***
-'Ideas for this code came from the MicroSoft "Scribble" sample code, 
-'Christian Graus's excellent arcticle on a C++ code called "Doodle" 
+'Ideas for this code came from the MicroSoft "Scribble" sample code,
+'Christian Graus's excellent arcticle on a C++ code called "Doodle"
 'and the MicroSoft website.
 
 'Note that this is a VERY pedantic freehand drawing code, so be kind in you comments. :)
@@ -30,7 +30,7 @@ Imports System.IO
 
 <Obfuscate()> Public Class frmMain
     Inherits System.Windows.Forms.Form
-    Private mPieces As New ArrayList() 'Piece objects 
+    Private mPieces As New ArrayList() 'Piece objects
     Private mMousePieceStart As Point = Point.Empty 'During mouse moves, the starting location of a puzzle piece
     Private mMouseDownStart As Point = Point.Empty 'During mouse moves, the starting location of the mouse
     Private mMousePiece As Piece = Nothing 'During mouse moves, the piece being moved
@@ -42,55 +42,55 @@ Imports System.IO
 
     Dim StandLangText As System.Resources.ResourceManager = New _
         System.Resources.ResourceManager("AppBasic.AppBasic", _
-        System.Reflection.Assembly.Load("AppBasic")) 
+        System.Reflection.Assembly.Load("AppBasic"))
 
-    Dim lbooSplashShown As Boolean = False 
-    Dim mSelectedUser As String 
-    Dim lbooAllowPainting As Boolean = False 
+    Dim lbooSplashShown As Boolean = False
+    Dim mSelectedUser As String
+    Dim lbooAllowPainting As Boolean = False
 
-    Dim lbooSomethingDrawn As Boolean = False 
+    Dim lbooSomethingDrawn As Boolean = False
 
-    Dim mLicensedFaceParts As New ArrayList() 
+    Dim mLicensedFaceParts As New ArrayList()
 
-    Dim lintDrawingInProgress As Integer 
+    Dim lintDrawingInProgress As Integer
 
-    Private m_Drawings As Drawings 
+    Private m_Drawings As Drawings
 
-    Private m_UserPieces As FacePartStuctureDataFile 
+    Private m_UserPieces As FacePartStuctureDataFile
 
-    Dim CurXPos As Integer 
-    Dim CurYPos As Integer 
-    Dim ThisFloodFillBitmap As Bitmap 
+    Dim CurXPos As Integer
+    Dim CurYPos As Integer
+    Dim ThisFloodFillBitmap As Bitmap
 
-    Private Enum Tools 
+    Private Enum Tools
         Freehand
         Floodfill
     End Enum
-    Dim CurrentTool As Tools = Tools.Freehand 
-    Dim FloodFillJustOccured As Boolean = False 
+    Dim CurrentTool As Tools = Tools.Freehand
+    Dim FloodFillJustOccured As Boolean = False
 
-    Private m_SortOrderForData As SortOrderForData 
+    Private m_SortOrderForData As SortOrderForData
 
-    Dim m_CurrentColour As Color = Color.Black 
+    Dim m_CurrentColour As Color = Color.Black
 
-    Dim m_CurrentBrushWidth As Integer = 4 
+    Dim m_CurrentBrushWidth As Integer = 4
 
-    Dim RedoPackPieceArr As New Collections.Stack() 
-    Dim RedoUserPieceArr As New Collections.Stack() 
-    'Dim LastUndoActivity As SortOrderForData.eDataType 
-    Dim RedoSortOrderStack As New Collections.Stack() 
-    Friend WithEvents btnDebug As Button 
+    Dim RedoPackPieceArr As New Collections.Stack()
+    Dim RedoUserPieceArr As New Collections.Stack()
+    'Dim LastUndoActivity As SortOrderForData.eDataType
+    Dim RedoSortOrderStack As New Collections.Stack()
+    Friend WithEvents btnDebug As Button
 
-    Dim lintCustomColours() As Integer 
+    Dim lintCustomColours() As Integer
 
-    Dim lastCustomColour As Color 
+    Dim lastCustomColour As Color
     '**************************************************************
 
-    Private booPictureBox1_MouseMoveFirstDone As Boolean = False 
-    Private booPictureBox1_PaintFirstDone As Boolean = False 
-    Private boolstBrushWidth_DrawItemFirstDone As Boolean = False 
+    Private booPictureBox1_MouseMoveFirstDone As Boolean = False
+    Private booPictureBox1_PaintFirstDone As Boolean = False
+    Private boolstBrushWidth_DrawItemFirstDone As Boolean = False
 
-    Dim AppSettingsStartup As New InitalXMLConfig(InitalXMLConfig.XmlConfigType.AppSettings) 
+    Dim AppSettingsStartup As New InitalXMLConfig(InitalXMLConfig.XmlConfigType.AppSettings)
 
 #Region " Windows Form Designer generated code "
 
@@ -100,7 +100,7 @@ Imports System.IO
         'This call is required by the Windows Form Designer.
         InitializeComponent()
 
-        'Stop redraw flicker 
+        'Stop redraw flicker
         SetStyle(ControlStyles.DoubleBuffer, True)
         SetStyle(ControlStyles.UserPaint, True)
         SetStyle(ControlStyles.AllPaintingInWmPaint, True)
@@ -120,7 +120,7 @@ Imports System.IO
     Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents chkMirror As System.Windows.Forms.CheckBox
@@ -1295,64 +1295,64 @@ Imports System.IO
 #Region "Menu options"
     Private Sub btnExit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExit.Click
 
-        gstrProbComtStack = "Form1.btnExit_Click - start" 
+        gstrProbComtStack = "Form1.btnExit_Click - start"
 
         Me.Close()
-        gstrProbComtStack &= " #BECEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #BECEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub mnuHelpSupportInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuHelpSupportInfo.Click
-        
-        AddDebugComment("Form1.mnuHelpSupportInfo_Click") 
+
+        AddDebugComment("Form1.mnuHelpSupportInfo_Click")
         Help.ShowHelp(Me, GetHelpFile, GetHelpTopic(HelpTopicEnum.support))
 
     End Sub
     Private Sub mnuFilePageSetup_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuFilePageSetup.Click
 
-        gstrProbComtStack = "Form1.mnuFilePageSetup_Click - start" 
+        gstrProbComtStack = "Form1.mnuFilePageSetup_Click - start"
 
-        DeactivatePaintingBeforeDialog() 
+        DeactivatePaintingBeforeDialog()
 
         Application.DoEvents()
 
         Try
             Dim PgSetupDlg As New PageSetupDialog()
             PgSetupDlg.PageSettings = m_PageSettings
-            PgSetupDlg.AllowPrinter = True 
-            PgSetupDlg.AllowPaper = True 
-            PgSetupDlg.AllowMargins = True 
+            PgSetupDlg.AllowPrinter = True
+            PgSetupDlg.AllowPaper = True
+            PgSetupDlg.AllowMargins = True
             PgSetupDlg.ShowDialog()
         Catch ex As Exception
             MessageBox.Show(ex.Message, NameMe(""), MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
-        ReactivatePaintingBeforeDialog() 
+        ReactivatePaintingBeforeDialog()
 
-        gstrProbComtStack &= " #FPSEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #FPSEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub mnuFileExit_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuFileExit.Click
 
-        AddDebugComment("Form1.mnuFileExit_Click") 
+        AddDebugComment("Form1.mnuFileExit_Click")
 
         btnExit_Click(Nothing, Nothing)
 
     End Sub
     Private Sub mnuHelpHelpTopics_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuHelpHelpTopics.Click
 
-        AddDebugComment("Form1.mnuHelpHelpTopics_Click") 
+        AddDebugComment("Form1.mnuHelpHelpTopics_Click")
 
-        
+
         Help.ShowHelp(Me, GetHelpFile, HelpNavigator.TableOfContents)
 
     End Sub
     Private Sub mnuHelpCheckForUpdates_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuHelpCheckForUpdates.Click
 
-        gstrProbComtStack = "frmMain.mnuHelpCFU_Click - start" 
+        gstrProbComtStack = "frmMain.mnuHelpCFU_Click - start"
 
-        DeactivatePaintingBeforeDialog() 
-        Application.DoEvents() 
+        DeactivatePaintingBeforeDialog()
+        Application.DoEvents()
 
         If hasMultipleInstances(gProgName, NameMe(""), Me.Handle, StandLangText) = True Then
-            ReactivatePaintingBeforeDialog() 
+            ReactivatePaintingBeforeDialog()
             Exit Sub
         End If
 
@@ -1367,32 +1367,32 @@ Imports System.IO
             .ShowDialog()
         End With
 
-        If gbooNeedToRestartProgAfterCFU = True Then 
-            SaveBeforeExitProg() 
+        If gbooNeedToRestartProgAfterCFU = True Then
+            SaveBeforeExitProg()
         End If
 
-        ReactivatePaintingBeforeDialog() 
+        ReactivatePaintingBeforeDialog()
 
-        gstrProbComtStack &= " #HCUEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #HCUEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
         If gbooNeedToRestartProgAfterCFU = True Then
-            SaveSetting("BuyPackShowNext", True, InitalXMLConfig.XmlConfigType.AppSettings, "") 
+            SaveSetting("BuyPackShowNext", True, InitalXMLConfig.XmlConfigType.AppSettings, "")
 
             Me.Close()
         End If
 
     End Sub
     Private Sub mnuHelpInstallAddon_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuHelpInstallAddon.Click
-        
-        gstrProbComtStack = "frmMain.mnuHelpInstallPack_Click - start" 
 
-        DeactivatePaintingBeforeDialog() 
+        gstrProbComtStack = "frmMain.mnuHelpInstallPack_Click - start"
+
+        DeactivatePaintingBeforeDialog()
 
         Dim lstrAddOnFile As String
 
         Application.DoEvents()
 
         If hasMultipleInstances(gProgName, NameMe(""), Me.Handle, StandLangText) = True Then
-            ReactivatePaintingBeforeDialog() 
+            ReactivatePaintingBeforeDialog()
             Exit Sub
         End If
 
@@ -1404,7 +1404,7 @@ Imports System.IO
             .CheckPathExists = True
             .Filter = "Mindwarp Consultancy Ltd AddOn (*.mcla;*.zip)|*.mcla;*.zip"
             If .ShowDialog() <> DialogResult.OK Then
-                ReactivatePaintingBeforeDialog() 
+                ReactivatePaintingBeforeDialog()
                 Exit Sub
             End If
             lstrAddOnFile = .FileName
@@ -1442,8 +1442,8 @@ Imports System.IO
 
             MessageBox.Show(LangText2.GetString("CFU_ProgRestart"), NameMe(""), MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-            SaveBeforeExitProg() 
-            ReactivatePaintingBeforeDialog() 
+            SaveBeforeExitProg()
+            ReactivatePaintingBeforeDialog()
             gstrProbComtStack &= " #middle"
             Me.Close()
             Try : Me.Close() : Catch : End Try
@@ -1451,18 +1451,18 @@ Imports System.IO
             Busy(Me, False)
 
             MessageBox.Show(LangText2.GetString("CFU_DownloadIncompatible"), NameMe(""), MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            ReactivatePaintingBeforeDialog() 
+            ReactivatePaintingBeforeDialog()
             Try : File.Delete(gstrCFUTempDir & "\unzip\addon.dat") : Catch : End Try
         End Try
 
-        gstrProbComtStack &= " #HIAEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #HIAEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub mnuHelpAbout_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuHelpAbout.Click
-        
-        gstrProbComtStack = "frmMain.mnuHelpAbout_Click - start" 
 
-        DeactivatePaintingBeforeDialog() 
-        Application.DoEvents() 
+        gstrProbComtStack = "frmMain.mnuHelpAbout_Click - start"
+
+        DeactivatePaintingBeforeDialog()
+        Application.DoEvents()
 
         Dim NewAbout As New frmAbout()
         With NewAbout
@@ -1470,13 +1470,13 @@ Imports System.IO
             .ShowDialog()
         End With
 
-        ReactivatePaintingBeforeDialog() 
+        ReactivatePaintingBeforeDialog()
 
-        gstrProbComtStack &= " #HAEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #HAEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub mnuHelpSubscribeNewsletter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuHelpSubscribeNewsletter.Click
-        
-        gstrProbComtStack = "frmMain.mnuHelpSubscribe_Click - start" 
+
+        gstrProbComtStack = "frmMain.mnuHelpSubscribe_Click - start"
 
         Dim NewsString As String = "mailto:newsletter@example.com?" & _
                 "subject=Newsletter Subscriptions Dept&body=Dear Sirs,  Kindly add me to your Kids Mask Print Newsletter!"
@@ -1490,38 +1490,38 @@ Imports System.IO
             Dim msg As String = "Please check you that you have an email program installed on your computer (e.g. Outlook)." & _
                 Environment.NewLine & "Alternatively, send an email to " & Email & " to be added to the newsletter mailing list."
 
-            DeactivatePaintingBeforeDialog() 
+            DeactivatePaintingBeforeDialog()
             MessageBox.Show(msg, NameMe(""), MessageBoxButtons.OK, MessageBoxIcon.Information)
-            ReactivatePaintingBeforeDialog() 
+            ReactivatePaintingBeforeDialog()
         End Try
 
-        gstrProbComtStack &= " #HSNEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #HSNEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub mnuHelpEnterCode_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuHelpEnterCode.Click
-        
-        gstrProbComtStack = "frmMain.mnuHelpEnterCode_Click - start" 
 
-        DeactivatePaintingBeforeDialog() 
+        gstrProbComtStack = "frmMain.mnuHelpEnterCode_Click - start"
 
-        Application.DoEvents() 
+        DeactivatePaintingBeforeDialog()
+
+        Application.DoEvents()
 
         If AcceptLicense(Me) = True Then
             Me.Text = NameMe("")
             StandardUpgradeTidy()
-            SaveBeforeExitProg() 
+            SaveBeforeExitProg()
             Me.Close()
         End If
 
-        ReactivatePaintingBeforeDialog() 
+        ReactivatePaintingBeforeDialog()
 
-        gstrProbComtStack &= " #HECEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #HECEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub mnuHelpLicenseAgreement_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuHelpLicenseAgreement.Click
-        
-        gstrProbComtStack = "frmMain.mnuHelpLicense_Click - start" 
 
-        DeactivatePaintingBeforeDialog() 
-        Application.DoEvents() 
+        gstrProbComtStack = "frmMain.mnuHelpLicense_Click - start"
+
+        DeactivatePaintingBeforeDialog()
+        Application.DoEvents()
 
         Dim LicenseBox As New LicenceBox()
         With LicenseBox
@@ -1546,13 +1546,13 @@ Imports System.IO
             m_PageSettings = .SetPageSettings
         End With
 
-        ReactivatePaintingBeforeDialog() 
+        ReactivatePaintingBeforeDialog()
 
-        gstrProbComtStack &= " #HLAEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #HLAEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub mnuFileImportGraphics_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuFileImportGraphics.Click
 
-        gstrProbComtStack = "frmMain.mnuFileImportGraphics_Click - start" 
+        gstrProbComtStack = "frmMain.mnuFileImportGraphics_Click - start"
 
         Dim fs As IO.FileStream = New IO.FileStream("D:\desktopnt\mask.gif", IO.FileMode.Open, IO.FileAccess.Read)
         Dim img As System.Drawing.Bitmap = New System.Drawing.Bitmap(fs)
@@ -1560,7 +1560,7 @@ Imports System.IO
 
         Clear()
 
-        gstrProbComtStack &= " #FIGEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #FIGEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub mnuFileExportGraphics_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuFileExportGraphics.Click
 
@@ -1576,16 +1576,16 @@ Imports System.IO
 
         ' Displays a SaveFileDialog so the user can save
         ' the Image
-        gstrProbComtStack = "frmMain.mnuFileExportGraphics_Click - start" 
-        DeactivatePaintingBeforeDialog() 
+        gstrProbComtStack = "frmMain.mnuFileExportGraphics_Click - start"
+        DeactivatePaintingBeforeDialog()
 
         Dim saveFileDialog1 As New SaveFileDialog()
         saveFileDialog1.Filter = "Gif Image|*.gif|" & "Jpeg Image|*.jpg|" & "Bitmap Image|*.bmp|" & "Tiff Image|*.tiff"
         saveFileDialog1.Title = "Save an Image File"
         saveFileDialog1.ShowDialog()
-        ReactivatePaintingBeforeDialog() 
+        ReactivatePaintingBeforeDialog()
 
-        Me.Update() 
+        Me.Update()
 
         ' If the file name is not an empty string open it for
         ' saving.
@@ -1596,7 +1596,7 @@ Imports System.IO
             Dim fs As System.IO.FileStream = CType _
             (saveFileDialog1.OpenFile(), System.IO.FileStream)
 
-            
+
             Dim FullImage As Image = DrawDetails(PictureBox1, m_Drawings.mousePath, m_Drawings.ReversemousePath, _
                 mPieces, m_Drawings.lPaintBrush, m_Drawings.lPaintReverseBrush, m_UserPieces, m_SortOrderForData)
 
@@ -1615,27 +1615,27 @@ Imports System.IO
             fs.Close()
         End If
 
-        PictureBox1.Invalidate() 
+        PictureBox1.Invalidate()
 
-        gstrProbComtStack &= " #FEGEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #FEGEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub mnuFileImportMask_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuFileImportMask.Click
         gstrMRPs = "0300"
 
-        gstrProbComtStack = "frmMain.mnuFileImportMask_Click - start" 
+        gstrProbComtStack = "frmMain.mnuFileImportMask_Click - start"
 
         Dim ImportedText As String
 
-        DeactivatePaintingBeforeDialog() 
+        DeactivatePaintingBeforeDialog()
 
         Dim ie As New ImpEx()
         ie.Label = "Please paste in your import mask codes"
         ie.Caption = NameMe("Import Mask")
-        ie.Owner = Me 
+        ie.Owner = Me
         ie.ShowDialog()
-        ReactivatePaintingBeforeDialog() 
+        ReactivatePaintingBeforeDialog()
 
-        Me.Update() 
+        Me.Update()
 
         ImportedText = ie.TextBlock
 
@@ -1643,15 +1643,15 @@ Imports System.IO
             Exit Sub
         End If
 
-        Clear() 
+        Clear()
 
-        Busy(Me, True) 
+        Busy(Me, True)
 
-        If RightGet(ImportedText, 1) <> Environment.NewLine Then 
-            ImportedText &= Environment.NewLine 
+        If RightGet(ImportedText, 1) <> Environment.NewLine Then
+            ImportedText &= Environment.NewLine
         End If
 
-        Try 
+        Try
             Dim lintArrInc As Integer
             Dim de As String() = Microsoft.VisualBasic.Split(ImportedText, Environment.NewLine)
             For lintArrInc = 0 To de.GetUpperBound(0) - 1
@@ -1670,39 +1670,39 @@ Imports System.IO
                     ThisPiece.HorizFlip = (CBool(AppBasic.ReturnNthStr(de(lintArrInc), 6, "|")))
 
                     Dim TempPart As New KidsMaskPrint.Part()
-                    GetDataPreviewImage(ThisPiece.SourceDataFileName, ThisPiece.DataFileItemNum, TempPart, Nothing, Nothing) 
+                    GetDataPreviewImage(ThisPiece.SourceDataFileName, ThisPiece.DataFileItemNum, TempPart, Nothing, Nothing)
                     ThisPiece.SetImageObj(TempPart.FullImage)
 
                     'don't bother loading thumb image
                     'Dim loc As New Point(CSng(AppBasic.ReturnNthStr(de(lintArrInc), 1, "|")), CSng(AppBasic.ReturnNthStr(de(lintArrInc), 2, "|")))
-                    
+
                     Dim loc As New Point(CSng(AppBasic.ReturnNthStr(de(lintArrInc), 3, "|")), CSng(AppBasic.ReturnNthStr(de(lintArrInc), 4, "|")))
                     ThisPiece.Location = loc
 
                     mPieces.Add(ThisPiece)
                     'will need to just build a incremental list
                     m_SortOrderForData.Add(mPieces, m_Drawings.mousePath, _
-                        m_Drawings.ReversemousePath, m_UserPieces, m_SortOrderForData, "mnuFileImportMask_Click") 
-                    ChangeUndoRedoStatus() 
+                        m_Drawings.ReversemousePath, m_UserPieces, m_SortOrderForData, "mnuFileImportMask_Click")
+                    ChangeUndoRedoStatus()
                 End If
             Next lintArrInc
 
-        Catch 
-            
-            Busy(Me, False) 
+        Catch
+
+            Busy(Me, False)
             MessageBox.Show("Please ensure that the mask data contains the exact details provided.  Remove any extra letters etc.", NameMe(""), MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End Try
 
-        Busy(Me, False) 
+        Busy(Me, False)
 
-        gstrProbComtStack &= " #FIMEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #FIMEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub mnuFileExportMask_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuFileExportMask.Click
         gstrMRPs = "0310"
 
-        gstrProbComtStack = "frmMain.mnuFileExportMask_Click - start" 
+        gstrProbComtStack = "frmMain.mnuFileExportMask_Click - start"
 
-        DeactivatePaintingBeforeDialog() 
+        DeactivatePaintingBeforeDialog()
 
         Dim str As String
         Dim iPiece As Piece
@@ -1718,48 +1718,48 @@ Imports System.IO
         ie.Label = "Please copy your masks codes below."
         ie.Caption = NameMe("Export Mask")
         ie.TextBlock = str
-        ie.Owner = Me 
+        ie.Owner = Me
         ie.ShowDialog()
-        ReactivatePaintingBeforeDialog() 
+        ReactivatePaintingBeforeDialog()
 
-        Me.Update() 
+        Me.Update()
 
-        gstrProbComtStack &= " #FEMEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #FEMEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub mnuFileLoad_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuFileLoad.Click
 
-        gstrProbComtStack = "frmMain.mnuFileLoad_Click - start" 
+        gstrProbComtStack = "frmMain.mnuFileLoad_Click - start"
 
-        DeactivatePaintingBeforeDialog() 
+        DeactivatePaintingBeforeDialog()
 
-        Dim MaskFile As String 
+        Dim MaskFile As String
         Dim sm As New SelectMask()
 
-        sm.LicensedFaceParts = mLicensedFaceParts 
+        sm.LicensedFaceParts = mLicensedFaceParts
 
-        sm.Owner = Me 
+        sm.Owner = Me
         sm.ShowDialog()
 
 
-        Me.Update() 
+        Me.Update()
         MaskFile = sm.RetMaskFile
 
         If MaskFile = "" Then Exit Sub
-        
+
         LoadMask(MaskFile, mPieces, Nothing, False, m_Drawings.mousePath, m_Drawings.ReversemousePath, _
             m_Drawings.lPaintBrush, m_Drawings.lPaintReverseBrush, mLicensedFaceParts, m_UserPieces, m_SortOrderForData)
 
         m_Drawings.setCountersAfterLoad(m_CurrentColour, m_CurrentBrushWidth)
 
-        AddDebugComment("frmMain.mnuFileLoad_Click - middle") 
+        AddDebugComment("frmMain.mnuFileLoad_Click - middle")
 
-        ReactivatePaintingBeforeDialog() 
+        ReactivatePaintingBeforeDialog()
 
-        gstrProbComtStack &= " #FLEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #FLEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub mnuFileSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuFileSave.Click
 
-        gstrProbComtStack = "frmMain.mnuFileSave_Click - start" 
+        gstrProbComtStack = "frmMain.mnuFileSave_Click - start"
 
         Dim FileName As String = Path.GetDirectoryName( _
             System.Reflection.Assembly.GetExecutingAssembly().Location) & "\" & "\Masks\" 'data.txt"
@@ -1768,12 +1768,12 @@ Imports System.IO
         saveFileDialog1.Title = "Save a mask File"
         saveFileDialog1.InitialDirectory = FileName
         saveFileDialog1.ShowDialog()
-        Me.Update() 
+        Me.Update()
 
-        ' If the file name is not an empty string open it for        
+        ' If the file name is not an empty string open it for
         If saveFileDialog1.FileName = "" Then Exit Sub
 
-        FileName = saveFileDialog1.FileName 
+        FileName = saveFileDialog1.FileName
 
         Dim FullImage As Image
         Dim hash As New SortedList()
@@ -1783,19 +1783,19 @@ Imports System.IO
 
         mPieces = keptPieces
 
-        SaveUserMask(FileName, hash, FullImage, m_UserPieces, m_SortOrderForData)      
+        SaveUserMask(FileName, hash, FullImage, m_UserPieces, m_SortOrderForData)
 
-        MessageBox.Show("Saved!", NameMe("")) 
+        MessageBox.Show("Saved!", NameMe(""))
 
-        gstrProbComtStack &= " #FSEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #FSEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub mnuToolsDeleteUsers_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuToolsDeleteUsers.Click
 
-        gstrProbComtStack = "frmMain.mnuToolsDeleteUsers_Click - start" 
+        gstrProbComtStack = "frmMain.mnuToolsDeleteUsers_Click - start"
 
         DeactivatePaintingBeforeDialog()
 
-        SaveBeforeExitProg() 
+        SaveBeforeExitProg()
 
         Dim DUs As New UsersGeneral()
         DUs.Owner = Me
@@ -1804,15 +1804,15 @@ Imports System.IO
 
         ReactivatePaintingBeforeDialog()
 
-        gstrProbComtStack &= " #TDUEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #TDUEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub mnuToolsRenameUsers_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuToolsRenameUsers.Click
 
-        gstrProbComtStack = "frmMain.mnuToolsRenameUsers_Click - start" 
+        gstrProbComtStack = "frmMain.mnuToolsRenameUsers_Click - start"
 
         DeactivatePaintingBeforeDialog()
 
-        SaveBeforeExitProg() 
+        SaveBeforeExitProg()
 
         Dim RUs As New UsersGeneral()
         RUs.Owner = Me
@@ -1826,7 +1826,7 @@ Imports System.IO
 
         ReactivatePaintingBeforeDialog()
 
-        gstrProbComtStack &= " #TRUEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #TRUEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
 
 
@@ -1835,9 +1835,9 @@ Imports System.IO
     Private Sub CreateHashAndImage(ByRef pHash As SortedList, ByRef pFullRetImage As Image, _
       ByRef pKeptPieces As ArrayList)
 
-        AddDebugComment("frmMain.CreateHashAndImage - start") 
+        AddDebugComment("frmMain.CreateHashAndImage - start")
 
-        Busy(Me, True) 
+        Busy(Me, True)
 
         'produce debug report of all values about to be saved
 
@@ -1852,10 +1852,10 @@ Imports System.IO
         Dim lintArrInc As Integer
         For Each iPiece In mPieces
             Dim str As String
-            
+
             str = iPiece.SourceDataFileName.Replace(fpDir, "") & "|" & iPiece.DataFileItemNum & "|" & iPiece.Location.X & _
                 "|" & iPiece.Location.Y & "|" & iPiece.VertFlip & "|" & iPiece.HorizFlip & "|" & iPiece.PieceName & "|"
-            hash.Add("ZZZZ" & lintArrInc.ToString, str) 
+            hash.Add("ZZZZ" & lintArrInc.ToString, str)
             lintArrInc += 1
         Next iPiece
 
@@ -1929,18 +1929,18 @@ Imports System.IO
         pFullRetImage = FullImage
         pKeptPieces = keptPieces
 
-        Busy(Me, False) 
+        Busy(Me, False)
 
-        AddDebugComment("frmMain.CreateHashAndImage - end") 
+        AddDebugComment("frmMain.CreateHashAndImage - end")
 
     End Sub
     Private Sub LoadFaceParts(ByRef pDataFilesDescImages As ArrayList, ByRef pDataFilesDescriptions As ArrayList, _
         ByRef pDataFilesProdNums As ArrayList, ByRef pDataFiles As ArrayList, ByRef pDataFileState As ArrayList, _
         ByVal pbooJustPurchasing As Boolean, ByRef pLicensedFaceParts As ArrayList, ByRef LicenseStr As String)
 
-        AddDebugComment("frmMain.LoadFaceParts - start") 
+        AddDebugComment("frmMain.LoadFaceParts - start")
 
-        Busy(Me, True) 
+        Busy(Me, True)
 
         '-------------- Check License if available -------------
         Dim Dets2 As strat1.UnlockDetails
@@ -1982,9 +1982,9 @@ Imports System.IO
         For Each pfile In files
             Try ' this will cater for old data files
 
-                Dim FPs As FacePartStuctureDataFile = UnlockFacePartsPack(pfile.FullName) 
+                Dim FPs As FacePartStuctureDataFile = UnlockFacePartsPack(pfile.FullName)
 
-                If pfile.Name.ToLower <> "basic.dat" Then 
+                If pfile.Name.ToLower <> "basic.dat" Then
                     pDataFilesDescImages.Add(FPs.DescImage)
                     pDataFilesDescriptions.Add(FPs.Description)
                     pDataFilesProdNums.Add(FPs.ProductNumber)
@@ -2013,11 +2013,11 @@ Imports System.IO
                     End If
 
                     pDataFileState.Add("1")
-                End If 
+                End If
 
                 '--- this block checks for a valid key file and doesn't all it to be used if it isn't ---
 
-                If pbooJustPurchasing = True Then 
+                If pbooJustPurchasing = True Then
                     Throw New Exception(" ")
                 End If
 
@@ -2026,7 +2026,7 @@ Imports System.IO
                     Dim ThisPart As New KidsMaskPrint.Part()
                     ThisPart = FPs.Parts(lintArrInc)
 
-                    pLicensedFaceParts.Add(ThisPart.FaceMaster) 
+                    pLicensedFaceParts.Add(ThisPart.FaceMaster)
 
                 Next lintArrInc
             Catch ex As Exception
@@ -2034,17 +2034,17 @@ Imports System.IO
             End Try
         Next pfile
 
-        Busy(Me, False) 
+        Busy(Me, False)
 
-        AddDebugComment("frmMain.LoadFaceParts - end") 
+        AddDebugComment("frmMain.LoadFaceParts - end")
 
     End Sub
     Private Sub xAddSelectedFacePart(ByVal pFP As Part, ByVal pSel As FacePartEnums.ePositionSelection, _
         ByVal SourceDatFileName As String, ByVal DataFileItemNum As Integer)
 
-        AddDebugComment("frmMain.AddSelectedFacePart - start") 
+        AddDebugComment("frmMain.AddSelectedFacePart - start")
 
-        Busy(Me, True) 
+        Busy(Me, True)
 
         If Not pFP Is Nothing Then
 
@@ -2053,9 +2053,9 @@ Imports System.IO
                     Dim ThisPiece As New Piece()
                     ThisPiece.SetImageObj(pFP.FullImage)
                     ThisPiece.Location = pFP.LeftPart
-                    ThisPiece.PieceName = pFP.FaceMaster 
-                    ThisPiece.SourceDataFileName = SourceDatFileName 
-                    ThisPiece.DataFileItemNum = DataFileItemNum 
+                    ThisPiece.PieceName = pFP.FaceMaster
+                    ThisPiece.SourceDataFileName = SourceDatFileName
+                    ThisPiece.DataFileItemNum = DataFileItemNum
                     mPieces.Add(ThisPiece)
                 Case FacePartEnums.ePositionSelection.Both
 
@@ -2064,9 +2064,9 @@ Imports System.IO
                     thispiece.VertFlip = False
                     ThisPiece.SetImageObj(pFP.FullImage.Clone)
                     ThisPiece.Location = pFP.LeftPart
-                    ThisPiece.PieceName = pFP.FaceMaster 
-                    ThisPiece.SourceDataFileName = SourceDatFileName 
-                    ThisPiece.DataFileItemNum = DataFileItemNum 
+                    ThisPiece.PieceName = pFP.FaceMaster
+                    ThisPiece.SourceDataFileName = SourceDatFileName
+                    ThisPiece.DataFileItemNum = DataFileItemNum
                     mPieces.Add(ThisPiece)
 
                     Dim ThisPiece2 As New Piece()
@@ -2074,9 +2074,9 @@ Imports System.IO
                     ThisPiece2.VertFlip = False
                     ThisPiece2.SetImageObj(pFP.FullImage)
                     ThisPiece2.Location = pFP.RightPart
-                    ThisPiece2.PieceName = pFP.FaceMaster 
-                    ThisPiece2.SourceDataFileName = SourceDatFileName 
-                    ThisPiece2.DataFileItemNum = DataFileItemNum 
+                    ThisPiece2.PieceName = pFP.FaceMaster
+                    ThisPiece2.SourceDataFileName = SourceDatFileName
+                    ThisPiece2.DataFileItemNum = DataFileItemNum
                     mPieces.Add(ThisPiece2)
 
                 Case FacePartEnums.ePositionSelection.Right
@@ -2084,59 +2084,59 @@ Imports System.IO
                     ThisPiece.HorizFlip = True
                     ThisPiece.SetImageObj(pFP.FullImage)
                     ThisPiece.Location = pFP.RightPart
-                    ThisPiece.PieceName = pFP.FaceMaster 
-                    
-                    ThisPiece.SourceDataFileName = SourceDatFileName 
-                    ThisPiece.DataFileItemNum = DataFileItemNum 
+                    ThisPiece.PieceName = pFP.FaceMaster
+
+                    ThisPiece.SourceDataFileName = SourceDatFileName
+                    ThisPiece.DataFileItemNum = DataFileItemNum
 
                     mPieces.Add(ThisPiece)
             End Select
 
             m_SortOrderForData.Add(mPieces, m_Drawings.mousePath, _
-                m_Drawings.ReversemousePath, m_UserPieces, m_SortOrderForData, "AddSelectedFacePart") 
-            ChangeUndoRedoStatus() 
+                m_Drawings.ReversemousePath, m_UserPieces, m_SortOrderForData, "AddSelectedFacePart")
+            ChangeUndoRedoStatus()
         End If
 
-        Busy(Me, False) 
+        Busy(Me, False)
 
-        Me.Update() 
+        Me.Update()
 
-        PictureBox1.Invalidate() 
+        PictureBox1.Invalidate()
 
-        AddDebugComment("frmMain.AddSelectedFacePart - end") 
+        AddDebugComment("frmMain.AddSelectedFacePart - end")
 
     End Sub
     Private Sub DeactivatePaintingBeforeDialog()
-        
+
         lbooAllowPainting = False
 
     End Sub
     Private Sub ReactivatePaintingBeforeDialog()
-        
+
         lbooAllowPainting = True
 
-        PictureBox1.Invalidate() 
+        PictureBox1.Invalidate()
 
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
 
-        
+
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
-        Me.Update() 
+        Me.Update()
 
     End Sub
     Private Sub SetBackcolors()
 
-        AddDebugComment("frmMain.SetBackcolors - start") 
+        AddDebugComment("frmMain.SetBackcolors - start")
 
         chkMirror.BackColor = Color.FromArgb(0, chkMirror.BackColor)
         chkGuide.BackColor = Color.FromArgb(0, chkGuide.BackColor)
- 
+
         lblPen.BackColor = Color.FromArgb(0, lblPen.BackColor)
 
-        pnlBWPens.BackColor = Color.FromArgb(0, pnlBWPens.BackColor) 
+        pnlBWPens.BackColor = Color.FromArgb(0, pnlBWPens.BackColor)
         pnlPalette.BackColor = Color.FromArgb(0, pnlPalette.BackColor)
 
         lblPBlack.BackColor = Color.FromArgb(0, lblPBlack.BackColor)
@@ -2155,20 +2155,20 @@ Imports System.IO
         lblPPink.BackColor = Color.FromArgb(0, lblPPink.BackColor)
         lblPCustom.BackColor = Color.FromArgb(0, lblPCustom.BackColor)
 
-        AddDebugComment("frmMain.SetBackcolors - end") 
+        AddDebugComment("frmMain.SetBackcolors - end")
 
     End Sub
     Private Function KidsSave(ByVal pbooIsLastMask As Boolean)
 
-        AddDebugComment("frmMain.KidsSave - start") 
+        AddDebugComment("frmMain.KidsSave - start")
 
-        DeactivatePaintingBeforeDialog() 
-        
+        DeactivatePaintingBeforeDialog()
+
         Dim FullImage As Image
         Dim hash As New SortedList()
         Dim keptPieces As New ArrayList()
 
-        m_Drawings.PreSave(m_CurrentColour, m_CurrentBrushWidth) 
+        m_Drawings.PreSave(m_CurrentColour, m_CurrentBrushWidth)
 
         CreateHashAndImage(hash, FullImage, keptPieces)
 
@@ -2176,35 +2176,35 @@ Imports System.IO
 
         Dim SaveSlots As New Slots()
         With SaveSlots
-            .Owner = Me 
+            .Owner = Me
             .TranType = Slots.eTranType.Save
             .SelectedUser = mSelectedUser
             .FullImage = FullImage
             .FaceHash = hash
-            .LastMask = pbooIsLastMask 
-            .LicensedFaceParts = mLicensedFaceParts 
-            .UserPieces = m_UserPieces 
-            .SortOrderForData = m_SortOrderForData 
+            .LastMask = pbooIsLastMask
+            .LicensedFaceParts = mLicensedFaceParts
+            .UserPieces = m_UserPieces
+            .SortOrderForData = m_SortOrderForData
             .ShowDialog()
 
-            ChangeUndoRedoStatus() 
+            ChangeUndoRedoStatus()
 
-            ReactivatePaintingBeforeDialog() 
+            ReactivatePaintingBeforeDialog()
         End With
 
-        AddDebugComment("frmMain.KidsSave - end") 
+        AddDebugComment("frmMain.KidsSave - end")
 
     End Function
 
 #End Region
     Private Sub PictureBox1_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles PictureBox1.MouseDown
 
-        AddDebugComment("frmMain.PictureBox1_MouseDown " & e.Button) 
+        AddDebugComment("frmMain.PictureBox1_MouseDown " & e.Button)
 
-        If CurrentTool <> Tools.Floodfill Then 
-            If e.Button = MouseButtons.Left Then 
+        If CurrentTool <> Tools.Floodfill Then
+            If e.Button = MouseButtons.Left Then
                 mMouseDownStart = New Point(e.X, e.Y)
-                'Find clicked piece 
+                'Find clicked piece
                 Dim iPiece As Piece
                 For Each iPiece In mPieces
                     If iPiece.IsPointOverMe(mMouseDownStart) Then
@@ -2213,9 +2213,9 @@ Imports System.IO
                     End If
                 Next iPiece
 
-            ElseIf e.Button = MouseButtons.Right Then 
+            ElseIf e.Button = MouseButtons.Right Then
 
-                'Find clicked piece 
+                'Find clicked piece
                 Dim PieceSelected As Boolean = False
                 Dim iPiece As Piece
                 For Each iPiece In mPieces
@@ -2232,37 +2232,37 @@ Imports System.IO
                         Dim Properties As New PieceProps() 'Form()
                         Properties.Owner = Me
                         'Properties.CallingForm = Me
-                        If Not mMousePiece Is Nothing Then 
+                        If Not mMousePiece Is Nothing Then
                             Properties.ShowDialog()
                             Select Case Properties.TranType
                                 Case PieceProps.ePieceTran.Delete
                                     mPieces.Remove(mMousePiece)
                             End Select
 
-                            mMousePiece = Nothing 
-                            PieceSelected = False 
-                            Me.Update() 
+                            mMousePiece = Nothing
+                            PieceSelected = False
+                            Me.Update()
                         End If
                     Catch
 
                     End Try
-                Else 
+                Else
                     '
                 End If
 
-            End If 
+            End If
 
             If e.Button = MouseButtons.Left Or e.Button = MouseButtons.Right Then
                 If mMousePiece Is Nothing Then
-                    m_Drawings.MouseDownClick(chkMirror.Checked, m_CurrentBrushWidth) 
+                    m_Drawings.MouseDownClick(chkMirror.Checked, m_CurrentBrushWidth)
 
                     m_SortOrderForData.Add(mPieces, m_Drawings.mousePath, _
-                        m_Drawings.ReversemousePath, m_UserPieces, m_SortOrderForData, "PictureBox1_MouseDown") 
-                    ChangeUndoRedoStatus() 
-                    lbooSomethingDrawn = True 
+                        m_Drawings.ReversemousePath, m_UserPieces, m_SortOrderForData, "PictureBox1_MouseDown")
+                    ChangeUndoRedoStatus()
+                    lbooSomethingDrawn = True
                 End If
             End If
-        End If 
+        End If
 
     End Sub
     Private Sub PictureBox1_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PictureBox1.MouseMove
@@ -2272,25 +2272,25 @@ Imports System.IO
             booPictureBox1_MouseMoveFirstDone = True
         End If
 
-        If CurrentTool <> Tools.Floodfill Then 
-            If mMousePiece Is Nothing Then 
-                If e.Button = MouseButtons.Left Or e.Button = MouseButtons.Right Then ' draw a filled circle if left mouse is down 
-                    m_Drawings.MouseMoveClick(e, chkMirror.Checked = True) 
+        If CurrentTool <> Tools.Floodfill Then
+            If mMousePiece Is Nothing Then
+                If e.Button = MouseButtons.Left Or e.Button = MouseButtons.Right Then ' draw a filled circle if left mouse is down
+                    m_Drawings.MouseMoveClick(e, chkMirror.Checked = True)
 
                     m_SortOrderForData.Add(mPieces, m_Drawings.mousePath, _
-                        m_Drawings.ReversemousePath, m_UserPieces, m_SortOrderForData, "PictureBox1_MouseMove") 
-                    ChangeUndoRedoStatus() 
+                        m_Drawings.ReversemousePath, m_UserPieces, m_SortOrderForData, "PictureBox1_MouseMove")
+                    ChangeUndoRedoStatus()
                 End If
 
                 PictureBox1.Invalidate() 'Repaint the PictureBox using the PictureBox1 Paint event
-            End If 
+            End If
 
             If Not (mMousePiece Is Nothing) Then
-                'Request redraw for piece's current location 
+                'Request redraw for piece's current location
                 PictureBox1.Invalidate(mMousePiece.Bounds)
-                'Move the piece 
+                'Move the piece
                 mMousePiece.Location = New Point(mMousePieceStart.X + e.X - mMouseDownStart.X, mMousePieceStart.Y + e.Y - mMouseDownStart.Y)
-                'Request redraw for the piece's new location 
+                'Request redraw for the piece's new location
                 PictureBox1.Invalidate(mMousePiece.Bounds)
             End If
 
@@ -2304,34 +2304,34 @@ Imports System.IO
                 End If
             Next iPiece
 
-        End If 
+        End If
 
         If CurrentTool = Tools.Floodfill And FloodFillJustOccured = True Then
             FloodFillJustOccured = False
             PictureBox1.Invalidate()
         End If
 
-        CurXPos = e.X 
-        CurYPos = e.Y 
+        CurXPos = e.X
+        CurYPos = e.Y
 
         StatusBarPanel1.Text = e.X & " x " & e.Y
 
     End Sub
     Private Sub PictureBox1_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PictureBox1.MouseUp
 
-        AddDebugComment("frmMain.PictureBox1_MouseUp " & e.Button) 
+        AddDebugComment("frmMain.PictureBox1_MouseUp " & e.Button)
 
-        If CurrentTool <> Tools.Floodfill Then 
+        If CurrentTool <> Tools.Floodfill Then
             'This code should make undo work better, rather than deleting all drawing
-            m_Drawings.MouseUP(m_CurrentBrushWidth) 
+            m_Drawings.MouseUP(m_CurrentBrushWidth)
 
             m_SortOrderForData.Add(mPieces, m_Drawings.mousePath, _
-                m_Drawings.ReversemousePath, m_UserPieces, m_SortOrderForData, "PictureBox1_MouseMove") 
+                m_Drawings.ReversemousePath, m_UserPieces, m_SortOrderForData, "PictureBox1_MouseMove")
 
-            ChangeUndoRedoStatus() 
+            ChangeUndoRedoStatus()
 
             mMousePiece = Nothing
-        End If 
+        End If
 
     End Sub
     Private Sub PictureBox1_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles PictureBox1.Paint
@@ -2341,40 +2341,40 @@ Imports System.IO
             booPictureBox1_MouseMoveFirstDone = True
         End If
 
-        If lbooAllowPainting = True Then 
+        If lbooAllowPainting = True Then
 
             DrawOutput.DrawOutput(e.Graphics, False, PictureBox1, m_Drawings.mousePath, m_Drawings.ReversemousePath, _
                 Nothing, Nothing, chkMirror.Checked, chkGuide.Checked, mPieces, New Point(0, 0), m_Drawings.lPaintBrush, _
                 m_Drawings.lPaintReverseBrush, m_UserPieces, m_SortOrderForData)
-        End If 
+        End If
 
     End Sub
     Private Sub btnPrint_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnPrint.Click
         gstrMRPs = "0320"
 
-        gstrProbComtStack = "frmMain.btnPrint_Click - start" 
+        gstrProbComtStack = "frmMain.btnPrint_Click - start"
 
-        DeactivatePaintingBeforeDialog() 
+        DeactivatePaintingBeforeDialog()
 
         Dim ppScreen As New PrintPreview()
         With ppScreen
             .MainPictureBox = PictureBox1
             .MousePath = m_Drawings.mousePath
             .ReverseMousePath = m_Drawings.ReversemousePath
-            .ThisPaintBrush = m_Drawings.lPaintBrush 
-            .ThisPaintReverseBrush = m_Drawings.lPaintReverseBrush 
-            Dim lpieces As ArrayList = mPieces 
-            .Pieces = lpieces 
-            .UserPieces = m_UserPieces 
-            .SortOrder = m_SortOrderForData 
-            .Owner = Me 
+            .ThisPaintBrush = m_Drawings.lPaintBrush
+            .ThisPaintReverseBrush = m_Drawings.lPaintReverseBrush
+            Dim lpieces As ArrayList = mPieces
+            .Pieces = lpieces
+            .UserPieces = m_UserPieces
+            .SortOrder = m_SortOrderForData
+            .Owner = Me
             .ShowDialog()
-            ReactivatePaintingBeforeDialog() 
+            ReactivatePaintingBeforeDialog()
 
-            Me.Update() 
+            Me.Update()
         End With
 
-        gstrProbComtStack &= " #BPCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #BPCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub frmMain_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Activated
 
@@ -2382,7 +2382,7 @@ Imports System.IO
 
         If mbooLoadAllDataOnce = True Then
 
-            gstrProbComtStack = "frmMain.Form1_Activated - start" 
+            gstrProbComtStack = "frmMain.Form1_Activated - start"
             mbooLoadAllDataOnce = False
             gstrMRPs = "0131"
 
@@ -2392,26 +2392,26 @@ Imports System.IO
             Dim DataFiles As New ArrayList()
             Dim DataFileState As New ArrayList()
 
-            Dim licenseStr As String 
-            LoadFaceParts(DataFilesDescImages, DataFilesDescriptions, DataFilesProdNums, DataFiles, DataFileState, False, mLicensedFaceParts, licenseStr) 
+            Dim licenseStr As String
+            LoadFaceParts(DataFilesDescImages, DataFilesDescriptions, DataFilesProdNums, DataFiles, DataFileState, False, mLicensedFaceParts, licenseStr)
 
-            gstrProbComtStack &= " #FMA1" 
-            Me.Text = NameMe("") 
+            gstrProbComtStack &= " #FMA1"
+            Me.Text = NameMe("")
 
-            StatusBarPanel1.Text = "Licensed to : " & licenseStr 
-            licenseStr = "" 
+            StatusBarPanel1.Text = "Licensed to : " & licenseStr
+            licenseStr = ""
             gstrMRPs = "0150"
-            DeactivatePaintingBeforeDialog() 
+            DeactivatePaintingBeforeDialog()
 
             Dim lbooShowPurchasing As Boolean = False
             Try
-                lbooShowPurchasing = CBool(AppSettingsStartup.GetValue("BuyPackShowNext", "")) 
+                lbooShowPurchasing = CBool(AppSettingsStartup.GetValue("BuyPackShowNext", ""))
             Catch : End Try
 
-            gstrProbComtStack &= " #FMA2" 
+            gstrProbComtStack &= " #FMA2"
 
-            If DataFiles.Count > 1 Then 
-                If mintVersion = 32 And lbooShowPurchasing = True Then  
+            If DataFiles.Count > 1 Then
+                If mintVersion = 32 And lbooShowPurchasing = True Then
                     Dim DFP As New DataFilePurchasing()
                     With DFP
                         .Owner = Me
@@ -2425,21 +2425,21 @@ Imports System.IO
                         .ShowDialog()
                     End With
                 End If
-            End If 
+            End If
 
             gstrMRPs = "0175"
-            gstrProbComtStack &= " #FMA3" 
+            gstrProbComtStack &= " #FMA3"
 
-            Dim lbooSixMonthVersionCFUDone As Boolean   
+            Dim lbooSixMonthVersionCFUDone As Boolean
             Dim InitialConfig1 As New InitalXMLConfig(InitalXMLConfig.XmlConfigType.AppSettings)
             Dim lstrUsersStr As String
             lstrUsersStr = InitialConfig1.GetValue("Users", "")
-            lbooSixMonthVersionCFUDone = CBool(InitialConfig1.GetValue("SixMonthVersionCFUDone", False)) 
+            lbooSixMonthVersionCFUDone = CBool(InitialConfig1.GetValue("SixMonthVersionCFUDone", False))
             InitialConfig1 = Nothing
 
-            gstrProbComtStack &= " #FMA4" 
+            gstrProbComtStack &= " #FMA4"
 
-            Dim lbooUseNewUserScreen As Boolean = False 
+            Dim lbooUseNewUserScreen As Boolean = False
             gstrMRPs = "0183"
             If lstrUsersStr = "" Then
                 lbooUseNewUserScreen = True
@@ -2448,19 +2448,19 @@ Imports System.IO
                 gstrMRPs = "0186"
 
                 Dim frmSignIn As New SignIn()
-                frmSignIn.Owner = Me 
+                frmSignIn.Owner = Me
                 frmSignIn.ShowDialog()
                 If frmSignIn.Param = SignIn.Params.None Then
                     mSelectedUser = frmSignIn.SelectedUser
-                    UIStyle.gPaintClr1 = frmSignIn.UICol1 
-                    UIStyle.gPaintClr2 = frmSignIn.UICol2 
+                    UIStyle.gPaintClr1 = frmSignIn.UICol1
+                    UIStyle.gPaintClr2 = frmSignIn.UICol2
                 Else
                     lbooUseNewUserScreen = True
                 End If
                 gstrMRPs = "0189"
             End If
 
-            gstrProbComtStack &= " #FMA5" 
+            gstrProbComtStack &= " #FMA5"
 
             If lbooUseNewUserScreen = True Then
                 Dim frmNewUser As New NewUser()
@@ -2469,9 +2469,9 @@ Imports System.IO
                 mSelectedUser = frmNewUser.SelectedUser
             End If
 
-            SetDrawingLayout(mSelectedUser) 
+            SetDrawingLayout(mSelectedUser)
 
-            gstrProbComtStack &= " #FMA6" 
+            gstrProbComtStack &= " #FMA6"
             gstrMRPs = "0199"
 
             Dim InitialConfig As New InitalXMLConfig(InitalXMLConfig.XmlConfigType.UserSettings, mSelectedUser)
@@ -2481,13 +2481,13 @@ Imports System.IO
                 Try
                     Dim LastSavedmaskFile As String = .GetValue("LastSaved", "")
                     If File.Exists(LastSavedmaskFile) = True Then
-                        Me.Invalidate() 
+                        Me.Invalidate()
                         Dim dlgRes As DialogResult
-                        DeactivatePaintingBeforeDialog() 
+                        DeactivatePaintingBeforeDialog()
                         dlgRes = MessageBox.Show("Load the mask you were working on?", NameMe(""), MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                        ReactivatePaintingBeforeDialog() 
+                        ReactivatePaintingBeforeDialog()
                         If dlgRes = DialogResult.Yes Then
-                            
+
                             LoadMask(LastSavedmaskFile, mPieces, Nothing, False, m_Drawings.mousePath, _
                                     m_Drawings.ReversemousePath, m_Drawings.lPaintBrush, m_Drawings.lPaintReverseBrush, _
                                     mLicensedFaceParts, m_UserPieces, m_SortOrderForData)
@@ -2502,9 +2502,9 @@ Imports System.IO
             End With
             InitialConfig = Nothing
 
-            gstrProbComtStack &= " #FMA6M" 
+            gstrProbComtStack &= " #FMA6M"
             If lbooSixMonthVersionCFUDone = False Then
-                Me.Invalidate() 
+                Me.Invalidate()
                 Dim BuildDate As Date = IO.File.GetLastWriteTime(System.Reflection.Assembly.GetEntryAssembly.Location.ToString())
                 Dim Now As Date = Date.Now '.AddMonths(7) 'Add 7 months for testing purposes
                 If BuildDate.AddMonths(6) < Now Then
@@ -2518,16 +2518,16 @@ Imports System.IO
             End If
 
             gstrMRPs = "0240"
-            gstrProbComtStack &= " #FMA7" 
+            gstrProbComtStack &= " #FMA7"
 
-            ReactivatePaintingBeforeDialog() 
+            ReactivatePaintingBeforeDialog()
 
-            Dim ShowWelcome As Boolean = CBool(AppSettingsStartup.GetValue("WELCOME", "True")) 
+            Dim ShowWelcome As Boolean = CBool(AppSettingsStartup.GetValue("WELCOME", "True"))
 
             If ShowWelcome = True Then
                 Me.Invalidate()
                 Dim BM As New InformParent()
-                BM.Owner = Me 
+                BM.Owner = Me
                 BM.ShowDialog()
 
             End If
@@ -2545,27 +2545,27 @@ Imports System.IO
             MainMenu1.MenuItems.Add(MenuItem)
             MainMenu1.MenuItems.Remove(MenuItem)
 
-            'used to update background colours 
-            Me.Invalidate() 
+            'used to update background colours
+            Me.Invalidate()
             gstrMRPs = "0255"
 
-            gstrProbComtStack &= " #FMAEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+            gstrProbComtStack &= " #FMAEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
         End If
     End Sub
     Private Sub frmMain_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         gstrMRPs = "0101"
-        Busy(Me, True) 
+        Busy(Me, True)
 
-        gstrProbComtStack = "frmMain.Form1_Load - start" 
+        gstrProbComtStack = "frmMain.Form1_Load - start"
 
-        Me.Text = NameMe("") 
+        Me.Text = NameMe("")
 
-        m_Drawings = New Drawings(m_CurrentColour, m_CurrentBrushWidth) 
+        m_Drawings = New Drawings(m_CurrentColour, m_CurrentBrushWidth)
 
-        m_UserPieces = New FacePartStuctureDataFile() 
+        m_UserPieces = New FacePartStuctureDataFile()
 
-        m_SortOrderForData = New SortOrderForData() 
+        m_SortOrderForData = New SortOrderForData()
 
         If IsAboveOrEqualWinXp() = True Then
             rdoFloodFill.FlatStyle = FlatStyle.System
@@ -2576,23 +2576,23 @@ Imports System.IO
 
         SetBackcolors()
 
-        SetPaletteLabel(lblPBlack, btnPBlack) 
+        SetPaletteLabel(lblPBlack, btnPBlack)
 
         With lstBrushWidth
             .Items.Clear()
-            .Items.Add("1") ' 
-            .Items.Add("2") ' 
-            .Items.Add("4") ' 
-            .Items.Add("8") ' 
+            .Items.Add("1") '
+            .Items.Add("2") '
+            .Items.Add("4") '
+            .Items.Add("8") '
             .SelectedIndex = 2
         End With
 
         'Load clown mask
-        gstrMRPs = "0121" 
-        Dim ShowClown As Boolean = CBool(AppSettingsStartup.GetValue("SHOWCLOWN", "True")) 
+        gstrMRPs = "0121"
+        Dim ShowClown As Boolean = CBool(AppSettingsStartup.GetValue("SHOWCLOWN", "True"))
 
         If ShowClown = True Then
-            gstrMRPs = "0122" 
+            gstrMRPs = "0122"
             Try
                 Dim ClownMask As String = System.IO.Path.GetDirectoryName( _
                     System.Reflection.Assembly.GetEntryAssembly.Location.ToString()) & "\Clown.mask"
@@ -2608,52 +2608,52 @@ Imports System.IO
             End Try
         End If
 
-        Busy(Me, False) 
+        Busy(Me, False)
 
         gstrMRPs = "0130"
-        gstrProbComtStack &= " #FMLEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #FMLEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub frmMain_Enter(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Enter
 
-        lbooAllowPainting = True 
+        lbooAllowPainting = True
 
     End Sub
     Private Sub frmMain_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Leave
 
-        lbooAllowPainting = False 
+        lbooAllowPainting = False
 
     End Sub
     Private Sub frmMain_Closing(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
-        
-        gstrProbComtStack = "frmMain.frmMain_Closing - start" 
 
-        SaveBeforeExitProg() 
+        gstrProbComtStack = "frmMain.frmMain_Closing - start"
+
+        SaveBeforeExitProg()
 
         DeleteTempFiles()
 
-        Me.Visible = False 
+        Me.Visible = False
 
         If InStrGet((NameMe("")).ToUpper, "TRIAL") > 0 Then
             Welcome(lbooSplashShown, Me)
         End If
 
-        gstrProbComtStack &= " #FMCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #FMCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub SaveBeforeExitProg()
-        
 
-                If mPieces.Count > 0 Or lbooSomethingDrawn = True Then 
-            DeactivatePaintingBeforeDialog() 
+
+                If mPieces.Count > 0 Or lbooSomethingDrawn = True Then
+            DeactivatePaintingBeforeDialog()
             Dim dlgRes As DialogResult = MessageBox.Show("Save this Mask?", NameMe(""), MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            Application.DoEvents() 
-            ReactivatePaintingBeforeDialog() 
+            Application.DoEvents()
+            ReactivatePaintingBeforeDialog()
             If dlgRes = DialogResult.Yes Then
                 KidsSave(True)
             Else
                 SaveSetting("LastSaved", "", InitalXMLConfig.XmlConfigType.UserSettings, mSelectedUser)
             End If
         End If
-        
+
                 Try
             Dim lstrCustomColours() As String
             ReDim lstrCustomColours(lintCustomColours.GetUpperBound(0))
@@ -2673,176 +2673,176 @@ Imports System.IO
     Private Sub btnUndo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUndo.Click
         gstrMRPs = "0330"
 
-        gstrProbComtStack = "frmMain.btnUndo_Click - start" 
-        
+        gstrProbComtStack = "frmMain.btnUndo_Click - start"
+
         btnUndo.Enabled = False
 
-        gstrProbComtStack &= " #BU1" 
+        gstrProbComtStack &= " #BU1"
         'this clears and redo then user draw something new from redoing everything
         If RedoSortOrderStack.Count = 0 Then
             RedoPackPieceArr.Clear()
             RedoUserPieceArr.Clear()
         End If
-        
-        gstrProbComtStack &= " #BU2" 
 
-                Try 
+        gstrProbComtStack &= " #BU2"
+
+                Try
             If m_SortOrderForData.DataType.Count = -1 Then
                 Exit Sub
             End If
-        Catch 
+        Catch
             gstrProbComtStack &= " #BU2b"
             'Czech Republic - Anonymous bug report - index problem ?
-            Exit Sub 
-        End Try 
-        
-        
+            Exit Sub
+        End Try
+
+
         Dim LastActivity As SortOrderForData.eDataType = m_SortOrderForData.DataType(m_SortOrderForData.DataType.Count - 1)
         Select Case LastActivity
             Case SortOrderForData.eDataType.PackPieces
-                gstrProbComtStack &= " #BU3" 
-                RedoPackPieceArr.Push(mPieces(mPieces.Count - 1)) 
-                mPieces.RemoveAt(mPieces.Count - 1) 
+                gstrProbComtStack &= " #BU3"
+                RedoPackPieceArr.Push(mPieces(mPieces.Count - 1))
+                mPieces.RemoveAt(mPieces.Count - 1)
             Case SortOrderForData.eDataType.NormalGraphicsPath, SortOrderForData.eDataType.ReverseGraphicsPath
-                gstrProbComtStack &= " #BU4" 
-                m_Drawings.Undo(m_CurrentBrushWidth)  
-                gstrProbComtStack &= " #BU4b" 
+                gstrProbComtStack &= " #BU4"
+                m_Drawings.Undo(m_CurrentBrushWidth)
+                gstrProbComtStack &= " #BU4b"
                 Try
                     If m_SortOrderForData.DataType(m_SortOrderForData.DataType.Count - 1) = SortOrderForData.eDataType.NormalGraphicsPath Or _
                          m_SortOrderForData.DataType(m_SortOrderForData.DataType.Count - 1) = SortOrderForData.eDataType.ReverseGraphicsPath Then
-                        gstrProbComtStack &= " #BU4c" 
-                        m_Drawings.Undo(m_CurrentBrushWidth)  
-                        gstrProbComtStack &= " #BU4d" 
+                        gstrProbComtStack &= " #BU4c"
+                        m_Drawings.Undo(m_CurrentBrushWidth)
+                        gstrProbComtStack &= " #BU4d"
                     End If
                 Catch
                 End Try
             Case SortOrderForData.eDataType.UserPieces
-                gstrProbComtStack &= " #BU5" 
-                RedoUserPieceArr.Push(m_UserPieces.Parts(m_UserPieces.Parts.Count - 1)) 
-                m_UserPieces.Parts.RemoveAt(m_UserPieces.Parts.Count - 1) 
+                gstrProbComtStack &= " #BU5"
+                RedoUserPieceArr.Push(m_UserPieces.Parts(m_UserPieces.Parts.Count - 1))
+                m_UserPieces.Parts.RemoveAt(m_UserPieces.Parts.Count - 1)
         End Select
 
-        gstrProbComtStack &= " #BU6" 
+        gstrProbComtStack &= " #BU6"
 
-        RedoSortOrderStack.Push(LastActivity) 
+        RedoSortOrderStack.Push(LastActivity)
 
-        gstrProbComtStack &= " #BU7" 
+        gstrProbComtStack &= " #BU7"
 
         m_SortOrderForData.Remove(mPieces, m_Drawings.mousePath, _
-            m_Drawings.ReversemousePath, m_UserPieces, m_SortOrderForData, "btnUndo_Click") 
+            m_Drawings.ReversemousePath, m_UserPieces, m_SortOrderForData, "btnUndo_Click")
 
-        gstrProbComtStack &= " #BU8" 
+        gstrProbComtStack &= " #BU8"
 
-        ChangeUndoRedoStatus() 
+        ChangeUndoRedoStatus()
 
-        PictureBox1.Invalidate() 
+        PictureBox1.Invalidate()
 
-        gstrProbComtStack &= " #BUEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #BUEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub btnRedo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         gstrMRPs = "0340"
 
-        gstrProbComtStack = "frmMain.btnRedo_Click - start" 
+        gstrProbComtStack = "frmMain.btnRedo_Click - start"
 
-        
+
         btnUndo.Enabled = False
 
-        Select Case RedoSortOrderStack.Peek 
+        Select Case RedoSortOrderStack.Peek
             Case SortOrderForData.eDataType.PackPieces
-                gstrProbComtStack &= " #BR1" 
+                gstrProbComtStack &= " #BR1"
                 Dim lRedoPiece As New Piece()
                 Dim EnumerShowNow As System.Collections.IEnumerator
 
-                gstrProbComtStack &= " #BR1b" 
+                gstrProbComtStack &= " #BR1b"
                 EnumerShowNow = RedoPackPieceArr.GetEnumerator()
                 EnumerShowNow.MoveNext()
 
-                gstrProbComtStack &= " #BR1c" 
+                gstrProbComtStack &= " #BR1c"
                 lRedoPiece = EnumerShowNow.Current
 
-                gstrProbComtStack &= " #BR1d" 
+                gstrProbComtStack &= " #BR1d"
                 RedoPackPieceArr.Pop()
                 mPieces.Add(lRedoPiece)
-                gstrProbComtStack &= " #BR1e" 
+                gstrProbComtStack &= " #BR1e"
 
             Case SortOrderForData.eDataType.NormalGraphicsPath, SortOrderForData.eDataType.ReverseGraphicsPath
-                gstrProbComtStack &= " #BR2" 
+                gstrProbComtStack &= " #BR2"
                 m_Drawings.Redo()
 
-                gstrProbComtStack &= " #BR2b" 
+                gstrProbComtStack &= " #BR2b"
                 Try
-                    gstrProbComtStack &= " #BR2c" 
+                    gstrProbComtStack &= " #BR2c"
                     Dim NextRedo As SortOrderForData.eDataType
                     Dim EnumerShowNow As System.Collections.IEnumerator
 
-                    gstrProbComtStack &= " #BR2d" 
+                    gstrProbComtStack &= " #BR2d"
                     EnumerShowNow = RedoSortOrderStack.GetEnumerator()
                     EnumerShowNow.MoveNext()
 
-                    gstrProbComtStack &= " #BR2e" 
+                    gstrProbComtStack &= " #BR2e"
                     NextRedo = EnumerShowNow.Current
 
                     If NextRedo = SortOrderForData.eDataType.NormalGraphicsPath Or NextRedo = SortOrderForData.eDataType.ReverseGraphicsPath Then
-                        gstrProbComtStack &= " #BR2f" 
+                        gstrProbComtStack &= " #BR2f"
                         m_Drawings.Redo()
                     End If
                 Catch
                 End Try
-                gstrProbComtStack &= " #BR2g" 
+                gstrProbComtStack &= " #BR2g"
             Case SortOrderForData.eDataType.UserPieces
-                gstrProbComtStack &= " #BR3" 
-                Try 
+                gstrProbComtStack &= " #BR3"
+                Try
                     Dim lRedoUserPiece As New Piece()
                     Dim EnumerShowNow As System.Collections.IEnumerator
 
-                    gstrProbComtStack &= " #BR3b" 
+                    gstrProbComtStack &= " #BR3b"
 
                     EnumerShowNow = m_UserPieces.Parts.GetEnumerator()
                     EnumerShowNow.MoveNext()
 
-                    gstrProbComtStack &= " #BR3c" 
+                    gstrProbComtStack &= " #BR3c"
                     lRedoUserPiece = EnumerShowNow.Current
 
-                    gstrProbComtStack &= " #BR3d" 
+                    gstrProbComtStack &= " #BR3d"
                     RedoUserPieceArr.Pop()
                     m_UserPieces.Parts.Add(lRedoUserPiece)
-                    gstrProbComtStack &= " #BR3e" 
+                    gstrProbComtStack &= " #BR3e"
                 Catch ex As Exception
                     Console.WriteLine("btnRedo_Click.Case SortOrderForData.eDataType.UserPieces " & ex.ToString)
                 End Try
         End Select
-        
-        gstrProbComtStack &= " #BR4" 
+
+        gstrProbComtStack &= " #BR4"
         m_SortOrderForData.Add(mPieces, m_Drawings.mousePath, _
-        m_Drawings.ReversemousePath, m_UserPieces, m_SortOrderForData, "btnRedo_Click") 
+        m_Drawings.ReversemousePath, m_UserPieces, m_SortOrderForData, "btnRedo_Click")
 
-        gstrProbComtStack &= " #BR5" 
-        RedoSortOrderStack.Pop() 
+        gstrProbComtStack &= " #BR5"
+        RedoSortOrderStack.Pop()
 
-        gstrProbComtStack &= " #BR6" 
-        ChangeUndoRedoStatus() 
+        gstrProbComtStack &= " #BR6"
+        ChangeUndoRedoStatus()
 
         PictureBox1.Invalidate()
 
-        gstrProbComtStack &= " #BREnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #BREnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub chkMirror_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles chkMirror.CheckedChanged
 
-        AddDebugComment("Form1.chkMirror_CheckedChanged") 
+        AddDebugComment("Form1.chkMirror_CheckedChanged")
 
-        PictureBox1.Invalidate() 
+        PictureBox1.Invalidate()
 
     End Sub
     Private Sub chkGuide_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles chkGuide.CheckedChanged
 
-        AddDebugComment("Form1.chkGuide_CheckedChanged") 
+        AddDebugComment("Form1.chkGuide_CheckedChanged")
 
-        PictureBox1.Invalidate() 
+        PictureBox1.Invalidate()
 
     End Sub
     Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
 
-        gstrProbComtStack = "frmMain.btnClear_Click - start" 
+        gstrProbComtStack = "frmMain.btnClear_Click - start"
 
         If mPieces.Count > 0 Or lbooSomethingDrawn = True Then
             DeactivatePaintingBeforeDialog()
@@ -2850,41 +2850,41 @@ Imports System.IO
 
             ReactivatePaintingBeforeDialog()
             If dlgRes <> DialogResult.Yes Then
-                PictureBox1.Invalidate() 
+                PictureBox1.Invalidate()
                 Exit Sub
             End If
         End If
 
         lbooSomethingDrawn = False
-        
-        Clear() 
 
-        gstrProbComtStack &= " #BCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        Clear()
+
+        gstrProbComtStack &= " #BCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub Clear()
 
-        m_Drawings.Clear(m_CurrentColour, m_CurrentBrushWidth) 
+        m_Drawings.Clear(m_CurrentColour, m_CurrentBrushWidth)
 
         mPieces = Nothing
         mPieces = New ArrayList()
 
-        m_UserPieces = New FacePartStuctureDataFile() 
-        m_SortOrderForData = New SortOrderForData() 
+        m_UserPieces = New FacePartStuctureDataFile()
+        m_SortOrderForData = New SortOrderForData()
 
         m_SortOrderForData.Add(mPieces, m_Drawings.mousePath, _
             m_Drawings.ReversemousePath, m_UserPieces, m_SortOrderForData, "btnClear_Click")
 
-        RedoSortOrderStack.Clear() 
+        RedoSortOrderStack.Clear()
 
-        ChangeUndoRedoStatus() 
+        ChangeUndoRedoStatus()
 
         PictureBox1.Image = Nothing
 
-        PictureBox1.Invalidate() 
+        PictureBox1.Invalidate()
     End Sub
     Private Sub btnWhite_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnWhite.Click
 
-        gstrProbComtStack = "frmMain.btnWhite_Click - start" 
+        gstrProbComtStack = "frmMain.btnWhite_Click - start"
 
         lblWhite.BackColor = Color.Red
         lblBlack.BackColor = Color.White
@@ -2893,11 +2893,11 @@ Imports System.IO
 
         Me.Update()
 
-        gstrProbComtStack &= " #BWCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #BWCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub btnBlack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBlack.Click
 
-        gstrProbComtStack = "frmMain.btnBlack_Click - start" 
+        gstrProbComtStack = "frmMain.btnBlack_Click - start"
 
         lblWhite.BackColor = Color.White
         lblBlack.BackColor = Color.Red
@@ -2906,22 +2906,22 @@ Imports System.IO
 
         Me.Update()
 
-        gstrProbComtStack &= " #BBEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #BBEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub btnHead_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnHead.Click
 
         gstrMRPs = "0350"
-        
-        gstrProbComtStack = "frmMain.btnHead_Click - start" 
+
+        gstrProbComtStack = "frmMain.btnHead_Click - start"
         DeactivatePaintingBeforeDialog()
-        gstrProbComtStack = " #bHc1" 
+        gstrProbComtStack = " #bHc1"
 
         Dim fp As New FacePartDiag()
-        gstrProbComtStack = " #bHc1a" 
+        gstrProbComtStack = " #bHc1a"
         fp.Owner = Me
-        gstrProbComtStack = " #bHc1b" 
+        gstrProbComtStack = " #bHc1b"
         fp.PartType = FacePartEnums.ePartType.Outline
-        gstrProbComtStack = " #bHc1c" 
+        gstrProbComtStack = " #bHc1c"
 
         fp.mPieces = mPieces
         fp.mDrawings = m_Drawings
@@ -2936,19 +2936,19 @@ Imports System.IO
         gstrProbComtStack = " #bHc4"
 
         fp = Nothing
-        gstrProbComtStack &= " #BHEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #BHEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub btnEyes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEyes.Click
         gstrMRPs = "0360"
-        gstrProbComtStack = "frmMain.btnEyes_Click - start" 
+        gstrProbComtStack = "frmMain.btnEyes_Click - start"
 
-        DeactivatePaintingBeforeDialog() 
+        DeactivatePaintingBeforeDialog()
         gstrProbComtStack = " #bEyc1"
         Dim fp As New FacePartDiag()
         gstrProbComtStack = " #bEyc1a"
         fp.Owner = Me
         gstrProbComtStack = " #bEyc1b"
-        fp.PartType = FacePartEnums.ePartType.Eye 
+        fp.PartType = FacePartEnums.ePartType.Eye
         gstrProbComtStack = " #bEyc1c"
         fp.mPieces = mPieces
         fp.mDrawings = m_Drawings
@@ -2956,22 +2956,22 @@ Imports System.IO
         fp.mSortOrderForData = m_SortOrderForData
         fp.Show()
         gstrProbComtStack = " #bEyc2"
-        ReactivatePaintingBeforeDialog() 
+        ReactivatePaintingBeforeDialog()
         gstrProbComtStack = " #bEyc3"
         gstrProbComtStack = " #bEyc4"
-        fp = Nothing 
-        gstrProbComtStack &= " #BEYCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        fp = Nothing
+        gstrProbComtStack &= " #BEYCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub btnEars_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEars.Click
         gstrMRPs = "0370"
-        gstrProbComtStack = "frmMain.btnEars_Click - start" 
-        DeactivatePaintingBeforeDialog() 
+        gstrProbComtStack = "frmMain.btnEars_Click - start"
+        DeactivatePaintingBeforeDialog()
         gstrProbComtStack = " #bEac1"
         Dim fp As New FacePartDiag()
         gstrProbComtStack = " #bEac1a"
         fp.Owner = Me
         gstrProbComtStack = " #bEac1b"
-        fp.PartType = FacePartEnums.ePartType.Ear 
+        fp.PartType = FacePartEnums.ePartType.Ear
         gstrProbComtStack = " #bEac1c"
         fp.mPieces = mPieces
         fp.mDrawings = m_Drawings
@@ -2979,23 +2979,23 @@ Imports System.IO
         fp.mSortOrderForData = m_SortOrderForData
         fp.Show()
         gstrProbComtStack = " #bEac2"
-        ReactivatePaintingBeforeDialog() 
+        ReactivatePaintingBeforeDialog()
         gstrProbComtStack = " #bEac3"
         gstrProbComtStack = " #bEac4"
-        fp = Nothing 
-        gstrProbComtStack &= " #BEACEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        fp = Nothing
+        gstrProbComtStack &= " #BEACEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub btnMouths_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMouths.Click
         gstrMRPs = "0380"
-        gstrProbComtStack = "frmMain.btnMouths_Click - start" 
+        gstrProbComtStack = "frmMain.btnMouths_Click - start"
 
-        DeactivatePaintingBeforeDialog() 
+        DeactivatePaintingBeforeDialog()
         gstrProbComtStack = " #bMoc1"
         Dim fp As New FacePartDiag() 'FacePartSel()
         gstrProbComtStack = " #bMoc1a"
         fp.Owner = Me
         gstrProbComtStack = " #bMoc1b"
-        fp.PartType = FacePartEnums.ePartType.Mouth 
+        fp.PartType = FacePartEnums.ePartType.Mouth
         gstrProbComtStack = " #bMoc1c"
         fp.mPieces = mPieces
         fp.mDrawings = m_Drawings
@@ -3003,24 +3003,24 @@ Imports System.IO
         fp.mSortOrderForData = m_SortOrderForData
         fp.Show() 'Dialog()
         gstrProbComtStack = " #bMoc2"
-        ReactivatePaintingBeforeDialog() 
+        ReactivatePaintingBeforeDialog()
         gstrProbComtStack = " #bMoc3"
         gstrProbComtStack = " #bMoc4"
-        fp = Nothing 
+        fp = Nothing
 
-        gstrProbComtStack &= " #BMCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #BMCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub btnNoses_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNoses.Click
         gstrMRPs = "0390"
-        gstrProbComtStack = "frmMain.btnNoses_Click - start" 
+        gstrProbComtStack = "frmMain.btnNoses_Click - start"
 
-        DeactivatePaintingBeforeDialog() 
+        DeactivatePaintingBeforeDialog()
         gstrProbComtStack = " #bNoc1"
         Dim fp As New FacePartDiag()
         gstrProbComtStack = " #bNoc1a"
         fp.Owner = Me
         gstrProbComtStack = " #bNoc1b"
-        fp.PartType = FacePartEnums.ePartType.Nose 
+        fp.PartType = FacePartEnums.ePartType.Nose
         gstrProbComtStack = " #bNoc1c"
         fp.mPieces = mPieces
         fp.mDrawings = m_Drawings
@@ -3028,17 +3028,17 @@ Imports System.IO
         fp.mSortOrderForData = m_SortOrderForData
         fp.Show()
         gstrProbComtStack = " #bNoc2"
-        ReactivatePaintingBeforeDialog() 
+        ReactivatePaintingBeforeDialog()
         gstrProbComtStack = " #bNoc3"
         gstrProbComtStack = " #bNoc4"
-        fp = Nothing 
-        gstrProbComtStack &= " #BNCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        fp = Nothing
+        gstrProbComtStack &= " #BNCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub btnOther_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOther.Click
         gstrMRPs = "0400"
-        gstrProbComtStack = "frmMain.btnOther_Click - start" 
+        gstrProbComtStack = "frmMain.btnOther_Click - start"
 
-        DeactivatePaintingBeforeDialog() 
+        DeactivatePaintingBeforeDialog()
         gstrProbComtStack = " #bOtc1"
         Dim fp As New FacePartDiag()
         gstrProbComtStack = " #bOtc1a"
@@ -3052,68 +3052,68 @@ Imports System.IO
         fp.mSortOrderForData = m_SortOrderForData
         fp.Show()
         gstrProbComtStack = " #bOtc2"
-        ReactivatePaintingBeforeDialog() 
+        ReactivatePaintingBeforeDialog()
         gstrProbComtStack = " #bOtc3"
         gstrProbComtStack = " #bOtc4"
-        fp = Nothing 
-        gstrProbComtStack &= " #BOCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        fp = Nothing
+        gstrProbComtStack &= " #BOCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub btnLoad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLoad.Click
         gstrMRPs = "0410"
-        gstrProbComtStack = "frmMain.btnLoad_Click - start" 
-        
+        gstrProbComtStack = "frmMain.btnLoad_Click - start"
+
         Dim LoadSlots As New Slots()
         With LoadSlots
-            .Owner = Me 
+            .Owner = Me
             .TranType = Slots.eTranType.Load
             .SelectedUser = mSelectedUser
-            DeactivatePaintingBeforeDialog() 
-            .LicensedFaceParts = mLicensedFaceParts 
-            .UserPieces = m_UserPieces 
-            .SortOrderForData = m_SortOrderForData 
+            DeactivatePaintingBeforeDialog()
+            .LicensedFaceParts = mLicensedFaceParts
+            .UserPieces = m_UserPieces
+            .SortOrderForData = m_SortOrderForData
             .ShowDialog()
 
-            Application.DoEvents() 
-            If .MaskToLoad <> "" Then 
-                Busy(Me, True) 
-                'btnClear_Click(Nothing, Nothing) 
-                Clear() 
-                'LoadMask(.MaskToLoad, mPieces, PictureBox2.Image, False) 
+            Application.DoEvents()
+            If .MaskToLoad <> "" Then
+                Busy(Me, True)
+                'btnClear_Click(Nothing, Nothing)
+                Clear()
+                'LoadMask(.MaskToLoad, mPieces, PictureBox2.Image, False)
                 'LoadMask(.MaskToLoad, mPieces, Nothing, False, m_Drawings.mousePath, m_Drawings.ReversemousePath, _
-                '   m_Drawings.lPaintBrush, m_Drawings.lPaintReverseBrush, mLicensedFaceParts) 
-                
+                '   m_Drawings.lPaintBrush, m_Drawings.lPaintReverseBrush, mLicensedFaceParts)
+
                 LoadMask(.MaskToLoad, mPieces, Nothing, False, m_Drawings.mousePath, m_Drawings.ReversemousePath, _
                     m_Drawings.lPaintBrush, m_Drawings.lPaintReverseBrush, mLicensedFaceParts, m_UserPieces, m_SortOrderForData)
 
-                Busy(Me, False) 
+                Busy(Me, False)
             End If
             m_Drawings.setCountersAfterLoad(m_CurrentColour, m_CurrentBrushWidth)
 
-            ChangeUndoRedoStatus() 
+            ChangeUndoRedoStatus()
 
-            ReactivatePaintingBeforeDialog() 
+            ReactivatePaintingBeforeDialog()
         End With
 
-        gstrProbComtStack &= " #BLCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #BLCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
         gstrMRPs = "0420"
-        AddDebugComment("Form1.btnSave_Click") 
+        AddDebugComment("Form1.btnSave_Click")
 
-        KidsSave(False) 
+        KidsSave(False)
 
     End Sub
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
 
-        AddDebugComment("frmMain.btnHelp_Click") 
+        AddDebugComment("frmMain.btnHelp_Click")
 
-        
+
         Help.ShowHelp(Me, GetHelpFile, GetHelpTopic(Main.HelpTopicEnum.MainScreen))
 
     End Sub
     Private Sub mnuHelpBuyPacks_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuHelpBuyPacks.Click
         gstrMRPs = "0430"
-        AddDebugComment("Form1.mnuHelpBuyPacks_Click") 
+        AddDebugComment("Form1.mnuHelpBuyPacks_Click")
 
         DeactivatePaintingBeforeDialog()
 
@@ -3123,7 +3123,7 @@ Imports System.IO
         Dim DataFiles As New ArrayList()
         Dim DataFileState As New ArrayList()
 
-        If Not mLicensedFaceParts Is Nothing Then mLicensedFaceParts.Clear() 
+        If Not mLicensedFaceParts Is Nothing Then mLicensedFaceParts.Clear()
 
         LoadFaceParts(DataFilesDescImages, DataFilesDescriptions, DataFilesProdNums, DataFiles, DataFileState, True, mLicensedFaceParts, "")
 
@@ -3143,7 +3143,7 @@ Imports System.IO
             .ShowDialog()
         End With
 
-        
+
         If Not mLicensedFaceParts Is Nothing Then mLicensedFaceParts.Clear()
         LoadFaceParts(Nothing, Nothing, Nothing, Nothing, Nothing, False, mLicensedFaceParts, "")
 
@@ -3161,24 +3161,24 @@ Imports System.IO
     End Sub
     Private Sub Panel1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Panel1.Resize
 
-        
+
         Dim X As Short = (Panel1.Width - PictureBox1.Width) / 2
         Dim Y As Short = (Panel1.Height - PictureBox1.Height) / 2
         PictureBox1.Location = New Point(X, Y)
 
     End Sub
     Private Sub frmMain_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-        Me.Invalidate() 
+        Me.Invalidate()
     End Sub
     Private Sub PictureBox1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
 
-        AddDebugComment("Form1.PictureBox1_Click") 
+        AddDebugComment("Form1.PictureBox1_Click")
 
-        
-        If CurrentTool = Tools.Floodfill Then 
 
-            Busy(Me, True) 
-            PictureBox1.Enabled = False 
+        If CurrentTool = Tools.Floodfill Then
+
+            Busy(Me, True)
+            PictureBox1.Enabled = False
 
             Dim FullImage As Image = DrawDetails(PictureBox1, m_Drawings.mousePath, m_Drawings.ReversemousePath, mPieces, _
                 m_Drawings.lPaintBrush, m_Drawings.lPaintReverseBrush, m_UserPieces, m_SortOrderForData)
@@ -3191,7 +3191,7 @@ Imports System.IO
                 Busy(Me, False)
                 Exit Sub
             End If
-            
+
             Dim ff As New FloodFill()
             Dim UserFloodPiece As Bitmap
             Dim ClipTop As Integer
@@ -3210,24 +3210,24 @@ Imports System.IO
             m_UserPieces.Parts.Add(ThisFloodFillPart)
 
             m_SortOrderForData.Add(mPieces, m_Drawings.mousePath, _
-                m_Drawings.ReversemousePath, m_UserPieces, m_SortOrderForData, "PictureBox1_Click") 
+                m_Drawings.ReversemousePath, m_UserPieces, m_SortOrderForData, "PictureBox1_Click")
 
-            ChangeUndoRedoStatus() 
+            ChangeUndoRedoStatus()
 
-            FloodFillJustOccured = True 
+            FloodFillJustOccured = True
 
-            PictureBox1.Enabled = True 
-            Busy(Me, False) 
+            PictureBox1.Enabled = True
+            Busy(Me, False)
 
             Me.Invalidate()
 
-        End If 
+        End If
     End Sub
     Private Sub btnPalette_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPBlack.Click, btnPWhite.Click, _
         btnPRed.Click, btnPOrange.Click, btnPYellow.Click, btnPBrown.Click, btnPGreen.Click, btnPLime.Click, btnPCyan.Click, _
         btnPLightBlue.Click, btnPBlue.Click, btnPMagenta.Click, btnPPink.Click, btnPCustom.Click
 
-        AddDebugComment("frmMain.btnPalette_Click - start") 
+        AddDebugComment("frmMain.btnPalette_Click - start")
 
         Dim ctl As Control
         For Each ctl In pnlPalette.Controls
@@ -3256,16 +3256,16 @@ Imports System.IO
             Case "btnPBlue" : SetPaletteLabel(lblPBlue, sender)
             Case "btnPMagenta" : SetPaletteLabel(lblPMagenta, sender)
             Case "btnPPink" : SetPaletteLabel(lblPPink, sender)
-            Case "btnPCustom" : SetPaletteLabel(lblPCustom, sender) 
+            Case "btnPCustom" : SetPaletteLabel(lblPCustom, sender)
         End Select
 
         m_Drawings.SetColour(sender.BackColor, m_CurrentBrushWidth)
-        m_CurrentColour = sender.BackColor 
+        m_CurrentColour = sender.BackColor
 
-        gstrProbComtStack &= " #BPCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #BPCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub SetPaletteLabel(ByVal pobjLabel As Label, ByVal pobButton As Button)
-        
+
         pobjLabel.BorderStyle = BorderStyle.FixedSingle
         pobjLabel.BackColor = Color.Red
         pobjLabel.Tag = "Selected"
@@ -3275,9 +3275,9 @@ Imports System.IO
     End Sub
     Private Sub rdoFreehand_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles rdoFreehand.Click
 
-        AddDebugComment("Form1.rdoFreehand_Click") 
+        AddDebugComment("Form1.rdoFreehand_Click")
 
-        
+
         If rdoFloodFill.Checked = True Then
             CurrentTool = Tools.Floodfill
             Dim s As System.IO.Stream
@@ -3298,12 +3298,12 @@ Imports System.IO
     End Sub
     Private Sub rdoFloodFill_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles rdoFloodFill.Click
 
-        AddDebugComment("Form1.rdoFloodFill_Click") 
+        AddDebugComment("Form1.rdoFloodFill_Click")
 
-        
+
         If rdoFloodFill.Checked = True Then
             CurrentTool = Tools.Floodfill
-            
+
             Dim s As System.IO.Stream
             Try
                 s = Me.GetType().Assembly.GetManifestResourceStream("KidsMaskPrint.floodfill.ico")
@@ -3322,11 +3322,11 @@ Imports System.IO
     End Sub
     Private Sub lstBrushWidth_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles lstBrushWidth.SelectedIndexChanged
 
-        AddDebugComment("Form1.lstBrushWidth_SelectedIndexChanged") 
+        AddDebugComment("Form1.lstBrushWidth_SelectedIndexChanged")
 
-        
 
-        'removed Windings 2 support 
+
+        'removed Windings 2 support
         Select Case lstBrushWidth.Text
             Case "1" : m_CurrentBrushWidth = 1
             Case "2" : m_CurrentBrushWidth = 2
@@ -3334,11 +3334,11 @@ Imports System.IO
             Case "8" : m_CurrentBrushWidth = 8
         End Select
 
-        m_Drawings.SetColour(m_CurrentColour, m_CurrentBrushWidth) 
+        m_Drawings.SetColour(m_CurrentColour, m_CurrentBrushWidth)
 
     End Sub
     Friend Sub ChangeUndoRedoStatus()
-        
+
 
         Dim TempPieceUndo As Boolean
         Dim TempPieceRedo As Boolean
@@ -3372,7 +3372,7 @@ Imports System.IO
         End If
         '--- user pieces ---
 
-        Dim TempRedoStack As Boolean = True 
+        Dim TempRedoStack As Boolean = True
         If RedoSortOrderStack.Count = 0 Then
             TempRedoStack = False
         End If
@@ -3412,9 +3412,9 @@ Imports System.IO
     End Sub
     Private Sub btnMoreColours_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMoreColours.Click
 
-        AddDebugComment("Form1.btnMoreColours_Click") 
+        AddDebugComment("Form1.btnMoreColours_Click")
 
-        
+
 
         Application.DoEvents()
         Dim dlgRes As DialogResult
@@ -3422,12 +3422,12 @@ Imports System.IO
         With CD
             .Color = btnPCustom.BackColor
             Application.DoEvents()
-            .CustomColors = lintCustomColours 
+            .CustomColors = lintCustomColours
             dlgRes = .ShowDialog()
             If dlgRes <> DialogResult.OK Then
                 Exit Sub
             End If
-            lintCustomColours = .CustomColors 
+            lintCustomColours = .CustomColors
             btnPCustom.BackColor = .Color
         End With
 
@@ -3447,18 +3447,18 @@ Imports System.IO
         SetPaletteLabel(lblPCustom, btnPCustom)
         m_Drawings.SetColour(btnPCustom.BackColor, m_CurrentBrushWidth)
 
-        btnPalette_Click(btnPCustom, Nothing) 
+        btnPalette_Click(btnPCustom, Nothing)
 
     End Sub
     Private Sub mnuToolsOptions_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuToolsOptions.Click
-        
+
 
         AddDebugComment("frmMain.mnuToolsOptions_Click - start")
 
         DeactivatePaintingBeforeDialog()
         Dim dlgRes As DialogResult
         Dim Ops As New options()
-        Ops.LoginInAs = mSelectedUser 
+        Ops.LoginInAs = mSelectedUser
         Ops.Owner = Me
         dlgRes = Ops.ShowDialog()
 
@@ -3468,15 +3468,15 @@ Imports System.IO
 
         ReactivatePaintingBeforeDialog()
 
-        gstrProbComtStack &= " #TOCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+        gstrProbComtStack &= " #TOCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
     End Sub
     Private Sub SetDrawingLayout(ByVal UserName As String)
-        
-        Dim AppSettings As New InitalXMLConfig(InitalXMLConfig.XmlConfigType.UserSettings, UserName) 
-        Dim lbooFloodfill As Boolean = CBool(AppSettings.GetValue("FloodFillAndPalette", "False")) 
-        Dim lbooNoFloodfill As Boolean = CBool(AppSettings.GetValue("LineAndColour", "False")) 
-        Dim lbooBlackLines As Boolean = CBool(AppSettings.GetValue("BlackLines", "True")) 
-        Dim lbooBrushWidths As Boolean = CBool(AppSettings.GetValue("BrushWidths", "False")) 
+
+        Dim AppSettings As New InitalXMLConfig(InitalXMLConfig.XmlConfigType.UserSettings, UserName)
+        Dim lbooFloodfill As Boolean = CBool(AppSettings.GetValue("FloodFillAndPalette", "False"))
+        Dim lbooNoFloodfill As Boolean = CBool(AppSettings.GetValue("LineAndColour", "False"))
+        Dim lbooBlackLines As Boolean = CBool(AppSettings.GetValue("BlackLines", "True"))
+        Dim lbooBrushWidths As Boolean = CBool(AppSettings.GetValue("BrushWidths", "False"))
 
         If lbooFloodfill = True Then
             pnlBWPens.Visible = False : pnlPalette.Visible = True : rdoFloodFill.Visible = True : rdoFreehand.Visible = True
@@ -3497,7 +3497,7 @@ Imports System.IO
                 Try
             Dim lstrCustomColours() As String
             'lstrCustomColours = Microsoft.VisualBasic.Split(GetSetting("CustomColours", False, InitalXMLConfig.XmlConfigType.UserSettings, UserName), "#")
-            lstrCustomColours = Microsoft.VisualBasic.Split(AppSettings.GetValue("CustomColours", False), "#") 
+            lstrCustomColours = Microsoft.VisualBasic.Split(AppSettings.GetValue("CustomColours", False), "#")
 
             ReDim lintCustomColours(lstrCustomColours.GetUpperBound(0))
             Dim lintArrInc As Integer
@@ -3509,10 +3509,10 @@ Imports System.IO
 
         Try
             'btnPCustom.BackColor = StringToColor(GetSetting("LastCustomColour", ColorToString(Color.DarkTurquoise), InitalXMLConfig.XmlConfigType.UserSettings, UserName))
-            btnPCustom.BackColor = StringToColor(AppSettings.GetValue("LastCustomColour", ColorToString(Color.DarkTurquoise))) 
+            btnPCustom.BackColor = StringToColor(AppSettings.GetValue("LastCustomColour", ColorToString(Color.DarkTurquoise)))
         Catch
         End Try
-        
+
     End Sub
     Private Sub lstBrushWidth_DrawItem(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles lstBrushWidth.DrawItem
 
@@ -3520,8 +3520,8 @@ Imports System.IO
             AddDebugComment("Form1.lstBrushWidth_DrawItem")
             boolstBrushWidth_DrawItemFirstDone = True
         End If
-        
-        
+
+
         Dim brush As Brush
         Dim Itemselected As Boolean
 
@@ -3550,9 +3550,9 @@ Imports System.IO
     End Sub
     Private Sub mnuHelpReportProblem_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuHelpReportProblem.Click
 
-        AddDebugComment("Form1.mnuHelpReportProblem_Click") 
+        AddDebugComment("Form1.mnuHelpReportProblem_Click")
 
-        
+
 
         DeactivatePaintingBeforeDialog()
 
@@ -3579,7 +3579,7 @@ Imports System.IO
 
     Private Sub btnBuy_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBuy.Click
 
-        AddDebugComment("Form1.btnBuy_Click") 
+        AddDebugComment("Form1.btnBuy_Click")
         BrowseToUrl("http://www.example.com/buy.php", Me)
     End Sub
 

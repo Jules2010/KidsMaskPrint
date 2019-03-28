@@ -4,7 +4,7 @@ Imports System.Runtime.Serialization.Formatters.Binary
 Friend Class FacePartDiag
     Inherits System.Windows.Forms.Form
 #Region "Friend Properties"
-    Dim mRetPart As Part 
+    Dim mRetPart As Part
     Friend Property RetPart() As Part
         Get
             Return mRetPart
@@ -13,8 +13,8 @@ Friend Class FacePartDiag
             mRetPart = Value
         End Set
     End Property
-    Dim m_PartType As FacePartEnums.ePartType 
-    Friend Property PartType() As FacePartEnums.ePartType 
+    Dim m_PartType As FacePartEnums.ePartType
+    Friend Property PartType() As FacePartEnums.ePartType
         Get
             Return m_PartType
         End Get
@@ -122,7 +122,7 @@ Friend Class FacePartDiag
     Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     Friend WithEvents ListView1 As System.Windows.Forms.ListView
     Friend WithEvents btnClose As WinOnly.BevelButton
@@ -270,20 +270,20 @@ Friend Class FacePartDiag
 #End Region
     Dim Dir As String = Path.GetDirectoryName( _
         System.Reflection.Assembly.GetExecutingAssembly().Location) & "\FaceParts\"
-    Private Structure ThreeImages 
+    Private Structure ThreeImages
         Dim LeftImg As Image
         Dim BothImg As Image
         Dim RightImg As Image
         Dim KMPPart As Part
         Dim PieceName As String
     End Structure
-    Dim mTempImages() As ThreeImages 
-    Dim DoActivatedCodeOnce As Boolean = True 
+    Dim mTempImages() As ThreeImages
+    Dim DoActivatedCodeOnce As Boolean = True
     Private Sub FaceParts_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        AddDebugComment("FacePartDiag.FaceParts_Load - start") 
+        AddDebugComment("FacePartDiag.FaceParts_Load - start")
 
-        Busy(Me, True) 
+        Busy(Me, True)
 
         Dim Caption As String
         Select Case m_PartType
@@ -297,42 +297,42 @@ Friend Class FacePartDiag
 
         Me.Text = NameMe(Caption & " Parts")
 
-        SetBackcolors() 
+        SetBackcolors()
 
         ImageList1.ImageSize = New Size(32, 32)
 
-        ListView1.HideSelection = False 
+        ListView1.HideSelection = False
         ListView1.LargeImageList = ImageList1
         ListView1.Items.Clear()
 
-        LoadFaceParts() 
+        LoadFaceParts()
 
         If ListView1.Items.Count > 0 Then
-            ReDim mTempImages(ListView1.Items.Count) 
+            ReDim mTempImages(ListView1.Items.Count)
             ListView1.Items(0).Selected = True
             ListView1_Click(Nothing, Nothing)
         End If
 
-        Busy(Me, False) 
+        Busy(Me, False)
 
-        AddDebugComment("FacePartDiag.FaceParts_Load - end") 
+        AddDebugComment("FacePartDiag.FaceParts_Load - end")
 
     End Sub
     Private Sub btnClose_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClose.Click
 
-        AddDebugComment("FacePartDiag.btnClose_Click - start") 
+        AddDebugComment("FacePartDiag.btnClose_Click - start")
 
         mRetPart = Nothing
-        m_PieceName = "" 
+        m_PieceName = ""
 
         Me.Close()
 
-        AddDebugComment("FacePartDiag.btnClose_Click - end") 
+        AddDebugComment("FacePartDiag.btnClose_Click - end")
 
     End Sub
     Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
 
-        AddDebugComment("FacePartDiag.btnSelect_Click - start") 
+        AddDebugComment("FacePartDiag.btnSelect_Click - start")
 
         If ListView1.SelectedItems.Count <> 1 Then
             Exit Sub
@@ -340,28 +340,28 @@ Friend Class FacePartDiag
 
         Me.Close()
 
-        AddDebugComment("FacePartDiag.btnSelect_Click - end") 
+        AddDebugComment("FacePartDiag.btnSelect_Click - end")
 
     End Sub
     Private Sub ListView1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ListView1.Click
 
-        AddDebugComment("FacePartDiag.ListView1_Click - start") 
+        AddDebugComment("FacePartDiag.ListView1_Click - start")
 
-        Busy(Me, True) 
+        Busy(Me, True)
 
         DisplayPreview()
 
         m_SourceDataFileName = ReturnNthStr(ListView1.SelectedItems(0).Tag, 1, "#")
         m_DataFileItemNum = ReturnNthStr(ListView1.SelectedItems(0).Tag, 2, "#")
 
-        Busy(Me, False) 
+        Busy(Me, False)
 
-        AddDebugComment("FacePartDiag.ListView1_Click - end") 
+        AddDebugComment("FacePartDiag.ListView1_Click - end")
 
     End Sub
     Private Sub DisplayPreview(Optional ByVal RadioUse As Boolean = False)
 
-        AddDebugComment("FacePartDiag.DisplayPreview - start") 
+        AddDebugComment("FacePartDiag.DisplayPreview - start")
 
         Dim lImage As System.Drawing.Image
 
@@ -376,24 +376,24 @@ Friend Class FacePartDiag
             Exit Sub
         End Try
 
-        With mTempImages(ListView1.SelectedItems(0).Index) 
-            If mTempImages(ListView1.SelectedItems(0).Index).LeftImg Is Nothing Then 
-                
+        With mTempImages(ListView1.SelectedItems(0).Index)
+            If mTempImages(ListView1.SelectedItems(0).Index).LeftImg Is Nothing Then
+
                 GetDataPreviewImage(ReturnNthStr( _
                     ListView1.SelectedItems(0).Tag, 1, "#"), ReturnNthStr(ListView1.SelectedItems(0).Tag, 2, "#"), mRetPart, m_PieceName, _
                     .LeftImg, .BothImg, .RightImg)
-                
-                AddDebugComment("FacePartDiag.DisplayPreview - 1") 
+
+                AddDebugComment("FacePartDiag.DisplayPreview - 1")
                 .KMPPart = mRetPart
                 .PieceName = m_PieceName
-            End If 
+            End If
 
-            m_PieceName = .PieceName 
-            mRetPart = .KMPPart 
+            m_PieceName = .PieceName
+            mRetPart = .KMPPart
 
             'lImage = PreviewImage 'mRetPart.FullImage
 
-            If RadioUse = False Then 
+            If RadioUse = False Then
                 If .KMPPart.BothParts = False Then
                     rdoLeft.Visible = False
                     rdoBoth.Visible = False
@@ -413,43 +413,43 @@ Friend Class FacePartDiag
             End If
 
             If rdoRight.Checked = True Then
-                lImage = .RightImg 
+                lImage = .RightImg
                 'lImage.RotateFlip(RotateFlipType.RotateNoneFlipX)
             End If
             If rdoBoth.Checked = True Then
-                lImage = .BothImg 
+                lImage = .BothImg
             End If
 
-            If lImage Is Nothing Then 
-                lImage = .LeftImg 
+            If lImage Is Nothing Then
+                lImage = .LeftImg
             End If
-            AddDebugComment("FacePartDiag.DisplayPreview - 2") 
+            AddDebugComment("FacePartDiag.DisplayPreview - 2")
             lImage = ResizeImageObj(lImage, picPreview.Height - 10)
 
-        End With 
+        End With
 
         picPreview.Image = lImage
 
-        AddDebugComment("FacePartDiag.DisplayPreview - end") 
+        AddDebugComment("FacePartDiag.DisplayPreview - end")
 
     End Sub
 
     Private Sub rdoPos_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles rdoLeft.Click, rdoBoth.Click, rdoRight.Click
 
-        AddDebugComment("FacePartDiag.rdoPos_Click - start") 
+        AddDebugComment("FacePartDiag.rdoPos_Click - start")
 
-        Busy(Me, True) 
+        Busy(Me, True)
 
-        DisplayPreview(True) 
+        DisplayPreview(True)
 
-        Busy(Me, False) 
+        Busy(Me, False)
 
-        AddDebugComment("FacePartDiag.rdoPos_Click - end " & mPositionSelection) 
+        AddDebugComment("FacePartDiag.rdoPos_Click - end " & mPositionSelection)
 
     End Sub
     Private Sub ListView1_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles ListView1.DoubleClick
 
-        AddDebugComment("FacePartDiag.ListView1_DoubleClick") 
+        AddDebugComment("FacePartDiag.ListView1_DoubleClick")
 
         btnSelect_Click(Nothing, Nothing)
 
@@ -462,17 +462,17 @@ Friend Class FacePartDiag
     End Sub
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
 
-        AddDebugComment("FacePartDiag.btnHelp_Click") 
+        AddDebugComment("FacePartDiag.btnHelp_Click")
 
-        
+
         Help.ShowHelp(Me, GetHelpFile, GetHelpTopic(Main.HelpTopicEnum.FacePartSelect))
 
     End Sub
     Private Sub SetBackcolors()
 
-        AddDebugComment("FacePartDiag.SetBackcolors") 
+        AddDebugComment("FacePartDiag.SetBackcolors")
 
-        
+
         rdoLeft.BackColor = Color.FromArgb(0, rdoLeft.BackColor)
         rdoBoth.BackColor = Color.FromArgb(0, rdoBoth.BackColor)
         rdoRight.BackColor = Color.FromArgb(0, rdoRight.BackColor)
@@ -480,9 +480,9 @@ Friend Class FacePartDiag
     End Sub
     Private Sub LoadFaceParts()
 
-        AddDebugComment("FacePartDiag.LoadFaceParts - start") 
+        AddDebugComment("FacePartDiag.LoadFaceParts - start")
 
-        Busy(Me, True) 
+        Busy(Me, True)
 
         '-------------- Check License if available -------------
         Dim Dets2 As strat1.UnlockDetails
@@ -509,10 +509,10 @@ Friend Class FacePartDiag
 
         For Each pfile In files
             Try
-                Dim FPs As FacePartStuctureDataFile = UnlockFacePartsPack(pfile.FullName) 
+                Dim FPs As FacePartStuctureDataFile = UnlockFacePartsPack(pfile.FullName)
 
                 '--- this block checks for a valid key file and doesn't all it to be used if it isn't ---
-                If pfile.Name.ToLower <> "basic.dat" Then 
+                If pfile.Name.ToLower <> "basic.dat" Then
                     Dim keyFile As String = pfile.FullName.ToLower.Replace(".dat", ".key")
                     If File.Exists(keyFile) = True Then
                         Dim Dets As strat1.UnlockDetails
@@ -530,7 +530,7 @@ Friend Class FacePartDiag
                     Else
                         Throw New Exception(" ")
                     End If
-                End If 
+                End If
 
                 Dim lintArrInc As Integer
                 For lintArrInc = 0 To FPs.Parts.Count  '0 To FPs.Parts.Count - 1
@@ -562,16 +562,16 @@ Friend Class FacePartDiag
             End Try
         Next pfile
 
-        Busy(Me, False) 
+        Busy(Me, False)
 
-        AddDebugComment("FacePartDiag.LoadFaceParts - end") 
+        AddDebugComment("FacePartDiag.LoadFaceParts - end")
 
     End Sub
     Private Sub FacePartDiag_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-        Me.Invalidate() 
+        Me.Invalidate()
     End Sub
     Private Sub rdo_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles rdoLeft.CheckedChanged, rdoBoth.CheckedChanged, rdoRight.CheckedChanged
-        
+
         If rdoLeft.Checked = True Then
             mPositionSelection = FacePartEnums.ePositionSelection.Left
         ElseIf rdoRight.Checked = True Then
@@ -583,7 +583,7 @@ Friend Class FacePartDiag
     End Sub
 
     Private Sub FacePartDiag_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
-        
+
         If e.KeyCode = Keys.Escape Then
             btnClose_Click(Nothing, Nothing)
         End If
@@ -608,9 +608,9 @@ Friend Class FacePartDiag
     Private Sub AddSelectedFacePart(ByVal pFP As Part, ByVal pSel As FacePartEnums.ePositionSelection, _
         ByVal SourceDatFileName As String, ByVal DataFileItemNum As Integer, ByVal pobjForm As frmMain)
 
-        AddDebugComment("FacePartDiag.AddSelectedFacePart - start") 
+        AddDebugComment("FacePartDiag.AddSelectedFacePart - start")
 
-        Busy(pobjForm, True) 
+        Busy(pobjForm, True)
 
         If Not pFP Is Nothing Then
 
@@ -619,9 +619,9 @@ Friend Class FacePartDiag
                     Dim ThisPiece As New Piece()
                     ThisPiece.SetImageObj(pFP.FullImage)
                     ThisPiece.Location = pFP.LeftPart
-                    ThisPiece.PieceName = pFP.FaceMaster 
-                    ThisPiece.SourceDataFileName = SourceDatFileName 
-                    ThisPiece.DataFileItemNum = DataFileItemNum 
+                    ThisPiece.PieceName = pFP.FaceMaster
+                    ThisPiece.SourceDataFileName = SourceDatFileName
+                    ThisPiece.DataFileItemNum = DataFileItemNum
                     mm_Pieces.Add(ThisPiece)
                 Case FacePartEnums.ePositionSelection.Both
 
@@ -630,9 +630,9 @@ Friend Class FacePartDiag
                     thispiece.VertFlip = False
                     ThisPiece.SetImageObj(pFP.FullImage.Clone)
                     ThisPiece.Location = pFP.LeftPart
-                    ThisPiece.PieceName = pFP.FaceMaster 
-                    ThisPiece.SourceDataFileName = SourceDatFileName 
-                    ThisPiece.DataFileItemNum = DataFileItemNum 
+                    ThisPiece.PieceName = pFP.FaceMaster
+                    ThisPiece.SourceDataFileName = SourceDatFileName
+                    ThisPiece.DataFileItemNum = DataFileItemNum
                     mm_Pieces.Add(ThisPiece)
 
                     Dim ThisPiece2 As New Piece()
@@ -640,9 +640,9 @@ Friend Class FacePartDiag
                     ThisPiece2.VertFlip = False
                     ThisPiece2.SetImageObj(pFP.FullImage)
                     ThisPiece2.Location = pFP.RightPart
-                    ThisPiece2.PieceName = pFP.FaceMaster 
-                    ThisPiece2.SourceDataFileName = SourceDatFileName 
-                    ThisPiece2.DataFileItemNum = DataFileItemNum 
+                    ThisPiece2.PieceName = pFP.FaceMaster
+                    ThisPiece2.SourceDataFileName = SourceDatFileName
+                    ThisPiece2.DataFileItemNum = DataFileItemNum
                     mm_Pieces.Add(ThisPiece2)
 
                 Case FacePartEnums.ePositionSelection.Right
@@ -650,32 +650,32 @@ Friend Class FacePartDiag
                     ThisPiece.HorizFlip = True
                     ThisPiece.SetImageObj(pFP.FullImage)
                     ThisPiece.Location = pFP.RightPart
-                    ThisPiece.PieceName = pFP.FaceMaster 
-                    
-                    ThisPiece.SourceDataFileName = SourceDatFileName 
-                    ThisPiece.DataFileItemNum = DataFileItemNum 
+                    ThisPiece.PieceName = pFP.FaceMaster
+
+                    ThisPiece.SourceDataFileName = SourceDatFileName
+                    ThisPiece.DataFileItemNum = DataFileItemNum
 
                     mm_Pieces.Add(ThisPiece)
             End Select
 
             mm_SortOrderForData.Add(mm_Pieces, mm_Drawings.mousePath, _
-                mm_Drawings.ReversemousePath, mm_UserPieces, mm_SortOrderForData, "AddSelectedFacePart")   
-            pobjForm.ChangeUndoRedoStatus() 
+                mm_Drawings.ReversemousePath, mm_UserPieces, mm_SortOrderForData, "AddSelectedFacePart")
+            pobjForm.ChangeUndoRedoStatus()
         End If
 
-        Busy(pobjForm, False) 
+        Busy(pobjForm, False)
 
-        pobjForm.Update() 
+        pobjForm.Update()
 
-        pobjForm.PictureBox1.Invalidate() 
+        pobjForm.PictureBox1.Invalidate()
 
-        AddDebugComment("FacePartDiag.AddSelectedFacePart - end") 
+        AddDebugComment("FacePartDiag.AddSelectedFacePart - end")
 
     End Sub
 
     Private Sub FacePartDiag_Closing(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
 
-        
+
         AddSelectedFacePart(mRetPart, mPositionSelection, m_SourceDataFileName, m_DataFileItemNum, Me.Owner)
 
     End Sub

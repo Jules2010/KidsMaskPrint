@@ -47,7 +47,7 @@ Public Class FaceParts
     Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     Friend WithEvents ListView1 As System.Windows.Forms.ListView
     Friend WithEvents btnClose As System.Windows.Forms.Button
@@ -135,9 +135,9 @@ Public Class FaceParts
 
     Private Sub FaceParts_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        AddDebugComment("FaceParts.FaceParts_Load - start") 
+        AddDebugComment("FaceParts.FaceParts_Load - start")
 
-        SetBackcolors() 
+        SetBackcolors()
 
         Dim ImgList As New ImageList()
         ImgList.ImageSize = New System.Drawing.Size(32, 32)
@@ -169,36 +169,36 @@ Public Class FaceParts
             ListView1_Click(Nothing, Nothing)
         End If
 
-        AddDebugComment("FaceParts.FaceParts_Load - end") 
+        AddDebugComment("FaceParts.FaceParts_Load - end")
 
     End Sub
 
     Private Sub btnClose_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClose.Click
 
-        AddDebugComment("FaceParts.btnClose_Click - start") 
+        AddDebugComment("FaceParts.btnClose_Click - start")
 
         mRetImage = ""
         Me.Close()
 
-        AddDebugComment("FaceParts.btnClose_Click - end") 
+        AddDebugComment("FaceParts.btnClose_Click - end")
 
     End Sub
     Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
 
-        AddDebugComment("FaceParts.btnSelect_Click - start") 
+        AddDebugComment("FaceParts.btnSelect_Click - start")
 
         If ListView1.SelectedItems.Count > 1 Then
             ListView1_Click(Nothing, Nothing)
         End If
 
         Me.Close()
-        AddDebugComment("FaceParts.btnSelect_Click - end") 
+        AddDebugComment("FaceParts.btnSelect_Click - end")
 
     End Sub
 
     Private Sub ListView1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ListView1.Click
 
-        AddDebugComment("FaceParts.ListView1_Click") 
+        AddDebugComment("FaceParts.ListView1_Click")
 
         DisplayPreview()
 
@@ -207,7 +207,7 @@ Public Class FaceParts
 
     Private Sub chkVert_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles chkVert.CheckStateChanged
 
-        AddDebugComment("FaceParts.chkVert_CheckStateChanged " & chkVert.CheckState) 
+        AddDebugComment("FaceParts.chkVert_CheckStateChanged " & chkVert.CheckState)
 
         DisplayPreview()
 
@@ -215,14 +215,14 @@ Public Class FaceParts
 
     Private Sub chkHoriz_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles chkHoriz.CheckStateChanged
 
-        AddDebugComment("FaceParts.chkHoriz_CheckStateChanged " & chkVert.CheckState) 
+        AddDebugComment("FaceParts.chkHoriz_CheckStateChanged " & chkVert.CheckState)
 
         DisplayPreview()
 
     End Sub
     Private Sub DisplayPreview()
 
-        AddDebugComment("FaceParts.DisplayPreview - start") 
+        AddDebugComment("FaceParts.DisplayPreview - start")
 
         'Dim image As System.Drawing.Image = System.Drawing.Image.FromFile(Dir & ListView1.SelectedItems(0).Tag)
         'picPreview.Image = ResizeImage(Dir & ListView1.SelectedItems(0).Tag, picPreview.Height - 10)
@@ -240,7 +240,7 @@ Public Class FaceParts
 
         picPreview.Image = image
 
-        AddDebugComment("FaceParts.DisplayPreview - end") 
+        AddDebugComment("FaceParts.DisplayPreview - end")
 
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
@@ -251,7 +251,7 @@ Public Class FaceParts
     End Sub
     Private Sub SetBackcolors()
 
-        AddDebugComment("FaceParts.SetBackcolors") 
+        AddDebugComment("FaceParts.SetBackcolors")
 
         btnSelect.BackColor = Color.FromArgb(0, btnSelect.BackColor)
         btnClose.BackColor = Color.FromArgb(0, btnClose.BackColor)

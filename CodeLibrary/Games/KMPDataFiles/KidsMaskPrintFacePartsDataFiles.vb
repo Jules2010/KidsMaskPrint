@@ -32,7 +32,7 @@ Public Module KidsMaskPrintFacePartsDataFiles
                 FPs = JunglePack.JunglePack
                 FileName = "Jungle.dat"
         End Select
-        
+
 
         Try : File.Delete(Dirs(0) & FileName) : Catch : End Try
         Try : File.Delete(Dirs(1) & FileName) : Catch : End Try

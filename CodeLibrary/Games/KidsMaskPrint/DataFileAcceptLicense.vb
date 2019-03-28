@@ -2,7 +2,7 @@ Module DataFileAcceptLicense
     Friend Function AcceptDataFileLicense(ByVal pDataFileDesc As String, ByVal pProdNum As String, _
         ByVal pform As Form, ByVal pstrProposedKeyFile As String, ByRef pstrDataFileState As String)
 
-        Busy(pform, True) 
+        Busy(pform, True)
 
         '---- This part uses program license to derive serial block which data file license will need ----
         Dim Dets As strat1.UnlockDetails
@@ -16,7 +16,7 @@ Module DataFileAcceptLicense
         '---- This part uses program license to derive serial block which data file license will need ----
 
         Dim lSerialCode As String = Dets.strSerialBlock & "-" & DataFileProductIdent(pProdNum) & "-" & _
-            ProduceCheckDigs(Dets.strSerialBlock & "-" & DataFileProductIdent(pProdNum)) 
+            ProduceCheckDigs(Dets.strSerialBlock & "-" & DataFileProductIdent(pProdNum))
 
         Dim dlgResult As DialogResult
 
@@ -35,7 +35,7 @@ Module DataFileAcceptLicense
                 Dim clsEnc As New MyCrypto()
 
                 If x(.LicenseCode) = "" Then
-                    Busy(pform, False) 
+                    Busy(pform, False)
                     MessageBox.Show("Your license code was not accepted!", NameMe(""), MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     Exit Function
                 End If
@@ -64,7 +64,7 @@ Module DataFileAcceptLicense
                 End Try
 
                 If lintCheck <> 245 + 12 Then
-                    Busy(pform, False) 
+                    Busy(pform, False)
                     MessageBox.Show("Your license code was not accepted!", NameMe(""), MessageBoxButtons.OK, MessageBoxIcon.Warning)
 
                     Try
@@ -79,18 +79,18 @@ Module DataFileAcceptLicense
                     End Try
 
                     System.IO.File.Copy(lstrEncFile, pstrProposedKeyFile)
-                    Busy(pform, False) 
+                    Busy(pform, False)
                     MessageBox.Show("Your license code was accepted!", NameMe(""), MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    pstrDataFileState = "1" 
+                    pstrDataFileState = "1"
                 End If
             End If
 
         End With
 
-        Busy(pform, False) 
+        Busy(pform, False)
     End Function
     Private Function ProduceCheckDigs(ByVal pstrInput As String) As String
-        
+
         Dim Out As Integer = 0
 
         Try

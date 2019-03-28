@@ -43,7 +43,7 @@ Friend Class options
     Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     Friend WithEvents btnOK As System.Windows.Forms.Button
     Friend WithEvents btnCancel As System.Windows.Forms.Button
@@ -234,7 +234,7 @@ Friend Class options
     Dim LastIndex As Integer = -1
     Private Sub options_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        AddDebugComment("options.options_Load - start") 
+        AddDebugComment("options.options_Load - start")
 
         If IsAboveOrEqualWinXp() = True Then
             btnOK.FlatStyle = FlatStyle.System
@@ -282,7 +282,7 @@ Friend Class options
 
         SetBackcolors()
 
-        AddDebugComment("options.options_Load - end") 
+        AddDebugComment("options.options_Load - end")
     End Sub
     Private Sub btnOK_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnOK.Click
 
@@ -293,7 +293,7 @@ Friend Class options
     End Sub
     Private Sub btnCancel_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnCancel.Click
 
-        AddDebugComment("options.btnCancel_Click") 
+        AddDebugComment("options.btnCancel_Click")
         Me.Close()
 
     End Sub
@@ -304,7 +304,7 @@ Friend Class options
     End Sub
     Private Sub SaveChanges()
 
-        AddDebugComment("options.SaveChanges - start") 
+        AddDebugComment("options.SaveChanges - start")
 
         StoreSelections(LastIndex)
 
@@ -322,12 +322,12 @@ Friend Class options
             DataArr.Add(ThisData)
         Next lintArrInc
 
-        AddDebugComment("options.SaveChanges - end") 
+        AddDebugComment("options.SaveChanges - end")
 
     End Sub
     Private Sub StoreSelections(ByVal index As Integer)
 
-        AddDebugComment("options.StoreSelections ") 
+        AddDebugComment("options.StoreSelections ")
 
         Dim ThisData As Data = DataArr(index)
         With ThisData
@@ -341,7 +341,7 @@ Friend Class options
     End Sub
     Private Sub LoadSelection()
 
-        AddDebugComment("options.LoadSelection") 
+        AddDebugComment("options.LoadSelection")
 
         Dim ThisData As Data = DataArr(ComboBox1.SelectedIndex)
         With ThisData
@@ -402,7 +402,7 @@ Friend Class options
 
     Private Sub options_Closing(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
 
-        AddDebugComment("options.options_Closing") 
+        AddDebugComment("options.options_Closing")
 
     End Sub
 End Class

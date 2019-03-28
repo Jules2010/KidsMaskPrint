@@ -97,7 +97,7 @@ Friend Class DataFilePurchasing
     Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     Friend WithEvents lstDataFiles As System.Windows.Forms.ListBox
     Friend WithEvents btnBuy As WinOnly.BevelButton
@@ -187,7 +187,7 @@ Friend Class DataFilePurchasing
 
 #End Region
     Private Sub lstDataFiles_DrawItem(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles lstDataFiles.DrawItem
-        
+
         Dim brush As Brush
         Dim Itemselected As Boolean
 
@@ -221,7 +221,7 @@ Friend Class DataFilePurchasing
     Private Sub DataFilePurchasing_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
 
-        AddDebugComment("DataFilePurchasing.DataFilePurchasing_Load 1") 
+        AddDebugComment("DataFilePurchasing.DataFilePurchasing_Load 1")
 
         lstDataFiles.Items.Clear()
 
@@ -239,7 +239,7 @@ Friend Class DataFilePurchasing
 
         Try : lstDataFiles.SelectedIndex = 0 : Catch : End Try
 
-        AddDebugComment("DataFilePurchasing.DataFilePurchasing_Load 2") 
+        AddDebugComment("DataFilePurchasing.DataFilePurchasing_Load 2")
 
     End Sub
     Private Function SetupButtons()
@@ -292,7 +292,7 @@ Friend Class DataFilePurchasing
     End Sub
     Private Sub lstDataFiles_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles lstDataFiles.SelectedIndexChanged
 
-        AddDebugComment("DataFilePurchasing.lstDataFiles_SelectedIndexChanged") 
+        AddDebugComment("DataFilePurchasing.lstDataFiles_SelectedIndexChanged")
 
         If mDataFileState(sender.selectedindex) = "1" Then ' 1 = OK
             btnBuy.Enabled = False
@@ -305,29 +305,29 @@ Friend Class DataFilePurchasing
     End Sub
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
 
-        AddDebugComment("DataFilePurchasing.btnClose_Click") 
+        AddDebugComment("DataFilePurchasing.btnClose_Click")
 
-        SaveSetting("BuyPackShowNext", Not chkDontShowNext.Checked, InitalXMLConfig.XmlConfigType.AppSettings, "") 
+        SaveSetting("BuyPackShowNext", Not chkDontShowNext.Checked, InitalXMLConfig.XmlConfigType.AppSettings, "")
 
         Me.Close()
     End Sub
     Private Sub btnBuy_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBuy.Click
 
-        AddDebugComment("DataFilePurchasing.btnBuy_Click 1") 
+        AddDebugComment("DataFilePurchasing.btnBuy_Click 1")
 
         Dim ProdNum As String = mProductNumbers(lstDataFiles.SelectedIndex)
         Dim ProposedKeyFile As String = mDataFiles(lstDataFiles.SelectedIndex).ToString.ToLower.Replace(".dat", ".key")
 
         AcceptDataFileLicense(mDataFileDescriptions(lstDataFiles.SelectedIndex), ProdNum, Me, ProposedKeyFile, mDataFileState(lstDataFiles.SelectedIndex))
 
-        AddDebugComment("DataFilePurchasing.btnBuy_Click 2") 
+        AddDebugComment("DataFilePurchasing.btnBuy_Click 2")
 
     End Sub
     Private Sub btnLicense_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLicense.Click
 
-        AddDebugComment("DataFilePurchasing.btnLicense_Click 1") 
+        AddDebugComment("DataFilePurchasing.btnLicense_Click 1")
 
-        Busy(Me, True) 
+        Busy(Me, True)
 
         Dim ProdNum As String = mProductNumbers(lstDataFiles.SelectedIndex)
         Dim ProposedKeyFile As String = mDataFiles(lstDataFiles.SelectedIndex).ToString.ToLower.Replace(".dat", ".key")
@@ -355,19 +355,19 @@ Friend Class DataFilePurchasing
                 Tab() & .str8OrderDate & " " & .str9TransNum
         End With
 
-        Busy(Me, False) 
+        Busy(Me, False)
 
         MessageBox.Show(msg, NameMe(mDataFileDescriptions(lstDataFiles.SelectedIndex)))
 
-        AddDebugComment("DataFilePurchasing.btnLicense_Click 2") 
+        AddDebugComment("DataFilePurchasing.btnLicense_Click 2")
 
     End Sub
     Private Sub DataFilePurchasing_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-        Me.Invalidate() 
+        Me.Invalidate()
     End Sub
 
     Private Sub DataFilePurchasing_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
-        
+
         If e.KeyCode = Keys.Escape Then
             btnClose_Click(Nothing, Nothing)
         End If

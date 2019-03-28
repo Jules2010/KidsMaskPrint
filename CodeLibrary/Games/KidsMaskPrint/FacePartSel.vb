@@ -2,7 +2,7 @@ Imports System.IO
 
 Public Class FacePartSel
     Inherits System.Windows.Forms.Form
-    Dim mRetPart As Part 
+    Dim mRetPart As Part
     Public Property RetPart() As Part
         Get
             Return mRetPart
@@ -39,7 +39,7 @@ Public Class FacePartSel
         End Set
     End Property
 
-    Dim m_PieceName As String 
+    Dim m_PieceName As String
     Public Property PieceName() As String
         Get
             Return m_PieceName
@@ -95,7 +95,7 @@ Public Class FacePartSel
     Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     Friend WithEvents ListView1 As System.Windows.Forms.ListView
     Friend WithEvents btnClose As WinOnly.BevelButton
@@ -235,9 +235,9 @@ Public Class FacePartSel
 
     Private Sub FaceParts_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        AddDebugComment("FacePartsSel.FaceParts_Load - start") 
+        AddDebugComment("FacePartsSel.FaceParts_Load - start")
 
-        SetBackcolors() 
+        SetBackcolors()
         'Dim ImgList As New ImageList()
 
 
@@ -255,25 +255,25 @@ Public Class FacePartSel
             ListView1.Items.Add(NewLVItem)
         Next
 
-        AddDebugComment("FacePartsSel.FaceParts_Load - end") 
+        AddDebugComment("FacePartsSel.FaceParts_Load - end")
 
     End Sub
 
     Private Sub btnClose_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClose.Click
 
-        AddDebugComment("FacePartsSel.btnClose_Click - start") 
+        AddDebugComment("FacePartsSel.btnClose_Click - start")
 
         mRetPart = Nothing
-        m_PieceName = "" 
+        m_PieceName = ""
 
         Me.Close()
 
-        AddDebugComment("FacePartsSel.btnClose_Click - end") 
+        AddDebugComment("FacePartsSel.btnClose_Click - end")
 
     End Sub
     Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
 
-        AddDebugComment("FacePartsSel.btnSelect_Click - start") 
+        AddDebugComment("FacePartsSel.btnSelect_Click - start")
 
         If ListView1.SelectedItems.Count > 1 Then
             ListView1_Click(Nothing, Nothing)
@@ -281,13 +281,13 @@ Public Class FacePartSel
 
         Me.Close()
 
-        AddDebugComment("FacePartsSel.btnSelect_Click - end") 
+        AddDebugComment("FacePartsSel.btnSelect_Click - end")
 
     End Sub
 
     Private Sub ListView1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ListView1.Click
 
-        AddDebugComment("FacePartsSel.ListView1_Click - start") 
+        AddDebugComment("FacePartsSel.ListView1_Click - start")
 
         DisplayPreview()
 
@@ -306,18 +306,18 @@ Public Class FacePartSel
         m_SourceDataFileName = ReturnNthStr(ListView1.SelectedItems(0).Tag, 1, "#")
         m_DataFileItemNum = ReturnNthStr(ListView1.SelectedItems(0).Tag, 2, "#")
 
-        AddDebugComment("FacePartsSel.ListView1_Click - end") 
+        AddDebugComment("FacePartsSel.ListView1_Click - end")
 
     End Sub
     Private Sub DisplayPreview()
 
-        AddDebugComment("FacePartsSel.DisplayPreview - start") 
+        AddDebugComment("FacePartsSel.DisplayPreview - start")
 
         Dim lImage As System.Drawing.Image
-        
+
         GetDataFileImageItem(ReturnNthStr( _
             ListView1.SelectedItems(0).Tag, 1, "#"), ReturnNthStr(ListView1.SelectedItems(0).Tag, 2, "#"), mRetPart, m_PieceName)
-        
+
         lImage = mRetPart.FullImage
 
         lImage = ResizeImageObj(lImage, picPreview.Height - 10)
@@ -342,13 +342,13 @@ Public Class FacePartSel
         End If
         picPreview.Image = lImage
 
-        AddDebugComment("FacePartsSel.DisplayPreview - end") 
+        AddDebugComment("FacePartsSel.DisplayPreview - end")
 
     End Sub
 
     Private Sub rdoPos_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles rdoLeft.Click, rdoBoth.Click, rdoRight.Click
 
-        AddDebugComment("FacePartsSel.rdoPos_Click - start") 
+        AddDebugComment("FacePartsSel.rdoPos_Click - start")
 
         If rdoLeft.Checked = True Then
             mPositionSelection = FacePartEnums.ePositionSelection.Left
@@ -358,20 +358,20 @@ Public Class FacePartSel
             mPositionSelection = FacePartEnums.ePositionSelection.Both
         End If
 
-        AddDebugComment("FacePartsSel.rdoPos_Click - end " & mPositionSelection) 
+        AddDebugComment("FacePartsSel.rdoPos_Click - end " & mPositionSelection)
 
     End Sub
 
     Private Sub ListView1_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles ListView1.DoubleClick
 
-        AddDebugComment("FacePartsSel.ListView1_DoubleClick") 
+        AddDebugComment("FacePartsSel.ListView1_DoubleClick")
 
         btnSelect_Click(Nothing, Nothing)
 
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        
+
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
         'Me.Update()
@@ -380,17 +380,17 @@ Public Class FacePartSel
 
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
 
-        AddDebugComment("FacePartsSel.btnHelp_Click") 
+        AddDebugComment("FacePartsSel.btnHelp_Click")
 
-        
+
         Help.ShowHelp(Me, GetHelpFile, GetHelpTopic(Main.HelpTopicEnum.FacePartSelect))
 
     End Sub
     Private Sub SetBackcolors()
 
-        AddDebugComment("FacePartsSel.SetBackcolors") 
+        AddDebugComment("FacePartsSel.SetBackcolors")
 
-        
+
         rdoLeft.BackColor = Color.FromArgb(0, rdoLeft.BackColor)
         rdoBoth.BackColor = Color.FromArgb(0, rdoBoth.BackColor)
         rdoRight.BackColor = Color.FromArgb(0, rdoRight.BackColor)

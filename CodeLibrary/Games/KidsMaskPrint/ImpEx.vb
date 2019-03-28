@@ -9,7 +9,7 @@ Friend Class ImpEx
         End Set
     End Property
     Dim mstrLabel As String
-    Friend WriteOnly Property Label() As String 
+    Friend WriteOnly Property Label() As String
         Set(ByVal Value As String)
             mstrLabel = Value
         End Set
@@ -51,7 +51,7 @@ Friend Class ImpEx
     Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     Friend WithEvents lblRegisterInstructions As System.Windows.Forms.Label
     Friend WithEvents txtTextBlock As System.Windows.Forms.TextBox
@@ -129,50 +129,50 @@ Friend Class ImpEx
 
     Private Sub ImpEx_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        AddDebugComment("ImpEx.ImpEx_Load - start") 
+        AddDebugComment("ImpEx.ImpEx_Load - start")
 
-                If IsAboveOrEqualWinXp() = True Then  
+                If IsAboveOrEqualWinXp() = True Then
             btnOK.FlatStyle = FlatStyle.System
             btnCancel.FlatStyle = FlatStyle.System
-        End If 
-        
-        SetBackcolors() 
+        End If
+
+        SetBackcolors()
 
         Me.Text = mstrCaption
         'lblRegisterInstructions.Text = "To unlock " & mstrProductName & _
         '", paste the license section you received, when you purchased the product, into the box below (using Ctrl+V) and then click OK!"
-        lblRegisterInstructions.Text = mstrLabel 
+        lblRegisterInstructions.Text = mstrLabel
 
-        AddDebugComment("ImpEx.ImpEx_Load - end") 
+        AddDebugComment("ImpEx.ImpEx_Load - end")
 
     End Sub
     Private Sub btnOK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOK.Click
 
-        AddDebugComment("ImpEx.btnOK_Click - start") 
+        AddDebugComment("ImpEx.btnOK_Click - start")
 
                 If txtTextBlock.Text = "" Then
             Exit Sub
         End If
-        
+
         Me.DialogResult = DialogResult.OK
         Me.Close()
 
-        AddDebugComment("ImpEx.btnOK_Click - end") 
+        AddDebugComment("ImpEx.btnOK_Click - end")
 
     End Sub
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
 
-        AddDebugComment("ImpEx.btnCancel_Click - start") 
+        AddDebugComment("ImpEx.btnCancel_Click - start")
 
         Me.DialogResult = DialogResult.Cancel
         Me.Close()
 
-        AddDebugComment("ImpEx.btnCancel_Click - end") 
+        AddDebugComment("ImpEx.btnCancel_Click - end")
 
     End Sub
     Sub SetBackcolors()
 
-        AddDebugComment("ImpEx.SetBackcolors") 
+        AddDebugComment("ImpEx.SetBackcolors")
 
         lblRegisterInstructions.BackColor = Color.FromArgb(0, lblRegisterInstructions.BackColor)
         btnOK.BackColor = Color.FromArgb(0, btnOK.BackColor)
@@ -186,6 +186,6 @@ Friend Class ImpEx
 
     End Sub
     Private Sub ImpEx_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-        Me.Invalidate() 
+        Me.Invalidate()
     End Sub
 End Class

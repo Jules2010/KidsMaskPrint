@@ -1,19 +1,19 @@
-'Helper class representing a piece of a  
+'Helper class representing a piece of a
 Friend Class Piece
-    Private m_location As Point 'The top-left corner of the piece  
-    Private m_bitmap As Bitmap 'The image used to draw the piece  
-    'Private m_BitmapName As String 
+    Private m_location As Point 'The top-left corner of the piece
+    Private m_bitmap As Bitmap 'The image used to draw the piece
+    'Private m_BitmapName As String
     Private m_VertFlip As Boolean = False
     Private m_HorizFlip As Boolean = False
-    Private m_PieceName As String 
-    'Constructs a new Piece object  
-    '<param name="imagePath"> The full path and filename of the image to load </param> 
+    Private m_PieceName As String
+    'Constructs a new Piece object
+    '<param name="imagePath"> The full path and filename of the image to load </param>
     Friend Sub New()
 
     End Sub 'New
 
     Friend Sub SetImage(ByVal imagePath As String)
-        m_bitmap = Nothing 
+        m_bitmap = Nothing
         m_bitmap = Bitmap.FromFile(imagePath)  '
 
         If m_VertFlip = True Then
@@ -28,7 +28,7 @@ Friend Class Piece
     End Sub 'New
 
     Friend Sub SetImageObj(ByVal pImage As Image)
-        m_bitmap = Nothing 
+        m_bitmap = Nothing
         m_bitmap = pImage
 
         If m_VertFlip = True Then
@@ -41,7 +41,7 @@ Friend Class Piece
 
         m_location = Point.Empty
     End Sub 'New
-    'The top-left corner of the piece  
+    'The top-left corner of the piece
     Friend Property Location() As Point
         Get
             Return m_location
@@ -51,14 +51,14 @@ Friend Class Piece
         End Set
     End Property
 
-    'The image used to draw the piece  
+    'The image used to draw the piece
     Friend ReadOnly Property Bitmap() As Bitmap
         Get
             Return m_bitmap
         End Get
     End Property
 
-    Friend Property PieceName() As String 
+    Friend Property PieceName() As String
         Get
             Return m_PieceName
         End Get
@@ -103,7 +103,7 @@ Friend Class Piece
         End Set
     End Property
 
-    'The rectangle where the piece is drawn  
+    'The rectangle where the piece is drawn
     Friend ReadOnly Property Bounds() As Rectangle
         Get
             Return New Rectangle(m_location, m_bitmap.Size)
@@ -111,12 +111,12 @@ Friend Class Piece
     End Property
 
 
-    'Returns true if the testPoint is over a non-transparent pixel on the piece where it is drawn  
+    'Returns true if the testPoint is over a non-transparent pixel on the piece where it is drawn
     Friend Function IsPointOverMe(ByVal testPoint As Point) As Boolean
-        'Is it within the drawn rectangle? 
+        'Is it within the drawn rectangle?
         Dim isOver As Boolean = Bounds.Contains(testPoint)
         If isOver Then
-            'Is it non-transparent? 
+            'Is it non-transparent?
             isOver = m_bitmap.GetPixel(testPoint.X - m_location.X, testPoint.Y - m_location.Y).A > 0
         End If
 

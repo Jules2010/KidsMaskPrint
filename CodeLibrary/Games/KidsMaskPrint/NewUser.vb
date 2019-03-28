@@ -40,7 +40,7 @@ Friend Class NewUser
     Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     Friend WithEvents txtName As System.Windows.Forms.TextBox
     Friend WithEvents btnOK As WinOnly.BevelButton
@@ -143,17 +143,17 @@ Friend Class NewUser
     End Sub
 
 #End Region
-    Dim mbooKeyStroke As Boolean 
-    Dim mbooIgnoreChanges As Boolean 
+    Dim mbooKeyStroke As Boolean
+    Dim mbooIgnoreChanges As Boolean
 
     Private Sub NewUser_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         'check DAT file for users, if no uses don't show buttons
-        Me.SuspendLayout() 
+        Me.SuspendLayout()
 
-        AddDebugComment("NewUser.NewUser_Load - start") 
+        AddDebugComment("NewUser.NewUser_Load - start")
 
-        Me.Text = NameMe("Welcome") 
+        Me.Text = NameMe("Welcome")
 
                 Dim InitialConfig As New InitalXMLConfig(InitalXMLConfig.XmlConfigType.AppSettings)
         Dim lstrUsersStr As String
@@ -165,26 +165,26 @@ Friend Class NewUser
         End With
         InitialConfig = Nothing
 
-        If lstrUsersStr <> "" Then 
+        If lstrUsersStr <> "" Then
             lstrUsersStr = ReplaceAll(lstrUsersStr, ChrGet(255) & ChrGet(255), ChrGet(255))
 
             If RightGet(lstrUsersStr, 1) = ChrGet(255) Then
                 lstrUsersStr = lstrUsersStr.Remove(lstrUsersStr.Length - 1, 1)
             End If
-        End If 
+        End If
 
         If lstrUsersStr <> "" Then
             mUsers = Microsoft.VisualBasic.Split(lstrUsersStr, ChrGet(255))
         End If
-        
-        AddDebugComment("NewUser.NewUser_Load - end") 
 
-        Me.ResumeLayout() 
+        AddDebugComment("NewUser.NewUser_Load - end")
+
+        Me.ResumeLayout()
 
     End Sub
     Private Sub btnOK_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnOK.Click
 
-        AddDebugComment("NewUser.btnOK_Click - start") 
+        AddDebugComment("NewUser.btnOK_Click - start")
 
         If txtName.Text.Trim <> "" Then
             Dim lintArrInc As Integer
@@ -194,7 +194,7 @@ Friend Class NewUser
 
                 For lintArrInc = 0 To mUsers.GetUpperBound(0)
                     If mUsers(lintArrInc).ToUpper = txtName.Text.Trim.ToUpper Then
-                        mSelectedUser = txtName.Text.Trim.Replace(" ", "_") 
+                        mSelectedUser = txtName.Text.Trim.Replace(" ", "_")
                         Me.Close()
                         Exit Sub
                     End If
@@ -204,8 +204,8 @@ Friend Class NewUser
                 ReDim Preserve mUsers(mUsers.GetUpperBound(0) + 1)
             End If
 
-            mUsers(mUsers.GetUpperBound(0)) = txtName.Text.Trim.Replace(" ", "_") 
-            mSelectedUser = txtName.Text.Trim.Replace(" ", "_") 
+            mUsers(mUsers.GetUpperBound(0)) = txtName.Text.Trim.Replace(" ", "_")
+            mSelectedUser = txtName.Text.Trim.Replace(" ", "_")
 
         Else
             Exit Sub
@@ -214,7 +214,7 @@ Friend Class NewUser
                 UIStyle.gPaintClr1 = Color.Empty
         UIStyle.gPaintClr2 = Color.Empty
 
-        AddDebugComment("NewUser.btnOK_Click - 1") 
+        AddDebugComment("NewUser.btnOK_Click - 1")
 
         SaveSetting("Colours", "One", InitalXMLConfig.XmlConfigType.UserSettings, mSelectedUser)
 
@@ -222,18 +222,18 @@ Friend Class NewUser
         SaveSetting("Users", lstrUsersStr, InitalXMLConfig.XmlConfigType.AppSettings, "")
         Me.Close()
 
-        AddDebugComment("NewUser.btnOK_Click - end") 
+        AddDebugComment("NewUser.btnOK_Click - end")
 
     End Sub
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
 
-        AddDebugComment("NewUser.btnHelp_Click") 
-        
+        AddDebugComment("NewUser.btnHelp_Click")
+
         Help.ShowHelp(Me, GetHelpFile, GetHelpTopic(Main.HelpTopicEnum.SignIn))
 
     End Sub
     Private Sub NewUser_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-        Me.Invalidate() 
+        Me.Invalidate()
     End Sub
     Private Sub txtName_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtName.KeyDown
         If e.KeyCode = Keys.Enter Then
@@ -241,7 +241,7 @@ Friend Class NewUser
         End If
     End Sub
     Private Sub txtName_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtName.KeyPress
-        
+
         If Char.IsLetterOrDigit(e.KeyChar) = False AndAlso Convert.ToInt32(e.KeyChar) <> 8 Then
             e.Handled = True
         Else
@@ -250,7 +250,7 @@ Friend Class NewUser
 
     End Sub
     Private Sub txtName_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtName.TextChanged
-        
+
         If Not mbooKeyStroke AndAlso Not mbooIgnoreChanges Then
             ' text changed by some event other than a keystroke.
             Dim strNewText As String = String.Empty

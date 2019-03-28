@@ -33,7 +33,7 @@ Friend Class QuestionBox
     Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.btnOk = New WinOnly.BevelButton()
@@ -129,9 +129,9 @@ Friend Class QuestionBox
     End Sub
     Private Sub QuestionBox_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        SetBackcolors() 
+        SetBackcolors()
 
-        txtAnswer.Multiline = False 
+        txtAnswer.Multiline = False
 
     End Sub
     Private Sub txtAnswer_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtAnswer.KeyDown
@@ -161,7 +161,7 @@ Friend Class QuestionBox
     End Sub
 
     Private Sub txtAnswer_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtAnswer.KeyPress
-        
+
         If e.KeyChar = CR() Then
             e.Handled = True
         End If
@@ -179,7 +179,7 @@ Friend Class QuestionBox
 
     End Sub
     Private Sub QuestionBox_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-        Me.Invalidate() 
+        Me.Invalidate()
     End Sub
 End Class
 

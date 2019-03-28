@@ -793,7 +793,7 @@ Module JunglePack
             .Parts.Add(PantherEye) '	17
             .Parts.Add(PantherEar) '	18
             .Parts.Add(PantherNose) '	19
-            .Parts.Add(PantherWhiskers) '20	
+            .Parts.Add(PantherWhiskers) '20
             .Parts.Add(PantherBridge) '	 21
             .Parts.Add(PantherEyebrow) ' 22
 

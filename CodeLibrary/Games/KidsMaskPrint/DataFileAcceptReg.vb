@@ -71,7 +71,7 @@ Friend Class DataFileAcceptReg
     Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     Friend WithEvents lblRegisterInstructions As WinOnly.RichTextBoxLabel
     Friend WithEvents txtRegCode As System.Windows.Forms.TextBox
@@ -268,16 +268,16 @@ Friend Class DataFileAcceptReg
 
     End Function
     Private Sub DataFileAcceptReg_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-        Me.Invalidate() 
+        Me.Invalidate()
     End Sub
     Private Sub DataFileAcceptReg_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
-        
+
         If e.KeyCode = Keys.Escape Then
             btnCancel_Click(Nothing, Nothing)
         End If
     End Sub
     Private Sub txtRegCode_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtRegCode.KeyDown
-        
+
         If e.KeyCode = Keys.Escape Then
             btnCancel_Click(Nothing, Nothing)
         End If

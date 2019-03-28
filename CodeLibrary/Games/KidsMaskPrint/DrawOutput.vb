@@ -2,7 +2,7 @@ Imports System.Drawing
 Imports System.Drawing.Drawing2D
 
 Friend Module DrawOutput
-    Dim ErrCount As Integer = 1 
+    Dim ErrCount As Integer = 1
     Friend Sub DrawOutput(ByVal RetG As Graphics, ByVal pbooPagePrint As Boolean, ByVal PictureBox1 As PictureBox, _
         ByVal mousePath() As GraphicsPath, ByVal ReversemousePath() As GraphicsPath, _
         ByVal pSize As Single, ByVal ThisColour As Color, ByVal Mirrored As Boolean, ByVal Guided As Boolean, _
@@ -10,7 +10,7 @@ Friend Module DrawOutput
         ByVal lUserPieces As FacePartStuctureDataFile, ByVal pSortOrderForData As SortOrderForData)
 
         Dim errpos As Integer
-        Dim lintArrInc As Integer 
+        Dim lintArrInc As Integer
 
         Try ' error trapping
 
@@ -22,20 +22,20 @@ Friend Module DrawOutput
 
                 errpos = 1
 
-                ' Set the pixel offset mode. It looks better this way. 
+                ' Set the pixel offset mode. It looks better this way.
                 If (m_zoom = 1) Then '.0F) Then
                     RetG.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half
                 Else
                     RetG.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Default
 
-                    ' Set the graphics transform to scale and/or offset drawing calls. 
+                    ' Set the graphics transform to scale and/or offset drawing calls.
                     If (m_zoom <> 1.0F) Then 'Or m_origin <> Point.Empty) Then
                         RetG.Transform = New System.Drawing.Drawing2D.Matrix(m_zoom, 0, 0, m_zoom, m_origin.X * m_zoom, m_origin.Y * m_zoom)
                     Else
                         RetG.ResetTransform()
 
-                        ' Set the interpolation mode for best when zoomed out, 
-                        ' or off when zoomed in. 
+                        ' Set the interpolation mode for best when zoomed out,
+                        ' or off when zoomed in.
                         If (m_zoom < 1.0F) Then
                             RetG.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic
                         Else
@@ -49,15 +49,15 @@ Friend Module DrawOutput
 
             errpos = 3
 
-            Dim g As Graphics 
-            g = RetG 
+            Dim g As Graphics
+            g = RetG
 
             errpos = 4
-            g.FillRectangle(Brushes.White, 0, 0, PictureBox1.Size.Width, PictureBox1.Size.Height) 
+            g.FillRectangle(Brushes.White, 0, 0, PictureBox1.Size.Width, PictureBox1.Size.Height)
 
             errpos = 5
 
-            '----- PREDRAW SO USERS CAN SEE DRAWING IN REAL TIME ---------- 
+            '----- PREDRAW SO USERS CAN SEE DRAWING IN REAL TIME ----------
             If Not mousePath Is Nothing Then
                 For lintArrInc = 0 To pBrush.GetUpperBound(0)
                     Dim ThisGraphicsPath As New GraphicsPath()
@@ -92,9 +92,9 @@ Friend Module DrawOutput
                         pReverseBrush(lintArrInc).BrushWidth), ThisGraphicsPath) : Catch : End Try
                 Next lintArrInc
             End If
-            '----- PREDRAW SO USERS CAN SEE DRAWING IN REAL TIME ---------- 
+            '----- PREDRAW SO USERS CAN SEE DRAWING IN REAL TIME ----------
 
-            
+
             Dim PieceInc As Integer
             Dim NormalGPInc As Integer
             Dim ReverseGPInc As Integer
@@ -104,9 +104,9 @@ Friend Module DrawOutput
                 Select Case CType(pSortOrderForData.DataType(lintArrInc), SortOrderForData.eDataType)
                     Case SortOrderForData.eDataType.PackPieces
 
-                        'Draw each piece 
+                        'Draw each piece
                         Dim iPiece As Piece
-                        iPiece = pPieces(PieceInc) 
+                        iPiece = pPieces(PieceInc)
                         Dim ThisPieceBounds As Rectangle
                         ThisPieceBounds = iPiece.Bounds
                         If pbooPagePrint = True Then
@@ -116,86 +116,86 @@ Friend Module DrawOutput
                         g.DrawImage(iPiece.Bitmap, ThisPieceBounds)
                         errpos = 6
 
-                        PieceInc += 1 
+                        PieceInc += 1
 
                     Case SortOrderForData.eDataType.UserPieces
 
                         Dim iUserPiece As Part
-                        iUserPiece = lUserPieces.Parts(UserPieceInc) 
-                        Dim ThisPieceBounds As Rectangle ' 
-                        ThisPieceBounds = iUserPiece.Bounds 
+                        iUserPiece = lUserPieces.Parts(UserPieceInc)
+                        Dim ThisPieceBounds As Rectangle '
+                        ThisPieceBounds = iUserPiece.Bounds
                         If pbooPagePrint = True Then
                             ThisPieceBounds.X += pOffSet.X
                             ThisPieceBounds.Y += pOffSet.Y
                         End If
                         g.DrawImage(iUserPiece.FullImage, ThisPieceBounds)
 
-                        UserPieceInc += 1 
+                        UserPieceInc += 1
 
-                    Case SortOrderForData.eDataType.NormalGraphicsPath 'SO CASE 
+                    Case SortOrderForData.eDataType.NormalGraphicsPath 'SO CASE
                         '###################################################################################
                         '###                                                                             ###
-                        '###  WARNING: After this point Null errors happen with graphics paths.          ### 
+                        '###  WARNING: After this point Null errors happen with graphics paths.          ###
                         '###  I beleive this is caused by adding extra paths to make the undo feature    ###
                         '###  work better.  So if you ever add any new graphic path statments use a try  ###
-                        '###  catch block around them. 
+                        '###  catch block around them.
                         '###################################################################################
 
-                        If Not mousePath Is Nothing Then 
+                        If Not mousePath Is Nothing Then
                             errpos = 7
                             errpos = 8
                             Dim ThisGraphicsPath As New GraphicsPath()
-                            Try 
+                            Try
                                 ThisGraphicsPath = mousePath(NormalGPInc).Clone
-                            Catch 'EX As Exception 
-                                ThisGraphicsPath = mousePath(NormalGPInc) 
+                            Catch 'EX As Exception
+                                ThisGraphicsPath = mousePath(NormalGPInc)
                             End Try
 
                             errpos = 9
                             If pbooPagePrint = True Then
                                 errpos = 10
-                                Try 
+                                Try
                                     MoveGP(pOffSet.X, pOffSet.Y, ThisGraphicsPath)
-                                Catch 
+                                Catch
                                     '
-                                End Try 
+                                End Try
                             End If
                             errpos = 11
                             Try : g.DrawPath(New Pen(pBrush(NormalGPInc).BrushColour, _
                                 pBrush(NormalGPInc).BrushWidth), ThisGraphicsPath) : Catch : End Try
                             errpos = 12
 
-                            NormalGPInc += 1 
+                            NormalGPInc += 1
                         End If
                         errpos = 13
 
                     Case SortOrderForData.eDataType.ReverseGraphicsPath
 
-                        If Not ReversemousePath Is Nothing Then 
+                        If Not ReversemousePath Is Nothing Then
                             errpos = 14
                             errpos = 15
                             Dim ThisGraphicsPath As New GraphicsPath()
                             errpos = 16
-                            Try 
+                            Try
                                 ThisGraphicsPath = ReversemousePath(ReverseGPInc).Clone
-                            Catch 'EX As Exception 
-                                ThisGraphicsPath = ReversemousePath(ReverseGPInc) 
+                            Catch 'EX As Exception
+                                ThisGraphicsPath = ReversemousePath(ReverseGPInc)
                             End Try
 
                             errpos = 17
                             If pbooPagePrint = True Then
                                 errpos = 18
-                                Try 
+                                Try
                                     MoveGP(pOffSet.X, pOffSet.Y, ThisGraphicsPath)
-                                Catch 
+                                Catch
                                     '
-                                End Try 
+                                End Try
                             End If
                             errpos = 19
                             Try : g.DrawPath(New Pen(pReverseBrush(ReverseGPInc).BrushColour, _
                                 pReverseBrush(ReverseGPInc).BrushWidth), ThisGraphicsPath) : Catch : End Try
                             errpos = 20
-                            ReverseGPInc += 1 
+                            ReverseGPInc += 1
                         End If
 
                 End Select
@@ -215,7 +215,7 @@ Friend Module DrawOutput
                     GuideFace(g, PictureBox1.Size.Width - 5, PictureBox1.Size.Height - 5)
                     errpos = 23
                 End If
-            End If 
+            End If
 
             If InStrGet((NameMe("")).ToUpper, "TRIAL") > 0 Then
                 If pbooPagePrint = True Then
@@ -245,7 +245,7 @@ Friend Module DrawOutput
 
     End Sub
     Private Sub MoveGP(ByVal x As Single, ByVal y As Single, ByRef gp As GraphicsPath)
-        
+
         Dim objTranslateMatrix As New Drawing2D.Matrix()
         With objTranslateMatrix
 
@@ -265,150 +265,150 @@ Friend Module DrawOutput
        ByVal pBrush() As PaintBrush, ByVal pReverseBrush() As PaintBrush, ByVal lUserPieces As FacePartStuctureDataFile, _
     ByVal pSortOrderForData As SortOrderForData) As Bitmap
 
-        AddDebugComment("DrawOutPut.DrawDetails - start") 
-        gstrProbDrawComtStack = " #1" 
+        AddDebugComment("DrawOutPut.DrawDetails - start")
+        gstrProbDrawComtStack = " #1"
         Dim lintArrInc As Integer
 
         Dim NewBitmap As Bitmap = New Bitmap(PictureBox1.Size.Width, PictureBox1.Size.Height)
-        gstrProbDrawComtStack &= " #2" 
+        gstrProbDrawComtStack &= " #2"
         Dim g As Graphics = Graphics.FromImage(NewBitmap)
-        gstrProbDrawComtStack &= " #3" 
-        g.FillRectangle(Brushes.White, 0, 0, PictureBox1.Size.Width, PictureBox1.Size.Height) 
-        gstrProbDrawComtStack &= " #4" 
+        gstrProbDrawComtStack &= " #3"
+        g.FillRectangle(Brushes.White, 0, 0, PictureBox1.Size.Width, PictureBox1.Size.Height)
+        gstrProbDrawComtStack &= " #4"
 
-        '----- PREDRAW SO USERS CAN SEE DRAWING IN REAL TIME ---------- 
+        '----- PREDRAW SO USERS CAN SEE DRAWING IN REAL TIME ----------
         If Not mousePath Is Nothing Then
-            gstrProbDrawComtStack &= " #5" 
+            gstrProbDrawComtStack &= " #5"
             For lintArrInc = 0 To pBrush.GetUpperBound(0)
-                gstrProbDrawComtStack &= " #6" 
+                gstrProbDrawComtStack &= " #6"
                 Dim ThisGraphicsPath As New GraphicsPath()
                 Try
-                    gstrProbDrawComtStack &= " #7" 
+                    gstrProbDrawComtStack &= " #7"
                     ThisGraphicsPath = mousePath(lintArrInc).Clone
-                    gstrProbDrawComtStack &= " #8" 
+                    gstrProbDrawComtStack &= " #8"
                 Catch
-                    gstrProbDrawComtStack &= " #9" 
+                    gstrProbDrawComtStack &= " #9"
                     ThisGraphicsPath = mousePath(lintArrInc)
-                    gstrProbDrawComtStack &= " #10" 
+                    gstrProbDrawComtStack &= " #10"
                 End Try
-                gstrProbDrawComtStack &= " #11" 
+                gstrProbDrawComtStack &= " #11"
                 Try : g.DrawPath(New Pen(pBrush(lintArrInc).BrushColour, _
                     pBrush(lintArrInc).BrushWidth), ThisGraphicsPath) : Catch : End Try
             Next lintArrInc
-            gstrProbDrawComtStack &= " #12" 
+            gstrProbDrawComtStack &= " #12"
         End If
 
-        gstrProbDrawComtStack &= " #13" 
+        gstrProbDrawComtStack &= " #13"
 
         If Not ReversemousePath Is Nothing Then
-            gstrProbDrawComtStack &= " #14" 
+            gstrProbDrawComtStack &= " #14"
             For lintArrInc = 0 To pReverseBrush.GetUpperBound(0)
-                gstrProbDrawComtStack &= " #15" 
+                gstrProbDrawComtStack &= " #15"
                 Dim ThisGraphicsPath As New GraphicsPath()
                 Try
-                    gstrProbDrawComtStack &= " #16" 
+                    gstrProbDrawComtStack &= " #16"
                     ThisGraphicsPath = ReversemousePath(lintArrInc).Clone
-                    gstrProbDrawComtStack &= " #17" 
+                    gstrProbDrawComtStack &= " #17"
                 Catch
                     ThisGraphicsPath = ReversemousePath(lintArrInc)
-                    gstrProbDrawComtStack &= " #18" 
+                    gstrProbDrawComtStack &= " #18"
                 End Try
 
-                gstrProbDrawComtStack &= " #19" 
+                gstrProbDrawComtStack &= " #19"
                 Try : g.DrawPath(New Pen(pReverseBrush(lintArrInc).BrushColour, _
                     pReverseBrush(lintArrInc).BrushWidth), ThisGraphicsPath) : Catch : End Try
             Next lintArrInc
-            gstrProbDrawComtStack &= " #20" 
+            gstrProbDrawComtStack &= " #20"
         End If
 
-        gstrProbDrawComtStack &= " #21" 
-        '----- PREDRAW SO USERS CAN SEE DRAWING IN REAL TIME ---------- 
+        gstrProbDrawComtStack &= " #21"
+        '----- PREDRAW SO USERS CAN SEE DRAWING IN REAL TIME ----------
 
-        
+
         Dim PieceInc As Integer
         Dim NormalGPInc As Integer
         Dim ReverseGPInc As Integer
         Dim UserPieceInc As Integer
-        gstrProbDrawComtStack &= " #22" 
+        gstrProbDrawComtStack &= " #22"
 
-        For lintArrInc = 0 To pSortOrderForData.DataType.Count - 1 'SO LOOP 
-            gstrProbDrawComtStack &= " #23" 
-            Select Case CType(pSortOrderForData.DataType(lintArrInc), SortOrderForData.eDataType) 'SO CASE 
-                Case SortOrderForData.eDataType.PackPieces 'SO CASE 
-                    gstrProbDrawComtStack &= " #24" 
+        For lintArrInc = 0 To pSortOrderForData.DataType.Count - 1 'SO LOOP
+            gstrProbDrawComtStack &= " #23"
+            Select Case CType(pSortOrderForData.DataType(lintArrInc), SortOrderForData.eDataType) 'SO CASE
+                Case SortOrderForData.eDataType.PackPieces 'SO CASE
+                    gstrProbDrawComtStack &= " #24"
                     Dim iPiece As Piece
-                    iPiece = pPieces(PieceInc) 
-                    
+                    iPiece = pPieces(PieceInc)
+
                     Dim ThisPieceBounds As Rectangle
                     ThisPieceBounds = iPiece.Bounds
-                    gstrProbDrawComtStack &= " #25" 
+                    gstrProbDrawComtStack &= " #25"
                     g.DrawImage(iPiece.Bitmap, ThisPieceBounds)
-                    
-                    PieceInc += 1 
-                    gstrProbDrawComtStack &= " #26" 
-                Case SortOrderForData.eDataType.UserPieces 'SO CASE 
-                    gstrProbDrawComtStack &= " #27" 
-                    
+
+                    PieceInc += 1
+                    gstrProbDrawComtStack &= " #26"
+                Case SortOrderForData.eDataType.UserPieces 'SO CASE
+                    gstrProbDrawComtStack &= " #27"
+
                     Dim iUserPiece As Part
-                    iUserPiece = lUserPieces.Parts(UserPieceInc) 
-                    
-                    gstrProbDrawComtStack &= " #28" 
-                    Dim ThisPieceBounds As Rectangle ' 
-                    ThisPieceBounds = iUserPiece.Bounds 
+                    iUserPiece = lUserPieces.Parts(UserPieceInc)
+
+                    gstrProbDrawComtStack &= " #28"
+                    Dim ThisPieceBounds As Rectangle '
+                    ThisPieceBounds = iUserPiece.Bounds
                     g.DrawImage(iUserPiece.FullImage, ThisPieceBounds)
-                    
-                    gstrProbDrawComtStack &= " #29" 
-                    UserPieceInc += 1 
-                    
-                    gstrProbDrawComtStack &= " #30" 
-                Case SortOrderForData.eDataType.NormalGraphicsPath 'SO CASE 
-                    gstrProbDrawComtStack &= " #31" 
+
+                    gstrProbDrawComtStack &= " #29"
+                    UserPieceInc += 1
+
+                    gstrProbDrawComtStack &= " #30"
+                Case SortOrderForData.eDataType.NormalGraphicsPath 'SO CASE
+                    gstrProbDrawComtStack &= " #31"
                     If Not mousePath Is Nothing Then
-                        gstrProbDrawComtStack &= " #32" 
-                        
+                        gstrProbDrawComtStack &= " #32"
+
                         Dim ThisGraphicsPath As New GraphicsPath()
-                        Try 
+                        Try
                             ThisGraphicsPath = mousePath(NormalGPInc).Clone
-                        Catch 
-                            ThisGraphicsPath = mousePath(NormalGPInc) 
+                        Catch
+                            ThisGraphicsPath = mousePath(NormalGPInc)
                         End Try
-                        gstrProbDrawComtStack &= " #33" 
+                        gstrProbDrawComtStack &= " #33"
                         Try : g.DrawPath(New Pen(pBrush(NormalGPInc).BrushColour, _
                             pBrush(NormalGPInc).BrushWidth), ThisGraphicsPath) : Catch : End Try
-                        
-                        gstrProbDrawComtStack &= " #34" 
-                        NormalGPInc += 1 
+
+                        gstrProbDrawComtStack &= " #34"
+                        NormalGPInc += 1
                     End If
 
-                Case SortOrderForData.eDataType.ReverseGraphicsPath 'SO CASE 
-                    gstrProbDrawComtStack &= " #35" 
+                Case SortOrderForData.eDataType.ReverseGraphicsPath 'SO CASE
+                    gstrProbDrawComtStack &= " #35"
                     If Not ReversemousePath Is Nothing Then
-                        
-                        gstrProbDrawComtStack &= " #36" 
+
+                        gstrProbDrawComtStack &= " #36"
                         Dim ThisGraphicsPath As New GraphicsPath()
-                        gstrProbDrawComtStack &= " #37" 
-                        Try 
+                        gstrProbDrawComtStack &= " #37"
+                        Try
                             ThisGraphicsPath = ReversemousePath(ReverseGPInc).Clone
-                            gstrProbDrawComtStack &= " #38" 
-                        Catch 
-                            gstrProbDrawComtStack &= " #39" 
-                            ThisGraphicsPath = ReversemousePath(ReverseGPInc) 
-                            gstrProbDrawComtStack &= " #40" 
-                        End Try 
-                        gstrProbDrawComtStack &= " #41" 
+                            gstrProbDrawComtStack &= " #38"
+                        Catch
+                            gstrProbDrawComtStack &= " #39"
+                            ThisGraphicsPath = ReversemousePath(ReverseGPInc)
+                            gstrProbDrawComtStack &= " #40"
+                        End Try
+                        gstrProbDrawComtStack &= " #41"
                         Try : g.DrawPath(New Pen(pReverseBrush(ReverseGPInc).BrushColour, _
                             pReverseBrush(ReverseGPInc).BrushWidth), ThisGraphicsPath) : Catch : End Try
-                        
-                        gstrProbDrawComtStack &= " #42" 
+
+                        gstrProbDrawComtStack &= " #42"
                     End If
 
-            End Select 'SO CASE 
-        Next lintArrInc 'SO LOOP 
-        gstrProbDrawComtStack &= " #43" 
+            End Select 'SO CASE
+        Next lintArrInc 'SO LOOP
+        gstrProbDrawComtStack &= " #43"
 
-        AddDebugComment("DrawOutPut.DrawDetails - end") 
+        AddDebugComment("DrawOutPut.DrawDetails - end")
 
-        gstrProbDrawComtStack &= " #44" 
+        gstrProbDrawComtStack &= " #44"
 
         Return NewBitmap
 
@@ -420,10 +420,10 @@ Friend Module DrawOutput
            ByVal pPieces As ArrayList, ByVal pOffSet As Point, ByVal pBrush() As PaintBrush, ByVal pReverseBrush() As PaintBrush, _
            ByVal lUserPieces As FacePartStuctureDataFile)
 
-        'lUserPieces added 
+        'lUserPieces added
 
         Dim errpos As Integer
-        Dim lintArrInc As Integer 
+        Dim lintArrInc As Integer
 
         Try ' error trapping
 
@@ -435,20 +435,20 @@ Friend Module DrawOutput
 
                 errpos = 1
 
-                ' Set the pixel offset mode. It looks better this way. 
+                ' Set the pixel offset mode. It looks better this way.
                 If (m_zoom = 1) Then '.0F) Then
                     RetG.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half
                 Else
                     RetG.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Default
 
-                    ' Set the graphics transform to scale and/or offset drawing calls. 
+                    ' Set the graphics transform to scale and/or offset drawing calls.
                     If (m_zoom <> 1.0F) Then 'Or m_origin <> Point.Empty) Then
                         RetG.Transform = New System.Drawing.Drawing2D.Matrix(m_zoom, 0, 0, m_zoom, m_origin.X * m_zoom, m_origin.Y * m_zoom)
                     Else
                         RetG.ResetTransform()
 
-                        ' Set the interpolation mode for best when zoomed out, 
-                        ' or off when zoomed in. 
+                        ' Set the interpolation mode for best when zoomed out,
+                        ' or off when zoomed in.
                         If (m_zoom < 1.0F) Then
                             RetG.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic
                         Else
@@ -461,15 +461,15 @@ Friend Module DrawOutput
 
             errpos = 3
 
-            Dim g As Graphics 
-            g = RetG 
+            Dim g As Graphics
+            g = RetG
 
             errpos = 4
-            g.FillRectangle(Brushes.White, 0, 0, PictureBox1.Size.Width, PictureBox1.Size.Height) 
+            g.FillRectangle(Brushes.White, 0, 0, PictureBox1.Size.Width, PictureBox1.Size.Height)
 
             errpos = 5
 
-            'Draw each piece 
+            'Draw each piece
             Dim iPiece As Piece
             For Each iPiece In pPieces
                 Dim ThisPieceBounds As Rectangle
@@ -483,7 +483,7 @@ Friend Module DrawOutput
 
             errpos = 6
 
-            '############# TESTING 
+            '############# TESTING
             Dim iUserPiece As Part
             For Each iUserPiece In lUserPieces.Parts
                 Dim ThisPieceBounds As Point
@@ -494,35 +494,35 @@ Friend Module DrawOutput
                 End If
                 g.DrawImage(iUserPiece.FullImage, ThisPieceBounds)
             Next iUserPiece
-            '############# TESTING 
+            '############# TESTING
 
             '###################################################################################
             '###                                                                             ###
-            '###  WARNING: After this point Null errors happen with graphics paths.          ### 
+            '###  WARNING: After this point Null errors happen with graphics paths.          ###
             '###  I beleive this is caused by adding extra paths to make the undo feature    ###
             '###  work better.  So if you ever add any new graphic path statments use a try  ###
-            '###  catch block around them. 
+            '###  catch block around them.
             '###################################################################################
 
-            If Not mousePath Is Nothing Then 
+            If Not mousePath Is Nothing Then
                 errpos = 7
                 For lintArrInc = 0 To pBrush.GetUpperBound(0)
                     errpos = 8
                     Dim ThisGraphicsPath As New GraphicsPath()
-                    Try 
+                    Try
                         ThisGraphicsPath = mousePath(lintArrInc).Clone
-                    Catch 'EX As Exception 
-                        ThisGraphicsPath = mousePath(lintArrInc) 
+                    Catch 'EX As Exception
+                        ThisGraphicsPath = mousePath(lintArrInc)
                     End Try
 
                     errpos = 9
                     If pbooPagePrint = True Then
                         errpos = 10
-                        Try 
+                        Try
                             MoveGP(pOffSet.X, pOffSet.Y, ThisGraphicsPath)
-                        Catch 
+                        Catch
                             '
-                        End Try 
+                        End Try
                     End If
                     errpos = 11
                     Try : g.DrawPath(New Pen(pBrush(lintArrInc).BrushColour, _
@@ -532,26 +532,26 @@ Friend Module DrawOutput
             End If
             errpos = 13
 
-            If Not ReversemousePath Is Nothing Then 
+            If Not ReversemousePath Is Nothing Then
                 errpos = 14
                 For lintArrInc = 0 To pReverseBrush.GetUpperBound(0)
                     errpos = 15
                     Dim ThisGraphicsPath As New GraphicsPath()
                     errpos = 16
-                    Try 
+                    Try
                         ThisGraphicsPath = ReversemousePath(lintArrInc).Clone
-                    Catch 'EX As Exception 
-                        ThisGraphicsPath = ReversemousePath(lintArrInc) 
+                    Catch 'EX As Exception
+                        ThisGraphicsPath = ReversemousePath(lintArrInc)
                     End Try
 
                     errpos = 17
                     If pbooPagePrint = True Then
                         errpos = 18
-                        Try 
+                        Try
                             MoveGP(pOffSet.X, pOffSet.Y, ThisGraphicsPath)
-                        Catch 
+                        Catch
                             '
-                        End Try 
+                        End Try
                     End If
                     errpos = 19
                     Try : g.DrawPath(New Pen(pReverseBrush(lintArrInc).BrushColour, _
@@ -575,7 +575,7 @@ Friend Module DrawOutput
                     GuideFace(g, PictureBox1.Size.Width - 5, PictureBox1.Size.Height - 5)
                     errpos = 23
                 End If
-            End If 
+            End If
 
         Catch ex As Exception
             Console.WriteLine(errpos & " " & ex.ToString)
@@ -593,13 +593,13 @@ Friend Module DrawOutput
           ByVal mousePath() As GraphicsPath, ByVal ReversemousePath() As GraphicsPath, ByVal pPieces As ArrayList, _
          ByVal pBrush() As PaintBrush, ByVal pReverseBrush() As PaintBrush, ByVal lUserPieces As FacePartStuctureDataFile) As Bitmap
 
-        AddDebugComment("DrawOutPut.DrawDetails - start") 
+        AddDebugComment("DrawOutPut.DrawDetails - start")
 
         Dim lintArrInc As Integer
 
         Dim NewBitmap As Bitmap = New Bitmap(PictureBox1.Size.Width, PictureBox1.Size.Height)
         Dim g As Graphics = Graphics.FromImage(NewBitmap)
-        g.FillRectangle(Brushes.White, 0, 0, PictureBox1.Size.Width, PictureBox1.Size.Height) 
+        g.FillRectangle(Brushes.White, 0, 0, PictureBox1.Size.Width, PictureBox1.Size.Height)
 
         Dim iPiece As Piece
         For Each iPiece In pPieces
@@ -609,22 +609,22 @@ Friend Module DrawOutput
             g.DrawImage(iPiece.Bitmap, ThisPieceBounds)
         Next iPiece
 
-        '############# TESTING 
+        '############# TESTING
         Dim iUserPiece As Part
         For Each iUserPiece In lUserPieces.Parts
             Dim ThisPieceBounds As Point
             ThisPieceBounds = iUserPiece.LeftPart
             g.DrawImage(iUserPiece.FullImage, ThisPieceBounds)
         Next iUserPiece
-        '############# TESTING 
+        '############# TESTING
 
         If Not mousePath Is Nothing Then
             For lintArrInc = 0 To pBrush.GetUpperBound(0)
                 Dim ThisGraphicsPath As New GraphicsPath()
-                Try 
+                Try
                     ThisGraphicsPath = mousePath(lintArrInc).Clone
-                Catch 
-                    ThisGraphicsPath = mousePath(lintArrInc) 
+                Catch
+                    ThisGraphicsPath = mousePath(lintArrInc)
                 End Try
                 Try : g.DrawPath(New Pen(pBrush(lintArrInc).BrushColour, _
                     pBrush(lintArrInc).BrushWidth), ThisGraphicsPath) : Catch : End Try
@@ -634,11 +634,11 @@ Friend Module DrawOutput
         If Not ReversemousePath Is Nothing Then
             For lintArrInc = 0 To pReverseBrush.GetUpperBound(0)
                 Dim ThisGraphicsPath As New GraphicsPath()
-                Try 
+                Try
                     ThisGraphicsPath = ReversemousePath(lintArrInc).Clone
-                Catch 
-                    ThisGraphicsPath = ReversemousePath(lintArrInc) 
-                End Try 
+                Catch
+                    ThisGraphicsPath = ReversemousePath(lintArrInc)
+                End Try
 
                 Try : g.DrawPath(New Pen(pReverseBrush(lintArrInc).BrushColour, _
                     pReverseBrush(lintArrInc).BrushWidth), ThisGraphicsPath) : Catch : End Try
@@ -646,7 +646,7 @@ Friend Module DrawOutput
 
         End If
 
-        AddDebugComment("DrawOutPut.DrawDetails - end") 
+        AddDebugComment("DrawOutPut.DrawDetails - end")
 
         Return NewBitmap
 

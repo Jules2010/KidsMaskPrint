@@ -44,8 +44,8 @@ Friend Class PrintPreview
         End Set
     End Property
 
-    Dim mThisPaintBrush() As PaintBrush 
-    Friend Property ThisPaintBrush() As PaintBrush() 
+    Dim mThisPaintBrush() As PaintBrush
+    Friend Property ThisPaintBrush() As PaintBrush()
         Get
             Return mThisPaintBrush
         End Get
@@ -53,8 +53,8 @@ Friend Class PrintPreview
             mThisPaintBrush = Value
         End Set
     End Property
-    Dim mThisPaintReverseBrush() As PaintBrush 
-    Friend Property ThisPaintReverseBrush() As PaintBrush() 
+    Dim mThisPaintReverseBrush() As PaintBrush
+    Friend Property ThisPaintReverseBrush() As PaintBrush()
         Get
             Return mThisPaintReverseBrush
         End Get
@@ -62,8 +62,8 @@ Friend Class PrintPreview
             mThisPaintReverseBrush = Value
         End Set
     End Property
-    Dim lUserPieces As New FacePartStuctureDataFile() 
-    Friend Property UserPieces() As FacePartStuctureDataFile 
+    Dim lUserPieces As New FacePartStuctureDataFile()
+    Friend Property UserPieces() As FacePartStuctureDataFile
         Get
             Return lUserPieces
         End Get
@@ -71,8 +71,8 @@ Friend Class PrintPreview
             lUserPieces = Value
         End Set
     End Property
-    Dim lSortOrderForData As New SortOrderForData() 
-    Friend Property SortOrder() As SortOrderForData 
+    Dim lSortOrderForData As New SortOrderForData()
+    Friend Property SortOrder() As SortOrderForData
         Get
             Return lSortOrderForData
         End Get
@@ -108,7 +108,7 @@ Friend Class PrintPreview
     Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     Friend WithEvents PrintPreviewControl1 As System.Windows.Forms.PrintPreviewControl
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
@@ -317,9 +317,9 @@ Friend Class PrintPreview
 
     Private Sub PrintDocument1_PrintPage(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
 
-        AddDebugComment("PrintPreview.PrintDocument1_PrintPage - start") 
+        AddDebugComment("PrintPreview.PrintDocument1_PrintPage - start")
 
-        
+
         Dim hdcPtr As IntPtr '= e.Graphics.GetHdc
         '  Dim hdcLong As Long = hdcPtr.ToInt32
 
@@ -331,7 +331,7 @@ Friend Class PrintPreview
         gr.ReleaseHdc(hdcPtr)
         'Console.WriteLine("Graphics.VisibleClipBounds.Height=" & e.Graphics.VisibleClipBounds.Height)
         'Console.WriteLine(m_HardLeft & " " & m_HardTop & " " & m_HardRight & " " & m_HardBottom)
-        
+
                 If PrintDocument1.DefaultPageSettings.Landscape = True Then
             PrintPreviewControl1.Rows = 2
             PrintPreviewControl1.Columns = 1
@@ -339,10 +339,10 @@ Friend Class PrintPreview
             PrintPreviewControl1.Rows = 1
             PrintPreviewControl1.Columns = 2
         End If
-        
-        ComboBox1_SelectedIndexChanged(Nothing, Nothing) 
 
-        PrintDocument1.DefaultPageSettings = m_PageSettings 
+        ComboBox1_SelectedIndexChanged(Nothing, Nothing)
+
+        PrintDocument1.DefaultPageSettings = m_PageSettings
 
         Dim OffSet As Point
 
@@ -365,14 +365,14 @@ Friend Class PrintPreview
         DrawOutput.DrawOutput(e.Graphics, True, mMainPictureBox, mMousePath, mReverseMousePath, _
             Fac, Color.Black, Nothing, Nothing, mPieces, OffSet, ThisPaintBrush, mThisPaintReverseBrush, lUserPieces, lSortOrderForData)
 
-        AddDebugComment("PrintPreview.PrintDocument1_PrintPage - end") 
+        AddDebugComment("PrintPreview.PrintDocument1_PrintPage - end")
 
     End Sub
     Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBox1.SelectedIndexChanged
 
-        AddDebugComment("PrintPreview.ComboBox1_SelectedIndexChanged - start") 
+        AddDebugComment("PrintPreview.ComboBox1_SelectedIndexChanged - start")
 
-        If PrintDocument1.DefaultPageSettings.Landscape = True Then 
+        If PrintDocument1.DefaultPageSettings.Landscape = True Then
             LeftOff = 0
             RightOff = 0
             UpOff = -300
@@ -393,9 +393,9 @@ Friend Class PrintPreview
                     Fac = 1.5
                     DownOff = 255
             End Select
-        Else 
-            DownOff = 0 
-            UpOff = 0 
+        Else
+            DownOff = 0
+            UpOff = 0
             LeftOff = -254 '-253 '-257 '-265
             Select Case ComboBox1.Text
                 Case Size5 '"Big"
@@ -414,16 +414,16 @@ Friend Class PrintPreview
                     Fac = 1.5
                     RightOff = 296 '300
                                 End Select
-        End If 
+        End If
 
         PrintPreviewControl1.InvalidatePreview()
 
-        AddDebugComment("PrintPreview.ComboBox1_SelectedIndexChanged - end") 
+        AddDebugComment("PrintPreview.ComboBox1_SelectedIndexChanged - end")
 
     End Sub
     Private Sub btnLandscape_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLandscape.Click
 
-        AddDebugComment("PrintPreview.btnLandscape_Click - start") 
+        AddDebugComment("PrintPreview.btnLandscape_Click - start")
 
         If PrintDocument1.DefaultPageSettings.Landscape = True Then
             PrintDocument1.DefaultPageSettings.Landscape = False
@@ -433,26 +433,26 @@ Friend Class PrintPreview
             btnLandscape.Text = "Potrait"
         End If
 
-        ComboBox1_SelectedIndexChanged(Nothing, Nothing) 
+        ComboBox1_SelectedIndexChanged(Nothing, Nothing)
 
         PrintPreviewControl1.InvalidatePreview()
 
-        AddDebugComment("PrintPreview.btnLandscape_Click - end") 
+        AddDebugComment("PrintPreview.btnLandscape_Click - end")
 
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        AddDebugComment("PrintPreview.OnPaintBackground - start") 
+        AddDebugComment("PrintPreview.OnPaintBackground - start")
 
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
 
-        AddDebugComment("PrintPreview.OnPaintBackground - end") 
+        AddDebugComment("PrintPreview.OnPaintBackground - end")
 
     End Sub
     Private Sub btnPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPrint.Click
 
-        AddDebugComment("PrintPreview.btnPrint_Click - start") 
+        AddDebugComment("PrintPreview.btnPrint_Click - start")
 
         If InStrGet((NameMe("")).ToUpper, "TRIAL") > 0 Then
             Dim intPrintAllows As Integer = 0
@@ -473,26 +473,26 @@ Friend Class PrintPreview
                 End If
             End If
         End If
-        
+
         'PrintDocument1.Print()
         pdActualPrint.Print()
         Me.Close()
 
-        AddDebugComment("PrintPreview.btnPrint_Click - end") 
+        AddDebugComment("PrintPreview.btnPrint_Click - end")
 
     End Sub
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
 
-        AddDebugComment("PrintPreview.btnHelp_Click") 
+        AddDebugComment("PrintPreview.btnHelp_Click")
 
         'PrintPreviewControl1.StartPage = PrintPreviewControl1.StartPage + 1
-        
+
         Help.ShowHelp(Me, GetHelpFile, GetHelpTopic(Main.HelpTopicEnum.Printing))
 
     End Sub
     Private Sub btnPages_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnPages.Click
 
-        AddDebugComment("PrintPreview.btnPages_Click - start") 
+        AddDebugComment("PrintPreview.btnPages_Click - start")
 
         If btnPages.Text = "&2 Pages" Then
             btnPages.Text = "&1 Page"
@@ -502,45 +502,45 @@ Friend Class PrintPreview
 
         PrintPreviewControl1.InvalidatePreview()
 
-        AddDebugComment("PrintPreview.btnPages_Click - end") 
+        AddDebugComment("PrintPreview.btnPages_Click - end")
 
     End Sub
 
     Private Sub PrintPreview_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
 
-        AddDebugComment("PrintPreview.PrintPreview_Resize - start") 
+        AddDebugComment("PrintPreview.PrintPreview_Resize - start")
 
-        Me.Invalidate() 
+        Me.Invalidate()
 
-        AddDebugComment("PrintPreview.PrintPreview_Resize - end") 
+        AddDebugComment("PrintPreview.PrintPreview_Resize - end")
 
     End Sub
     Private Sub PrintPreview_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
 
-        AddDebugComment("Preview.PrintPreview_KeyDown") 
+        AddDebugComment("Preview.PrintPreview_KeyDown")
 
-        
+
         If e.KeyCode = Keys.Escape Then
             Me.Close()
         End If
     End Sub
     Private Sub btExit_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btExit.Click
 
-        AddDebugComment("Preview.btExit_Click") 
+        AddDebugComment("Preview.btExit_Click")
 
-        Me.Close() 
+        Me.Close()
     End Sub
     Private Sub btnSetup_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSetup.Click
-        
+
         AddDebugComment("Preview.btnSetup_Click - start")
 
         Try
             Dim PgSetupDlg As New PageSetupDialog()
             PgSetupDlg.PageSettings = m_PageSettings
-            PgSetupDlg.AllowPrinter = True 
-            PgSetupDlg.AllowPaper = True 
-            PgSetupDlg.AllowMargins = True 
-            PgSetupDlg.Document = PrintDocument1 
+            PgSetupDlg.AllowPrinter = True
+            PgSetupDlg.AllowPaper = True
+            PgSetupDlg.AllowMargins = True
+            PgSetupDlg.Document = PrintDocument1
             PgSetupDlg.ShowDialog()
         Catch ex As Exception
             MessageBox.Show(ex.Message, NameMe(""), MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -564,7 +564,7 @@ Friend Class PrintPreview
     End Sub
     Private Sub btnPlus_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnPlus.Click
 
-        AddDebugComment("Preview.btnPlus_Click - start") 
+        AddDebugComment("Preview.btnPlus_Click - start")
 
         'LeftOff += 1
         Dim x As New InputBox(True)
@@ -572,19 +572,19 @@ Friend Class PrintPreview
         DownOff = x.Display("", " ", DownOff)
         PrintPreviewControl1.InvalidatePreview()
 
-        AddDebugComment("Preview.btnPlus_Click - end") 
+        AddDebugComment("Preview.btnPlus_Click - end")
 
     End Sub
     Private Sub btnNeg_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnNeg.Click
 
-        AddDebugComment("Preview.btnNeg_Click - start") 
+        AddDebugComment("Preview.btnNeg_Click - start")
 
         Dim x As New InputBox(True)
 
         UpOff = x.Display("", " ", UpOff)
         PrintPreviewControl1.InvalidatePreview()
 
-        AddDebugComment("Preview.btnNeg_Click - End") 
+        AddDebugComment("Preview.btnNeg_Click - End")
 
     End Sub
     Private Declare Function GetDeviceCaps Lib "gdi32.dll" (ByVal hdc As IntPtr, ByVal nIndex As Int32) As Int32
@@ -628,7 +628,7 @@ Friend Class PrintPreview
     End Sub
     Private Sub pdActualPrint_PrintPage(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles pdActualPrint.PrintPage
 
-        
+
         AddDebugComment("PrintPreview.pdActualPrint_PrintPage - start")
 
         pdActualPrint.DefaultPageSettings = m_PageSettings
