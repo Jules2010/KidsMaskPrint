@@ -1762,22 +1762,17 @@ Imports System.IO
 
         Me.Update() 
 
-        'AddDebugComment("frmMain.mnuFileExportMask_Click - end") 
-
         gstrProbComtStack &= " #FEMEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
     End Sub
     Private Sub mnuFileLoad_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuFileLoad.Click
 
-        'AddDebugComment("frmMain.mnuFileLoad_Click - start") 
         gstrProbComtStack = "frmMain.mnuFileLoad_Click - start" 
 
         DeactivatePaintingBeforeDialog() 
 
         Dim MaskFile As String 
         Dim sm As New SelectMask()
-        'SetStyle(ControlStyles.DoubleBuffer, False) 
-        'sm.ShowDialog()
-        'SetStyle(ControlStyles.DoubleBuffer, True) 
+
         sm.LicensedFaceParts = mLicensedFaceParts 
 
         sm.Owner = Me 
@@ -1788,13 +1783,6 @@ Imports System.IO
         MaskFile = sm.RetMaskFile
 
         If MaskFile = "" Then Exit Sub
-
-        'LoadMask(MaskFile, mPieces, PictureBox2.Image, False) 
-        'x'LoadMask(MaskFile, mPieces, PictureBox2.Image, False, mousePath, ReversemousePath, lPaintBrush, lPaintReverseBrush) 
-        
-        'LoadMask(MaskFile, mPieces, Nothing, False, m_Drawings.mousePath, m_Drawings.ReversemousePath, _
-        '    m_Drawings.lPaintBrush, m_Drawings.lPaintReverseBrush, mLicensedFaceParts)
-
         
         LoadMask(MaskFile, mPieces, Nothing, False, m_Drawings.mousePath, m_Drawings.ReversemousePath, _
             m_Drawings.lPaintBrush, m_Drawings.lPaintReverseBrush, mLicensedFaceParts, m_UserPieces, m_SortOrderForData)
@@ -1805,15 +1793,12 @@ Imports System.IO
 
         ReactivatePaintingBeforeDialog() 
 
-        'AddDebugComment("frmMain.mnuFileLoad_Click - end") 
         gstrProbComtStack &= " #FLEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
     End Sub
     Private Sub mnuFileSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuFileSave.Click
 
-        'AddDebugComment("frmMain.mnuFileSave_Click - start") 
         gstrProbComtStack = "frmMain.mnuFileSave_Click - start" 
 
-        '--- 
         Dim FileName As String = Path.GetDirectoryName( _
             System.Reflection.Assembly.GetExecutingAssembly().Location) & "\" & "\Masks\" 'data.txt"
         Dim saveFileDialog1 As New SaveFileDialog()
@@ -1825,33 +1810,26 @@ Imports System.IO
 
         ' If the file name is not an empty string open it for        
         If saveFileDialog1.FileName = "" Then Exit Sub
-        '--- 
 
         FileName = saveFileDialog1.FileName 
 
         '--- New Section ---
         Dim FullImage As Image
         Dim hash As New SortedList()
-        'Dim img As Image
         Dim keptPieces As New ArrayList()
 
         CreateHashAndImage(hash, FullImage, keptPieces)
 
         mPieces = keptPieces
-        '--- New Section ---
 
-        'SaveUserMask(FileName, hash, img, FullImage) 
-        'SaveUserMask(FileName, hash, FullImage)  
         SaveUserMask(FileName, hash, FullImage, m_UserPieces, m_SortOrderForData)      
 
         MessageBox.Show("Saved!", NameMe("")) 
 
-        'AddDebugComment("frmMain.mnuFileSave_Click - end") 
         gstrProbComtStack &= " #FSEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
     End Sub
     Private Sub mnuToolsDeleteUsers_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuToolsDeleteUsers.Click
 
-        'AddDebugComment("frmMain.mnuToolsDeleteUsers_Click - start")
         gstrProbComtStack = "frmMain.mnuToolsDeleteUsers_Click - start" 
 
         DeactivatePaintingBeforeDialog()
@@ -1865,7 +1843,6 @@ Imports System.IO
 
         ReactivatePaintingBeforeDialog()
 
-        'AddDebugComment("frmMain.mnuToolsDeleteUsers_Click - end")
         gstrProbComtStack &= " #TDUEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
     End Sub
     Private Sub mnuToolsRenameUsers_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuToolsRenameUsers.Click
@@ -2231,18 +2208,9 @@ Imports System.IO
 
         AddDebugComment("frmMain.SetBackcolors - start") 
 
-        'added 
         chkMirror.BackColor = Color.FromArgb(0, chkMirror.BackColor)
         chkGuide.BackColor = Color.FromArgb(0, chkGuide.BackColor)
-        'btnExit.BackColor = Color.FromArgb(0, btnExit.BackColor)
-        'btnPrint.BackColor = Color.FromArgb(0, btnPrint.BackColor)
-        'btnUndo.BackColor = Color.FromArgb(0, btnUndo.BackColor)
-        'btnClear.BackColor = Color.FromArgb(0, btnClear.BackColor)
-        'btnEyes.BackColor = Color.FromArgb(0, btnEyes.BackColor)
-        'btnEars.BackColor = Color.FromArgb(0, btnEars.BackColor)
-        'btnMouths.BackColor = Color.FromArgb(0, btnMouths.BackColor)
-        'btnNoses.BackColor = Color.FromArgb(0, btnNoses.BackColor)
-        'btnOther.BackColor = Color.FromArgb(0, btnOther.BackColor)
+ 
         lblPen.BackColor = Color.FromArgb(0, lblPen.BackColor)
 
         pnlBWPens.BackColor = Color.FromArgb(0, pnlBWPens.BackColor) 
@@ -2263,8 +2231,6 @@ Imports System.IO
         lblPMagenta.BackColor = Color.FromArgb(0, lblPMagenta.BackColor)
         lblPPink.BackColor = Color.FromArgb(0, lblPPink.BackColor)
         lblPCustom.BackColor = Color.FromArgb(0, lblPCustom.BackColor)
-
-
 
         AddDebugComment("frmMain.SetBackcolors - end") 
 
@@ -2449,7 +2415,6 @@ Imports System.IO
         AddDebugComment("frmMain.PictureBox1_MouseUp " & e.Button) 
 
         If CurrentTool <> Tools.Floodfill Then 
-            '--- 
             'This code should make undo work better, rather than deleting all drawing
             m_Drawings.MouseUP(m_CurrentBrushWidth) 
 
@@ -2458,27 +2423,17 @@ Imports System.IO
 
             ChangeUndoRedoStatus() 
 
-            ''Commented 
-            ''If e.Button = MouseButtons.Right Then 
-            ''    'chkEraser.Checked = False 
-            ''    btnBlack_Click(Nothing, Nothing) 
-            ''End If
-
-            'Stop moving the piece 
             mMousePiece = Nothing
         End If 
 
     End Sub
     Private Sub PictureBox1_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles PictureBox1.Paint
 
-        '--- 
         If booPictureBox1_MouseMoveFirstDone = False Then
             AddDebugComment("Form1.PictureBox1_Paint")
             booPictureBox1_MouseMoveFirstDone = True
         End If
-        '--- 
 
-        ''If Not mMousePiece Is Nothing Then 
         If lbooAllowPainting = True Then 
 
             DrawOutput.DrawOutput(e.Graphics, False, PictureBox1, m_Drawings.mousePath, m_Drawings.ReversemousePath, _
@@ -2533,14 +2488,6 @@ Imports System.IO
             mbooLoadAllDataOnce = False
             gstrMRPs = "0131"
 
-            'Dim Status As New StatusDialog(Me)
-            'Status.Show()
-            'Status.Status = "Loading your settings ...."
-            'Application.DoEvents()
-            'Status.Status = LangText.GetString("Pad_LoadingSettings") 
-
-            '--- 
-
             Dim DataFilesDescImages As New ArrayList()
             Dim DataFilesDescriptions As New ArrayList()
             Dim DataFilesProdNums As New ArrayList()
@@ -2562,7 +2509,6 @@ Imports System.IO
             '--- 
             Dim lbooShowPurchasing As Boolean = False
             Try
-                'lbooShowPurchasing = CBool(GetSetting("BuyPackShowNext", False, InitalXMLConfig.XmlConfigType.AppSettings, ""))
                 lbooShowPurchasing = CBool(AppSettingsStartup.GetValue("BuyPackShowNext", "")) 
             Catch : End Try
             '--- 
@@ -2640,11 +2586,6 @@ Imports System.IO
 
             SetDrawingLayout(mSelectedUser) 
 
-            ''ReactivatePaintingBeforeDialog() 
-
-            ''Me.Invalidate() 
-            ''Me.Update() 
-
             'AddDebugComment("frmMain.Form1_Activated - 5") 
             gstrProbComtStack &= " #FMA6" 
             gstrMRPs = "0199"
@@ -2662,12 +2603,6 @@ Imports System.IO
                         dlgRes = MessageBox.Show("Load the mask you were working on?", NameMe(""), MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                         ReactivatePaintingBeforeDialog() 
                         If dlgRes = DialogResult.Yes Then
-                            'LoadMask(LastSavedmaskFile, mPieces, PictureBox2.Image, False)
-                            'x'LoadMask(LastSavedmaskFile, mPieces, PictureBox2.Image, False, mousePath, ReversemousePath, lPaintBrush, lPaintReverseBrush) 
-                            
-                            'LoadMask(LastSavedmaskFile, mPieces, Nothing, False, m_Drawings.mousePath, _
-                            '    m_Drawings.ReversemousePath, m_Drawings.lPaintBrush, m_Drawings.lPaintReverseBrush, 
-                            '    mLicensedFaceParts)
                             
                             LoadMask(LastSavedmaskFile, mPieces, Nothing, False, m_Drawings.mousePath, _
                                     m_Drawings.ReversemousePath, m_Drawings.lPaintBrush, m_Drawings.lPaintReverseBrush, _
@@ -2769,29 +2704,11 @@ Imports System.IO
 
         m_SortOrderForData = New SortOrderForData() 
 
-        ''myUserColor = Color.Black
-
-        ''StatusBarPanel1.Text = "0 x 0"
-
-        '--- 
         If IsAboveOrEqualWinXp() = True Then
             rdoFloodFill.FlatStyle = FlatStyle.System
             rdoFreehand.FlatStyle = FlatStyle.System
         End If
-        '--- 
 
-        'If IsAboveOrEqualWinXp() = True Then  
-        '    btnExit.FlatStyle = FlatStyle.System
-        '    btnPrint.FlatStyle = FlatStyle.System
-        '    btnUndo.FlatStyle = FlatStyle.System
-        '    btnClear.FlatStyle = FlatStyle.System
-        '    btnEyes.FlatStyle = FlatStyle.System
-        '    btnEars.FlatStyle = FlatStyle.System
-        '    btnMouths.FlatStyle = FlatStyle.System
-        '    btnNoses.FlatStyle = FlatStyle.System
-        '    btnOther.FlatStyle = FlatStyle.System
-        '    'lblpen.FlatStyle = FlatStyle.System
-        'End If
         gstrMRPs = "0110"
 
         SetBackcolors()
@@ -2807,24 +2724,10 @@ Imports System.IO
             .SelectedIndex = 2
         End With
 
-        '#If Debug Then
-        '        btnDebug = New Button()
-        '        With btnDebug
-        '            .Top = 520
-        '            .Left = 10
-        '            .Anchor = AnchorStyles.Top And AnchorStyles.Left
-        '            .Visible = True
-        '            .Text = "Debug"
-        '        End With
-        '        Me.Controls.Add(btnDebug)
-        '#End If
-
-        '--- 
         'Load clown mask
         gstrMRPs = "0121" 
-        'Dim ShowClown As Boolean = CBool(GetSetting("SHOWCLOWN", "True", InitalXMLConfig.XmlConfigType.AppSettings, ""))
         Dim ShowClown As Boolean = CBool(AppSettingsStartup.GetValue("SHOWCLOWN", "True")) 
-        'MessageBox.Show("ShowClown=" & ShowClown)
+
         If ShowClown = True Then
             gstrMRPs = "0122" 
             Try
@@ -2836,8 +2739,6 @@ Imports System.IO
                     LoadMask(ClownMask, mPieces, Nothing, False, m_Drawings.mousePath, m_Drawings.ReversemousePath, _
                     m_Drawings.lPaintBrush, m_Drawings.lPaintReverseBrush, mLicensedFaceParts, m_UserPieces, m_SortOrderForData)
                     m_Drawings.setCountersAfterLoad(m_CurrentColour, m_CurrentBrushWidth)
-                    'MessageBox.Show("ShowClown=3")
-
 
                 End If
                 SaveSetting("SHOWCLOWN", "False", InitalXMLConfig.XmlConfigType.AppSettings, "")
@@ -3731,16 +3632,6 @@ Imports System.IO
         Else
             btnUndo.Enabled = False
         End If
-
-        'If TempRedoStack = True Then 
-        '    If TempPieceRedo = True Or TempUserPieceRedo = True Or TempDrawRedo = True Then
-        '        btnRedo.Enabled = True
-        '    Else
-        '        btnRedo.Enabled = False
-        '    End If
-        'Else 
-        '    btnRedo.Enabled = False 
-        'End If
 
     End Sub
     Private Sub btnDebug_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnDebug.Click

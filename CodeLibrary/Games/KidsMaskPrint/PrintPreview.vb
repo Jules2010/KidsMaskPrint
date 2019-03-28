@@ -15,15 +15,7 @@ Friend Class PrintPreview
             mMainPictureBox = Value
         End Set
     End Property
-    'Dim mLoadedImgPictBox As PictureBox
-    'Public Property LoadedImgPictBox() As PictureBox
-    '    Get
-    '        Return mLoadedImgPictBox
-    '    End Get
-    '    Set(ByVal Value As PictureBox)
-    '        mLoadedImgPictBox = Value
-    '    End Set
-    'End Property
+
     Dim mMousePath() As GraphicsPath
     Friend Property MousePath() As GraphicsPath()
         Get
@@ -362,24 +354,9 @@ Friend Class PrintPreview
 
         If btnPages.Text = "&1 Page" Then
             If HasMorePages = 0 Then
-                HasMorePages = 1
-                e.HasMorePages = True
-                '--- 
-                'PrintPageSettings.Margins.Left = 500
-                'PrintPageSettings.Margins.Right = 0
-                'PrintPageSettings.Margins.Top = 0
-                'PrintPageSettings.Margins.Bottom = 0
-                'PrintDocument1.DefaultPageSettings = PrintPageSettings
-                '--- 
-                'PrintDocument1.PrinterSettings.
-                ''Dim Fac As Single = CSng(ComboBox1.Text)
-                'Dim OffsetLeft As Point = New Point(RightOff, 0) '150 - (Fac * RightOff), 0) '150, 0)
                 Dim OffsetLeft As Point = New Point(RightOff, DownOff)
                 OffSet = OffsetLeft
             Else
-                'PrintPageSettings.Margins.Left = 0
-                'P() 'rintDocument1.DefaultPageSettings = PrintPageSettings
-                'Dim OffsetNone As Point = New Point(LeftOff, 0) '-250, 0)
                 Dim OffsetNone As Point = New Point(LeftOff, UpOff)
                 OffSet = OffsetNone
                 e.HasMorePages = False
@@ -393,10 +370,6 @@ Friend Class PrintPreview
 
         DrawOutput.DrawOutput(e.Graphics, True, mMainPictureBox, mMousePath, mReverseMousePath, _
             Fac, Color.Black, Nothing, Nothing, mPieces, OffSet, ThisPaintBrush, mThisPaintReverseBrush, lUserPieces, lSortOrderForData)
-
-        'Console.WriteLine("PrintDocument1_PrintPage")
-        ' xxx()
-        'e.HasMorePages()
 
         AddDebugComment("PrintPreview.PrintDocument1_PrintPage - end") 
 
@@ -547,19 +520,7 @@ Friend Class PrintPreview
         AddDebugComment("PrintPreview.btnPages_Click - end") 
 
     End Sub
-    'Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
-    '    Dim x As New InputBox()
-
-    '    RightOff = x.Display("", "", 150)
-    '    PrintPreviewControl1.InvalidatePreview()
-    'End Sub
-    'Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '    Dim x As New InputBox()
-
-    '    LeftOff = x.Display("", "", -250)
-    '    PrintPreviewControl1.InvalidatePreview()
-    'End Sub
     Private Sub PrintPreview_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
 
         AddDebugComment("PrintPreview.PrintPreview_Resize - start") 

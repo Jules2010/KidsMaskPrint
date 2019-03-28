@@ -360,18 +360,6 @@ Friend Class FacePartDiag
 
         DisplayPreview()
 
-        'don't see why this is needed as it is done in display preview 
-        'GetDataPreviewImage(ReturnNthStr( _
-        '    ListView1.SelectedItems(0).Tag, 1, "#"), ReturnNthStr(ListView1.SelectedItems(0).Tag, 2, "#"), mRetPart, m_PieceName, Nothing)
-
-        ''If rdoLeft.Checked = True Then
-        ''    mPositionSelection = FacePartEnums.ePositionSelection.Left
-        ''ElseIf rdoRight.Checked = True Then
-        ''    mPositionSelection = FacePartEnums.ePositionSelection.Right
-        ''Else
-        ''    mPositionSelection = FacePartEnums.ePositionSelection.Both
-        ''End If
-
         m_SourceDataFileName = ReturnNthStr(ListView1.SelectedItems(0).Tag, 1, "#")
         m_DataFileItemNum = ReturnNthStr(ListView1.SelectedItems(0).Tag, 2, "#")
 
@@ -583,47 +571,13 @@ Friend Class FacePartDiag
 
                     Dim lAdd As Boolean = False
 
-                    'If ThisPart.PartType = FacePartEnums.ePartType.Outline And m_PartType = FacePartEnums.ePartType.Misc Then
-                    '    lAdd = True
-                    'End If
-
                     If ThisPart.PartType = m_PartType Then
                         lAdd = True
                     End If
 
                     If lAdd = True Then
 
-                        'Dim Bmp As Bitmap
-                        'Bmp = CType(ThisPart.ThumbImage, Bitmap)
-                        'ImageList1.Images.Add(Icon.FromHandle(Bmp.GetHicon()))
-
-                        'Dim lImage As System.Drawing.Image
-                        'lImage = ThisPart.FullImage
-                        'lImage = ResizeImageObj(lImage, 32)
-                        'ImageList1.Images.Add(lImage)
-
-                        'ImageList1.Images.Add(ThisPart.ThumbImage, Color.White)
-                        'ImageList1.Images.Add(ThisPart.FullImage, Color.White)
-
-                        'ImageList1.Images.Add(ThisPart.ThumbImage)
-
-                        'Dim ThisImageTest As String = ""
-
-                        'ThisImageTest = "D:\CodeLibrary\Games\KMPDataFiles\bin\PackBasic\" & ThisPart.FaceMaster & ".bmp"
-                        'If File.Exists(ThisImageTest) = False Then
-                        '    ThisImageTest = "D:\CodeLibrary\Games\KMPDataFiles\bin\PackHalloween2004\" & ThisPart.FaceMaster & ".bmp"
-                        '    If File.Exists(ThisImageTest) = False Then
-                        '        ThisImageTest = ""
-                        '    End If
-                        'End If
-
-                        'If ThisImageTest = "" Then
                         ImageList1.Images.Add(ThisPart.ThumbImage)
-                        'Else
-                        '    'ImageList1.Images.Add(ResizeImageObj(Image.FromFile(ThisImageTest), 32))
-                        '    ImageList1.Images.Add(Image.FromFile(ThisImageTest))
-                        'End If
-
 
                         Dim NewLVItem As New ListViewItem()
                         NewLVItem.Tag = pfile.Name & "# " & lintArrInc & "#"

@@ -120,15 +120,8 @@ Friend Class Drawings
 
             RedoNormalArr.Push(l_UndoRedo)
 
-            'CanRedo = True
-
             lLastRevColour = lPaintBrush(lCurColIdx).BrushColour
             lCurColIdx -= 1
-
-            'Dim NumOfNextpathPoint As Integer = mousePath(lCurColIdx).PathPoints.GetUpperBound(0)
-            'If NumOfNextpathPoint = 0 Then
-
-            'End If
 
             ReDim Preserve mousePath(lCurColIdx)
             mousePath(lCurColIdx) = New GraphicsPath()

@@ -6,194 +6,19 @@ Imports System.Runtime.InteropServices
 Imports System.Runtime.InteropServices.Marshal
 
 Friend Class FloodFill
-    'Private Declare Function LoadImage Lib "user32" Alias "LoadImageA" (ByVal hInst As Integer, ByVal lpsz As String, ByVal uType As Integer, ByVal cxDesired As Integer, ByVal cyDesired As Integer, ByVal fuLoad As Integer) As IntPtr
-    'Private Declare Function BitBlt Lib "gdi32" Alias "BitBlt" (ByVal hDestDC As IntPtr, ByVal x As Integer, ByVal y As Integer, ByVal nWidth As Integer, ByVal nHeight As Integer, ByVal hSrcDC As IntPtr, ByVal xSrc As Integer, ByVal ySrc As Integer, ByVal dwRop As Integer) As Integer
-    'Private Declare Function DeleteObject Lib "gdi32" Alias "DeleteObject" (ByVal hObject As IntPtr) As Integer
-    'Private Declare Function CreateCompatibleDC Lib "gdi32" Alias "CreateCompatibleDC" (ByVal hdc As IntPtr) As IntPtr
-    'Private Declare Function CreateCompatibleBitmap Lib "gdi32" Alias "CreateCompatibleBitmap" (ByVal hdc As IntPtr, ByVal nWidth As Integer, ByVal nHeight As Integer) As IntPtr
-    'Private Declare Function SelectObject Lib "gdi32" Alias "SelectObject" (ByVal hdc As IntPtr, ByVal hObject As IntPtr) As IntPtr
-    'Private Declare Function DeleteDC Lib "gdi32" Alias "DeleteDC" (ByVal hdc As IntPtr) As Integer
-
-    'Private Const SRCAND = &H8800C6
-    'Private Const SRCCOPY = &HCC0020
-    'Private Const SRCERASE = &H440328
-    'Private Const SRCINVERT = &H660046
-    'Private Const SRCPAINT = &HEE0086
-    'Private Const IMAGE_BITMAP = 0
-    'Private Const LR_LOADFROMFILE = &H10
 
     Function FloodFillIt(ByRef raster As Bitmap, ByVal iX As Integer, ByVal iY As Integer, ByVal iFColor As Color, _
         ByVal iBColor As Color, ByRef ClipTop As Integer, ByRef ClipLeft As Integer) As Bitmap
 
-        'raster.Save("D:\desktopnt\before.bmp")
-
-        ''Dim FullImage As Image = DrawDetails(PictureBox1, m_Drawings.mousePath, m_Drawings.ReversemousePath, mPieces, m_Drawings.lPaintBrush, m_Drawings.lPaintReverseBrush)  ' DrawingWithoutHelpers()
-
-        ''Dim Before As New Bitmap(FullImage)
-        ''Dim l_ActiveBitmap As New Bitmap(FullImage)
-
-        ''ff.BoundaryFillBitmap(l_ActiveBitmap, curX, curY, Color.Red, Color.Black)
-        '''ff.compare(FullImage, l_ActiveBitmap)
-        ''PictureBox2.Image = ff.FloodFillClipImage(FullImage, l_ActiveBitmap)
-
-
         Dim Bitmapbefore As Bitmap = raster.Clone
-        ''  BoundaryFillBitmap(raster, iX, iY, iFColor, iBColor)'commented 
 
         Dim mf As New MapFill() 
         raster = mf.Fill(raster, New Point(iX, iY), iFColor) 
 
-        'Return FloodFillClipImage(Bitmapbefore, raster, ClipTop, ClipLeft, iFColor)
         Return FloodFillClipImage(Bitmapbefore, raster, ClipTop, ClipLeft, iFColor) 
 
     End Function
-    '    Private Sub BoundaryFillBitmap(ByRef raster As Bitmap, ByVal iX As Integer, ByVal iY As Integer, ByVal iFColor As Color, ByVal iBColor As Color)
 
-    '        ' Allocate the maximum amount of space needed.  If you prefer less, you
-    '        ' need to modify this data structure to allow for dynamic reallocation
-    '        ' when it is needed.  An empty stack has iTop == -1.
-    '        Dim iQuantity As Integer = (raster.Width + 1) * (raster.Height + 1)
-    '        Dim iXMax As Integer = raster.Width
-    '        Dim iYMax As Integer = raster.Height
-    '        Dim akXStack(iQuantity) As Integer
-    '        Dim akYStack(iQuantity) As Integer
-    '        Dim FColorARGB As Integer = iFColor.ToArgb()
-    '        Dim BColorARGB As Integer = iBColor.ToArgb()
-    '        Dim tempARGB As Integer
-
-    '        ' Push seed point onto stack if it has the background color.  All points
-    '        ' pushed onto stack have background color iBColor.
-    '        Dim iTop As Integer = 0
-    '        tempARGB = raster.GetPixel(iX, iY).ToArgb()
-    '        If tempARGB = FColorARGB OrElse tempARGB = BColorARGB OrElse tempARGB = 0 Then
-    '            Return
-    '        End If
-
-    '        akXStack(iTop) = iX
-    '        akYStack(iTop) = iY
-
-    '        While iTop >= 0 ' stack is not empty
-    '            ' Read top of stack.  Do not pop since we need to return to this
-    '            ' top value later to restart the fill in a different direction.
-    '            iX = akXStack(iTop)
-    '            iY = akYStack(iTop)
-    '            ' fill the pixel
-    '            raster.SetPixel(iX, iY, iFColor)
-
-    '            Dim iXp1 As Integer = iX + 1
-
-    '            If iXp1 < iXMax Then
-    '                tempARGB = raster.GetPixel(iXp1, iY).ToArgb()
-    '                If tempARGB <> FColorARGB AndAlso tempARGB <> BColorARGB AndAlso tempARGB <> 0 Then
-    '                    ' push pixel with background color
-    '                    iTop += 1
-    '                    akXStack(iTop) = iXp1
-    '                    akYStack(iTop) = iY
-    '                    GoTo ContinueWhile1
-    '                End If
-    '            End If
-
-    '            Dim iXm1 As Integer = iX - 1
-
-    '            If 0 <= iXm1 Then
-    '                tempARGB = raster.GetPixel(iXm1, iY).ToArgb()
-    '                If tempARGB <> FColorARGB AndAlso tempARGB <> BColorARGB AndAlso tempARGB <> 0 Then
-    '                    ' push pixel with background color
-    '                    iTop += 1
-    '                    akXStack(iTop) = iXm1
-    '                    akYStack(iTop) = iY
-    '                    GoTo ContinueWhile1
-    '                End If
-    '            End If
-
-    '            Dim iYp1 As Integer = iY + 1
-
-    '            If iYp1 < iYMax Then
-    '                tempARGB = raster.GetPixel(iX, iYp1).ToArgb()
-    '                If tempARGB <> FColorARGB AndAlso tempARGB <> BColorARGB AndAlso tempARGB <> 0 Then
-    '                    ' push pixel with background color
-    '                    iTop += 1
-    '                    akXStack(iTop) = iX
-    '                    akYStack(iTop) = iYp1
-    '                    GoTo ContinueWhile1
-    '                End If
-    '            End If
-
-    '            Dim iYm1 As Integer = iY - 1
-
-    '            If 0 <= iYm1 Then
-    '                tempARGB = raster.GetPixel(iX, iYm1).ToArgb()
-    '                If tempARGB <> FColorARGB AndAlso tempARGB <> BColorARGB AndAlso tempARGB <> 0 Then
-    '                    ' push pixel with background color
-    '                    iTop += 1
-    '                    akXStack(iTop) = iX
-    '                    akYStack(iTop) = iYm1
-    '                    GoTo ContinueWhile1
-    '                End If
-    '            End If
-
-    '            ' done in all directions, pop and return to search other directions
-    '            iTop -= 1
-
-    'ContinueWhile1:
-
-    '        End While
-
-    '    End Sub 'BoundaryFillBitmap
-    'Function compare(ByVal pimgBeforeFill As Image, ByVal pimgAfterFill As Image) As Image
-    '    Dim hBmp1, hBmp2 As IntPtr
-    '    Dim memDC1, memDC2, picDC As IntPtr
-    '    Dim oldBmp1, oldBmp2 As IntPtr
-    '    'Dim picGraphics As Graphics
-    '    'Dim img As Image
-    '    'img = Image.FromFile("d:\1.bmp")
-
-    '    Dim TempFile1 As String = Path.GetTempFileName
-    '    'Dim myFileInfo As New FileInfo(TempFile1)
-    '    'myFileInfo.Attributes = FileAttributes.Temporary
-    '    pimgBeforeFill.Save(TempFile1, Imaging.ImageFormat.Bmp)
-
-    '    'hBmp1 = LoadImage(0, "d:\1.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE)
-    '    hBmp1 = LoadImage(0, TempFile1, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE)
-
-    '    Dim TempFile2 As String = Path.GetTempFileName
-    '    'Dim myFileInfo2 As New FileInfo(TempFile2)
-    '    'myFileInfo2.Attributes = FileAttributes.Temporary
-    '    pimgAfterFill.Save(TempFile2, Imaging.ImageFormat.Bmp)
-
-    '    'hBmp2 = LoadImage(0, "d:\2.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE)
-    '    hBmp2 = LoadImage(0, TempFile2, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE)
-
-    '    memDC1 = CreateCompatibleDC(New IntPtr(0))
-    '    memDC2 = CreateCompatibleDC(New IntPtr(0))
-    '    oldBmp1 = SelectObject(memDC1, hBmp1)
-    '    oldBmp2 = SelectObject(memDC2, hBmp2)
-
-    '    Dim NewBitmap As Bitmap = New Bitmap(pimgBeforeFill.Size.Width, pimgBeforeFill.Size.Height)
-    '    Dim picGraphics As Graphics = Graphics.FromImage(NewBitmap)
-
-    '    BitBlt(memDC1, 0, 0, pimgBeforeFill.Width, pimgBeforeFill.Height, memDC2, 0, 0, SRCINVERT)
-    '    'picGraphics = picBoxOut.CreateGraphics
-
-    '    picDC = picGraphics.GetHdc()
-    '    BitBlt(picDC, 0, 0, pimgBeforeFill.Width, pimgBeforeFill.Height, memDC1, 0, 0, SRCPAINT)
-
-    '    picGraphics.ReleaseHdc(picDC)
-
-    '    oldBmp1 = SelectObject(memDC1, oldBmp1)
-    '    oldBmp2 = SelectObject(memDC1, oldBmp2)
-
-    '    DeleteDC(memDC1)
-    '    DeleteDC(memDC2)
-    '    DeleteObject(hBmp1)
-    '    DeleteObject(hBmp2)
-
-    '    File.Delete(TempFile1)
-    '    File.Delete(TempFile2)
-
-    '    Return NewBitmap
-
-    'End Function
     Private Function FloodFillClipImage(ByVal pimgBeforeFill As Bitmap, ByVal pimgAfterFill As Bitmap, _
         ByRef Top As Integer, ByRef Left As Integer, ByVal iFColor As Color) As Bitmap
 
@@ -350,18 +175,6 @@ Public Class MapFill
         Do
             currpos = CType(stack.Pop(), Point)
             SetPixel(currpos, bmd, c)
-            ''If Color.op_Equality(GetPixel(New Point(currpos.X + 1, currpos.Y), bmd), org) = True Then
-            ''    stack.Push(New Point(currpos.X + 1, currpos.Y))
-            ''End If
-            ''If Color.op_Equality(GetPixel(New Point(currpos.X, currpos.Y - 1), bmd), org) = True Then
-            ''    stack.Push(New Point(currpos.X, currpos.Y - 1))
-            ''End If
-            ''If Color.op_Equality(GetPixel(New Point(currpos.X - 1, currpos.Y), bmd), org) = True Then
-            ''    stack.Push(New Point(currpos.X - 1, currpos.Y))
-            ''End If
-            ''If Color.op_Equality(GetPixel(New Point(currpos.X, currpos.Y + 1), bmd), org) = True Then
-            ''    stack.Push(New Point(currpos.X, currpos.Y + 1))
-            ''End If
 
             If GetPixel(New Point(currpos.X + 1, currpos.Y), bmd).Equals(org) Then
                 stack.Push(New Point(currpos.X + 1, currpos.Y))

@@ -329,26 +329,6 @@ Friend Class DataFilePurchasing
         Dim ProposedKeyFile As String = mDataFiles(lstDataFiles.SelectedIndex).ToString.ToLower.Replace(".dat", ".key")
 
         AcceptDataFileLicense(mDataFileDescriptions(lstDataFiles.SelectedIndex), ProdNum, Me, ProposedKeyFile, mDataFileState(lstDataFiles.SelectedIndex))
-        ''produce serial code
-
-        'Dim Dets As strat1.UnlockDetails
-
-        'Try
-        '    Unlock(System.IO.Path.GetDirectoryName( _
-        '        System.Reflection.Assembly.GetExecutingAssembly.Location.ToString()) & "\keyfile.mcl", Dets, ProdNum)
-        'Catch
-        '    '
-        'End Try
-
-        'Dim DFAR As New DataFileAcceptReg()
-        'With DFAR
-        '    .Owner = Me
-        '    .Caption = NameMe("")
-        '    .DataFileDesc = mDataFileDescriptions(lstDataFiles.SelectedIndex)
-        '    .SerialCode = Dets.strSerialBlock & "-" & ProduceCheckDigs(Dets.strSerialBlock)
-        '    .ShowDialog()
-        '    MessageBox.Show(.LicenseCode)
-        'End With
 
         AddDebugComment("DataFilePurchasing.btnBuy_Click 2") 
 

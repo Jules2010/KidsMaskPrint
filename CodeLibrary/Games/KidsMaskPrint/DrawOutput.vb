@@ -107,16 +107,13 @@ Friend Module DrawOutput
             Dim ReverseGPInc As Integer
             Dim UserPieceInc As Integer
 
-            For lintArrInc = 0 To pSortOrderForData.DataType.Count - 1 'SO LOOP 
-                Select Case CType(pSortOrderForData.DataType(lintArrInc), SortOrderForData.eDataType) 'SO CASE 
-                    Case SortOrderForData.eDataType.PackPieces 'SO CASE 
+            For lintArrInc = 0 To pSortOrderForData.DataType.Count - 1
+                Select Case CType(pSortOrderForData.DataType(lintArrInc), SortOrderForData.eDataType)
+                    Case SortOrderForData.eDataType.PackPieces
 
-                        '--- 
                         'Draw each piece 
                         Dim iPiece As Piece
                         iPiece = pPieces(PieceInc) 
-                        ''For Each iPiece In pPieces
-                        '--- 
                         Dim ThisPieceBounds As Rectangle
                         ThisPieceBounds = iPiece.Bounds
                         If pbooPagePrint = True Then
@@ -124,19 +121,14 @@ Friend Module DrawOutput
                             ThisPieceBounds.Y += pOffSet.Y
                         End If
                         g.DrawImage(iPiece.Bitmap, ThisPieceBounds)
-                        '--- 
-                        ''Next iPiece
-                        '--- 
                         errpos = 6
 
                         PieceInc += 1 
 
-                    Case SortOrderForData.eDataType.UserPieces 'SO CASE 
+                    Case SortOrderForData.eDataType.UserPieces
 
-                        
                         Dim iUserPiece As Part
                         iUserPiece = lUserPieces.Parts(UserPieceInc) 
-                        ''For Each iUserPiece In lUserPieces.Parts
                         Dim ThisPieceBounds As Rectangle ' 
                         ThisPieceBounds = iUserPiece.Bounds 
                         If pbooPagePrint = True Then
@@ -144,7 +136,6 @@ Friend Module DrawOutput
                             ThisPieceBounds.Y += pOffSet.Y
                         End If
                         g.DrawImage(iUserPiece.FullImage, ThisPieceBounds)
-                        ''Next iUserPiece
 
                         UserPieceInc += 1 
 
@@ -162,14 +153,11 @@ Friend Module DrawOutput
                         If Not mousePath Is Nothing Then 
                             '--- 
                             errpos = 7
-                            ''For lintArrInc = 0 To pBrush.GetUpperBound(0)
-                            '--- 
                             errpos = 8
                             Dim ThisGraphicsPath As New GraphicsPath()
                             Try 
                                 ThisGraphicsPath = mousePath(NormalGPInc).Clone
                             Catch 'EX As Exception 
-                                'Console.WriteLine("M Clone Warning " & ex.Message & " " & lintArrInc)
                                 ThisGraphicsPath = mousePath(NormalGPInc) 
                             End Try
 
@@ -186,20 +174,15 @@ Friend Module DrawOutput
                             Try : g.DrawPath(New Pen(pBrush(NormalGPInc).BrushColour, _
                                 pBrush(NormalGPInc).BrushWidth), ThisGraphicsPath) : Catch : End Try
                             errpos = 12
-                            '--- 
-                            ''Next lintArrInc
-                            '--- 
 
                             NormalGPInc += 1 
                         End If
                         errpos = 13
 
-                    Case SortOrderForData.eDataType.ReverseGraphicsPath 'SO CASE 
+                    Case SortOrderForData.eDataType.ReverseGraphicsPath
 
                         If Not ReversemousePath Is Nothing Then 
-                            '--- 
                             errpos = 14
-                            ''For lintArrInc = 0 To pReverseBrush.GetUpperBound(0)
                             errpos = 15
                             '--- 
                             Dim ThisGraphicsPath As New GraphicsPath()
@@ -207,7 +190,6 @@ Friend Module DrawOutput
                             Try 
                                 ThisGraphicsPath = ReversemousePath(ReverseGPInc).Clone
                             Catch 'EX As Exception 
-                                'Console.WriteLine("R Clone Warning " & ex.Message & " " & lintArrInc)
                                 ThisGraphicsPath = ReversemousePath(ReverseGPInc) 
                             End Try
 
@@ -224,24 +206,19 @@ Friend Module DrawOutput
                             Try : g.DrawPath(New Pen(pReverseBrush(ReverseGPInc).BrushColour, _
                                 pReverseBrush(ReverseGPInc).BrushWidth), ThisGraphicsPath) : Catch : End Try
                             errpos = 20
-                            '--- 
-                            ''Next lintArrInc
-                            '--- 
                             ReverseGPInc += 1 
                         End If
 
-                End Select 'SO CASE 
-            Next lintArrInc 'SO LOOP 
+                End Select
+            Next lintArrInc
 
-            '--- 
             errpos = 21
 
             If pbooPagePrint = False Then
                 If Mirrored = True Then
-                    Dim x As Single = 195 + 60 '(MaskBitmap.Width / 2)
+                    Dim x As Single = 195 + 60
                     g.DrawLine(New Pen(Color.Red, 2), x, 0, x, PictureBox1.Size.Height)
                     errpos = 9
-                    'Console.WriteLine("done mirror " & MaskBitmap.Height & " " & x)
                 End If
                 errpos = 22
 
@@ -251,7 +228,6 @@ Friend Module DrawOutput
                 End If
             End If 
 
-            '--- 
             If InStrGet((NameMe("")).ToUpper, "TRIAL") > 0 Then
                 If pbooPagePrint = True Then
                     Dim NumLine As Integer = PictureBox1.Size.Height / 2 ' 15
@@ -259,26 +235,17 @@ Friend Module DrawOutput
                     Dim WaterFont As New Font("Arial", 14) '2)
                     Dim Waterbrush As Brush = Brushes.LightGray
 
-                    'For lintArrInc2 = 0 To 14
-                    'Dim ThisY As Integer = NumLine * lintArrInc2
-                    'g.DrawString("This is a 30 day trial version of Kids Mask Print, visit our website to buy!", WaterFont, Waterbrush, 10, NumLine) 'ThisY)
                     g.DrawString("Visit www.KidsMaskPrint.com to buy and remove this text!", WaterFont, Waterbrush, 10, NumLine) ', 'ThisY)
-                    'Next lintArrInc2
                 End If
             End If
-            '--- 
 
         Catch ex As Exception
-            'MessageBox.Show(ex.ToString)
-            Console.WriteLine(errpos & " " & ex.ToString)
-            '--- 
             If ErrCount < 5 Then
                 AddDebugComment("DrawOutPut.DrawOutOut - Error " & ErrCount & "/4:" & ex.ToString)
             ElseIf ErrCount = 50 Then
                 AddDebugComment("DrawOutPut.DrawOutOut - Error 50:" & ex.ToString)
             End If
             ErrCount += 1
-            '--- 
         End Try
 
     End Sub
@@ -302,14 +269,6 @@ Friend Module DrawOutput
 
             gp.Transform(objTranslateMatrix)
             .Reset()
-
-            ''.Scale(x, y)
-            ''mobjPath.Transform(objTranslateMatrix)
-            ''.Reset()
-
-            ''.Translate(mobjRect.X + dx, mobjRect.Y + dy)
-            ''mobjPath.Transform(objTranslateMatrix)
-
         End With
     End Sub
     Friend Function DrawDetails(ByVal PictureBox1 As PictureBox, _
@@ -521,73 +480,17 @@ Friend Module DrawOutput
 
             errpos = 3
 
-            '##############
-            ''' 
             Dim g As Graphics 
             g = RetG 
-            '##############
 
             errpos = 4
-            '' Dim CurrentPen = New Pen(Color.FromArgb(255, Color.Black), 5) 'Set up the pen
-            'e.Graphics.DrawPath(CurrentPen, mousePath) 'draw the path! :)
-            'e.Graphics.DrawPath(New Pen(Color.Red, myPenWidth), ReversemousePath)
-            'g.FillRectangle(Brushes.White, 0, 0, MaskBitmap.Width, MaskBitmap.Height)
             g.FillRectangle(Brushes.White, 0, 0, PictureBox1.Size.Width, PictureBox1.Size.Height) 
 
             errpos = 5
-            'x'If Not PictureBox2.Image Is Nothing Then
-            'x'    g.DrawImage(PictureBox2.Image, 0, 0)
-            'x'    ''g.DrawImage(PictureBox2.Image, pOffSet.X, pOffSet.Y) 
-            'x'    errpos = 6
-            'x'End If
 
-            'errpos = 11
-            ''If Not mousePath Is Nothing Then 
-            ''    Try : g.DrawPath(New Pen(ThisColour, 5), mousePath) : Catch : End Try
-            ''End If
-
-            ''errpos = 12
-            '''If Mirrored = True Then 
-            ''If Not ReversemousePath Is Nothing Then 
-            ''    Try : g.DrawPath(New Pen(ThisColour, 5), ReversemousePath) : Catch : End Try
-            ''End If
-            '''End If 
-            ''errpos = 13
-
-
-
-            '''''If pbooPagePrint = False Then
-            '''''    errpos = 14
-
-            '''''    '##############
-            '''''    '''
-            '''''    '##############
-
-            '''''    errpos = 15
-            '''''Else
-            '''''    Dim MaskBitmap As Bitmap
-            '''''    MaskBitmap = New Bitmap(PictureBox1.Size.Width, PictureBox1.Size.Height, Drawing.Imaging.PixelFormat.Format24bppRgb)
-
-            '''''    errpos = 16
-            '''''    'RetG.DrawImage(MaskBitmap, 0, 0)
-            '''''    RetG.DrawImage(MaskBitmap, pOffSet.X, pOffSet.Y) 
-            '''''    errpos = 17
-            '''''End If
-
-            'errpos = 7
-
-            ''--- TESTING ---
-            'Dim x2 As Single = 195 + 60 '(MaskBitmap.Width / 2)
-            'g.DrawLine(New Pen(Color.Blue, 2), x2, 0, x2, MaskBitmap.Height)
-            ''--- TESTING ---
-
-            'If pbooPagePrint = False Then 
-
-            '--- 
             'Draw each piece 
             Dim iPiece As Piece
             For Each iPiece In pPieces
-                '--- 
                 Dim ThisPieceBounds As Rectangle
                 ThisPieceBounds = iPiece.Bounds
                 If pbooPagePrint = True Then
@@ -595,8 +498,6 @@ Friend Module DrawOutput
                     ThisPieceBounds.Y += pOffSet.Y
                 End If
                 g.DrawImage(iPiece.Bitmap, ThisPieceBounds)
-                '--- 
-                'g.DrawImage(iPiece.Bitmap, iPiece.Bounds)
             Next iPiece
             '--- 
             errpos = 6
@@ -625,9 +526,6 @@ Friend Module DrawOutput
             '--- 
             'Put here so lines could appear over pieces.
             If Not mousePath Is Nothing Then 
-                'Try : g.DrawPath(New Pen(Color.Black, 5), mousePath(0)) : Catch : End Try
-                'Try : g.DrawPath(New Pen(Color.White, 5), mousePath(1)) : Catch : End Try 
-                '--- 
                 errpos = 7
                 For lintArrInc = 0 To pBrush.GetUpperBound(0)
                     '--- 
@@ -635,10 +533,7 @@ Friend Module DrawOutput
                     Dim ThisGraphicsPath As New GraphicsPath()
                     Try 
                         ThisGraphicsPath = mousePath(lintArrInc).Clone
-                        'ThisGraphicsPath = CType(mousePath(lintArrInc).Clone(), GraphicsPath) 
-
                     Catch 'EX As Exception 
-                        'Console.WriteLine("M Clone Warning " & ex.Message & " " & lintArrInc)
                         ThisGraphicsPath = mousePath(lintArrInc) 
                     End Try
 
@@ -655,19 +550,12 @@ Friend Module DrawOutput
                     Try : g.DrawPath(New Pen(pBrush(lintArrInc).BrushColour, _
                         pBrush(lintArrInc).BrushWidth), ThisGraphicsPath) : Catch : End Try
                     errpos = 12
-                    '--- 
-                    'Try : g.DrawPath(New Pen(pBrush(lintArrInc).BrushColour, _
-                    '    pBrush(lintArrInc).BrushWidth), mousePath(lintArrInc)) : Catch : End Try
                 Next lintArrInc
                 '--- 
             End If
             errpos = 13
 
-            'If Mirrored = True Then 
             If Not ReversemousePath Is Nothing Then 
-                'Try : g.DrawPath(New Pen(Color.Black, 5), ReversemousePath(0)) : Catch : End Try
-                'Try : g.DrawPath(New Pen(Color.White, 5), ReversemousePath(1)) : Catch : End Try 
-                '--- 
                 errpos = 14
                 For lintArrInc = 0 To pReverseBrush.GetUpperBound(0)
                     errpos = 15
@@ -676,9 +564,7 @@ Friend Module DrawOutput
                     errpos = 16
                     Try 
                         ThisGraphicsPath = ReversemousePath(lintArrInc).Clone
-                        'ThisGraphicsPath = CType(ReversemousePath(lintArrInc).Clone(), GraphicsPath) 
                     Catch 'EX As Exception 
-                        'Console.WriteLine("R Clone Warning " & ex.Message & " " & lintArrInc)
                         ThisGraphicsPath = ReversemousePath(lintArrInc) 
                     End Try
 
@@ -695,13 +581,9 @@ Friend Module DrawOutput
                     Try : g.DrawPath(New Pen(pReverseBrush(lintArrInc).BrushColour, _
                         pReverseBrush(lintArrInc).BrushWidth), ThisGraphicsPath) : Catch : End Try
                     errpos = 20
-                    '--- 
-                    'Try : g.DrawPath(New Pen(pReverseBrush(lintArrInc).BrushColour, _
-                    '    pReverseBrush(lintArrInc).BrushWidth), ReversemousePath(lintArrInc)) : Catch : End Try
                 Next lintArrInc
-                '--- 
             End If
-            '--- 
+
             errpos = 21
 
             If pbooPagePrint = False Then
@@ -710,7 +592,6 @@ Friend Module DrawOutput
                     Dim x As Single = 195 + 60 '(MaskBitmap.Width / 2)
                     g.DrawLine(New Pen(Color.Red, 2), x, 0, x, PictureBox1.Size.Height)
                     errpos = 9
-                    'Console.WriteLine("done mirror " & MaskBitmap.Height & " " & x)
                 End If
                 errpos = 22
 

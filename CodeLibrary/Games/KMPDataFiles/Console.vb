@@ -34,22 +34,5 @@ Module ConsoleMod
         'WriteCDPack("D:\Build\KMP\Pack.Dat\HalloweenPack.dat", HalloweenPack)
 
     End Sub
-    'Private Sub WriteCDPack(ByVal pstrFileName As String, ByVal PackClass As CDPack)
 
-    '    Try : IO.File.Delete(pstrFileName) : Catch : End Try
-    '    Dim FileStream As IO.Stream = IO.File.Open(pstrFileName, IO.FileMode.Create)
-    '    Dim FileFormatter As New System.Runtime.Serialization.Formatters.Binary.BinaryFormatter()
-    '    FileFormatter.Serialize(FileStream, PackClass)
-    '    FileStream.Close()
-
-    'End Sub
-    'Private Sub WriteCDDataIncluded(ByVal pstrFileName As String, ByVal CDDataIncludedClass As CDDataIncluded)
-
-    '    Try : IO.File.Delete(pstrFileName) : Catch : End Try
-    '    Dim FileStream As IO.Stream = IO.File.Open(pstrFileName, IO.FileMode.Create)
-    '    Dim FileFormatter As New System.Runtime.Serialization.Formatters.Binary.BinaryFormatter()
-    '    FileFormatter.Serialize(FileStream, CDDataIncludedClass)
-    '    FileStream.Close()
-
-    'End Sub
 End Module

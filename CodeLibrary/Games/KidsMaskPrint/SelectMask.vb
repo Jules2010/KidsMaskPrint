@@ -176,7 +176,6 @@ Friend Class SelectMask
 
         AddDebugComment("SelectMask.ListView1_Click - End") 
 
-        ''mRetMaskFile = System.Drawing.Image.FromFile(mDir & ListView1.SelectedItems(0).Tag)
     End Sub
     Private Sub DisplayPreview()
 
@@ -184,19 +183,12 @@ Friend Class SelectMask
 
         Busy(Me, True) 
 
-        'Dim image As System.Drawing.Image = System.Drawing.Image.FromFile(Dir & ListView1.SelectedItems(0).Tag)
-        'picPreview.Image = ResizeImage(Dir & ListView1.SelectedItems(0).Tag, picPreview.Height - 10)
-
         Try 
 
-            'LoadMask(mDir & ListView1.SelectedItems(0).Tag, Nothing, picPreview.Image, True)
-            'LoadMask(mDir & ListView1.SelectedItems(0).Tag, Nothing, picPreview.Image, True, Nothing, Nothing, _
-            '    Nothing, Nothing, mLicensedFaceParts) 
             LoadMask(mDir & ListView1.SelectedItems(0).Tag, Nothing, picPreview.Image, True, Nothing, Nothing, _
                 Nothing, Nothing, mLicensedFaceParts, Nothing, Nothing) 
 
             mRetMaskFile = mDir & ListView1.SelectedItems(0).Tag
-            ''image = ResizeImage(mDir & ListView1.SelectedItems(0).Tag, picPreview.Height - 10)
         Catch 
             '
         End Try 

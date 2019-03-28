@@ -39,17 +39,7 @@ Public Class FacePartSel
             m_DataFileItemNum = Value
         End Set
     End Property
-    '--- 
 
-    ''Dim mRetImage As Image
-    ''Public Property RetImage() As Image
-    ''    Get
-    ''        Return mRetImage
-    ''    End Get
-    ''    Set(ByVal Value As Image)
-    ''        mRetImage = Value
-    ''    End Set
-    ''End Property
     Dim m_PieceName As String 
     Public Property PieceName() As String
         Get
@@ -59,16 +49,7 @@ Public Class FacePartSel
             m_PieceName = Value
         End Set
     End Property
-    ''Public ReadOnly Property VertFlip() As Boolean
-    ''    Get
-    ''        Return chkVert.CheckState
-    ''    End Get
-    ''End Property
-    ''Public ReadOnly Property HorizFlip() As Boolean
-    ''    Get
-    ''        Return chkHoriz.CheckState
-    ''    End Get
-    ''End Property
+
     Dim mFacePartListView As New ListView()
     Public Property FacePartListView() As ListView
         Get
@@ -264,7 +245,6 @@ Public Class FacePartSel
         ListView1.LargeImageList = mFacePartImageList
 
 
-        'ListView1 = mFacePartListView
         ListView1.Items.Clear()
 
         Dim lvi As New ListViewItem()
@@ -274,36 +254,7 @@ Public Class FacePartSel
             NewLVItem.Text = lvi.Text
             NewLVItem.ImageIndex = lvi.ImageIndex
             ListView1.Items.Add(NewLVItem)
-            'Console.WriteLine(lvi.Text)
-
         Next
-
-        'ListView1 = mFacePartListView
-
-        'Dim source As DirectoryInfo = New DirectoryInfo(Dir)
-        'Dim files() As FileInfo = source.GetFiles("*.png")
-        'Dim pfile As FileInfo
-
-        'Dim Ctr As Integer
-
-        'For Each pfile In files
-        '    With pfile
-        '        Dim NiceName As String = .Name.Replace(.Extension, "")
-        '        Dim image As System.Drawing.Image = System.Drawing.Image.FromFile(Dir & pfile.Name)
-        '        ImgList.Images.Add(image)
-        '        Dim item As New ListViewItem()
-        '        item.ImageIndex = Ctr
-        '        item.Text = NiceName
-        '        item.Tag = pfile.Name
-        '        ListView1.Items.Add(item) 'NiceName, Ctr)
-        '        Ctr += 1
-        '    End With
-        'Next pfile
-
-        'If Ctr > 0 Then
-        '    ListView1.Items(0).Selected = True
-        '    ListView1_Click(Nothing, Nothing)
-        'End If
 
         AddDebugComment("FacePartsSel.FaceParts_Load - end") 
 
@@ -313,7 +264,6 @@ Public Class FacePartSel
 
         AddDebugComment("FacePartsSel.btnClose_Click - start") 
 
-        'mRetImage = Nothing
         mRetPart = Nothing
         m_PieceName = "" 
 
@@ -370,14 +320,7 @@ Public Class FacePartSel
 
         AddDebugComment("FacePartsSel.DisplayPreview - start") 
 
-        'Dim image As System.Drawing.Image = System.Drawing.Image.FromFile(Dir & ListView1.SelectedItems(0).Tag)
-        'picPreview.Image = ResizeImage(Dir & ListView1.SelectedItems(0).Tag, picPreview.Height - 10)
-
         Dim lImage As System.Drawing.Image
-        'image = ResizeImage(Dir & ListView1.SelectedItems(0).Tag, picPreview.Height - 10)
-
-        'GetDataFileImageItem(ReturnNthStr( _
-        '    ListView1.SelectedItems(0).Tag, 1, "#"), ReturnNthStr(ListView1.SelectedItems(0).Tag, 2, "#"), lImage, Nothing)
         
         GetDataFileImageItem(ReturnNthStr( _
             ListView1.SelectedItems(0).Tag, 1, "#"), ReturnNthStr(ListView1.SelectedItems(0).Tag, 2, "#"), mRetPart, m_PieceName)
@@ -397,9 +340,6 @@ Public Class FacePartSel
             rdoRight.Visible = True
             rdoBoth.Checked = True
         End If
-        'If chkVert.CheckState = CheckState.Checked Then
-        '    lImage.RotateFlip(RotateFlipType.RotateNoneFlipY)
-        'End If
 
         If rdoRight.Checked = True Then
             lImage.RotateFlip(RotateFlipType.RotateNoneFlipX)
