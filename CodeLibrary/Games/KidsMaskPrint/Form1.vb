@@ -2085,7 +2085,7 @@ Imports System.IO
                     ThisPiece.SetImageObj(pFP.FullImage)
                     ThisPiece.Location = pFP.RightPart
                     ThisPiece.PieceName = pFP.FaceMaster 
-                    ''ThisPiece.Bitmapname = pFP.FaceMaster '& " Right"
+                    
                     ThisPiece.SourceDataFileName = SourceDatFileName 
                     ThisPiece.DataFileItemNum = DataFileItemNum 
 
@@ -3311,7 +3311,7 @@ Imports System.IO
         
         If rdoFloodFill.Checked = True Then
             CurrentTool = Tools.Floodfill
-            ''PictureBox1.Cursor = ShowFloodFillCursor()  
+            
             Dim s As System.IO.Stream
             Try
                 s = Me.GetType().Assembly.GetManifestResourceStream("KidsMaskPrint.floodfill.ico")

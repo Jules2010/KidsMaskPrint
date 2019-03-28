@@ -741,10 +741,10 @@ Start:
                 UserFacePartDatsStrutest = DirectCast(FileFormatter.Deserialize(FileStream), FacePartStuctureDataFile)
                 pUserPieces = UserFacePartDatsStrutest
 
-                ''MessageBox.Show("Testing")
-                ''Dim ThisPart As New KidsMaskPrint.Part()
-                ''ThisPart = UserFacePartDatsStrutest.Parts(0)
-                ''ThumbImg = ThisPart.ThumbImage
+                
+                
+                
+                
 
                 
                 pSortOrderForData = DirectCast(FileFormatter.Deserialize(FileStream), SortOrderForData)
@@ -782,11 +782,11 @@ Start:
                 Dim MousePath() As GPArr  
         Dim ReverseMousePath() As GPArr  
 
-        ''Dim MousePointArray() As PointF
-        ''Dim MouseTypeArray() As Byte
+        
+        
         Dim MousePaintBrush() As PaintBrush 
-        ''Dim ReverseMousePointArray() As PointF
-        ''Dim ReverseMouseTypeArray() As Byte
+        
+        
         Dim ReverseMousePaintBrush() As PaintBrush 
                 Dim lstrVersion As String
         Dim de As DictionaryEntry
@@ -834,7 +834,7 @@ Start:
                     Case "CMPP" '0"
                         If Not de.Value Is Nothing Then
                             'MousePointArray(MPPCounter) = de.Value
-                            ''MousePath(MPPCounter) = New GPArr() 
+                            
                             MousePath(MPPCounter).PointArray = de.Value 
                             MPPCounter += 1
                         Else 
@@ -867,7 +867,7 @@ Start:
                     Case "GRPP"
                         If Not de.Value Is Nothing Then
                             'ReverseMousePointArray(RPPCounter) = de.Value
-                            ''ReverseMousePath(RPPCounter) = New GPArr() 
+                            
                             ReverseMousePath(RPPCounter).PointArray = de.Value 
                             RPPCounter += 1
                         Else 

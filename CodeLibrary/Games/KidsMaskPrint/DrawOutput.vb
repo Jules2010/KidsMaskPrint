@@ -341,12 +341,12 @@ Friend Module DrawOutput
                     gstrProbDrawComtStack &= " #24" 
                     Dim iPiece As Piece
                     iPiece = pPieces(PieceInc) 
-                    ''For Each iPiece In pPieces
+                    
                     Dim ThisPieceBounds As Rectangle
                     ThisPieceBounds = iPiece.Bounds
                     gstrProbDrawComtStack &= " #25" 
                     g.DrawImage(iPiece.Bitmap, ThisPieceBounds)
-                    ''Next iPiece
+                    
                     PieceInc += 1 
                     gstrProbDrawComtStack &= " #26" 
                 Case SortOrderForData.eDataType.UserPieces 'SO CASE 
@@ -354,12 +354,12 @@ Friend Module DrawOutput
                     
                     Dim iUserPiece As Part
                     iUserPiece = lUserPieces.Parts(UserPieceInc) 
-                    ''For Each iUserPiece In lUserPieces.Parts
+                    
                     gstrProbDrawComtStack &= " #28" 
                     Dim ThisPieceBounds As Rectangle ' 
                     ThisPieceBounds = iUserPiece.Bounds 
                     g.DrawImage(iUserPiece.FullImage, ThisPieceBounds)
-                    ''Next iUserPiece
+                    
                     gstrProbDrawComtStack &= " #29" 
                     UserPieceInc += 1 
                     
@@ -368,7 +368,7 @@ Friend Module DrawOutput
                     gstrProbDrawComtStack &= " #31" 
                     If Not mousePath Is Nothing Then
                         gstrProbDrawComtStack &= " #32" 
-                        ''For lintArrInc = 0 To pBrush.GetUpperBound(0)
+                        
                         Dim ThisGraphicsPath As New GraphicsPath()
                         Try 
                             ThisGraphicsPath = mousePath(NormalGPInc).Clone
@@ -378,7 +378,7 @@ Friend Module DrawOutput
                         gstrProbDrawComtStack &= " #33" 
                         Try : g.DrawPath(New Pen(pBrush(NormalGPInc).BrushColour, _
                             pBrush(NormalGPInc).BrushWidth), ThisGraphicsPath) : Catch : End Try
-                        ''Next lintArrInc
+                        
                         gstrProbDrawComtStack &= " #34" 
                         NormalGPInc += 1 
                     End If
@@ -386,7 +386,7 @@ Friend Module DrawOutput
                 Case SortOrderForData.eDataType.ReverseGraphicsPath 'SO CASE 
                     gstrProbDrawComtStack &= " #35" 
                     If Not ReversemousePath Is Nothing Then
-                        ''For lintArrInc = 0 To pReverseBrush.GetUpperBound(0)
+                        
                         gstrProbDrawComtStack &= " #36" 
                         Dim ThisGraphicsPath As New GraphicsPath()
                         gstrProbDrawComtStack &= " #37" 
@@ -401,7 +401,7 @@ Friend Module DrawOutput
                         gstrProbDrawComtStack &= " #41" 
                         Try : g.DrawPath(New Pen(pReverseBrush(ReverseGPInc).BrushColour, _
                             pReverseBrush(ReverseGPInc).BrushWidth), ThisGraphicsPath) : Catch : End Try
-                        ''Next lintArrInc
+                        
                         gstrProbDrawComtStack &= " #42" 
                     End If
 

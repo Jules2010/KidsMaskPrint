@@ -391,28 +391,14 @@ Friend Class SignIn
 
         AddDebugComment("SignIn.lbListBox_SelectedIndexChanged") 
 
-        
-        'UIStyle.gPaintClr1 = lGradeCol1(lbListBox.SelectedIndex)
-        'UIStyle.gPaintClr2 = lGradeCol2(lbListBox.SelectedIndex)
         mUICol1 = lGradeCol1(lbListBox.SelectedIndex) 
         mUICol2 = lGradeCol2(lbListBox.SelectedIndex) 
-
-        'Me.Invalidate()
 
     End Sub
     Private Sub btnNew_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNew.Click
 
         mParam = Params.NewRequired 
         Me.Close()
-        ''Dim NU As New NewUser() 
-        ''NU.Owner = Me
-        ''NU.ShowDialog()
-
-        ''If NU.SelectedUser <> "" Then
-        ''    mSelectedUser = NU.SelectedUser
-        ''    Me.Close()
-
-        ''End If
 
     End Sub
     Private Sub SignIn_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
