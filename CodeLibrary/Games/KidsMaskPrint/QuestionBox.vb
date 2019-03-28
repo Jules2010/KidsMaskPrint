@@ -129,9 +129,9 @@ Friend Class QuestionBox
     End Sub
     Private Sub QuestionBox_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        SetBackcolors() 'JM 18/04/2004
+        SetBackcolors() 
 
-        txtAnswer.Multiline = False 'JM 13/10/2003
+        txtAnswer.Multiline = False 
 
     End Sub
     Private Sub txtAnswer_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtAnswer.KeyDown
@@ -161,7 +161,7 @@ Friend Class QuestionBox
     End Sub
 
     Private Sub txtAnswer_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtAnswer.KeyPress
-        'JM 15/09/2003
+        
         If e.KeyChar = CR() Then
             e.Handled = True
         End If
@@ -169,19 +169,19 @@ Friend Class QuestionBox
     End Sub
     Private Sub SetBackcolors()
 
-        'Added 'JM 18/04/2004
+        'Added 
         lblPrompt.BackColor = Color.FromArgb(0, lblPrompt.BackColor)
 
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        'Added 'JM 18/04/2004
+        'Added 
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
 
     End Sub
     Private Sub QuestionBox_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-        Me.Invalidate() 'JM 17/05/2004
+        Me.Invalidate() 
     End Sub
 End Class
 

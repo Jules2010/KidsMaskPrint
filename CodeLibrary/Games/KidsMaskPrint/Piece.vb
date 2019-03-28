@@ -2,10 +2,10 @@
 Friend Class Piece
     Private m_location As Point 'The top-left corner of the piece  
     Private m_bitmap As Bitmap 'The image used to draw the piece  
-    'Private m_BitmapName As String 'JM 15/07/2004
+    'Private m_BitmapName As String 
     Private m_VertFlip As Boolean = False
     Private m_HorizFlip As Boolean = False
-    Private m_PieceName As String 'JM 19/09/2004
+    Private m_PieceName As String 
     'Constructs a new Piece object  
     '<param name="imagePath"> The full path and filename of the image to load </param> 
     Friend Sub New()
@@ -13,7 +13,7 @@ Friend Class Piece
     End Sub 'New
 
     Friend Sub SetImage(ByVal imagePath As String)
-        m_bitmap = Nothing 'JM 11/08/2004
+        m_bitmap = Nothing 
         m_bitmap = Bitmap.FromFile(imagePath)  '
 
         If m_VertFlip = True Then
@@ -28,7 +28,7 @@ Friend Class Piece
     End Sub 'New
 
     Friend Sub SetImageObj(ByVal pImage As Image)
-        m_bitmap = Nothing 'JM 11/08/2004
+        m_bitmap = Nothing 
         m_bitmap = pImage
 
         If m_VertFlip = True Then
@@ -58,7 +58,7 @@ Friend Class Piece
         End Get
     End Property
 
-    Friend Property PieceName() As String 'JM 19/09/2004
+    Friend Property PieceName() As String 
         Get
             Return m_PieceName
         End Get
@@ -67,7 +67,7 @@ Friend Class Piece
         End Set
     End Property
 
-    '--- 'JM 19/08/2004 ---
+    '--- 
     Private m_SourceDataFileName As String
     Friend Property SourceDataFileName() As String
         Get
@@ -86,7 +86,7 @@ Friend Class Piece
             m_DataFileItemNum = Value
         End Set
     End Property
-    '--- 'JM 19/08/2004 ---
+    '--- 
 
     Friend Property VertFlip() As Boolean
         Get

@@ -258,13 +258,13 @@ Friend Class DataFileAcceptReg
                     .Top = 440
                 End With
             Case eButtonType.normal
-                '--- 'JM 15/10/2004 ---
+                '--- 
                 If IsAboveOrEqualWinXp() = True Then
                     btnOK.FlatStyle = FlatStyle.System
                     btnCancel.FlatStyle = FlatStyle.System
                     btnCopyCode.FlatStyle = FlatStyle.System
                 End If
-                '--- 'JM 15/10/2004 ---
+                '--- 
                 btnCopyCode.BackColor = Color.FromArgb(0, btnCopyCode.BackColor)
                 btnOK.BackColor = Color.FromArgb(0, btnOK.BackColor)
                 btnCancel.BackColor = Color.FromArgb(0, btnCancel.BackColor)
@@ -272,16 +272,16 @@ Friend Class DataFileAcceptReg
 
     End Function
     Private Sub DataFileAcceptReg_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-        Me.Invalidate() 'JM 21/09/2004
+        Me.Invalidate() 
     End Sub
     Private Sub DataFileAcceptReg_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
-        'JM 24/09/2004
+        
         If e.KeyCode = Keys.Escape Then
             btnCancel_Click(Nothing, Nothing)
         End If
     End Sub
     Private Sub txtRegCode_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtRegCode.KeyDown
-        'JM 24/09/2004
+        
         If e.KeyCode = Keys.Escape Then
             btnCancel_Click(Nothing, Nothing)
         End If

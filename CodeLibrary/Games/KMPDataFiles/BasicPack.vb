@@ -641,7 +641,7 @@ Module BasicPack
             .Parts.Add(OgreNose) '4
             .Parts.Add(OgreEyebrow) '5
 
-            .Parts.Add(HarlequinFace) '6'JM 29/09/2004
+            .Parts.Add(HarlequinFace) '6
             '.Parts.Add(HarlequinOutline) '12
             .Parts.Add(HarlequinEye) '7
             .Parts.Add(HarlequinMouth) '8

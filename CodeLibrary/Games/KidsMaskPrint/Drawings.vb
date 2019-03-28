@@ -32,12 +32,12 @@ Friend Class Drawings
         ReversemousePath(0) = New GraphicsPath()
 
         lPaintBrush(0) = New PaintBrush()
-        lPaintBrush(0).BrushColour = CurrentBrushColour 'JM 15/10/2004 Color.Black
-        lPaintBrush(0).BrushWidth = CurrentBrushWidth 'JM 15/10/2004 '5
+        lPaintBrush(0).BrushColour = CurrentBrushColour 
+        lPaintBrush(0).BrushWidth = CurrentBrushWidth 
 
         lPaintReverseBrush(0) = New PaintBrush()
-        lPaintReverseBrush(0).BrushColour = CurrentBrushColour 'JM 15/10/2004 Color.Black
-        lPaintReverseBrush(0).BrushWidth = CurrentBrushWidth 'JM 15/10/2004 '5
+        lPaintReverseBrush(0).BrushColour = CurrentBrushColour 
+        lPaintReverseBrush(0).BrushWidth = CurrentBrushWidth 
 
         lLastRevColour = lPaintBrush(lCurColIdx).BrushColour
 
@@ -53,7 +53,7 @@ Friend Class Drawings
                 lPaintReverseBrush(lCurReverseColIdx) = New PaintBrush()
 
                 lPaintReverseBrush(lCurReverseColIdx).BrushColour = lLastRevColour
-                lPaintReverseBrush(lCurReverseColIdx).BrushWidth = CurrentBrushWidth 'JM 15/10/2004 '5
+                lPaintReverseBrush(lCurReverseColIdx).BrushWidth = CurrentBrushWidth 
 
                 ReDim Preserve ReversemousePath(lCurReverseColIdx)
                 ReversemousePath(lCurReverseColIdx) = New GraphicsPath()
@@ -65,15 +65,15 @@ Friend Class Drawings
         Try
             lintDrawingInProgress = 1
             mousePath(lCurColIdx).AddLine(e.X, e.Y, e.X, e.Y)
-            lintLastNormalXCoord = e.X : lintLastNormalYCoord = e.Y 'JM 26/09/2004
+            lintLastNormalXCoord = e.X : lintLastNormalYCoord = e.Y 
 
-            If withMirror Then 'JM 21/09/2004 = CheckState.Checked Then 'JM 09/07/2004
+            If withMirror Then 
                 Dim x As Single = ((e.X - (e.X * 2)) + 509)
                 lintDrawingInProgress = 2
                 ReversemousePath(lCurReverseColIdx).AddLine(x, e.Y, x, (e.Y))
-                lintLastReverseXCoord = e.X : lintLastReverseYCoord = e.Y 'JM 26/09/2004
+                lintLastReverseXCoord = e.X : lintLastReverseYCoord = e.Y 
 
-            End If 'JM 09/07/2004
+            End If 
         Catch : End Try
     End Sub
     Friend Sub MouseUP(ByVal CurrentBrushWidth As Integer)
@@ -88,7 +88,7 @@ Friend Class Drawings
             ReDim Preserve lPaintBrush(lCurColIdx)
             lPaintBrush(lCurColIdx) = New PaintBrush()
             lPaintBrush(lCurColIdx).BrushColour = lLastRevColour
-            lPaintBrush(lCurColIdx).BrushWidth = CurrentBrushWidth 'JM 15/10/2004 '5
+            lPaintBrush(lCurColIdx).BrushWidth = CurrentBrushWidth 
 
             lCurReverseColIdx += 1
             ReDim Preserve ReversemousePath(lCurReverseColIdx)
@@ -97,7 +97,7 @@ Friend Class Drawings
             ReDim Preserve lPaintReverseBrush(lCurReverseColIdx)
             lPaintReverseBrush(lCurReverseColIdx) = New PaintBrush()
             lPaintReverseBrush(lCurReverseColIdx).BrushColour = lLastRevColour
-            lPaintReverseBrush(lCurReverseColIdx).BrushWidth = CurrentBrushWidth 'JM 15/10/2004 '5
+            lPaintReverseBrush(lCurReverseColIdx).BrushWidth = CurrentBrushWidth 
 
             lintDrawingInProgress = 0
         End If
@@ -135,7 +135,7 @@ Friend Class Drawings
             ReDim Preserve lPaintBrush(lCurColIdx)
             lPaintBrush(lCurColIdx) = New PaintBrush()
             lPaintBrush(lCurColIdx).BrushColour = lLastRevColour
-            lPaintBrush(lCurColIdx).BrushWidth = CurrentBrushWidth 'JM 15/10/2004 '5
+            lPaintBrush(lCurColIdx).BrushWidth = CurrentBrushWidth 
 
         End If
 
@@ -159,7 +159,7 @@ Friend Class Drawings
             ReDim Preserve lPaintReverseBrush(lCurReverseColIdx)
             lPaintReverseBrush(lCurReverseColIdx) = New PaintBrush()
             lPaintReverseBrush(lCurReverseColIdx).BrushColour = lLastRevColour
-            lPaintReverseBrush(lCurReverseColIdx).BrushWidth = CurrentBrushWidth 'JM 15/10/2004 '5
+            lPaintReverseBrush(lCurReverseColIdx).BrushWidth = CurrentBrushWidth 
         End If
 
         'ChangeUndoRedoStatus(CanUndo, CanRedo)
@@ -182,7 +182,7 @@ Friend Class Drawings
     End Sub
     Friend Function Redo() As Boolean
 
-        Try 'JM 15/10/2004
+        Try 
             Dim l_UndoRedo As UndoRedo
             l_UndoRedo = GetLastRedo(True)
 
@@ -193,10 +193,10 @@ Friend Class Drawings
             End With
 
             l_UndoRedo = Nothing
-        Catch 'JM 15/10/2004
+        Catch 
         End Try
 
-        Try 'JM 15/10/2004
+        Try 
             Dim l_RevUndoRedo As UndoRedo
             l_RevUndoRedo = GetLastRedo(False)
 
@@ -208,7 +208,7 @@ Friend Class Drawings
 
             l_RevUndoRedo = Nothing
 
-        Catch 'JM 15/10/2004
+        Catch 
         End Try
 
         'ChangeUndoRedoStatus(CanUndo, CanRedo)
@@ -245,7 +245,7 @@ Friend Class Drawings
         ReDim Preserve lPaintBrush(lCurColIdx)
         lPaintBrush(lCurColIdx) = New PaintBrush()
         lPaintBrush(lCurColIdx).BrushColour = pColour
-        lPaintBrush(lCurColIdx).BrushWidth = CurrentBrushWidth 'JM 15/10/2004 '5
+        lPaintBrush(lCurColIdx).BrushWidth = CurrentBrushWidth 
 
     End Sub
     Friend Sub PreSave(ByVal CurrentBrushColour As Color, ByVal CurrentBrushWidth As Integer)
@@ -255,9 +255,9 @@ Friend Class Drawings
         mousePath(lCurColIdx) = New GraphicsPath()
         ReDim Preserve lPaintBrush(lCurColIdx)
         lPaintBrush(lCurColIdx) = New PaintBrush()
-        lPaintBrush(lCurColIdx).BrushColour = CurrentBrushColour 'JM 15/10/2004 Color.Black
+        lPaintBrush(lCurColIdx).BrushColour = CurrentBrushColour 
 
-        lPaintBrush(lCurColIdx).BrushWidth = CurrentBrushWidth 'JM 15/10/2004 '5
+        lPaintBrush(lCurColIdx).BrushWidth = CurrentBrushWidth 
 
         mousePath(lCurColIdx).StartFigure()
         mousePath(lCurColIdx).AddLine(lintLastNormalXCoord, lintLastNormalYCoord, lintLastNormalXCoord, lintLastNormalYCoord)
@@ -267,9 +267,9 @@ Friend Class Drawings
         ReversemousePath(lCurReverseColIdx) = New GraphicsPath()
         ReDim Preserve lPaintReverseBrush(lCurReverseColIdx)
         lPaintReverseBrush(lCurReverseColIdx) = New PaintBrush()
-        lPaintReverseBrush(lCurReverseColIdx).BrushColour = CurrentBrushColour 'JM 15/10/2004 Color.Black
+        lPaintReverseBrush(lCurReverseColIdx).BrushColour = CurrentBrushColour 
 
-        lPaintReverseBrush(lCurReverseColIdx).BrushWidth = CurrentBrushWidth 'JM 15/10/2004 '5
+        lPaintReverseBrush(lCurReverseColIdx).BrushWidth = CurrentBrushWidth 
 
         ReversemousePath(lCurReverseColIdx).StartFigure()
         ReversemousePath(lCurReverseColIdx).AddLine(lintLastReverseXCoord, lintLastReverseYCoord, lintLastReverseXCoord, lintLastReverseYCoord)
@@ -291,8 +291,8 @@ Friend Class Drawings
                 ReDim lPaintBrush(lCurColIdx)
             End If
             lPaintBrush(lCurColIdx) = New PaintBrush()
-            lPaintBrush(lCurColIdx).BrushColour = CurrentBrushColour 'JM 15/10/2004 Color.Black
-            lPaintBrush(lCurColIdx).BrushWidth = CurrentBrushWidth 'JM 15/10/2004 '5
+            lPaintBrush(lCurColIdx).BrushColour = CurrentBrushColour 
+            lPaintBrush(lCurColIdx).BrushWidth = CurrentBrushWidth 
 
         End If
         If ReversemousePath(lCurReverseColIdx) Is Nothing Then
@@ -305,9 +305,9 @@ Friend Class Drawings
                 ReDim lPaintReverseBrush(lCurReverseColIdx)
             End If
             lPaintReverseBrush(lCurReverseColIdx) = New PaintBrush()
-            lPaintReverseBrush(lCurReverseColIdx).BrushColour = CurrentBrushColour 'JM 15/10/2004 Color.Black
+            lPaintReverseBrush(lCurReverseColIdx).BrushColour = CurrentBrushColour 
 
-            lPaintReverseBrush(lCurReverseColIdx).BrushWidth = CurrentBrushWidth 'JM 15/10/2004 '5
+            lPaintReverseBrush(lCurReverseColIdx).BrushWidth = CurrentBrushWidth 
 
         End If
 
@@ -323,13 +323,13 @@ Friend Class Drawings
         ReDim lPaintBrush(0)
         ReDim lPaintReverseBrush(0)
         lPaintBrush(0) = New PaintBrush()
-        lPaintBrush(0).BrushColour = CurrentBrushColour 'JM 15/10/2004 Color.Black
+        lPaintBrush(0).BrushColour = CurrentBrushColour 
 
-        lPaintBrush(0).BrushWidth = CurrentBrushWidth 'JM 15/10/2004 '5
+        lPaintBrush(0).BrushWidth = CurrentBrushWidth 
 
         lPaintReverseBrush(0) = New PaintBrush()
-        lPaintReverseBrush(0).BrushColour = CurrentBrushColour 'JM 15/10/2004 Color.Black
-        lPaintReverseBrush(0).BrushWidth = CurrentBrushWidth 'JM 15/10/2004 '5
+        lPaintReverseBrush(0).BrushColour = CurrentBrushColour 
+        lPaintReverseBrush(0).BrushWidth = CurrentBrushWidth 
 
     End Sub
 End Class

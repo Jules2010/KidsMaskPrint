@@ -135,9 +135,9 @@ Public Class FaceParts
 
     Private Sub FaceParts_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        AddDebugComment("FaceParts.FaceParts_Load - start") 'JM 07/09/2004
+        AddDebugComment("FaceParts.FaceParts_Load - start") 
 
-        SetBackcolors() 'JM 06/09/2004
+        SetBackcolors() 
 
         Dim ImgList As New ImageList()
         ImgList.ImageSize = New System.Drawing.Size(32, 32)
@@ -169,36 +169,36 @@ Public Class FaceParts
             ListView1_Click(Nothing, Nothing)
         End If
 
-        AddDebugComment("FaceParts.FaceParts_Load - end") 'JM 07/09/2004
+        AddDebugComment("FaceParts.FaceParts_Load - end") 
 
     End Sub
 
     Private Sub btnClose_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClose.Click
 
-        AddDebugComment("FaceParts.btnClose_Click - start") 'JM 07/09/2004
+        AddDebugComment("FaceParts.btnClose_Click - start") 
 
         mRetImage = ""
         Me.Close()
 
-        AddDebugComment("FaceParts.btnClose_Click - end") 'JM 07/09/2004
+        AddDebugComment("FaceParts.btnClose_Click - end") 
 
     End Sub
     Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
 
-        AddDebugComment("FaceParts.btnSelect_Click - start") 'JM 07/09/2004
+        AddDebugComment("FaceParts.btnSelect_Click - start") 
 
         If ListView1.SelectedItems.Count > 1 Then
             ListView1_Click(Nothing, Nothing)
         End If
 
         Me.Close()
-        AddDebugComment("FaceParts.btnSelect_Click - end") 'JM 07/09/2004
+        AddDebugComment("FaceParts.btnSelect_Click - end") 
 
     End Sub
 
     Private Sub ListView1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ListView1.Click
 
-        AddDebugComment("FaceParts.ListView1_Click") 'JM 07/09/2004
+        AddDebugComment("FaceParts.ListView1_Click") 
 
         DisplayPreview()
 
@@ -207,7 +207,7 @@ Public Class FaceParts
 
     Private Sub chkVert_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles chkVert.CheckStateChanged
 
-        AddDebugComment("FaceParts.chkVert_CheckStateChanged " & chkVert.CheckState) 'JM 07/09/2004
+        AddDebugComment("FaceParts.chkVert_CheckStateChanged " & chkVert.CheckState) 
 
         DisplayPreview()
 
@@ -215,14 +215,14 @@ Public Class FaceParts
 
     Private Sub chkHoriz_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles chkHoriz.CheckStateChanged
 
-        AddDebugComment("FaceParts.chkHoriz_CheckStateChanged " & chkVert.CheckState) 'JM 07/09/2004
+        AddDebugComment("FaceParts.chkHoriz_CheckStateChanged " & chkVert.CheckState) 
 
         DisplayPreview()
 
     End Sub
     Private Sub DisplayPreview()
 
-        AddDebugComment("FaceParts.DisplayPreview - start") 'JM 07/09/2004
+        AddDebugComment("FaceParts.DisplayPreview - start") 
 
         'Dim image As System.Drawing.Image = System.Drawing.Image.FromFile(Dir & ListView1.SelectedItems(0).Tag)
         'picPreview.Image = ResizeImage(Dir & ListView1.SelectedItems(0).Tag, picPreview.Height - 10)
@@ -240,21 +240,21 @@ Public Class FaceParts
 
         picPreview.Image = image
 
-        AddDebugComment("FaceParts.DisplayPreview - end") 'JM 07/09/2004
+        AddDebugComment("FaceParts.DisplayPreview - end") 
 
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        'Added 'JM 06/09/2004
+        'Added 
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
 
     End Sub
     Private Sub SetBackcolors()
 
-        AddDebugComment("FaceParts.SetBackcolors") 'JM 07/09/2004
+        AddDebugComment("FaceParts.SetBackcolors") 
 
-        'Added 'JM 06/09/2004
+        'Added 
         btnSelect.BackColor = Color.FromArgb(0, btnSelect.BackColor)
         btnClose.BackColor = Color.FromArgb(0, btnClose.BackColor)
         chkHoriz.BackColor = Color.FromArgb(0, chkHoriz.BackColor)

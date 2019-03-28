@@ -93,29 +93,29 @@ Friend Class PieceProps
 #End Region
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
 
-        AddDebugComment("PieceProps.btnCancel_Click - start") 'JM 07/09/2004
+        AddDebugComment("PieceProps.btnCancel_Click - start") 
 
         mTranType = ePieceTran.Cancel
         Me.Close()
 
-        AddDebugComment("PieceProps.btnCancel_Click - end") 'JM 07/09/2004
+        AddDebugComment("PieceProps.btnCancel_Click - end") 
 
     End Sub
     Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
 
-        AddDebugComment("PieceProps.btnDelete_Click - start") 'JM 07/09/2004
+        AddDebugComment("PieceProps.btnDelete_Click - start") 
 
         mTranType = ePieceTran.Delete
         Me.Close()
 
-        AddDebugComment("PieceProps.btnDelete_Click - end") 'JM 07/09/2004
+        AddDebugComment("PieceProps.btnDelete_Click - end") 
 
 
 
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        'Added 'JM 06/09/2004
+        'Added 
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
 
@@ -123,7 +123,7 @@ Friend Class PieceProps
 
     Private Sub PieceProps_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        AddDebugComment("PieceProps.PieceProps_Load") 'JM 07/09/2004
+        AddDebugComment("PieceProps.PieceProps_Load") 
 
     End Sub
 
@@ -132,7 +132,7 @@ Friend Class PieceProps
     End Sub
 
     Private Sub PieceProps_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
-        'JM 24/09/2004
+        
         If e.KeyCode = Keys.Escape Then
             btnCancel_Click(Nothing, Nothing)
         End If

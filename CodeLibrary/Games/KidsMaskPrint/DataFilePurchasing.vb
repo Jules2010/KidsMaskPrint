@@ -187,7 +187,7 @@ Friend Class DataFilePurchasing
 
 #End Region
     Private Sub lstDataFiles_DrawItem(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles lstDataFiles.DrawItem
-        'added 'JM 02/09/2004
+        'added 
         Dim brush As Brush
         Dim Itemselected As Boolean
 
@@ -227,7 +227,7 @@ Friend Class DataFilePurchasing
     Private Sub DataFilePurchasing_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
 
-        AddDebugComment("DataFilePurchasing.DataFilePurchasing_Load 1") 'JM 22/09/2004
+        AddDebugComment("DataFilePurchasing.DataFilePurchasing_Load 1") 
 
         lstDataFiles.Items.Clear()
 
@@ -245,9 +245,9 @@ Friend Class DataFilePurchasing
         chkDontShowNext.BackColor = Color.FromArgb(0, chkDontShowNext.BackColor)
         Label1.BackColor = Color.FromArgb(0, Label1.BackColor)
 
-        Try : lstDataFiles.SelectedIndex = 0 : Catch : End Try 'added try block 'JM 21/10/2004
+        Try : lstDataFiles.SelectedIndex = 0 : Catch : End Try 'added try block 
 
-        AddDebugComment("DataFilePurchasing.DataFilePurchasing_Load 2") 'JM 22/09/2004
+        AddDebugComment("DataFilePurchasing.DataFilePurchasing_Load 2") 
 
     End Sub
     Private Function SetupButtons()
@@ -281,13 +281,13 @@ Friend Class DataFilePurchasing
                     .Left = 376
                 End With
             Case eButtonType.normal
-                '--- 'JM 15/10/2004 ---
+                '--- 
                 If IsAboveOrEqualWinXp() = True Then
                     btnBuy.FlatStyle = BevelButton.FlatStyleEx.System
                     btnClose.FlatStyle = BevelButton.FlatStyleEx.System
                     btnLicense.FlatStyle = BevelButton.FlatStyleEx.System
                 End If
-                '--- 'JM 15/10/2004 ---
+                '--- 
                 btnBuy.BackColor = Color.FromArgb(0, btnBuy.BackColor)
                 btnClose.BackColor = Color.FromArgb(0, btnClose.BackColor)
                 btnLicense.BackColor = Color.FromArgb(0, btnLicense.BackColor)
@@ -302,7 +302,7 @@ Friend Class DataFilePurchasing
     End Sub
     Private Sub lstDataFiles_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles lstDataFiles.SelectedIndexChanged
 
-        AddDebugComment("DataFilePurchasing.lstDataFiles_SelectedIndexChanged") 'JM 22/09/2004
+        AddDebugComment("DataFilePurchasing.lstDataFiles_SelectedIndexChanged") 
 
         If mDataFileState(sender.selectedindex) = "1" Then ' 1 = OK
             btnBuy.Enabled = False
@@ -315,15 +315,15 @@ Friend Class DataFilePurchasing
     End Sub
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
 
-        AddDebugComment("DataFilePurchasing.btnClose_Click") 'JM 22/09/2004
+        AddDebugComment("DataFilePurchasing.btnClose_Click") 
 
-        SaveSetting("BuyPackShowNext", Not chkDontShowNext.Checked, InitalXMLConfig.XmlConfigType.AppSettings, "") 'JM 11/09/2004  'added chkDontShowNext.Checked 'JM 22/11/2004
+        SaveSetting("BuyPackShowNext", Not chkDontShowNext.Checked, InitalXMLConfig.XmlConfigType.AppSettings, "") 
 
         Me.Close()
     End Sub
     Private Sub btnBuy_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBuy.Click
 
-        AddDebugComment("DataFilePurchasing.btnBuy_Click 1") 'JM 22/09/2004
+        AddDebugComment("DataFilePurchasing.btnBuy_Click 1") 
 
         Dim ProdNum As String = mProductNumbers(lstDataFiles.SelectedIndex)
         Dim ProposedKeyFile As String = mDataFiles(lstDataFiles.SelectedIndex).ToString.ToLower.Replace(".dat", ".key")
@@ -350,14 +350,14 @@ Friend Class DataFilePurchasing
         '    MessageBox.Show(.LicenseCode)
         'End With
 
-        AddDebugComment("DataFilePurchasing.btnBuy_Click 2") 'JM 22/09/2004
+        AddDebugComment("DataFilePurchasing.btnBuy_Click 2") 
 
     End Sub
     Private Sub btnLicense_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLicense.Click
 
-        AddDebugComment("DataFilePurchasing.btnLicense_Click 1") 'JM 22/09/2004
+        AddDebugComment("DataFilePurchasing.btnLicense_Click 1") 
 
-        Busy(Me, True) 'JM 21/09/2004
+        Busy(Me, True) 
 
         Dim ProdNum As String = mProductNumbers(lstDataFiles.SelectedIndex)
         Dim ProposedKeyFile As String = mDataFiles(lstDataFiles.SelectedIndex).ToString.ToLower.Replace(".dat", ".key")
@@ -385,19 +385,19 @@ Friend Class DataFilePurchasing
                 Tab() & .str8OrderDate & " " & .str9TransNum
         End With
 
-        Busy(Me, False) 'JM 21/09/2004
+        Busy(Me, False) 
 
         MessageBox.Show(msg, NameMe(mDataFileDescriptions(lstDataFiles.SelectedIndex)))
 
-        AddDebugComment("DataFilePurchasing.btnLicense_Click 2") 'JM 22/09/2004
+        AddDebugComment("DataFilePurchasing.btnLicense_Click 2") 
 
     End Sub
     Private Sub DataFilePurchasing_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-        Me.Invalidate() 'JM 21/09/2004
+        Me.Invalidate() 
     End Sub
 
     Private Sub DataFilePurchasing_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
-        'JM 24/09/2004
+        
         If e.KeyCode = Keys.Escape Then
             btnClose_Click(Nothing, Nothing)
         End If

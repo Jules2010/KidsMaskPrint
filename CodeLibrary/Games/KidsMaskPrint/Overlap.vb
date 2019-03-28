@@ -1,5 +1,5 @@
 Friend Module Overlap
-    '    Friend Function xIsAboveOrEqualWinXp() As Boolean 'JM 15/05/2004
+    '    Friend Function xIsAboveOrEqualWinXp() As Boolean 
 
     '        xIsAboveOrEqualWinXp = False
 

@@ -9,7 +9,7 @@ Friend Class ImpEx
         End Set
     End Property
     Dim mstrLabel As String
-    Friend WriteOnly Property Label() As String 'JM 23/09/2004
+    Friend WriteOnly Property Label() As String 
         Set(ByVal Value As String)
             mstrLabel = Value
         End Set
@@ -129,57 +129,57 @@ Friend Class ImpEx
 
     Private Sub ImpEx_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        AddDebugComment("ImpEx.ImpEx_Load - start") 'JM 07/09/2004
+        AddDebugComment("ImpEx.ImpEx_Load - start") 
 
-        '--- 'JM 23/03/2004 ---
-        If IsAboveOrEqualWinXp() = True Then  'JM 15/05/2004
+        '--- 
+        If IsAboveOrEqualWinXp() = True Then  
             btnOK.FlatStyle = FlatStyle.System
             btnCancel.FlatStyle = FlatStyle.System
-        End If 'JM 15/05/2004
-        '--- 'JM 23/03/2004 ---
+        End If 
+        '--- 
 
-        SetBackcolors() 'JM 18/04/2004
+        SetBackcolors() 
 
         Me.Text = mstrCaption
         'lblRegisterInstructions.Text = "To unlock " & mstrProductName & _
         '", paste the license section you received, when you purchased the product, into the box below (using Ctrl+V) and then click OK!"
-        lblRegisterInstructions.Text = mstrLabel 'JM 23/09/2004
+        lblRegisterInstructions.Text = mstrLabel 
 
-        AddDebugComment("ImpEx.ImpEx_Load - end") 'JM 07/09/2004
+        AddDebugComment("ImpEx.ImpEx_Load - end") 
 
     End Sub
     Private Sub btnOK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOK.Click
 
-        AddDebugComment("ImpEx.btnOK_Click - start") 'JM 07/09/2004
+        AddDebugComment("ImpEx.btnOK_Click - start") 
 
-        '--- 'JM 15/10/2003 ---
+        '--- 
         If txtTextBlock.Text = "" Then
             Exit Sub
         End If
-        '--- 'JM 15/10/2003 ---
+        '--- 
 
         Me.DialogResult = DialogResult.OK
         Me.Close()
 
-        AddDebugComment("ImpEx.btnOK_Click - end") 'JM 07/09/2004
+        AddDebugComment("ImpEx.btnOK_Click - end") 
 
     End Sub
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
 
-        AddDebugComment("ImpEx.btnCancel_Click - start") 'JM 07/09/2004
+        AddDebugComment("ImpEx.btnCancel_Click - start") 
 
 
         Me.DialogResult = DialogResult.Cancel
         Me.Close()
 
-        AddDebugComment("ImpEx.btnCancel_Click - end") 'JM 07/09/2004
+        AddDebugComment("ImpEx.btnCancel_Click - end") 
 
     End Sub
     Sub SetBackcolors()
 
-        AddDebugComment("ImpEx.SetBackcolors") 'JM 07/09/2004
+        AddDebugComment("ImpEx.SetBackcolors") 
 
-        'Added 'JM 18/04/2004
+        'Added 
         lblRegisterInstructions.BackColor = Color.FromArgb(0, lblRegisterInstructions.BackColor)
         btnOK.BackColor = Color.FromArgb(0, btnOK.BackColor)
         btnCancel.BackColor = Color.FromArgb(0, btnCancel.BackColor)
@@ -187,12 +187,12 @@ Friend Class ImpEx
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        'Added 'JM 18/04/2004
+        'Added 
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
 
     End Sub
     Private Sub ImpEx_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-        Me.Invalidate() 'JM 13/05/2004
+        Me.Invalidate() 
     End Sub
 End Class
