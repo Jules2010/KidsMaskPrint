@@ -136,7 +136,7 @@ Module Halloween2004
             .BothParts = True
         End With
 
-        '---
+        
         Dim AlienNose As New Part   'two
         With AlienNose
             .PartType = FacePartEnums.ePartType.Nose
@@ -511,7 +511,7 @@ Module Halloween2004
             .BothParts = False
         End With
 
-        '---
+        
         Dim FPs As New FacePartStuctureDataFile
         With FPs
             .Parts.Add(FrankOutline) '0
@@ -577,7 +577,7 @@ Module Halloween2004
             .Parts.Add(WitchHat) '51
             .Parts.Add(WitchHairRight) '52
             .Parts.Add(WitchHairLeft) '53
-            '---
+            
             .Description = "Halloween" 'Halloween2004
             .DescImage = Image.FromFile(strPath & "\PackHalloween2004\logo.png")
             .ProductNumber = "223018" '"KM-00101U"

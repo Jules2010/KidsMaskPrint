@@ -174,11 +174,11 @@ Friend Class UsersGeneral
                             SaveSetting("MaskFileDesc" & lintArrInc, "", InitalXMLConfig.XmlConfigType.UserSettings, ListBox1.Text)
                         Next lintArrInc
                         SaveSetting("LastSaved", "", InitalXMLConfig.XmlConfigType.UserSettings, ListBox1.Text)
-                        '---
+                        
                         Dim lstrAllUsers As String = GetSetting("Users", "", InitalXMLConfig.XmlConfigType.AppSettings, "") & ChrGet(255)
                         SaveSetting("Users", lstrAllUsers.Replace(ListBox1.Text & ChrGet(255), "").Replace(ChrGet(255) & _
                             ChrGet(255), ChrGet(255)), InitalXMLConfig.XmlConfigType.AppSettings, "")
-                        '---
+                        
                         Busy(Me, False) 
                     End If
                 Case UserTranType.Rename
@@ -188,7 +188,7 @@ Friend Class UsersGeneral
                     If NewUserName.Trim <> "" And NewUserName <> ListBox1.Text Then
                         Busy(Me, True) 
                         Dim OldUsername As String = ListBox1.Text
-                        '---
+                        
                         For lintArrInc = 0 To 5
                             Dim ThisMaskFile As String = GetSetting("MaskFile" & lintArrInc, "", InitalXMLConfig.XmlConfigType.UserSettings, OldUsername)
                             SaveSetting("MaskFile" & lintArrInc, "", InitalXMLConfig.XmlConfigType.UserSettings, OldUsername)
@@ -200,13 +200,13 @@ Friend Class UsersGeneral
                         Dim ThisLastSaved As String = GetSetting("LastSaved", "", InitalXMLConfig.XmlConfigType.UserSettings, OldUsername)
                         SaveSetting("LastSaved", "", InitalXMLConfig.XmlConfigType.UserSettings, OldUsername)
                         SaveSetting("LastSaved", ThisLastSaved, InitalXMLConfig.XmlConfigType.UserSettings, NewUserName)
-                        '---
+                        
                         Dim lstrAllUsers As String = GetSetting("Users", "", InitalXMLConfig.XmlConfigType.AppSettings, "") & ChrGet(255)
                         'SaveSetting("Users", lstrAllUsers.Replace(ListBox1.Text & ChrGet(255), "").Replace(ChrGet(255) & _
                         '    ChrGet(255), ChrGet(255)), InitalXMLConfig.XmlConfigType.AppSettings, "")
                         SaveSetting("Users", lstrAllUsers.Replace(ListBox1.Text & ChrGet(255), NewUserName).Replace(ChrGet(255) & _
                                 ChrGet(255), ChrGet(255)), InitalXMLConfig.XmlConfigType.AppSettings, "") 
-                        '---
+                        
                         If mLoginInAs = OldUsername Then
                             mLoginInAs = NewUserName
                         End If
