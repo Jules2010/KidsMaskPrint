@@ -519,18 +519,7 @@ Friend Class FacePartDiag
         Dim pfile As FileInfo
 
         For Each pfile In files
-            Try ' this will cater for old data files
-
-                ''Dim FPs As New KidsMaskPrint.FacePartStuctureDataFile()
-
-                ''Dim FileStream As Stream = File.Open(pfile.FullName, FileMode.Open)
-                ''Dim FileFormatter As New BinaryFormatter()
-
-                '''Dim Ver As String = FileFormatter.Deserialize(FileStream)
-                ''FPs = DirectCast(FileFormatter.Deserialize(FileStream), KidsMaskPrint.FacePartStuctureDataFile)
-
-                ''FileStream.Close()
-
+            Try
                 Dim FPs As FacePartStuctureDataFile = UnlockFacePartsPack(pfile.FullName) 
 
                 '--- this block checks for a valid key file and doesn't all it to be used if it isn't ---

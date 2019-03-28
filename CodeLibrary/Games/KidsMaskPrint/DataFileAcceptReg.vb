@@ -193,8 +193,6 @@ Friend Class DataFileAcceptReg
 
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
-        ' lblRegisterInstructions.BackgroundImage = PaintBack.PaintBackgroundToFit(pevent, Me.Height, Me.Width, lblRegisterInstructions.Top, lblRegisterInstructions.Left, lblRegisterInstructions.Width, lblRegisterInstructions.Height)
-        'Me.Update()
 
     End Sub
     Private Sub LinkLabel1_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked

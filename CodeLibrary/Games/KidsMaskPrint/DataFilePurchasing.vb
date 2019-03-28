@@ -192,13 +192,9 @@ Friend Class DataFilePurchasing
         Dim Itemselected As Boolean
 
         e.Graphics.SmoothingMode = Drawing.Drawing2D.SmoothingMode.HighQuality
-
-        'e.Graphics.DrawRectangle(New Pen(SystemColors.Window, 2), e.Bounds)
         e.Graphics.FillRectangle(SystemBrushes.Window, e.Bounds)
+        e.Graphics.DrawImageUnscaled(mDataFileDescImages(e.Index), e.Bounds)
 
-        e.Graphics.DrawImageUnscaled(mDataFileDescImages(e.Index), e.Bounds) ', 0, 0)
-
-        'Dim TextTop As Integer = (e.Bounds.Top + (lstDataFiles.ItemHeight / 2)) - lstDataFiles.Font.Height
         Dim TextTop As Integer = e.Bounds.Top + lstDataFiles.Font.Height
 
         e.Graphics.DrawString(mDataFileDescriptions(e.Index), lstDataFiles.Font, Brushes.Red, 150, TextTop)
@@ -214,8 +210,6 @@ Friend Class DataFilePurchasing
         Dim TempRect As Rectangle
         TempRect = e.Bounds
         TempRect.Width -= 1
-        'TempRect.Y += 1
-        'TempRect.Height -= 1 '2
 
         If (e.State And DrawItemState.Selected) = DrawItemState.Selected Then
             e.Graphics.DrawRectangle(New Pen(SystemColors.Highlight, 1), TempRect)
@@ -236,8 +230,6 @@ Friend Class DataFilePurchasing
         Dim lintArrInc As Integer
         For lintArrInc = 0 To mDataFileDescriptions.Count - 1
             lstDataFiles.Items.Add(mDataFileDescriptions(lintArrInc))
-            'add description text and buttons as appropiate
-            ' xxx()
         Next lintArrInc
 
         SetupButtons()

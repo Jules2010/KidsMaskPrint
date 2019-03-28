@@ -18,9 +18,8 @@ Friend Module DrawOutput
         Try ' error trapping
 
             If pbooPagePrint = True Then
-                '----------------------------
 
-                Dim m_zoom As Single = pSize 'CSng(combobox1.Text)
+                Dim m_zoom As Single = pSize
 
                 Dim m_origin As Point
 
@@ -148,10 +147,7 @@ Friend Module DrawOutput
                         '###  catch block around them. 
                         '###################################################################################
 
-                        '--- 
-                        'Put here so lines could appear over pieces.
                         If Not mousePath Is Nothing Then 
-                            '--- 
                             errpos = 7
                             errpos = 8
                             Dim ThisGraphicsPath As New GraphicsPath()
@@ -416,11 +412,6 @@ Friend Module DrawOutput
             End Select 'SO CASE 
         Next lintArrInc 'SO LOOP 
         gstrProbDrawComtStack &= " #43" 
-        'Dim SaveBitMap As Bitmap
-        'SaveBitMap = New Bitmap(PictureBox1.Size.Width, PictureBox1.Size.Height, g)
-        'If IO.File.Exists(OutMask) = True Then IO.File.Delete(OutMask)
-        ''NewBitmap.Save("D:\desktopnt\crapper", Imaging.ImageFormat.Bmp)
-        'Console.WriteLine("written")
 
         AddDebugComment("DrawOutPut.DrawDetails - end") 
 
@@ -523,12 +514,9 @@ Friend Module DrawOutput
             '###  catch block around them. 
             '###################################################################################
 
-            '--- 
-            'Put here so lines could appear over pieces.
             If Not mousePath Is Nothing Then 
                 errpos = 7
                 For lintArrInc = 0 To pBrush.GetUpperBound(0)
-                    '--- 
                     errpos = 8
                     Dim ThisGraphicsPath As New GraphicsPath()
                     Try 
@@ -671,12 +659,6 @@ Friend Module DrawOutput
             Next lintArrInc
 
         End If
-
-        'Dim SaveBitMap As Bitmap
-        'SaveBitMap = New Bitmap(PictureBox1.Size.Width, PictureBox1.Size.Height, g)
-        'If IO.File.Exists(OutMask) = True Then IO.File.Delete(OutMask)
-        ''NewBitmap.Save("D:\desktopnt\crapper", Imaging.ImageFormat.Bmp)
-        'Console.WriteLine("written")
 
         AddDebugComment("DrawOutPut.DrawDetails - end") 
 

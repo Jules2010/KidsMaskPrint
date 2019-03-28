@@ -100,10 +100,6 @@ Imports System.IO
         'This call is required by the Windows Form Designer.
         InitializeComponent()
 
-        'Add any initialization after the InitializeComponent() call
-        ''mPieces.Add(New Piece("D:\desktopnt\scraps\flag.png")) '"C:\a.png"))
-        ''mPieces.Add(New Piece("D:\desktopnt\scraps\flag.png")) '"C:\b.png"))
-
         'Stop redraw flicker 
         SetStyle(ControlStyles.DoubleBuffer, True)
         SetStyle(ControlStyles.UserPaint, True)
@@ -1587,7 +1583,6 @@ Imports System.IO
         'btnClear_Click(Nothing, Nothing) 
         Clear()
 
-        'AddDebugComment("frmMain.mnuFileImportGraphics_Click - end") 
         gstrProbComtStack &= " #FIGEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
     End Sub
     Private Sub mnuFileExportGraphics_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuFileExportGraphics.Click
@@ -1607,7 +1602,6 @@ Imports System.IO
 
         ' Displays a SaveFileDialog so the user can save
         ' the Image
-        'AddDebugComment("frmMain.mnuFileExportGraphics_Click - start") 
         gstrProbComtStack = "frmMain.mnuFileExportGraphics_Click - start" 
         DeactivatePaintingBeforeDialog() 
 
@@ -1884,8 +1878,6 @@ Imports System.IO
 
         'produce debug report of all values about to be saved
 
-        'Dim FullImage As Image =DrawingWithoutHelpers()
-        
         Dim FullImage As Image = DrawDetails(PictureBox1, m_Drawings.mousePath, m_Drawings.ReversemousePath, _
             mPieces, m_Drawings.lPaintBrush, m_Drawings.lPaintReverseBrush, m_UserPieces, m_SortOrderForData) ' DrawingWithoutHelpers()
 
@@ -1897,15 +1889,9 @@ Imports System.IO
         Dim lintArrInc As Integer
         For Each iPiece In mPieces
             Dim str As String
-            'str = iPiece.Location.X & "|" & iPiece.Location.Y & "|" & iPiece.Bitmapname & "|" & iPiece.VertFlip & "|" & iPiece.HorizFlip & "|"
-            
-            'str = iPiece.SourceDataFileName.Replace(fpDir, "") & "|" & iPiece.DataFileItemNum & "|" & iPiece.Location.X & "|" & iPiece.Location.Y & "|" & iPiece.VertFlip & "|" & iPiece.HorizFlip & "|" ' & ControlChars.CrLf
             
             str = iPiece.SourceDataFileName.Replace(fpDir, "") & "|" & iPiece.DataFileItemNum & "|" & iPiece.Location.X & _
                 "|" & iPiece.Location.Y & "|" & iPiece.VertFlip & "|" & iPiece.HorizFlip & "|" & iPiece.PieceName & "|"
-            'Console.WriteLine(str)
-
-            'hash.Add(lintArrInc, str) 'iPiece.Location)
             hash.Add("ZZZZ" & lintArrInc.ToString, str) 
             lintArrInc += 1
         Next iPiece
@@ -2538,29 +2524,22 @@ Imports System.IO
             gstrProbComtStack &= " #FMA3" 
 
             Dim lbooSixMonthVersionCFUDone As Boolean   
-            'Status.Close()
-            '--- 
             Dim InitialConfig1 As New InitalXMLConfig(InitalXMLConfig.XmlConfigType.AppSettings)
             Dim lstrUsersStr As String
             lstrUsersStr = InitialConfig1.GetValue("Users", "")
             lbooSixMonthVersionCFUDone = CBool(InitialConfig1.GetValue("SixMonthVersionCFUDone", False)) 
             InitialConfig1 = Nothing
 
-            'AddDebugComment("frmMain.Form1_Activated - 3") 
             gstrProbComtStack &= " #FMA4" 
 
             Dim lbooUseNewUserScreen As Boolean = False 
             gstrMRPs = "0183"
             If lstrUsersStr = "" Then
-                'Dim frmNewUser As New NewUser()
-                'frmNewUser.Owner = Me
-                'frmNewUser.ShowDialog()
-                'mSelectedUser = frmNewUser.SelectedUser
                 lbooUseNewUserScreen = True
                 gstrMRPs = "0184"
             Else
                 gstrMRPs = "0186"
-                '--- 
+
                 Dim frmSignIn As New SignIn()
                 frmSignIn.Owner = Me 
                 frmSignIn.ShowDialog()
@@ -2574,7 +2553,6 @@ Imports System.IO
                 gstrMRPs = "0189"
             End If
 
-            'AddDebugComment("frmMain.Form1_Activated - 4") 
             gstrProbComtStack &= " #FMA5" 
 
             If lbooUseNewUserScreen = True Then
@@ -2634,20 +2612,12 @@ Imports System.IO
                 End If
                 SaveSetting("SixMonthVersionCFUDone", True, InitalXMLConfig.XmlConfigType.AppSettings, "")
             End If
-            '--- 
+
             gstrMRPs = "0240"
-            'AddDebugComment("frmMain.Form1_Activated - 6") 
             gstrProbComtStack &= " #FMA7" 
 
-
-
             ReactivatePaintingBeforeDialog() 
-            '--- 
 
-            '--- 
-            'Application.DoEvents()
-
-            'Dim ShowWelcome As Boolean = CBool(GetSetting("WELCOME", "True", InitalXMLConfig.XmlConfigType.AppSettings, ""))
             Dim ShowWelcome As Boolean = CBool(AppSettingsStartup.GetValue("WELCOME", "True")) 
 
             If ShowWelcome = True Then
@@ -2657,10 +2627,7 @@ Imports System.IO
                 BM.ShowDialog()
 
             End If
-            '--- 
 
-
-            '--- 
             'used for W98 bug of now drawing buttons properly
             If IsAboveOrEqualWinXp() = False Then
                 Me.WindowState = FormWindowState.Minimized
@@ -2668,20 +2635,16 @@ Imports System.IO
                 Me.WindowState = FormWindowState.Maximized
 
             End If
-            '--- 
 
-            '--- 
             'fixes menu bar not being coloured in problem
             Dim MenuItem As New MenuItem()
             MainMenu1.MenuItems.Add(MenuItem)
             MainMenu1.MenuItems.Remove(MenuItem)
-            '--- 
-
 
             'used to update background colours 
             Me.Invalidate() 
             gstrMRPs = "0255"
-            'AddDebugComment("frmMain.Form1_Activated - end") 
+
             gstrProbComtStack &= " #FMAEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
         End If
     End Sub
@@ -2690,15 +2653,11 @@ Imports System.IO
         gstrMRPs = "0101"
         Busy(Me, True) 
 
-        'AddDebugComment("frmMain.Form1_Load - start") 
         gstrProbComtStack = "frmMain.Form1_Load - start" 
 
-        'Me.Icon = New System.Drawing.Icon( _
-        '        System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("KidsMaskPrint.kmp.ico"))
         Me.Text = NameMe("") 
 
         m_Drawings = New Drawings(m_CurrentColour, m_CurrentBrushWidth) 
-        ''btnRedo.Enabled = False 
 
         m_UserPieces = New FacePartStuctureDataFile() 
 
@@ -3130,8 +3089,7 @@ Imports System.IO
         fp.mDrawings = m_Drawings
         fp.mUserPieces = m_UserPieces
         fp.mSortOrderForData = m_SortOrderForData
-        fp.Show() 'Dialog()
-        '--- 
+        fp.Show()
 
         gstrProbComtStack = " #bHc2"
         ReactivatePaintingBeforeDialog()
