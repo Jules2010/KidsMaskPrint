@@ -401,8 +401,7 @@ Friend Module Main
         gstrMRPs = "0013"
         Try
             gstrMRPs = "0015"
-            'AddDebugComment("KidsMaskPrint.mainStart - Topmost")
-            gstrProbComtStack = " Topmost" 
+                        gstrProbComtStack = " Topmost" 
 
             gdatSystemStart = Date.Now
 
@@ -431,8 +430,7 @@ Friend Module Main
             End If
             gstrMRPs = "0025"
 
-            'AddDebugComment("KidsMaskPrint.mainStart - 1")
-            gstrProbComtStack &= " #MS1" 
+                        gstrProbComtStack &= " #MS1" 
 
             If flamenow() Then
                 Dim lstrDetails2(2) As String
@@ -462,8 +460,7 @@ Friend Module Main
             End If
 
             gstrMRPs = "0035"
-            'AddDebugComment("KidsMaskPrint.mainStart - 2")
-            gstrProbComtStack &= " #MS2" 
+                        gstrProbComtStack &= " #MS2" 
 
                         Dim Dets As strat1.UnlockDetails
             TakeCare(lintThreads, Dets)
@@ -501,8 +498,7 @@ Friend Module Main
                 GoTo Exhaust
             End If
 #End If
-            'AddDebugComment("KidsMaskPrint.mainStart - 3")
-            gstrProbComtStack &= " #MS3" 
+                        gstrProbComtStack &= " #MS3" 
 
             Try
                 Dim MaskDir As String = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) & "\" & "\Masks\"
@@ -514,14 +510,12 @@ Friend Module Main
             End Try
             gstrMRPs = "0065"
 
-            'AddDebugComment("KidsMaskPrint.mainStart - 4")
-            gstrProbComtStack &= " #MS4" 
+                        gstrProbComtStack &= " #MS4" 
 
             lflaDBResult = GetWindowsDir(gstrDBFlamer, gstrProbComtStack)
 
             'Catch ex As Exception
-            'AddDebugComment("KidsMaskPrint.mainStart - Basic Checks done")
-            gstrProbComtStack &= " #MSBasic Checks done" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
+                        gstrProbComtStack &= " #MSBasic Checks done" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
 
         Catch ex As Exception
             AddDebugComment("<Font color=Red>MSG:" & ex.ToString & "</font>")
