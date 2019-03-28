@@ -230,7 +230,7 @@ Friend Class SelectMask
         lblDirectory.Text = mDir
 
         Dim source As DirectoryInfo = New DirectoryInfo(pDir)
-        Dim files() As FileInfo = source.GetFiles("*.mask") 'added mask 
+        Dim files() As FileInfo = source.GetFiles("*.mask")
         Dim pfile As FileInfo
 
         Dim Ctr As Integer
@@ -242,14 +242,8 @@ Friend Class SelectMask
 
         For Each pfile In files
             With pfile
-                'needs to load all mask files as images
                 Dim NiceName As String = .Name.Replace(.Extension, "")
-                'Dim image As System.Drawing.Image = System.Drawing.Image.FromFile("D:\desktopnt\scraps\flag.png") 'mDir & pfile.Name)
-                'Dim pb As New PictureBox()
                 Dim Temp As Image
-                'LoadMask(pfile.FullName, Nothing, Nothing, Temp, True)
-                'LoadMask(pfile.FullName, Nothing, Temp, True) 
-                'LoadMask(pfile.FullName, Nothing, Temp, True, Nothing, Nothing, Nothing, Nothing, mLicensedFaceParts) 
                 LoadMask(pfile.FullName, Nothing, Temp, True, Nothing, Nothing, Nothing, Nothing, mLicensedFaceParts, Nothing, Nothing) 
 
                 ImgList.Images.Add(Temp)
@@ -257,7 +251,7 @@ Friend Class SelectMask
                 item.ImageIndex = Ctr
                 item.Text = NiceName
                 item.Tag = pfile.Name
-                ListView1.Items.Add(item) 'NiceName, Ctr)
+                ListView1.Items.Add(item)
                 Ctr += 1
             End With
         Next pfile
@@ -268,7 +262,6 @@ Friend Class SelectMask
         End If
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
-
         
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)

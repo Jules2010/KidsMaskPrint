@@ -253,7 +253,7 @@ Friend Module Main
                 'check license
                 Dim lintCheck As Integer = 16
                 Try
-                    lintCheck = Unlock(lstrEncFile, Nothing, "", "") 'added ,"" 
+                    lintCheck = Unlock(lstrEncFile, Nothing, "", "")
                 Catch
 
                 End Try

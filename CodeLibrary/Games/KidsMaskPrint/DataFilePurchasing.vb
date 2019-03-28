@@ -237,7 +237,7 @@ Friend Class DataFilePurchasing
         chkDontShowNext.BackColor = Color.FromArgb(0, chkDontShowNext.BackColor)
         Label1.BackColor = Color.FromArgb(0, Label1.BackColor)
 
-        Try : lstDataFiles.SelectedIndex = 0 : Catch : End Try 'added try block 
+        Try : lstDataFiles.SelectedIndex = 0 : Catch : End Try
 
         AddDebugComment("DataFilePurchasing.DataFilePurchasing_Load 2") 
 

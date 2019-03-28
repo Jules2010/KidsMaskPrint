@@ -58,7 +58,7 @@ Module DataFileAcceptLicense
                 'check license
                 Dim lintCheck As Integer = 16
                 Try
-                    lintCheck = Unlock(lstrEncFile, Nothing, pProdNum, Dets.strSerialBlock) 'added ,"" 
+                    lintCheck = Unlock(lstrEncFile, Nothing, pProdNum, Dets.strSerialBlock)
                 Catch
 
                 End Try

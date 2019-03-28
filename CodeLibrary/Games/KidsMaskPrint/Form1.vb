@@ -2080,7 +2080,6 @@ Imports System.IO
                     Dim ThisPiece As New Piece()
                     ThisPiece.SetImageObj(pFP.FullImage)
                     ThisPiece.Location = pFP.LeftPart
-                    ''ThisPiece.Bitmapname = pFP.FaceMaster '& " Left"
                     ThisPiece.PieceName = pFP.FaceMaster 
                     ThisPiece.SourceDataFileName = SourceDatFileName 
                     ThisPiece.DataFileItemNum = DataFileItemNum 
@@ -2090,10 +2089,9 @@ Imports System.IO
                     Dim ThisPiece As New Piece()
                     ThisPiece.HorizFlip = False
                     thispiece.VertFlip = False
-                    ThisPiece.SetImageObj(pFP.FullImage.Clone) 'added clone 
+                    ThisPiece.SetImageObj(pFP.FullImage.Clone)
                     ThisPiece.Location = pFP.LeftPart
                     ThisPiece.PieceName = pFP.FaceMaster 
-                    ''ThisPiece.Bitmapname = pFP.FaceMaster '& " Left"
                     ThisPiece.SourceDataFileName = SourceDatFileName 
                     ThisPiece.DataFileItemNum = DataFileItemNum 
                     mPieces.Add(ThisPiece)
@@ -2104,7 +2102,6 @@ Imports System.IO
                     ThisPiece2.SetImageObj(pFP.FullImage)
                     ThisPiece2.Location = pFP.RightPart
                     ThisPiece2.PieceName = pFP.FaceMaster 
-                    ''ThisPiece2.Bitmapname = pFP.FaceMaster ' & " Right"
                     ThisPiece2.SourceDataFileName = SourceDatFileName 
                     ThisPiece2.DataFileItemNum = DataFileItemNum 
                     mPieces.Add(ThisPiece2)
@@ -3035,57 +3032,49 @@ Imports System.IO
 
         DeactivatePaintingBeforeDialog() 
         gstrProbComtStack = " #bEyc1"
-        Dim fp As New FacePartDiag() 'FacePartSel()
+        Dim fp As New FacePartDiag()
         gstrProbComtStack = " #bEyc1a"
         fp.Owner = Me
         gstrProbComtStack = " #bEyc1b"
-        'fp.FacePartImageList = ilEye
-        'fp.FacePartListView = lvEye
         fp.PartType = FacePartEnums.ePartType.Eye 
         gstrProbComtStack = " #bEyc1c"
                 fp.mPieces = mPieces
         fp.mDrawings = m_Drawings
         fp.mUserPieces = m_UserPieces
         fp.mSortOrderForData = m_SortOrderForData
-        fp.Show() 'Dialog()
-                gstrProbComtStack = " #bEyc2"
+        fp.Show()
+        gstrProbComtStack = " #bEyc2"
         ReactivatePaintingBeforeDialog() 
         gstrProbComtStack = " #bEyc3"
-        'AddSelectedFacePart(fp.RetPart, fp.RetPosSel, fp.SourceDataFileName, fp.DataFileItemNum) 'added datafile stuff 
         gstrProbComtStack = " #bEyc4"
         fp = Nothing 
-        'AddDebugComment("frmMain.btnEyes_Click - end") 
         gstrProbComtStack &= " #BEYCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
     End Sub
     Private Sub btnEars_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEars.Click
         gstrMRPs = "0370"
-        'AddDebugComment("frmMain.btnEars_Click - start") 
         gstrProbComtStack = "frmMain.btnEars_Click - start" 
         DeactivatePaintingBeforeDialog() 
         gstrProbComtStack = " #bEac1"
-        Dim fp As New FacePartDiag() '' FacePartSel()
+        Dim fp As New FacePartDiag()
         gstrProbComtStack = " #bEac1a"
         fp.Owner = Me
         gstrProbComtStack = " #bEac1b"
         fp.PartType = FacePartEnums.ePartType.Ear 
         gstrProbComtStack = " #bEac1c"
-                fp.mPieces = mPieces
+        fp.mPieces = mPieces
         fp.mDrawings = m_Drawings
         fp.mUserPieces = m_UserPieces
         fp.mSortOrderForData = m_SortOrderForData
-        fp.Show() 'Dialog()
-                gstrProbComtStack = " #bEac2"
+        fp.Show()
+        gstrProbComtStack = " #bEac2"
         ReactivatePaintingBeforeDialog() 
         gstrProbComtStack = " #bEac3"
-        'AddSelectedFacePart(fp.RetPart, fp.RetPosSel, fp.SourceDataFileName, fp.DataFileItemNum) 'added datafile stuff 
         gstrProbComtStack = " #bEac4"
         fp = Nothing 
-        'AddDebugComment("frmMain.btnEars_Click - end") 
         gstrProbComtStack &= " #BEACEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
     End Sub
     Private Sub btnMouths_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMouths.Click
         gstrMRPs = "0380"
-        'AddDebugComment("frmMain.btnMouths_Click - start") 
         gstrProbComtStack = "frmMain.btnMouths_Click - start" 
 
         DeactivatePaintingBeforeDialog() 
@@ -3104,7 +3093,6 @@ Imports System.IO
                 gstrProbComtStack = " #bMoc2"
         ReactivatePaintingBeforeDialog() 
         gstrProbComtStack = " #bMoc3"
-        'AddSelectedFacePart(fp.RetPart, fp.RetPosSel, fp.SourceDataFileName, fp.DataFileItemNum) 'added datafile stuff 
         gstrProbComtStack = " #bMoc4"
         fp = Nothing 
         'AddDebugComment("frmMain.btnMouths_Click - end") 
@@ -3112,63 +3100,55 @@ Imports System.IO
     End Sub
     Private Sub btnNoses_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNoses.Click
         gstrMRPs = "0390"
-        'AddDebugComment("frmMain.btnNoses_Click - start") 
         gstrProbComtStack = "frmMain.btnNoses_Click - start" 
 
         DeactivatePaintingBeforeDialog() 
         gstrProbComtStack = " #bNoc1"
-        Dim fp As New FacePartDiag() 'FacePartSel()
+        Dim fp As New FacePartDiag()
         gstrProbComtStack = " #bNoc1a"
         fp.Owner = Me
         gstrProbComtStack = " #bNoc1b"
         fp.PartType = FacePartEnums.ePartType.Nose 
         gstrProbComtStack = " #bNoc1c"
-                fp.mPieces = mPieces
+        fp.mPieces = mPieces
         fp.mDrawings = m_Drawings
         fp.mUserPieces = m_UserPieces
         fp.mSortOrderForData = m_SortOrderForData
-        fp.Show() 'Dialog()
-                gstrProbComtStack = " #bNoc2"
+        fp.Show()
+        gstrProbComtStack = " #bNoc2"
         ReactivatePaintingBeforeDialog() 
         gstrProbComtStack = " #bNoc3"
-        'AddSelectedFacePart(fp.RetPart, fp.RetPosSel, fp.SourceDataFileName, fp.DataFileItemNum) 'added datafile stuff 
         gstrProbComtStack = " #bNoc4"
         fp = Nothing 
-        'AddDebugComment("frmMain.btnNoses_Click - end") 
         gstrProbComtStack &= " #BNCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
     End Sub
     Private Sub btnOther_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOther.Click
         gstrMRPs = "0400"
-        'AddDebugComment("frmMain.btnOther_Click - start") 
         gstrProbComtStack = "frmMain.btnOther_Click - start" 
 
         DeactivatePaintingBeforeDialog() 
         gstrProbComtStack = " #bOtc1"
-        Dim fp As New FacePartDiag() 'FacePartSel()
+        Dim fp As New FacePartDiag()
         gstrProbComtStack = " #bOtc1a"
         fp.Owner = Me
         gstrProbComtStack = " #bOtc1b"
         fp.PartType = FacePartEnums.ePartType.Misc
         gstrProbComtStack = " #bOtc1c"
-                fp.mPieces = mPieces
+        fp.mPieces = mPieces
         fp.mDrawings = m_Drawings
         fp.mUserPieces = m_UserPieces
         fp.mSortOrderForData = m_SortOrderForData
-        fp.Show() 'Dialog()
-                gstrProbComtStack = " #bOtc2"
+        fp.Show()
+        gstrProbComtStack = " #bOtc2"
         ReactivatePaintingBeforeDialog() 
         gstrProbComtStack = " #bOtc3"
-        'AddSelectedFacePart(fp.RetPart, fp.RetPosSel, fp.SourceDataFileName, fp.DataFileItemNum) 'added datafile stuff 
         gstrProbComtStack = " #bOtc4"
         fp = Nothing 
-        'AddDebugComment("frmMain.btnOther_Click - end") 
         gstrProbComtStack &= " #BOCEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = "" 
     End Sub
     Private Sub btnLoad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLoad.Click
         gstrMRPs = "0410"
-        'AddDebugComment("frmMain.btnLoad_Click - start") 
         gstrProbComtStack = "frmMain.btnLoad_Click - start" 
-
         
         Dim LoadSlots As New Slots()
         With LoadSlots

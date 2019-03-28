@@ -620,7 +620,6 @@ Friend Class FacePartDiag
                     Dim ThisPiece As New Piece()
                     ThisPiece.SetImageObj(pFP.FullImage)
                     ThisPiece.Location = pFP.LeftPart
-                    ''ThisPiece.Bitmapname = pFP.FaceMaster '& " Left"
                     ThisPiece.PieceName = pFP.FaceMaster 
                     ThisPiece.SourceDataFileName = SourceDatFileName 
                     ThisPiece.DataFileItemNum = DataFileItemNum 
@@ -630,10 +629,9 @@ Friend Class FacePartDiag
                     Dim ThisPiece As New Piece()
                     ThisPiece.HorizFlip = False
                     thispiece.VertFlip = False
-                    ThisPiece.SetImageObj(pFP.FullImage.Clone) 'added clone 
+                    ThisPiece.SetImageObj(pFP.FullImage.Clone)
                     ThisPiece.Location = pFP.LeftPart
                     ThisPiece.PieceName = pFP.FaceMaster 
-                    ''ThisPiece.Bitmapname = pFP.FaceMaster '& " Left"
                     ThisPiece.SourceDataFileName = SourceDatFileName 
                     ThisPiece.DataFileItemNum = DataFileItemNum 
                     mm_Pieces.Add(ThisPiece)
@@ -644,7 +642,6 @@ Friend Class FacePartDiag
                     ThisPiece2.SetImageObj(pFP.FullImage)
                     ThisPiece2.Location = pFP.RightPart
                     ThisPiece2.PieceName = pFP.FaceMaster 
-                    ''ThisPiece2.Bitmapname = pFP.FaceMaster ' & " Right"
                     ThisPiece2.SourceDataFileName = SourceDatFileName 
                     ThisPiece2.DataFileItemNum = DataFileItemNum 
                     mm_Pieces.Add(ThisPiece2)
