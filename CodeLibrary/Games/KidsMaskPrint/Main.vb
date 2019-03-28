@@ -544,62 +544,63 @@ Friend Module Main
             End With
         End If
 
-        If lflaDBResult = 2 Then
-#If Not Debug Then
+        'DEVNOTE 2019' removed as no license is required now
+        '        If lflaDBResult = 2 Then
+        '#If Not Debug Then
 
-            '---- LIVE CODE ----
-            Try
-                Dim mdbsMain As New frmMain()
-                Dim eh As CustomExceptionHandler = New CustomExceptionHandler()
-                AddHandler Application.ThreadException, AddressOf eh.OnThreadException
-                'MessageBox.Show("Put handler back in jules!")
-                'mdbsMain.ShowDialog()
-                'If gbooDebug = True Then MessageBox.Show("Debug position = 18A", "KidsMaskPrint")
-                gstrMRPs = "0100"
-                Application.Run(mdbsMain)
-            Catch
+        '            '---- LIVE CODE ----
+        '            Try
+        '                Dim mdbsMain As New frmMain()
+        '                Dim eh As CustomExceptionHandler = New CustomExceptionHandler()
+        '                AddHandler Application.ThreadException, AddressOf eh.OnThreadException
+        '                'MessageBox.Show("Put handler back in jules!")
+        '                'mdbsMain.ShowDialog()
+        '                'If gbooDebug = True Then MessageBox.Show("Debug position = 18A", "KidsMaskPrint")
+        '                gstrMRPs = "0100"
+        '                Application.Run(mdbsMain)
+        '            Catch
 
-            End Try
-            '---- LIVE CODE ----
-#Else
-            '----- TESTING CODE ----
-            Dim mdbsMain As New frmMain()
-            'MessageBox.Show("Put handler back in jules!")
-            mdbsMain.ShowDialog()
-            '----- TESTING CODE ----
-#End If
+        '            End Try
+        '            '---- LIVE CODE ----
+        '#Else
+        '            '----- TESTING CODE ----
+        Dim mdbsMain As New frmMain
+        '            'MessageBox.Show("Put handler back in jules!")
+        mdbsMain.ShowDialog()
+        '            '----- TESTING CODE ----
+        '#End If
 
-            AddDebugComment("KidsMaskPrint.mainStart - Ending")
+        '            AddDebugComment("KidsMaskPrint.mainStart - Ending")
 
-            lflaDBResult = GetWindowsDir(gstrDBFlamer, gstrProbComtStack)
-            gstrProbComtStack &= " #MSEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
+        '            lflaDBResult = GetWindowsDir(gstrDBFlamer, gstrProbComtStack)
+        '            gstrProbComtStack &= " #MSEnd" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
 
-            ProcessAnyCFU()
+        '            ProcessAnyCFU()
 
-        Else
-            Dim eh2 As CustomExceptionHandler = New CustomExceptionHandler()
+        '        Else
+        '            Dim eh2 As CustomExceptionHandler = New CustomExceptionHandler()
 
-            Try
+        '            Try
 
-                'if checkdates have been failed OR
-                Dim BetaSplash As New strat3welcome()
-                BetaSplash.ShowInTaskbar = True
-                                BetaSplash.Title = mstrTitle
-                BetaSplash.Bullet1 = mstrBullet1
-                BetaSplash.Bullet2 = mstrBullet2
-                BetaSplash.Bullet3 = mstrBullet3
-                BetaSplash.Bullet4 = mstrBullet4
-                                BetaSplash.Expired = True
-                BetaSplash.Icon = New System.Drawing.Icon( _
-                                System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("KidsMaskPrint.kmp.ico"))
-                BetaSplash.ShowDialog()
+        '                'if checkdates have been failed OR
+        '                Dim BetaSplash As New strat3welcome()
+        '                BetaSplash.ShowInTaskbar = True
+        '                                BetaSplash.Title = mstrTitle
+        '                BetaSplash.Bullet1 = mstrBullet1
+        '                BetaSplash.Bullet2 = mstrBullet2
+        '                BetaSplash.Bullet3 = mstrBullet3
+        '                BetaSplash.Bullet4 = mstrBullet4
+        '                                BetaSplash.Expired = True
+        '                BetaSplash.Icon = New System.Drawing.Icon( _
+        '                                System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("KidsMaskPrint.kmp.ico"))
+        '                BetaSplash.ShowDialog()
 
-                            Catch ex As Exception
-                AddDebugComment("<Font color=Red>MSG:" & ex.ToString & "</font>")
-                eh2.OnThreadException(Nothing, Nothing)
+        '                            Catch ex As Exception
+        '                AddDebugComment("<Font color=Red>MSG:" & ex.ToString & "</font>")
+        '                eh2.OnThreadException(Nothing, Nothing)
 
-            End Try
-                    End If
+        '            End Try
+        '       End If
 
 Exhaust:
         Try : SaveSetting("MRP", gstrMRPs, InitalXMLConfig.XmlConfigType.AppSettings, "") : Catch : End Try
@@ -680,22 +681,23 @@ Start:
 
     Friend Sub Welcome(ByRef pbooSplashShown As Boolean, ByVal powner As Form)
 
-        If pbooSplashShown = False Then
-            pbooSplashShown = True
-            Dim BetaSplash As New strat3welcome()
-            BetaSplash.Title = mstrTitle
-            BetaSplash.Bullet1 = mstrBullet1
-            BetaSplash.Bullet2 = mstrBullet2
-            BetaSplash.Bullet3 = mstrBullet3
-            BetaSplash.Bullet4 = mstrBullet4
-            BetaSplash.BuyNowURL = "http://www.example.com/buy.php"
-            BetaSplash.Owner = powner
-            BetaSplash.ShowInTaskbar = True
-            BetaSplash.Icon = New System.Drawing.Icon( _
-                System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("KidsMaskPrint.kmp.ico"))
+        'DEVNOTE 2019' removed as no license is required now
+        'If pbooSplashShown = False Then
+        '    pbooSplashShown = True
+        '    Dim BetaSplash As New strat3welcome()
+        '    BetaSplash.Title = mstrTitle
+        '    BetaSplash.Bullet1 = mstrBullet1
+        '    BetaSplash.Bullet2 = mstrBullet2
+        '    BetaSplash.Bullet3 = mstrBullet3
+        '    BetaSplash.Bullet4 = mstrBullet4
+        '    BetaSplash.BuyNowURL = "http://www.example.com/buy.php"
+        '    BetaSplash.Owner = powner
+        '    BetaSplash.ShowInTaskbar = True
+        '    BetaSplash.Icon = New System.Drawing.Icon( _
+        '        System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("KidsMaskPrint.kmp.ico"))
 
-            BetaSplash.ShowDialog()
-        End If
+        '    BetaSplash.ShowDialog()
+        'End If
 
         powner.Activate()
 
