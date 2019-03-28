@@ -8,19 +8,17 @@ Friend Module Main
     Friend mintVersion As Integer 
     Friend lstrTempFiles(0) As String 
 
-    '--- 
-    Private Const mstrTitle As String = "Take a minute to understand what Kids Mask Print can do for you!"
+        Private Const mstrTitle As String = "Take a minute to understand what Kids Mask Print can do for you!"
     Private Const mstrBullet1 As String = "       Keeps your kids happy and occupied"
     Private Const mstrBullet2 As String = "       Easy to use, step-by-step help included!"
     Private Const mstrBullet3 As String = "       Caters for creativity and future change"
     Private Const mstrBullet4 As String = "       Free email support"
-    '--- 
-
+    
     Friend fpDir As String = Path.GetDirectoryName( _
         System.Reflection.Assembly.GetExecutingAssembly().Location) & "\FaceParts\" 
 
     Friend Sub Main()
-        'added 
+        
 
         'Dim lstrEssentialFiles() As String = {"AppBasic.dll", "AxInterop.SHDocVw.dll", _
         '    "Beside02.exe", "Beside03.exe", "KidsMaskPrint.exe", "MCLCore.dll", "SharpZipLib.dll", "SHDocVw.dll", _
@@ -178,8 +176,7 @@ Friend Module Main
 
         If RetPart.BothParts = True Then
 
-            '--- 
-            Dim imgWidth As Single = RetPart.FullImage.Width
+                        Dim imgWidth As Single = RetPart.FullImage.Width
             Dim imgHeight As Integer = RetPart.FullImage.Height + 20
 
             Dim LeftPoint As Point = RetPart.LeftPart
@@ -202,8 +199,7 @@ Friend Module Main
             'g.DrawRectangle(Pens.Red, 0, 0, CanvasWidth - 1, imgHeight - 1)
 
             pBothImage = NewBitmap
-            '--- 
-        End If
+                    End If
 
     End Function
     Friend Function x(ByVal pstrString As String) As String
@@ -218,7 +214,7 @@ Friend Module Main
         Next lintArrInc
     End Function
     Friend Function AcceptLicense(ByVal pform As Form) As Boolean
-        'added 
+        
         Dim dlgResult As DialogResult
         Dim lAcceptReg As New AcceptReg()
         With lAcceptReg
@@ -289,7 +285,7 @@ Friend Module Main
         End With
     End Function
     Friend Sub StandardUpgradeTidy()
-        'added 
+        
         If InStrGet((NameMe("")).ToUpper, "TRIAL") = 0 Then
 
             Dim lstrDemoBuyPage As String = _
@@ -328,7 +324,7 @@ Friend Module Main
         lstrKeys(0) = "xxxx"
     End Sub
     Friend Function DataFileProductIdent(ByVal pstrProductNumber As String) As String
-        'added 
+        
         Select Case pstrProductNumber
             Case "223018"
                 Return "AEE"
@@ -397,7 +393,7 @@ Friend Module Main
 
         gstrMRPs = "0011"
 
-        'added 
+        
         Dim lintThreads As Integer = 259
         Dim lflaDBResult As Long
 
@@ -410,13 +406,11 @@ Friend Module Main
 
             gdatSystemStart = Date.Now
 
-            '--- 
-            Dim NoDupe As KillIt
+                        Dim NoDupe As KillIt
             If Not Microsoft.VisualBasic.IsNothing(NoDupe.PrevInstance) Then
                 NoDupe.PrevInstance.Kill()
             End If
-            '--- 
-
+            
             With gstrManifestSite(0)
                 .strSitePath = "http://www.example.com"
                 .strManifestDir = "updates/"
@@ -427,15 +421,13 @@ Friend Module Main
                 Try 
                     GetSetting("CFU Code", "10", InitalXMLConfig.XmlConfigType.AppSettings, "")
                 Catch 
-                    '--- 
-                    gstrMRPs = "0021"
+                                        gstrMRPs = "0021"
                     MessageBox.Show("The program has been unable to write settings, please ensure you" & Environment.NewLine & _
                         "have Administrator privileges and try again!" _
                         , NameMe(""), MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     End
                     GoTo Exhaust
-                    '--- 
-                End Try 
+                                    End Try 
             End If
             gstrMRPs = "0025"
 
@@ -473,12 +465,10 @@ Friend Module Main
             'AddDebugComment("KidsMaskPrint.mainStart - 2")
             gstrProbComtStack &= " #MS2" 
 
-            '--- 
-            Dim Dets As strat1.UnlockDetails
+                        Dim Dets As strat1.UnlockDetails
             TakeCare(lintThreads, Dets)
             Dets = Nothing
-            '--- 
-
+            
             Dim IRes As Integer
             'MessageBox.Show("Put EXE CRC CHeck back in Jules!") : IRes = 1 
             IRes = GetWrittenCRC(AppExe)
@@ -541,8 +531,7 @@ Friend Module Main
 
         gstrMRPs = "0070"
 
-        '--- 
-
+        
         Dim lstrPath As String = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly.Location.ToString())
         If File.Exists(lstrPath & "\CD.dat") = True Then
 
@@ -569,8 +558,7 @@ Friend Module Main
                 gstrMRPs = "0090"
             End With
         End If
-        '--- 
-
+        
 
         If lflaDBResult = 2 Then
 #If Not Debug Then
@@ -613,26 +601,22 @@ Friend Module Main
                 'if checkdates have been failed OR 
                 Dim BetaSplash As New strat3welcome()
                 BetaSplash.ShowInTaskbar = True
-                '--- 
-                BetaSplash.Title = mstrTitle
+                                BetaSplash.Title = mstrTitle
                 BetaSplash.Bullet1 = mstrBullet1
                 BetaSplash.Bullet2 = mstrBullet2
                 BetaSplash.Bullet3 = mstrBullet3
                 BetaSplash.Bullet4 = mstrBullet4
-                '--- 
-                BetaSplash.Expired = True
+                                BetaSplash.Expired = True
                 BetaSplash.Icon = New System.Drawing.Icon( _
                                 System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("KidsMaskPrint.kmp.ico"))
                 BetaSplash.ShowDialog()
 
-                '--- 
-            Catch ex As Exception
+                            Catch ex As Exception
                 AddDebugComment("<Font color=Red>MSG:" & ex.ToString & "</font>")
                 eh2.OnThreadException(Nothing, Nothing)
 
             End Try
-            '--- 
-        End If
+                    End If
 
 Exhaust:
         Try : SaveSetting("MRP", gstrMRPs, InitalXMLConfig.XmlConfigType.AppSettings, "") : Catch : End Try 
@@ -680,7 +664,7 @@ Start:
 
     End Function
     Friend Function GetWindowsDir(ByVal pstrResource As flamer, ByRef pstrProbComtStack As String) As Long
-        'added 
+        
         If InStrGet((NameMe("")).ToUpper, "TRIAL") = 0 Then
             Return 2
         Else
@@ -689,7 +673,7 @@ Start:
 
     End Function
     Friend Sub DeleteTempFiles()
-        'added 
+        
         Dim lintArrInc As Integer
 
         Try
@@ -713,7 +697,7 @@ Start:
     End Sub
 
     Friend Sub Welcome(ByRef pbooSplashShown As Boolean, ByVal powner As Form)
-        'added 
+        
 
 
         If pbooSplashShown = False Then
@@ -801,8 +785,7 @@ Start:
 
         pPieces.Clear()
 
-        '--- 
-        Dim MousePath() As GPArr  
+                Dim MousePath() As GPArr  
         Dim ReverseMousePath() As GPArr  
 
         ''Dim MousePointArray() As PointF
@@ -811,8 +794,7 @@ Start:
         ''Dim ReverseMousePointArray() As PointF
         ''Dim ReverseMouseTypeArray() As Byte
         Dim ReverseMousePaintBrush() As PaintBrush 
-        '--- 
-        Dim lstrVersion As String
+                Dim lstrVersion As String
         Dim de As DictionaryEntry
 
 
@@ -831,8 +813,7 @@ Start:
         Try 
             For Each de In hash
                 'Console.WriteLine(de.Key.ToString)
-                '--- 
-                Select Case LeftGet(de.Key.ToString & "    ", 4)
+                                Select Case LeftGet(de.Key.ToString & "    ", 4)
                     Case "AVER"
                         'If de.Key = -1 Then
                         lstrVersion = de.Value
@@ -954,8 +935,7 @@ Start:
                             pPieces.Add(ThisPiece)
                         End If
                 End Select
-                '--- 
-            Next de
+                            Next de
         Catch ex As Exception 
             Throw New Exception(de.Key.ToString & " " & ex.ToString) 
         End Try 
@@ -994,8 +974,7 @@ Start:
             pReverseMousePB = ReverseMousePaintBrush 
         End If
 
-        '--- 
-        AddDebugComment("Main.LoadMask - end") 
+                AddDebugComment("Main.LoadMask - end") 
 
     End Function
   
@@ -1028,7 +1007,7 @@ Start:
 
     End Sub
     Friend Function UnlockFacePartsPack(ByVal pFileName As String) As FacePartStuctureDataFile
-        'added 
+        
         Dim rijndael As New RijndaelManaged()
         'The RijndaelManaged.GenerateKey & GenerateIV creates a random key & 
         'initialization vector, good for testing, not good for production...
@@ -1052,7 +1031,7 @@ Start:
         'not in use in KMP 
     End Function
     Friend Sub DebugDBComment()
-        'added 
+        
 
         If gstrProbComtStack <> "" Then
             AddDebugComment(gstrProbComtStack)
@@ -1063,7 +1042,7 @@ Start:
     End Sub
 
 End Module
-Friend Class CustomExceptionHandler 'added 
+Friend Class CustomExceptionHandler 
     Friend Sub OnThreadException(ByVal sender As Object, ByVal t As System.Threading.ThreadExceptionEventArgs)
 
         Dim lstrErrMsg As String = "Unknown Error"

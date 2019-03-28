@@ -58,7 +58,6 @@ Friend Class FacePartDiag
             m_PieceName = Value
         End Set
     End Property
-    '--- 
     Dim mm_Pieces As New ArrayList()
     Friend Property mPieces() As ArrayList
         Get
@@ -95,7 +94,6 @@ Friend Class FacePartDiag
             mm_SortOrderForData = Value
         End Set
     End Property
-    '--- 
 #End Region
 
 #Region " Windows Form Designer generated code "
@@ -287,7 +285,6 @@ Friend Class FacePartDiag
 
         Busy(Me, True) 
 
-        '--- 
         Dim Caption As String
         Select Case m_PartType
             Case FacePartEnums.ePartType.Ear : Caption = "Ear"
@@ -299,13 +296,10 @@ Friend Class FacePartDiag
         End Select
 
         Me.Text = NameMe(Caption & " Parts")
-        '--- 
 
         SetBackcolors() 
 
         ImageList1.ImageSize = New Size(32, 32)
-        'ImageList1.ColorDepth = ColorDepth.Depth32Bit 
-
 
         ListView1.HideSelection = False 
         ListView1.LargeImageList = ImageList1
@@ -313,13 +307,11 @@ Friend Class FacePartDiag
 
         LoadFaceParts() 
 
-        '--- 
         If ListView1.Items.Count > 0 Then
             ReDim mTempImages(ListView1.Items.Count) 
             ListView1.Items(0).Selected = True
             ListView1_Click(Nothing, Nothing)
         End If
-        '--- 
 
         Busy(Me, False) 
 
@@ -374,7 +366,6 @@ Friend Class FacePartDiag
 
         Dim lImage As System.Drawing.Image
 
-        '--- 
         Try
             With mTempImages(ListView1.SelectedItems(0).Index)
 
@@ -385,7 +376,6 @@ Friend Class FacePartDiag
             rdoRight.Visible = False
             Exit Sub
         End Try
-        '--- 
 
         With mTempImages(ListView1.SelectedItems(0).Index) 
             If mTempImages(ListView1.SelectedItems(0).Index).LeftImg Is Nothing Then 
@@ -483,7 +473,7 @@ Friend Class FacePartDiag
 
         AddDebugComment("FacePartDiag.SetBackcolors") 
 
-        'Added 
+        
         rdoLeft.BackColor = Color.FromArgb(0, rdoLeft.BackColor)
         rdoBoth.BackColor = Color.FromArgb(0, rdoBoth.BackColor)
         rdoRight.BackColor = Color.FromArgb(0, rdoRight.BackColor)
@@ -582,7 +572,7 @@ Friend Class FacePartDiag
         Me.Invalidate() 
     End Sub
     Private Sub rdo_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles rdoLeft.CheckedChanged, rdoBoth.CheckedChanged, rdoRight.CheckedChanged
-        'added 
+        
         If rdoLeft.Checked = True Then
             mPositionSelection = FacePartEnums.ePositionSelection.Left
         ElseIf rdoRight.Checked = True Then
@@ -602,7 +592,6 @@ Friend Class FacePartDiag
 
     Private Sub FacePartDiag_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Activated
 
-        '--- 
         If DoActivatedCodeOnce = True Then
             DoActivatedCodeOnce = False
             Dim ShowBuyMore As Boolean = CBool(GetSetting("BuyMore", "True", InitalXMLConfig.XmlConfigType.AppSettings, ""))
@@ -614,9 +603,6 @@ Friend Class FacePartDiag
 
             End If
         End If
-        '--- 
-
-
 
     End Sub
 

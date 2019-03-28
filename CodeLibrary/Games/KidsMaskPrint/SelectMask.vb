@@ -209,14 +209,12 @@ Friend Class SelectMask
 
         SetDirectory(mDir) 
 
-        '--- 
-        If IsAboveOrEqualWinXp() = True Then
+                If IsAboveOrEqualWinXp() = True Then
             btnBrowse.FlatStyle = FlatStyle.System
             btnSelect.FlatStyle = FlatStyle.System
             btnClose.FlatStyle = FlatStyle.System
         End If
-        '--- 
-
+        
         lblDirectory.BackColor = Color.FromArgb(0, lblDirectory.BackColor)     
 
         Busy(Me, False) 
@@ -271,7 +269,7 @@ Friend Class SelectMask
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        'Added 
+        
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
 
@@ -282,7 +280,7 @@ Friend Class SelectMask
     End Sub
 
     Private Sub btnBrowse_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnBrowse.Click
-        'added 
+        
         Dim db As New WinOnly.DirBrowser()
         db.Description = "Choose a folder"
         db.StartLocation = 0

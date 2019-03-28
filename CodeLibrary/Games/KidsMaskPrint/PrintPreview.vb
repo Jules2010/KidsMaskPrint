@@ -302,14 +302,12 @@ Friend Class PrintPreview
     Dim RightOff As Single '= 150
     Dim Fac As Single ' = 2
     Dim LeftOff As Single '= -250
-    '--- 
-    Const Size1 As String = "1 Year" ' "Size 1"
+        Const Size1 As String = "1 Year" ' "Size 1"
     Const Size2 As String = "2 Years" '"Size 2"
     Const Size3 As String = "4 Years" '"Size 3"
     Const Size4 As String = "6 Years" '"Size 4"
     Const Size5 As String = "Adult" '"Size 5"
-    '--- 
-    Dim DownOff As Single ' bottom of first page offset
+        Dim DownOff As Single ' bottom of first page offset
     Dim UpOff As Single ' top of second page offsett
 
     Dim m_HardLeft As Single
@@ -321,8 +319,7 @@ Friend Class PrintPreview
 
         AddDebugComment("PrintPreview.PrintDocument1_PrintPage - start") 
 
-        '--- 
-
+        
         Dim hdcPtr As IntPtr '= e.Graphics.GetHdc
         '  Dim hdcLong As Long = hdcPtr.ToInt32
 
@@ -334,18 +331,15 @@ Friend Class PrintPreview
         gr.ReleaseHdc(hdcPtr)
         'Console.WriteLine("Graphics.VisibleClipBounds.Height=" & e.Graphics.VisibleClipBounds.Height)
         'Console.WriteLine(m_HardLeft & " " & m_HardTop & " " & m_HardRight & " " & m_HardBottom)
-        '--- 
-
-        '--- 
-        If PrintDocument1.DefaultPageSettings.Landscape = True Then
+        
+                If PrintDocument1.DefaultPageSettings.Landscape = True Then
             PrintPreviewControl1.Rows = 2
             PrintPreviewControl1.Columns = 1
         Else
             PrintPreviewControl1.Rows = 1
             PrintPreviewControl1.Columns = 2
         End If
-        '--- 
-
+        
         ComboBox1_SelectedIndexChanged(Nothing, Nothing) 
 
         PrintDocument1.DefaultPageSettings = m_PageSettings 
@@ -413,15 +407,13 @@ Friend Class PrintPreview
                 Case Size3 '"Small"
                     Fac = 2
                     RightOff = 159 '148
-                    '--- 
-                Case Size2
+                                    Case Size2
                     Fac = 1.75
                     RightOff = 217 '210
                 Case Size1
                     Fac = 1.5
                     RightOff = 296 '300
-                    '--- 
-            End Select
+                                End Select
         End If 
 
         PrintPreviewControl1.InvalidatePreview()
@@ -452,7 +444,7 @@ Friend Class PrintPreview
 
         AddDebugComment("PrintPreview.OnPaintBackground - start") 
 
-        'added 
+        
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
 
@@ -467,8 +459,7 @@ Friend Class PrintPreview
         AddDebugComment("PrintPreview.btnPrint_Click - start") 
 
 
-        '--- 
-        If InStrGet((NameMe("")).ToUpper, "TRIAL") > 0 Then
+                If InStrGet((NameMe("")).ToUpper, "TRIAL") > 0 Then
             Dim intPrintAllows As Integer = 0
             Try : intPrintAllows = Val(GetSetting("Brushes", "5", InitalXMLConfig.XmlConfigType.AppSettings, "")) : Catch : End Try
             If intPrintAllows = 0 Or intPrintAllows > 5 Then
@@ -487,8 +478,7 @@ Friend Class PrintPreview
                 End If
             End If
         End If
-        '--- 
-
+        
         'PrintDocument1.Print()
         pdActualPrint.Print()
         Me.Close()
@@ -546,7 +536,7 @@ Friend Class PrintPreview
         Me.Close() 
     End Sub
     Private Sub btnSetup_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSetup.Click
-        'added 
+        
         AddDebugComment("Preview.btnSetup_Click - start")
 
         Try
@@ -643,7 +633,7 @@ Friend Class PrintPreview
     End Sub
     Private Sub pdActualPrint_PrintPage(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles pdActualPrint.PrintPage
 
-        'added 
+        
         AddDebugComment("PrintPreview.pdActualPrint_PrintPage - start")
 
         pdActualPrint.DefaultPageSettings = m_PageSettings

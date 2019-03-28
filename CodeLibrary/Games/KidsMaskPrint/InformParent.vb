@@ -146,14 +146,12 @@ Public Class InformParent
     Private Sub CanBuyPacks_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
         chkDontShow.BackColor = Color.FromArgb(0, chkDontShow.BackColor)
 
-        '--- 
         Dim cul As System.Globalization.CultureInfo
         cul = System.Globalization.CultureInfo.CurrentCulture
 
         If InStrGet(cul.DisplayName, "UNITED STATES") > 0 Then
             Label1.Text = Label1.Text.Replace("colour", "color")
         End If
-        '--- 
 
     End Sub
 End Class

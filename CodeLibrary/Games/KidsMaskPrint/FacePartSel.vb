@@ -20,7 +20,6 @@ Public Class FacePartSel
             mPositionSelection = Value
         End Set
     End Property
-    '--- 
     Public m_SourceDataFileName As String
     Public Property SourceDataFileName() As String
         Get
@@ -372,7 +371,7 @@ Public Class FacePartSel
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        'added 
+        
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
         'Me.Update()
@@ -391,7 +390,7 @@ Public Class FacePartSel
 
         AddDebugComment("FacePartsSel.SetBackcolors") 
 
-        'Added 
+        
         rdoLeft.BackColor = Color.FromArgb(0, rdoLeft.BackColor)
         rdoBoth.BackColor = Color.FromArgb(0, rdoBoth.BackColor)
         rdoRight.BackColor = Color.FromArgb(0, rdoRight.BackColor)

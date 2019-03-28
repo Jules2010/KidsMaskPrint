@@ -169,13 +169,11 @@ Friend Class QuestionBox
     End Sub
     Private Sub SetBackcolors()
 
-        'Added 
         lblPrompt.BackColor = Color.FromArgb(0, lblPrompt.BackColor)
 
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        'Added 
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
 

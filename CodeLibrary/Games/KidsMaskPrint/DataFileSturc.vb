@@ -68,7 +68,6 @@ Public Class FacePartEnums
     End Enum
 End Class
 
-'--- ---
 Friend Class PaintBrush
     Friend BrushColour As Color
     Friend BrushWidth As Integer

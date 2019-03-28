@@ -256,13 +256,11 @@ Friend Class DataFileAcceptReg
                     .Top = 440
                 End With
             Case eButtonType.normal
-                '--- 
                 If IsAboveOrEqualWinXp() = True Then
                     btnOK.FlatStyle = FlatStyle.System
                     btnCancel.FlatStyle = FlatStyle.System
                     btnCopyCode.FlatStyle = FlatStyle.System
                 End If
-                '--- 
                 btnCopyCode.BackColor = Color.FromArgb(0, btnCopyCode.BackColor)
                 btnOK.BackColor = Color.FromArgb(0, btnOK.BackColor)
                 btnCancel.BackColor = Color.FromArgb(0, btnCancel.BackColor)

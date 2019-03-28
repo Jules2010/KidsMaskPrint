@@ -187,7 +187,7 @@ Friend Class DataFilePurchasing
 
 #End Region
     Private Sub lstDataFiles_DrawItem(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles lstDataFiles.DrawItem
-        'added 
+        
         Dim brush As Brush
         Dim Itemselected As Boolean
 
@@ -273,13 +273,11 @@ Friend Class DataFilePurchasing
                     .Left = 376
                 End With
             Case eButtonType.normal
-                '--- 
                 If IsAboveOrEqualWinXp() = True Then
                     btnBuy.FlatStyle = BevelButton.FlatStyleEx.System
                     btnClose.FlatStyle = BevelButton.FlatStyleEx.System
                     btnLicense.FlatStyle = BevelButton.FlatStyleEx.System
                 End If
-                '--- 
                 btnBuy.BackColor = Color.FromArgb(0, btnBuy.BackColor)
                 btnClose.BackColor = Color.FromArgb(0, btnClose.BackColor)
                 btnLicense.BackColor = Color.FromArgb(0, btnLicense.BackColor)

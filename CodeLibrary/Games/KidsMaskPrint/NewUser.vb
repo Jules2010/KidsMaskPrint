@@ -157,8 +157,7 @@ Friend Class NewUser
 
         Me.Text = NameMe("Welcome") 
 
-        '--- 
-        Dim InitialConfig As New InitalXMLConfig(InitalXMLConfig.XmlConfigType.AppSettings)
+                Dim InitialConfig As New InitalXMLConfig(InitalXMLConfig.XmlConfigType.AppSettings)
         Dim lstrUsersStr As String
 
         With InitialConfig
@@ -179,8 +178,7 @@ Friend Class NewUser
         If lstrUsersStr <> "" Then
             mUsers = Microsoft.VisualBasic.Split(lstrUsersStr, ChrGet(255))
         End If
-        '--- 
-
+        
         AddDebugComment("NewUser.NewUser_Load - end") 
 
         Me.ResumeLayout() 
@@ -215,16 +213,14 @@ Friend Class NewUser
             Exit Sub
         End If
 
-        '--- 
-        UIStyle.gPaintClr1 = Color.Empty
+                UIStyle.gPaintClr1 = Color.Empty
         UIStyle.gPaintClr2 = Color.Empty
 
         AddDebugComment("NewUser.btnOK_Click - 1") 
 
 
         SaveSetting("Colours", "One", InitalXMLConfig.XmlConfigType.UserSettings, mSelectedUser)
-        '--- 
-
+        
 
 
         Dim lstrUsersStr As String = Microsoft.VisualBasic.Join(mUsers, ChrGet(255))
@@ -245,7 +241,6 @@ Friend Class NewUser
         Me.Invalidate() 
     End Sub
     Private Sub txtName_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtName.KeyDown
-        'added 
         If e.KeyCode = Keys.Enter Then
             btnOK_Click(Nothing, Nothing)
         End If

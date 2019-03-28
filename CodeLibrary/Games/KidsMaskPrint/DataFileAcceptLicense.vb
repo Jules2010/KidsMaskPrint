@@ -90,7 +90,7 @@ Module DataFileAcceptLicense
         Busy(pform, False) 
     End Function
     Private Function ProduceCheckDigs(ByVal pstrInput As String) As String
-        'added 
+        
         Dim Out As Integer = 0
 
         Try

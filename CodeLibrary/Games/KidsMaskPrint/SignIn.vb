@@ -347,18 +347,16 @@ Friend Class SignIn
 
         Me.lbListBox.Items.AddRange(New Object() {"One", "Two", "Three", "Four", "Five"}) 
 
-        'added 
+        
         Dim r As Rectangle
         r = New Rectangle(0, 0, lbListBox.Width, lbListBox.ItemHeight)
 
-        '--- 
-        lGradeCol1(0) = SystemColors.Control : lGradeCol2(0) = SystemColors.Window
+                lGradeCol1(0) = SystemColors.Control : lGradeCol2(0) = SystemColors.Window
         lGradeCol1(1) = Color.FromArgb(193, 255, 223) : lGradeCol2(1) = Color.FromArgb(236, 255, 245)
         lGradeCol1(2) = Color.FromArgb(255, 187, 187) : lGradeCol2(2) = Color.FromArgb(255, 225, 225)
         lGradeCol1(3) = Color.FromArgb(192, 205, 254) : lGradeCol2(3) = Color.FromArgb(234, 238, 255)
         lGradeCol1(4) = Color.FromArgb(0, 255, 0) : lGradeCol2(4) = Color.FromArgb(255, 0, 0)
-        '--- 
-
+        
         Dim lb1 As New LinearGradientBrush(r, lGradeCol1(0), lGradeCol2(0), LinearGradientMode.Horizontal)
         Dim lb2 As New LinearGradientBrush(r, lGradeCol1(1), lGradeCol2(1), LinearGradientMode.Horizontal)
         Dim lb3 As New LinearGradientBrush(r, lGradeCol1(2), lGradeCol2(2), LinearGradientMode.Horizontal)
@@ -371,7 +369,7 @@ Friend Class SignIn
 
     End Sub
     Private Sub lbListBox_DrawItem(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles lbListBox.DrawItem
-        'added 
+        
         Dim brush As Brush
         Dim Itemselected As Boolean
 
@@ -393,7 +391,7 @@ Friend Class SignIn
 
         AddDebugComment("SignIn.lbListBox_SelectedIndexChanged") 
 
-        'added 
+        
         'UIStyle.gPaintClr1 = lGradeCol1(lbListBox.SelectedIndex)
         'UIStyle.gPaintClr2 = lGradeCol2(lbListBox.SelectedIndex)
         mUICol1 = lGradeCol1(lbListBox.SelectedIndex) 

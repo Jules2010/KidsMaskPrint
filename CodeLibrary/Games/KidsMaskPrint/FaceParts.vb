@@ -245,7 +245,6 @@ Public Class FaceParts
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        'Added 
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
 
@@ -254,7 +253,6 @@ Public Class FaceParts
 
         AddDebugComment("FaceParts.SetBackcolors") 
 
-        'Added 
         btnSelect.BackColor = Color.FromArgb(0, btnSelect.BackColor)
         btnClose.BackColor = Color.FromArgb(0, btnClose.BackColor)
         chkHoriz.BackColor = Color.FromArgb(0, chkHoriz.BackColor)

@@ -106,15 +106,13 @@ Friend Class UsersGeneral
 
         SetBackcolors() 
 
-        '--- 
-        Select Case mTranType
+                Select Case mTranType
             Case UserTranType.Delete
                 Me.Text = "Delete"
             Case UserTranType.Rename
                 Me.Text = "Rename"
         End Select
-        '--- 
-
+        
         If IsAboveOrEqualWinXp() = True Then
             btnOK.FlatStyle = FlatStyle.System
             btnCancel.FlatStyle = FlatStyle.System
@@ -216,7 +214,7 @@ Friend Class UsersGeneral
 
         AddDebugComment("UsersGeneral.SetBackcolors") 
 
-        'Added 
+        
         btnOK.BackColor = Color.FromArgb(0, btnOK.BackColor)
         btnCancel.BackColor = Color.FromArgb(0, btnCancel.BackColor)
 

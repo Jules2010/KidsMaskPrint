@@ -46,17 +46,14 @@ Friend Module DrawOutput
                         End If
                     End If
                 End If
-                '----------------------------
                 errpos = 2
             End If
 
 
             errpos = 3
 
-            ''' 
             Dim g As Graphics 
             g = RetG 
-            '##############
 
             errpos = 4
             g.FillRectangle(Brushes.White, 0, 0, PictureBox1.Size.Width, PictureBox1.Size.Height) 
@@ -180,7 +177,6 @@ Friend Module DrawOutput
                         If Not ReversemousePath Is Nothing Then 
                             errpos = 14
                             errpos = 15
-                            '--- 
                             Dim ThisGraphicsPath As New GraphicsPath()
                             errpos = 16
                             Try 
@@ -252,7 +248,7 @@ Friend Module DrawOutput
 
     End Sub
     Private Sub MoveGP(ByVal x As Single, ByVal y As Single, ByRef gp As GraphicsPath)
-        'added 
+        
         Dim objTranslateMatrix As New Drawing2D.Matrix()
         With objTranslateMatrix
 
@@ -435,9 +431,8 @@ Friend Module DrawOutput
         Try ' error trapping
 
             If pbooPagePrint = True Then
-                '----------------------------
 
-                Dim m_zoom As Single = pSize 'CSng(combobox1.Text)
+                Dim m_zoom As Single = pSize
 
                 Dim m_origin As Point
 
@@ -464,10 +459,8 @@ Friend Module DrawOutput
                         End If
                     End If
                 End If
-                '----------------------------
                 errpos = 2
             End If
-
 
             errpos = 3
 
@@ -490,7 +483,7 @@ Friend Module DrawOutput
                 End If
                 g.DrawImage(iPiece.Bitmap, ThisPieceBounds)
             Next iPiece
-            '--- 
+
             errpos = 6
 
             '############# TESTING 
@@ -539,7 +532,6 @@ Friend Module DrawOutput
                         pBrush(lintArrInc).BrushWidth), ThisGraphicsPath) : Catch : End Try
                     errpos = 12
                 Next lintArrInc
-                '--- 
             End If
             errpos = 13
 
@@ -547,7 +539,6 @@ Friend Module DrawOutput
                 errpos = 14
                 For lintArrInc = 0 To pReverseBrush.GetUpperBound(0)
                     errpos = 15
-                    '--- 
                     Dim ThisGraphicsPath As New GraphicsPath()
                     errpos = 16
                     Try 
@@ -590,16 +581,14 @@ Friend Module DrawOutput
             End If 
 
         Catch ex As Exception
-            'MessageBox.Show(ex.ToString)
             Console.WriteLine(errpos & " " & ex.ToString)
-            '--- 
+
             If ErrCount < 5 Then
                 AddDebugComment("DrawOutPut.DrawOutOut - Error " & ErrCount & "/4:" & ex.ToString)
             ElseIf ErrCount = 50 Then
                 AddDebugComment("DrawOutPut.DrawOutOut - Error 50:" & ex.ToString)
             End If
             ErrCount += 1
-            '--- 
         End Try
 
     End Sub

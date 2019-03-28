@@ -67,7 +67,6 @@ Friend Class Piece
         End Set
     End Property
 
-    '--- 
     Private m_SourceDataFileName As String
     Friend Property SourceDataFileName() As String
         Get
@@ -86,7 +85,6 @@ Friend Class Piece
             m_DataFileItemNum = Value
         End Set
     End Property
-    '--- 
 
     Friend Property VertFlip() As Boolean
         Get

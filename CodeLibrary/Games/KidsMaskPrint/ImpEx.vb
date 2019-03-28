@@ -131,13 +131,11 @@ Friend Class ImpEx
 
         AddDebugComment("ImpEx.ImpEx_Load - start") 
 
-        '--- 
-        If IsAboveOrEqualWinXp() = True Then  
+                If IsAboveOrEqualWinXp() = True Then  
             btnOK.FlatStyle = FlatStyle.System
             btnCancel.FlatStyle = FlatStyle.System
         End If 
-        '--- 
-
+        
         SetBackcolors() 
 
         Me.Text = mstrCaption
@@ -152,12 +150,10 @@ Friend Class ImpEx
 
         AddDebugComment("ImpEx.btnOK_Click - start") 
 
-        '--- 
-        If txtTextBlock.Text = "" Then
+                If txtTextBlock.Text = "" Then
             Exit Sub
         End If
-        '--- 
-
+        
         Me.DialogResult = DialogResult.OK
         Me.Close()
 
@@ -179,7 +175,6 @@ Friend Class ImpEx
 
         AddDebugComment("ImpEx.SetBackcolors") 
 
-        'Added 
         lblRegisterInstructions.BackColor = Color.FromArgb(0, lblRegisterInstructions.BackColor)
         btnOK.BackColor = Color.FromArgb(0, btnOK.BackColor)
         btnCancel.BackColor = Color.FromArgb(0, btnCancel.BackColor)
@@ -187,7 +182,6 @@ Friend Class ImpEx
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        'Added 
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
 
