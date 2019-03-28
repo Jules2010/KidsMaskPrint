@@ -19,7 +19,6 @@ Friend Module Main
 
     Friend Sub Main()
 
-
         'Dim lstrEssentialFiles() As String = {"AppBasic.dll", "AxInterop.SHDocVw.dll", _
         '    "Beside02.exe", "Beside03.exe", "KidsMaskPrint.exe", "MCLCore.dll", "SharpZipLib.dll", "SHDocVw.dll", _
         '    "WinOnly.dll"}
@@ -48,7 +47,6 @@ Friend Module Main
 
         imgHeight = bm.Height
         imgWidth = bm.Width
-
 
         If (imgWidth > maxSize Or imgHeight > maxSize) Then
             Dim deltaWidth As Double = imgWidth - maxSize
@@ -138,9 +136,7 @@ Friend Module Main
         End Try
     End Function
 
-
     Friend Function NameMe(ByVal pstrCaption As String) As String
-
 
         Dim lstrVersion As String
         If mintVersion = 32 Then
@@ -300,7 +296,6 @@ Friend Module Main
                 End Try
             End If
 
-
             If lbooSucess = False Then
                 lstrDemoBuyPage = _
                System.Environment.GetFolderPath(Environment.SpecialFolder.StartMenu) & _
@@ -390,7 +385,6 @@ Friend Module Main
     Private Sub MainStart()
 
         gstrMRPs = "0011"
-
 
         Dim lintThreads As Integer = 259
         Dim lflaDBResult As Long
@@ -523,7 +517,6 @@ Friend Module Main
 
         gstrMRPs = "0070"
 
-
         Dim lstrPath As String = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly.Location.ToString())
         If File.Exists(lstrPath & "\CD.dat") = True Then
 
@@ -551,10 +544,8 @@ Friend Module Main
             End With
         End If
 
-
         If lflaDBResult = 2 Then
 #If Not Debug Then
-
 
             '---- LIVE CODE ----
             Try
@@ -642,7 +633,6 @@ Start:
             IntroduceCDPack = True
             Try : FileStream.Close() : Catch : End Try
             Try : ThisPack = Nothing : Catch : End Try
-
 
             MessageBox.Show("Your '" & PackName & "' was installed OK!", NameMe(""), MessageBoxButtons.OK, MessageBoxIcon.Information)
 
@@ -737,12 +727,6 @@ Start:
                 UserFacePartDatsStrutest = DirectCast(FileFormatter.Deserialize(FileStream), FacePartStuctureDataFile)
                 pUserPieces = UserFacePartDatsStrutest
 
-
-
-
-
-
-
                 pSortOrderForData = DirectCast(FileFormatter.Deserialize(FileStream), SortOrderForData)
             Catch
                 AddDebugComment("Main.LoadMask - Catch")
@@ -778,15 +762,11 @@ Start:
                 Dim MousePath() As GPArr
         Dim ReverseMousePath() As GPArr
 
-
-
         Dim MousePaintBrush() As PaintBrush
-
 
         Dim ReverseMousePaintBrush() As PaintBrush
                 Dim lstrVersion As String
         Dim de As DictionaryEntry
-
 
         Dim MPPCounter As Integer
         Dim MPTCounter As Integer
@@ -919,7 +899,6 @@ Start:
                             ThisPiece.SetImageObj(TempPart.FullImage)
                             Dim loc As New Point(CSng(AppBasic.ReturnNthStr(de.Value, 3, "|")), CSng(AppBasic.ReturnNthStr(de.Value, 4, "|")))
 
-
                             ThisPiece.Location = loc
 
                             pPieces.Add(ThisPiece)
@@ -1021,7 +1000,6 @@ Start:
     End Function
     Friend Sub DebugDBComment()
 
-
         If gstrProbComtStack <> "" Then
             AddDebugComment(gstrProbComtStack)
         End If
@@ -1077,7 +1055,6 @@ Friend Class CustomExceptionHandler
                     If lstrError <> "" Then
                         AddDebugComment(lstrError)
                     End If
-
 
                     If gbooNeedToRestartProgAfterCFU = True And gstrCFUTempDir <> "" Then
                         Dim lstrReportNames() As String

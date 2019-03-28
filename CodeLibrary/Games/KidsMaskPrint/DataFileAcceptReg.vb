@@ -166,7 +166,6 @@ Friend Class DataFileAcceptReg
 #End Region
     Private Sub AcceptReg_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-
         SetupButtons()
 
         Me.Text = mstrCaption

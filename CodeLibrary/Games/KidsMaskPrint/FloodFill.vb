@@ -33,7 +33,6 @@ Friend Class FloodFill
             Dim bmdFilled As BitmapData = pimgAfterFill.LockBits(New Rectangle(0, 0, pimgAfterFill.Width, pimgAfterFill.Height), ImageLockMode.ReadWrite, pimgAfterFill.PixelFormat)
             Dim bmdOut As BitmapData = RetBitmap.LockBits(New Rectangle(0, 0, RetBitmap.Width, RetBitmap.Height), ImageLockMode.ReadWrite, RetBitmap.PixelFormat)
 
-
             Dim x As Integer
             Dim y As Integer
 
@@ -100,7 +99,6 @@ Friend Class FloodFill
             Else
                 CroppedBitmap.MakeTransparent(Color.White)
             End If
-
 
             Return CroppedBitmap 'RetBitmap
 

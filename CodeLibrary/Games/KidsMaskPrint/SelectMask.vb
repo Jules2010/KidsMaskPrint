@@ -144,7 +144,6 @@ Friend Class SelectMask
     Dim mDir As String = Path.GetDirectoryName( _
         System.Reflection.Assembly.GetExecutingAssembly().Location) & "\Masks\"
 
-
     Private Sub btnClose_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClose.Click
 
         AddDebugComment("SelectMask.btnClose_Click - start")

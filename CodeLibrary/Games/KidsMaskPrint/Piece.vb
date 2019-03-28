@@ -110,7 +110,6 @@ Friend Class Piece
         End Get
     End Property
 
-
     'Returns true if the testPoint is over a non-transparent pixel on the piece where it is drawn
     Friend Function IsPointOverMe(ByVal testPoint As Point) As Boolean
         'Is it within the drawn rectangle?

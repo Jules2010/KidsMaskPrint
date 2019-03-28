@@ -15,8 +15,6 @@ Public Module KidsMaskPrintFacePartsDataFiles
 
         Dim strPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName())
 
-        'Dim Dirs() As String = {"D:\CodeLibrary\Games\KidsMaskPrint\bin\FaceParts\", _
-        '    "D:\Build\KMP\FaceParts\", "C:\Program Files\Mindwarp Consultancy Ltd\KidsMaskPrint\FaceParts\"}
         Dim Dirs() As String = {strPath + "\FaceParts\"}
 
         Dim FileName As String
@@ -32,7 +30,6 @@ Public Module KidsMaskPrintFacePartsDataFiles
                 FPs = JunglePack.JunglePack
                 FileName = "Jungle.dat"
         End Select
-
 
         Try : File.Delete(Dirs(0) & FileName) : Catch : End Try
         Try : File.Delete(Dirs(1) & FileName) : Catch : End Try
@@ -52,9 +49,6 @@ Public Module KidsMaskPrintFacePartsDataFiles
         cryptoOutput.FlushFinalBlock()
         cryptoOutput.Close()
         output.Close()
-
-        'File.Copy(Dirs(0) & FileName, Dirs(1) & FileName)
-        'File.Copy(Dirs(0) & FileName, Dirs(2) & FileName)
 
         Console.WriteLine("Pack " & FileName & " Updated!")
     End Sub

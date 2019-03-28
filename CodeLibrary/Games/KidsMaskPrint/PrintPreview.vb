@@ -296,7 +296,6 @@ Friend Class PrintPreview
 
 #End Region
 
-
     'Dim PrintPageSettings As New System.Drawing.Printing.PageSettings()
     Dim HasMorePages As Integer = 0
     Dim RightOff As Single '= 150
@@ -318,7 +317,6 @@ Friend Class PrintPreview
     Private Sub PrintDocument1_PrintPage(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
 
         AddDebugComment("PrintPreview.PrintDocument1_PrintPage - start")
-
 
         Dim hdcPtr As IntPtr '= e.Graphics.GetHdc
         '  Dim hdcLong As Long = hdcPtr.ToInt32
@@ -519,7 +517,6 @@ Friend Class PrintPreview
 
         AddDebugComment("Preview.PrintPreview_KeyDown")
 
-
         If e.KeyCode = Keys.Escape Then
             Me.Close()
         End If
@@ -545,7 +542,6 @@ Friend Class PrintPreview
         Catch ex As Exception
             MessageBox.Show(ex.Message, NameMe(""), MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-
 
         AddDebugComment("Preview.btnSetup_Click - end")
 
@@ -627,7 +623,6 @@ Friend Class PrintPreview
 
     End Sub
     Private Sub pdActualPrint_PrintPage(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles pdActualPrint.PrintPage
-
 
         AddDebugComment("PrintPreview.pdActualPrint_PrintPage - start")
 

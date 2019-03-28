@@ -330,7 +330,6 @@ Friend Class Slots
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
 
@@ -346,7 +345,6 @@ Friend Class Slots
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
 
         AddDebugComment("Slots.btnHelp_Click")
-
 
         Help.ShowHelp(Me, GetHelpFile, GetHelpTopic(Main.HelpTopicEnum.Slots))
 

@@ -35,7 +35,6 @@ Friend Class SignIn
         End Get
     End Property
 
-
 #End Region
 
 #Region " Windows Form Designer generated code "
@@ -47,7 +46,6 @@ Friend Class SignIn
         InitializeComponent()
 
         'Add any initialization after the InitializeComponent() call
-
 
     End Sub
 
@@ -313,7 +311,6 @@ Friend Class SignIn
 
         lbListBox.Text = GetSetting("Colours", "One", InitalXMLConfig.XmlConfigType.UserSettings, mSelectedUser)
 
-
         lbListBox.Enabled = True
         'Me.Close()
 
@@ -346,7 +343,6 @@ Friend Class SignIn
         AddDebugComment("SignIn.SetBrushes - start")
 
         Me.lbListBox.Items.AddRange(New Object() {"One", "Two", "Three", "Four", "Five"})
-
 
         Dim r As Rectangle
         r = New Rectangle(0, 0, lbListBox.Width, lbListBox.ItemHeight)

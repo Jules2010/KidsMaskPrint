@@ -240,9 +240,7 @@ Public Class FacePartSel
         SetBackcolors()
         'Dim ImgList As New ImageList()
 
-
         ListView1.LargeImageList = mFacePartImageList
-
 
         ListView1.Items.Clear()
 
@@ -293,7 +291,6 @@ Public Class FacePartSel
 
         GetDataFileImageItem(ReturnNthStr( _
             ListView1.SelectedItems(0).Tag, 1, "#"), ReturnNthStr(ListView1.SelectedItems(0).Tag, 2, "#"), mRetPart, m_PieceName)
-
 
         If rdoLeft.Checked = True Then
             mPositionSelection = FacePartEnums.ePositionSelection.Left
@@ -371,7 +368,6 @@ Public Class FacePartSel
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
         'Me.Update()
@@ -382,14 +378,12 @@ Public Class FacePartSel
 
         AddDebugComment("FacePartsSel.btnHelp_Click")
 
-
         Help.ShowHelp(Me, GetHelpFile, GetHelpTopic(Main.HelpTopicEnum.FacePartSelect))
 
     End Sub
     Private Sub SetBackcolors()
 
         AddDebugComment("FacePartsSel.SetBackcolors")
-
 
         rdoLeft.BackColor = Color.FromArgb(0, rdoLeft.BackColor)
         rdoBoth.BackColor = Color.FromArgb(0, rdoBoth.BackColor)

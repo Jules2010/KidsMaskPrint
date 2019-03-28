@@ -220,7 +220,6 @@ Friend Class DataFilePurchasing
     End Sub
     Private Sub DataFilePurchasing_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-
         AddDebugComment("DataFilePurchasing.DataFilePurchasing_Load 1")
 
         lstDataFiles.Items.Clear()

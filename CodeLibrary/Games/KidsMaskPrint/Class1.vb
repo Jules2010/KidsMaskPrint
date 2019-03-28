@@ -4,10 +4,7 @@ Option Strict On
 Imports System.Collections
 Imports System.Runtime.Serialization
 Imports System.IO
-Imports System.Runtime.Serialization.Formatters.Binary
-
-
-Module Module1
+Imports System.Runtime.Serialization.Formatters.BinaryModule Module1
     Sub MainX()
         Dim c As clsArray
         Specific.SIO()

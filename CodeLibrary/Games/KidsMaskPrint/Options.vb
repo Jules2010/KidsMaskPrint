@@ -275,7 +275,6 @@ Friend Class options
             End If
         Next lintArrInc
 
-
         ComboBox1.SelectedIndex = SelectIndex
 
         LoadSelection()

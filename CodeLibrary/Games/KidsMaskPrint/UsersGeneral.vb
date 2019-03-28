@@ -99,7 +99,6 @@ Friend Class UsersGeneral
 
 #End Region
 
-
     Private Sub UsersGeneral_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         AddDebugComment("UsersGeneral.UsersGeneral_Load - start " & mTranType)
@@ -213,7 +212,6 @@ Friend Class UsersGeneral
     Private Sub SetBackcolors()
 
         AddDebugComment("UsersGeneral.SetBackcolors")
-
 
         btnOK.BackColor = Color.FromArgb(0, btnOK.BackColor)
         btnCancel.BackColor = Color.FromArgb(0, btnCancel.BackColor)

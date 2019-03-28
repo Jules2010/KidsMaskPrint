@@ -149,7 +149,6 @@ Module BasicPack
             .BothParts = True
         End With
 
-
         Dim PirateRightEar As New Part   'two
         With PirateRightEar
             .PartType = FacePartEnums.ePartType.Ear
@@ -631,7 +630,6 @@ Module BasicPack
             .BothParts = False
         End With
 
-
         Dim FPs As New FacePartStuctureDataFile
         With FPs
             .Parts.Add(OgreOutline) '0
@@ -654,7 +652,6 @@ Module BasicPack
             .Parts.Add(GoblinEar) '14
             .Parts.Add(GoblinMouth) '15
             .Parts.Add(GoblinNose) '16
-
 
             .Parts.Add(PirateFace) '17
             .Parts.Add(PirateLeftEar) '18
@@ -713,7 +710,6 @@ Module BasicPack
             .Parts.Add(ClownHat) '60
             .Parts.Add(ClownFlower) '61
             .Parts.Add(ClownHair) '62
-
 
             .Description = "Basic Pack"
             .DescImage = Image.FromFile(strPath & "\PackHalloween2004\logo.png")

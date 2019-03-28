@@ -136,7 +136,6 @@ Module Halloween2004
             .BothParts = True
         End With
 
-
         Dim AlienNose As New Part   'two
         With AlienNose
             .PartType = FacePartEnums.ePartType.Nose
@@ -510,7 +509,6 @@ Module Halloween2004
             .LeftPart = New Point(112, 156)
             .BothParts = False
         End With
-
 
         Dim FPs As New FacePartStuctureDataFile
         With FPs
