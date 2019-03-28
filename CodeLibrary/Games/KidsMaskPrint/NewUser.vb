@@ -24,8 +24,6 @@ Friend Class NewUser
         InitializeComponent()
 
         'Add any initialization after the InitializeComponent() call
-
-
     End Sub
 
     'Form overrides dispose to clean up the component list.
@@ -218,10 +216,7 @@ Friend Class NewUser
 
         AddDebugComment("NewUser.btnOK_Click - 1") 
 
-
         SaveSetting("Colours", "One", InitalXMLConfig.XmlConfigType.UserSettings, mSelectedUser)
-        
-
 
         Dim lstrUsersStr As String = Microsoft.VisualBasic.Join(mUsers, ChrGet(255))
         SaveSetting("Users", lstrUsersStr, InitalXMLConfig.XmlConfigType.AppSettings, "")
@@ -252,7 +247,6 @@ Friend Class NewUser
         Else
             mbooKeyStroke = True
         End If
-
 
     End Sub
     Private Sub txtName_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtName.TextChanged

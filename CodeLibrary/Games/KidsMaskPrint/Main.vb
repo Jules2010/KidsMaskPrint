@@ -85,8 +85,6 @@ Friend Module Main
 
         End Try
 
-
-
     End Function
     Friend Function ResizeImageObj(ByVal SoureImage As Image, ByVal maxSize As Integer) As Image
 
@@ -691,8 +689,6 @@ Start:
     End Sub
 
     Friend Sub Welcome(ByRef pbooSplashShown As Boolean, ByVal powner As Form)
-        
-
 
         If pbooSplashShown = False Then
             pbooSplashShown = True
@@ -989,7 +985,6 @@ Start:
         FileFormatter.Serialize(FileStream, ResizeImageObj(pThumbNailFullImage, 75)) 
 
         AddDebugComment("KidsMaskPrint.SaveUserMask - 4") 
-
 
         FileFormatter.Serialize(FileStream, pUserPieces) 
 

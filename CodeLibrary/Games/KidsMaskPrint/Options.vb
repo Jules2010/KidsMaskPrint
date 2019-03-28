@@ -246,10 +246,6 @@ Friend Class options
             rdoBlackLines.FlatStyle = FlatStyle.System
         End If
 
-        'ComboBox1.Items.Add(DefaultCombo)
-
-
-
         Dim InitialConfig As New InitalXMLConfig(InitalXMLConfig.XmlConfigType.AppSettings)
         Dim lstrUsers() As String
 

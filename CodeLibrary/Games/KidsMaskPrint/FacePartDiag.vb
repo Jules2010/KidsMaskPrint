@@ -315,7 +315,6 @@ Friend Class FacePartDiag
 
         Busy(Me, False) 
 
-
         AddDebugComment("FacePartDiag.FaceParts_Load - end") 
 
     End Sub

@@ -134,7 +134,6 @@ Public Class CanBuyPacks
 
 #End Region
 
- 
     Private Sub btnOK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOK.Click
 
         SaveSetting("BuyMore", Not chkDontShow.Checked, InitalXMLConfig.XmlConfigType.AppSettings, "")

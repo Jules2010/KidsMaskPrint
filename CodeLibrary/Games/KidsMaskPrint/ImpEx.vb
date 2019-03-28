@@ -164,7 +164,6 @@ Friend Class ImpEx
 
         AddDebugComment("ImpEx.btnCancel_Click - start") 
 
-
         Me.DialogResult = DialogResult.Cancel
         Me.Close()
 

@@ -110,8 +110,6 @@ Friend Class PieceProps
 
         AddDebugComment("PieceProps.btnDelete_Click - end") 
 
-
-
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 

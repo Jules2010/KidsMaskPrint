@@ -3180,24 +3180,16 @@ Imports System.IO
             Busy(Me, True) 
             PictureBox1.Enabled = False 
 
-
             Dim FullImage As Image = DrawDetails(PictureBox1, m_Drawings.mousePath, m_Drawings.ReversemousePath, mPieces, _
                 m_Drawings.lPaintBrush, m_Drawings.lPaintReverseBrush, m_UserPieces, m_SortOrderForData)
-            ' Dim Before As New Bitmap(FullImage)
-            'Dim l_ActiveBitmap As New Bitmap(FullImage)
 
-                        Dim test As New Bitmap(FullImage)
+            Dim test As New Bitmap(FullImage)
             Dim TempPixelColour As Color = test.GetPixel(CurXPos, CurYPos)
 
-            'MessageBox.Show(CurrentPixelColour.ToString, m_CurrentColour.ToString)
             If TempPixelColour.R = m_CurrentColour.R And TempPixelColour.G = m_CurrentColour.G And TempPixelColour.B = m_CurrentColour.B Then
                 PictureBox1.Enabled = True
                 Busy(Me, False)
                 Exit Sub
-                'Else
-                '    MessageBox.Show(TempPixelColour.R & " " & m_CurrentColour.R & CR() & _
-                '    TempPixelColour.G & " " & m_CurrentColour.G & CR() & _
-                '    TempPixelColour.B & " " & m_CurrentColour.B)
             End If
             
             Dim ff As New FloodFill()

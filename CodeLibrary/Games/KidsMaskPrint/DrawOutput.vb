@@ -9,11 +9,8 @@ Friend Module DrawOutput
         ByVal pPieces As ArrayList, ByVal pOffSet As Point, ByVal pBrush() As PaintBrush, ByVal pReverseBrush() As PaintBrush, _
         ByVal lUserPieces As FacePartStuctureDataFile, ByVal pSortOrderForData As SortOrderForData)
 
-        'lUserPieces added 
-
         Dim errpos As Integer
         Dim lintArrInc As Integer 
-
 
         Try ' error trapping
 

@@ -444,22 +444,17 @@ Friend Class PrintPreview
 
         AddDebugComment("PrintPreview.OnPaintBackground - start") 
 
-        
         Dim PaintBack As New UIStyle.Painting()
         PaintBack.PaintBackground(pevent, Me)
 
         AddDebugComment("PrintPreview.OnPaintBackground - end") 
-
-        'Panel1.BackgroundImage = PaintBack.PaintBackgroundToFit(pevent, Me.Height, Me.Width, Panel1.Top, Panel1.Left, Panel1.Width, Panel1.Height) 
-        'Label1.BackgroundImage = PaintBack.PaintBackgroundToFit(pevent, Me.Height, Me.Width, Label1.Top, Label1.Left, Label1.Width, Label1.Height) 
 
     End Sub
     Private Sub btnPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPrint.Click
 
         AddDebugComment("PrintPreview.btnPrint_Click - start") 
 
-
-                If InStrGet((NameMe("")).ToUpper, "TRIAL") > 0 Then
+        If InStrGet((NameMe("")).ToUpper, "TRIAL") > 0 Then
             Dim intPrintAllows As Integer = 0
             Try : intPrintAllows = Val(GetSetting("Brushes", "5", InitalXMLConfig.XmlConfigType.AppSettings, "")) : Catch : End Try
             If intPrintAllows = 0 Or intPrintAllows > 5 Then

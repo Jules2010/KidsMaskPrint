@@ -43,8 +43,6 @@ Module Specific
 End Module
 '***********************************************************************
 
-
-
 Module App
 
     Sub MainX()
@@ -76,8 +74,6 @@ Module App
             fs.Close()
         End Try
     End Sub
-
-
 
     Sub Deserialize()
         ' Declare the SortedList reference.
