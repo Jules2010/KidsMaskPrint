@@ -1,0 +1,75 @@
+<%
+'LiveFlag = "FALSE"
+LiveFlag = "TRUE"
+
+if LiveFlag <> "FALSE" then
+	lstrPGWelcome = "welcome.html"
+	lstrPGSignIn = "signin.html"
+	lstrPGSlots = "slots.html"
+	lstrPGMainScreen = "mainscreen.html"
+	lstrPGPrinting = "printing.html"
+	lstrPGParentOptions = "parentoptions.html"
+	lstrPGFacePartSelect ="facepartselect.html"
+	lstrPGQuickStart = "quickstart.html"
+	lstrPGBuy = "buy.html"
+	lstrPGSupport = "support.html"
+	lstrPGAftPurchase = "afterpurchase.html"
+	
+
+else
+	lstrPGWelcome = "welcome.asp"
+	lstrPGSignIn = "signin.asp"
+	lstrPGSlots = "slots.asp"
+	lstrPGMainScreen = "mainscreen.asp"
+	lstrPGPrinting = "printing.asp"
+	lstrPGParentOptions = "parentoptions.asp"
+	lstrPGFacePartSelect ="facepartselect.asp"
+	lstrPGQuickStart = "quickstart.asp"
+	lstrPGBuy = "buy.asp"
+	lstrPGSupport = "support.asp"
+	lstrPGElastic = "elasticcard.asp"
+	lstrPGAftPurchase = "afterpurchase.asp"
+
+end if
+
+ %>
+<HTML>
+<Head>
+<body bgcolor="#FFFFC0">
+<Style>
+td	 {
+	font-size: 11pt;
+	font-weight: normal;
+	font-family: Arial;
+}
+body	 {
+	font-size: 11pt;
+	font-weight: normal;
+	font-family: Arial;
+}
+h1	 {
+	font-size: 13pt;
+	font-weight: bold;
+	font-family: Arial;
+}
+</Style>
+<Title><% = lstrTitle %></Title>
+</Head>
+<font face="Arial" size="2">
+<table border="0" width="100%" height="100%"><tr><TD height="10">
+	<table border="1" bordercolor="#C0C0C0" cellpadding="5" cellspacing="0" width="100%"  bgcolor="#ffffff"><tr><td>
+		<table border="0"  cellpadding="0" cellspacing="0" width="100%"><tr><td width>
+			<font face="Arial" Size="5"><% = lstrTitle %></font>
+		</td>
+		<td align="Right" valign="center">
+		<table border="0" cellpadding="0" cellspacing="0"><tr><td NOWRAP>
+			&nbsp;&nbsp;<font face="Arial" Size="6">Kids Mask Factory</font>&nbsp;&nbsp;
+		</td>
+			<td>
+				<img src="gfx/mcl_small.png">
+				</td></tr></table>
+		</td>
+	</tr></table>
+	</td></tr></table>
+</td></tr><tr><td valign="top">
+<BR><BR>

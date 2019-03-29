@@ -1,8 +1,8 @@
 Imports System.Diagnostics.FileVersionInfo
 Friend Class strat3welcome
     Inherits System.Windows.Forms.Form
-    Dim mbooExpired As Boolean 'JM 27/02/2004
-    Property Expired() As Boolean 'JM 27/02/2004
+    Dim mbooExpired As Boolean
+    Property Expired() As Boolean
         Get
             Return mbooExpired
         End Get
@@ -10,7 +10,6 @@ Friend Class strat3welcome
             mbooExpired = Value
         End Set
     End Property
-    '--- 'JM 16/08/2004 ---
     Dim mstrTitle As String
     Property Title() As String
         Get
@@ -119,31 +118,31 @@ Friend Class strat3welcome
     Friend WithEvents lblBullet5 As System.Windows.Forms.Label
     Friend WithEvents lblTitle As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
+        Me.components = New System.ComponentModel.Container
         Dim resources As System.Resources.ResourceManager = New System.Resources.ResourceManager(GetType(strat3welcome))
-        Me.lblSentence1 = New System.Windows.Forms.Label()
-        Me.btnOK = New System.Windows.Forms.Button()
+        Me.lblSentence1 = New System.Windows.Forms.Label
+        Me.btnOK = New System.Windows.Forms.Button
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.lbl10Secs = New System.Windows.Forms.Label()
-        Me.picMCLLogo = New System.Windows.Forms.PictureBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.lblBullet5 = New System.Windows.Forms.Label()
-        Me.btnCode = New System.Windows.Forms.Button()
-        Me.btnBuyNow = New System.Windows.Forms.Button()
-        Me.lblTitle = New System.Windows.Forms.Label()
-        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox7 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.PictureBox8 = New System.Windows.Forms.PictureBox()
-        Me.lblBullet4 = New System.Windows.Forms.Label()
-        Me.lblBullet1 = New System.Windows.Forms.Label()
-        Me.lblBullet2 = New System.Windows.Forms.Label()
+        Me.lbl10Secs = New System.Windows.Forms.Label
+        Me.picMCLLogo = New System.Windows.Forms.PictureBox
+        Me.Panel1 = New System.Windows.Forms.Panel
+        Me.lblBullet5 = New System.Windows.Forms.Label
+        Me.btnCode = New System.Windows.Forms.Button
+        Me.btnBuyNow = New System.Windows.Forms.Button
+        Me.lblTitle = New System.Windows.Forms.Label
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox
+        Me.Label6 = New System.Windows.Forms.Label
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox
+        Me.PictureBox7 = New System.Windows.Forms.PictureBox
+        Me.PictureBox6 = New System.Windows.Forms.PictureBox
+        Me.PictureBox5 = New System.Windows.Forms.PictureBox
+        Me.Label3 = New System.Windows.Forms.Label
+        Me.PictureBox8 = New System.Windows.Forms.PictureBox
+        Me.lblBullet4 = New System.Windows.Forms.Label
+        Me.lblBullet1 = New System.Windows.Forms.Label
+        Me.lblBullet2 = New System.Windows.Forms.Label
         Me.ilTreeIcons = New System.Windows.Forms.ImageList(Me.components)
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -413,7 +412,7 @@ Friend Class strat3welcome
 
         AddDebugComment("strat3welcome.strat3welcome_Load - start") 'JM 16/10/2004
 
-        Dim Res As New IPIconsPack.Resource() 'JM 16/08/2003
+        Dim Res As New IPIconsPack.Resource   'JM 16/08/2003
         picMCLLogo.Image = Res.picMCLLogo.Image 'JM 16/08/2003
 
         Me.Text = NameMe("Evaluation Notice")
@@ -479,7 +478,7 @@ Friend Class strat3welcome
         '--- 'JM 26/05/2004 ---
 
         AddDebugComment("strat3welcome.strat3welcome_Load - End") 'JM 27/08/2004
-        
+
     End Sub
     Private Sub btnOK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOK.Click
         AddDebugComment("strat3welcome.btnOK_Click") 'JM 27/08/2004
@@ -532,7 +531,7 @@ Friend Class strat3welcome
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
         'Added 'JM 26/05/2004
-        Dim PaintBack As New UIStyle.Painting()
+        Dim PaintBack As New UIStyle.Painting
         PaintBack.PaintBackground(pevent, Me)
 
     End Sub

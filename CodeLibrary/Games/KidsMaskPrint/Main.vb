@@ -8,7 +8,7 @@ Friend Module Main
     Friend mintVersion As Integer
     Friend lstrTempFiles(0) As String
 
-        Private Const mstrTitle As String = "Take a minute to understand what Kids Mask Print can do for you!"
+    Private Const mstrTitle As String = "Take a minute to understand what Kids Mask Print can do for you!"
     Private Const mstrBullet1 As String = "       Keeps your kids happy and occupied"
     Private Const mstrBullet2 As String = "       Easy to use, step-by-step help included!"
     Private Const mstrBullet3 As String = "       Caters for creativity and future change"
@@ -38,7 +38,7 @@ Friend Module Main
     End Sub
     Friend Function ResizeImage(ByVal pstrSourceFile As String, ByVal maxSize As Integer) As Image
 
-        Dim inp As New IntPtr()
+        Dim inp As New IntPtr
         Dim imgHeight, imgWidth As Double
 
         Dim image As System.Drawing.Image = System.Drawing.Image.FromFile(pstrSourceFile)
@@ -86,7 +86,7 @@ Friend Module Main
     End Function
     Friend Function ResizeImageObj(ByVal SoureImage As Image, ByVal maxSize As Integer) As Image
 
-        Dim inp As New IntPtr()
+        Dim inp As New IntPtr
         Dim imgHeight, imgWidth As Double
 
         Dim image As System.Drawing.Image = SoureImage
@@ -163,14 +163,14 @@ Friend Module Main
 
         Dim FPs As FacePartStuctureDataFile = UnlockFacePartsPack(fpDir & pFile)
 
-        Dim ThisPart As New KidsMaskPrint.Part()
+        Dim ThisPart As New KidsMaskPrint.Part
         pPieceName = ThisPart.FaceMaster
         RetPart = FPs.Parts(Item)
         pLeftImage = RetPart.FullImage '.Clone
 
         If RetPart.BothParts = True Then
 
-                        Dim imgWidth As Single = RetPart.FullImage.Width
+            Dim imgWidth As Single = RetPart.FullImage.Width
             Dim imgHeight As Integer = RetPart.FullImage.Height + 20
 
             Dim LeftPoint As Point = RetPart.LeftPart
@@ -193,7 +193,7 @@ Friend Module Main
             'g.DrawRectangle(Pens.Red, 0, 0, CanvasWidth - 1, imgHeight - 1)
 
             pBothImage = NewBitmap
-                    End If
+        End If
 
     End Function
     Friend Function x(ByVal pstrString As String) As String
@@ -210,7 +210,7 @@ Friend Module Main
     Friend Function AcceptLicense(ByVal pform As Form) As Boolean
 
         Dim dlgResult As DialogResult
-        Dim lAcceptReg As New AcceptReg()
+        Dim lAcceptReg As New AcceptReg
         With lAcceptReg
 
             AcceptLicense = False
@@ -222,7 +222,7 @@ Friend Module Main
             If dlgResult = DialogResult.OK Then
                 'create temp license file
                 Dim lstrTemp As String
-                Dim clsEnc As New MyCrypto()
+                Dim clsEnc As New MyCrypto
 
                 If x(.LicenseCode) = "" Then
                     MessageBox.Show("Your license code was not accepted!", NameMe(""), MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -389,15 +389,15 @@ Friend Module Main
         Dim lintThreads As Integer = 259
         Dim lflaDBResult As Long
 
-        Dim eh1 As CustomExceptionHandler = New CustomExceptionHandler()
+        Dim eh1 As CustomExceptionHandler = New CustomExceptionHandler
         gstrMRPs = "0013"
         Try
             gstrMRPs = "0015"
-                        gstrProbComtStack = " Topmost"
+            gstrProbComtStack = " Topmost"
 
             gdatSystemStart = Date.Now
 
-                        Dim NoDupe As KillIt
+            Dim NoDupe As KillIt
             If Not Microsoft.VisualBasic.IsNothing(NoDupe.PrevInstance) Then
                 NoDupe.PrevInstance.Kill()
             End If
@@ -412,17 +412,17 @@ Friend Module Main
                 Try
                     GetSetting("CFU Code", "10", InitalXMLConfig.XmlConfigType.AppSettings, "")
                 Catch
-                                        gstrMRPs = "0021"
+                    gstrMRPs = "0021"
                     MessageBox.Show("The program has been unable to write settings, please ensure you" & Environment.NewLine & _
                         "have Administrator privileges and try again!" _
                         , NameMe(""), MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     End
                     GoTo Exhaust
-                                    End Try
+                End Try
             End If
             gstrMRPs = "0025"
 
-                        gstrProbComtStack &= " #MS1"
+            gstrProbComtStack &= " #MS1"
 
             If flamenow() Then
                 Dim lstrDetails2(2) As String
@@ -452,9 +452,9 @@ Friend Module Main
             End If
 
             gstrMRPs = "0035"
-                        gstrProbComtStack &= " #MS2"
+            gstrProbComtStack &= " #MS2"
 
-                        Dim Dets As strat1.UnlockDetails
+            Dim Dets As strat1.UnlockDetails
             TakeCare(lintThreads, Dets)
             Dets = Nothing
 
@@ -474,23 +474,25 @@ Friend Module Main
             'MessageBox.Show("Put Code back in jules!")
             gstrMRPs = "0050"
 
-#If Not Debug Then
+            'DEVNOTE 2019: Removed crc result
+            '#If Not Debug Then
 
-            If IRes = 1 Then
-                '
-            ElseIf IRes = -1 Then
-                MessageBox.Show(NameMe("") & Environment.NewLine & Environment.NewLine & lstrRetVal3, NameMe("") & "   ", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Try : SaveSetting("MRP", gstrMRPs, InitalXMLConfig.XmlConfigType.AppSettings, "") : Catch : End Try
-                End
-                GoTo Exhaust
-            Else
-                MessageBox.Show(NameMe("") & Environment.NewLine & Environment.NewLine & lstrRetVal3, NameMe("") & "   ", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Try : SaveSetting("MRP", gstrMRPs, InitalXMLConfig.XmlConfigType.AppSettings, "") : Catch : End Try
-                End
-                GoTo Exhaust
-            End If
-#End If
-                        gstrProbComtStack &= " #MS3"
+            '            If IRes = 1 Then
+            '                '
+            '            ElseIf IRes = -1 Then
+            '                MessageBox.Show(NameMe("") & Environment.NewLine & Environment.NewLine & lstrRetVal3, NameMe("") & "   ", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            '                Try : SaveSetting("MRP", gstrMRPs, InitalXMLConfig.XmlConfigType.AppSettings, "") : Catch : End Try
+            '                End
+            '                GoTo Exhaust
+            '            Else
+            '                MessageBox.Show(NameMe("") & Environment.NewLine & Environment.NewLine & lstrRetVal3, NameMe("") & "   ", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            '                Try : SaveSetting("MRP", gstrMRPs, InitalXMLConfig.XmlConfigType.AppSettings, "") : Catch : End Try
+            '                End
+            '                GoTo Exhaust
+            '            End If
+            '#End If
+
+            gstrProbComtStack &= " #MS3"
 
             Try
                 Dim MaskDir As String = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) & "\" & "\Masks\"
@@ -502,12 +504,11 @@ Friend Module Main
             End Try
             gstrMRPs = "0065"
 
-                        gstrProbComtStack &= " #MS4"
+            gstrProbComtStack &= " #MS4"
 
             lflaDBResult = GetWindowsDir(gstrDBFlamer, gstrProbComtStack)
 
-            'Catch ex As Exception
-                        gstrProbComtStack &= " #MSBasic Checks done" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
+            gstrProbComtStack &= " #MSBasic Checks done" : AddDebugComment(gstrProbComtStack) : gstrProbComtStack = ""
 
         Catch ex As Exception
             AddDebugComment("<Font color=Red>MSG:" & ex.ToString & "</font>")
@@ -521,8 +522,8 @@ Friend Module Main
         If File.Exists(lstrPath & "\CD.dat") = True Then
 
             Dim FileStream As Stream = File.Open(lstrPath & "\CD.dat", FileMode.Open)
-            Dim FileFormatter As New BinaryFormatter()
-            Dim ThisCD As New CDDataIncluded()
+            Dim FileFormatter As New BinaryFormatter
+            Dim ThisCD As New CDDataIncluded
             ThisCD = DirectCast(FileFormatter.Deserialize(FileStream), CDDataIncluded)
 
             With ThisCD
@@ -611,7 +612,7 @@ Exhaust:
         IntroduceCDPack = False
 Start:
         'Get CD location
-        Dim fb As New DirBrowser()
+        Dim fb As New DirBrowser
 
         fb.Description = "Please select your CD drive with your '" & PackName & "' inserted!"
         fb.ShowDialog()
@@ -620,8 +621,8 @@ Start:
         If File.Exists(lstrPackFile) = True Then
             'check CD key for pack string
             Dim FileStream As Stream = File.Open(lstrPackFile, FileMode.Open, FileAccess.Read, FileShare.Read)
-            Dim FileFormatter As New BinaryFormatter()
-            Dim ThisPack As New CDPack()
+            Dim FileFormatter As New BinaryFormatter
+            Dim ThisPack As New CDPack
             ThisPack = DirectCast(FileFormatter.Deserialize(FileStream), CDPack)
 
             Dim lstrPath As String = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly.Location.ToString())
@@ -714,7 +715,7 @@ Start:
 
         Try
             Dim FileStream As Stream = File.Open(FileName, FileMode.Open)
-            Dim FileFormatter As New BinaryFormatter()
+            Dim FileFormatter As New BinaryFormatter
             hash = DirectCast(FileFormatter.Deserialize(FileStream), SortedList) '1
 
             AddDebugComment("Main.LoadMask - 2")
@@ -725,7 +726,7 @@ Start:
 
             '############### TESTING #############
             Try
-                Dim UserFacePartDatsStrutest As New FacePartStuctureDataFile()
+                Dim UserFacePartDatsStrutest As New FacePartStuctureDataFile
                 UserFacePartDatsStrutest = DirectCast(FileFormatter.Deserialize(FileStream), FacePartStuctureDataFile)
                 pUserPieces = UserFacePartDatsStrutest
 
@@ -761,13 +762,13 @@ Start:
 
         pPieces.Clear()
 
-                Dim MousePath() As GPArr
+        Dim MousePath() As GPArr
         Dim ReverseMousePath() As GPArr
 
         Dim MousePaintBrush() As PaintBrush
 
         Dim ReverseMousePaintBrush() As PaintBrush
-                Dim lstrVersion As String
+        Dim lstrVersion As String
         Dim de As DictionaryEntry
 
         Dim MPPCounter As Integer
@@ -785,7 +786,7 @@ Start:
         Try
             For Each de In hash
                 'Console.WriteLine(de.Key.ToString)
-                                Select Case LeftGet(de.Key.ToString & "    ", 4)
+                Select Case LeftGet(de.Key.ToString & "    ", 4)
                     Case "AVER"
                         'If de.Key = -1 Then
                         lstrVersion = de.Value
@@ -797,7 +798,7 @@ Start:
                         ReDim MousePath(MPCount)
 
                         For lintArrInc = 0 To MousePath.GetUpperBound(0)
-                            MousePath(lintArrInc) = New GPArr()
+                            MousePath(lintArrInc) = New GPArr
                         Next lintArrInc
                         Dim RMPCount As Integer = AppBasic.ReturnNthStr(de.Value, 2, "#")
                         'ReDim ReverseMousePointArray(RMPCount)
@@ -806,7 +807,7 @@ Start:
                         ReDim ReverseMousePath(RMPCount)
 
                         For lintArrInc = 0 To ReverseMousePath.GetUpperBound(0)
-                            ReverseMousePath(lintArrInc) = New GPArr()
+                            ReverseMousePath(lintArrInc) = New GPArr
                         Next lintArrInc
 
                     Case "CMPP" '0"
@@ -828,7 +829,7 @@ Start:
                         End If
                     Case "EMBC"
                         If Not de.Value Is Nothing Then
-                            MousePaintBrush(MPB1Counter) = New PaintBrush()
+                            MousePaintBrush(MPB1Counter) = New PaintBrush
                             MousePaintBrush(MPB1Counter).BrushColour = de.Value
                             'Console.WriteLine(CType(de.Value, Color).ToKnownColor.ToString)
                             MPB1Counter += 1
@@ -861,7 +862,7 @@ Start:
                         End If
                     Case "IRBC"
                         If Not de.Value Is Nothing Then
-                            ReverseMousePaintBrush(RPB1Counter) = New PaintBrush()
+                            ReverseMousePaintBrush(RPB1Counter) = New PaintBrush
                             ReverseMousePaintBrush(RPB1Counter).BrushColour = de.Value
                             RPB1Counter += 1
                         Else
@@ -876,7 +877,7 @@ Start:
                         End If
                     Case "ZZZZ" 'Else
 
-                        Dim ThisPiece As New Piece()
+                        Dim ThisPiece As New Piece
                         ThisPiece.SourceDataFileName = AppBasic.ReturnNthStr(de.Value, 1, "|")
                         ThisPiece.DataFileItemNum = CInt(AppBasic.ReturnNthStr(de.Value, 2, "|"))
                         ThisPiece.VertFlip = (CBool(AppBasic.ReturnNthStr(de.Value, 5, "|")))
@@ -896,7 +897,7 @@ Start:
                             Next
                         End If
                         If lbooLicensedPieceFound = True Then
-                            Dim TempPart As New KidsMaskPrint.Part()
+                            Dim TempPart As New KidsMaskPrint.Part
                             GetDataPreviewImage(ThisPiece.SourceDataFileName, ThisPiece.DataFileItemNum, TempPart, Nothing, Nothing)
                             ThisPiece.SetImageObj(TempPart.FullImage)
                             Dim loc As New Point(CSng(AppBasic.ReturnNthStr(de.Value, 3, "|")), CSng(AppBasic.ReturnNthStr(de.Value, 4, "|")))
@@ -906,7 +907,7 @@ Start:
                             pPieces.Add(ThisPiece)
                         End If
                 End Select
-                            Next de
+            Next de
         Catch ex As Exception
             Throw New Exception(de.Key.ToString & " " & ex.ToString)
         End Try
@@ -945,7 +946,7 @@ Start:
             pReverseMousePB = ReverseMousePaintBrush
         End If
 
-                AddDebugComment("Main.LoadMask - end")
+        AddDebugComment("Main.LoadMask - end")
 
     End Function
 
@@ -957,7 +958,7 @@ Start:
         Try : File.Delete(pstrFileName) : Catch : End Try
 
         Dim FileStream As Stream = File.Open(pstrFileName, FileMode.Create)
-        Dim FileFormatter As New BinaryFormatter()
+        Dim FileFormatter As New BinaryFormatter
 
         AddDebugComment("KidsMaskPrint.SaveUserMask - 2")
         FileFormatter.Serialize(FileStream, pHash)
@@ -978,7 +979,7 @@ Start:
     End Sub
     Friend Function UnlockFacePartsPack(ByVal pFileName As String) As FacePartStuctureDataFile
 
-        Dim rijndael As New RijndaelManaged()
+        Dim rijndael As New RijndaelManaged
         'The RijndaelManaged.GenerateKey & GenerateIV creates a random key &
         'initialization vector, good for testing, not good for production...
 
@@ -987,7 +988,7 @@ Start:
 
         Dim decryptor As ICryptoTransform = rijndael.CreateDecryptor(key, iv)
 
-        Dim formatter As New BinaryFormatter()
+        Dim formatter As New BinaryFormatter
         Dim input As Stream = File.Open(pFileName, FileMode.Open)
         Dim cryptoInput As New CryptoStream(input, decryptor, CryptoStreamMode.Read)
         Dim FPs As FacePartStuctureDataFile = DirectCast(formatter.Deserialize(cryptoInput), FacePartStuctureDataFile)
@@ -1093,7 +1094,7 @@ End Class
     <DoNotObfuscateAttribute()> Friend gstrManifestSite(0) As ManifestInfo
     <DoNotObfuscateAttribute()> Friend gdatSystemStart As Date
 
-    <DoNotObfuscateAttribute()> Friend m_PageSettings As New System.Drawing.Printing.PageSettings()
+    <DoNotObfuscateAttribute()> Friend m_PageSettings As New System.Drawing.Printing.PageSettings
     <DoNotObfuscateAttribute()> Friend gProgName As String = "KidsMaskPrint"
     <DoNotObfuscateAttribute()> Friend gYear As String = "2005"
     <DoNotObfuscateAttribute()> Friend gstrProbComtStack As String = ""

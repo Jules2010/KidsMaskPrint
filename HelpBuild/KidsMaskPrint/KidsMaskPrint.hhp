@@ -1,0 +1,42 @@
+[OPTIONS]
+Compatibility=1.1
+Compiled file=KidsMaskPrint.chm
+Contents file=Table of Contents.hhc
+Default topic=welcome.html
+Display compile progress=No
+Full-text search=Yes
+Language=0x809 English (United Kingdom)
+Title=Kids Mask Print Help
+
+
+[FILES]
+support.html
+welcome.html
+buy.html
+quickstart.html
+signin.html
+slots.html
+printing.html
+parentoptions.html
+mainscreen.html
+facepartselect.html
+elasticcard.html
+afterpurchase.html
+
+
+[ALIAS]
+IDH_Buy=buy.html
+IDH_Elastic=elasticcard.html
+IDH_FacePart=facepartselect.html
+IDH_MainScreen=mainscreen.html
+IDH_ParentOps=parentoptions.html
+IDH_Printing=printing.html
+IDH_QuickStart=quickstart.html
+IDH_SignIn=signin.html
+IDH_Slots=slots.html
+IDH_Support=support.html
+IDH_Welcome=welcome.html
+IDH_AfterPurchase=afterpurchase.html
+
+[MAP]
+#include topicids.h

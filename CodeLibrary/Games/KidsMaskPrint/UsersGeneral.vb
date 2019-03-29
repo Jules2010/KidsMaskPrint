@@ -56,9 +56,9 @@ Friend Class UsersGeneral
     Friend WithEvents btnOK As System.Windows.Forms.Button
     Friend WithEvents btnCancel As System.Windows.Forms.Button
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
-        Me.btnOK = New System.Windows.Forms.Button()
-        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.ListBox1 = New System.Windows.Forms.ListBox
+        Me.btnOK = New System.Windows.Forms.Button
+        Me.btnCancel = New System.Windows.Forms.Button
         Me.SuspendLayout()
         '
         'ListBox1
@@ -105,7 +105,7 @@ Friend Class UsersGeneral
 
         SetBackcolors()
 
-                Select Case mTranType
+        Select Case mTranType
             Case UserTranType.Delete
                 Me.Text = "Delete"
             Case UserTranType.Rename
@@ -205,7 +205,7 @@ Friend Class UsersGeneral
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        Dim PaintBack As New UIStyle.Painting()
+        Dim PaintBack As New UIStyle.Painting
         PaintBack.PaintBackground(pevent, Me)
 
     End Sub
