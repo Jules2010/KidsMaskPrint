@@ -74,13 +74,13 @@ Friend Class SignIn
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Dim resources As System.Resources.ResourceManager = New System.Resources.ResourceManager(GetType(SignIn))
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.btnNew = New WinOnly.BevelButton()
-        Me.btnOKClick = New WinOnly.BevelButton()
-        Me.lblName = New System.Windows.Forms.Label()
-        Me.lbListBox = New System.Windows.Forms.ListBox()
-        Me.lblSelectName = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Panel2 = New System.Windows.Forms.Panel
+        Me.btnNew = New WinOnly.BevelButton
+        Me.btnOKClick = New WinOnly.BevelButton
+        Me.lblName = New System.Windows.Forms.Label
+        Me.lbListBox = New System.Windows.Forms.ListBox
+        Me.lblSelectName = New System.Windows.Forms.Label
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -233,7 +233,7 @@ Friend Class SignIn
             ReDim xx(mUsers.GetUpperBound(0))
 
             For lintArrInc = 0 To xx.GetUpperBound(0)
-                xx(lintArrInc) = New BevelButton()
+                xx(lintArrInc) = New BevelButton
                 With xx(lintArrInc)
                     .Location = New Point(PositionArr(lintArrInc).X, PositionArr(lintArrInc).Y + 40)
                     .FlatStyle = BevelButton.FlatStyleEx.Bevel
@@ -347,7 +347,7 @@ Friend Class SignIn
         Dim r As Rectangle
         r = New Rectangle(0, 0, lbListBox.Width, lbListBox.ItemHeight)
 
-                lGradeCol1(0) = SystemColors.Control : lGradeCol2(0) = SystemColors.Window
+        lGradeCol1(0) = SystemColors.Control : lGradeCol2(0) = SystemColors.Window
         lGradeCol1(1) = Color.FromArgb(193, 255, 223) : lGradeCol2(1) = Color.FromArgb(236, 255, 245)
         lGradeCol1(2) = Color.FromArgb(255, 187, 187) : lGradeCol2(2) = Color.FromArgb(255, 225, 225)
         lGradeCol1(3) = Color.FromArgb(192, 205, 254) : lGradeCol2(3) = Color.FromArgb(234, 238, 255)

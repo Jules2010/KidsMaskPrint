@@ -12,7 +12,7 @@ Friend Class FloodFill
 
         Dim Bitmapbefore As Bitmap = raster.Clone
 
-        Dim mf As New MapFill()
+        Dim mf As New MapFill
         raster = mf.Fill(raster, New Point(iX, iY), iFColor)
 
         Return FloodFillClipImage(Bitmapbefore, raster, ClipTop, ClipLeft, iFColor)
@@ -115,7 +115,7 @@ Public Class MapFill
 
     Public Sub New()
     End Sub 'New
-    Private Shared stack As New Stack()
+    Private Shared stack As New stack
 
     '/ <summary>
     '/ Checks to make sure a pixel is in an image.

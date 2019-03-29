@@ -55,9 +55,8 @@ Friend Class strat3welcome
             mstrBullet4 = Value
         End Set
     End Property
-    '--- 'JM 16/08/2004 ---
-    Dim mstrBuyNowURL As String 'JM 16/10/2004
-    Property BuyNowURL() As String 'JM 16/10/2004
+    Dim mstrBuyNowURL As String
+    Property BuyNowURL() As String
         Get
             Return mstrBuyNowURL
         End Get
@@ -410,25 +409,21 @@ Friend Class strat3welcome
 
     Private Sub strat3welcome_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        AddDebugComment("strat3welcome.strat3welcome_Load - start") 'JM 16/10/2004
+        AddDebugComment("strat3welcome.strat3welcome_Load - start")
 
-        Dim Res As New IPIconsPack.Resource   'JM 16/08/2003
-        picMCLLogo.Image = Res.picMCLLogo.Image 'JM 16/08/2003
+        Dim Res As New IPIconsPack.Resource
+        picMCLLogo.Image = Res.picMCLLogo.Image
 
         Me.Text = NameMe("Evaluation Notice")
 
         'lblThanks.Text = "Thank you for evaluating " & _
         '    GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly.Location).ProductName
-        If mbooExpired = False Then 'JM 27/02/2004
-            '--- 'JM 11/09/2004 ---
+        If mbooExpired = False Then
             Dim DaysRemain As Integer = 30
             Try : DaysRemain = 30 - CInt(GetSetting("Remain", "0", InitalXMLConfig.XmlConfigType.AppSettings, "")) : Catch : End Try
-            '--- 'JM 11/09/2004 ---
-            '--- 'JM 01/05/2005 ---
             If DaysRemain < 0 Then
                 DaysRemain = 0
             End If
-            '--- 'JM 01/05/2005 ---
             lblSentence1.Text = "You may use this version of the program for " & DaysRemain & " days."
         Else
             lblSentence1.Text = "Your evaluation period has expired!"
@@ -439,25 +434,21 @@ Friend Class strat3welcome
         'lblSentence2.Text = "After this point if you wish to continue using the program you must buy the a full version. " & _
         '    "We value your comments and suggestions please visit :-"
 
-        'lnkURL.Links.Add(0, lnkURL.Text.Length, lnkURL.Text) 'JM 21/05/2003
+        'lnkURL.Links.Add(0, lnkURL.Text.Length, lnkURL.Text) 
 
-        '--- 'JM 10/11/2003 ---
         lblBullet1.Image = ilTreeIcons.Images.Item(0)
         lblBullet2.Image = ilTreeIcons.Images.Item(0)
         'lblBullet3.Image = ilTreeIcons.Images.Item(0)
         lblBullet4.Image = ilTreeIcons.Images.Item(0)
         lblBullet5.Image = ilTreeIcons.Images.Item(0)
-        '--- 'JM 10/11/2003 ---
 
-        '--- 'JM 16/08/2004 ---
         lblTitle.Text = mstrTitle
         lblBullet1.Text = mstrBullet1
         lblBullet2.Text = mstrBullet2
         lblBullet4.Text = mstrBullet3
         lblBullet5.Text = mstrBullet4
-        '--- 'JM 16/08/2004 ---
 
-        '--- 'JM 27/02/2004 Hide Paypal stuff and cards etc---
+        '---  Hide Paypal stuff and cards etc---
         PictureBox8.Visible = False
         picMCLLogo.Left = 56 - 20
         picMCLLogo.Top = 60
@@ -467,21 +458,19 @@ Friend Class strat3welcome
         PictureBox6.Left = PictureBox5.Left
         PictureBox3.Visible = False 'discovery
         PictureBox5.Visible = False ' echeck
-        '--- 'JM 27/02/2004 Hide Paypal stuff and cards etc---
+        '---  Hide Paypal stuff and cards etc---
 
-        '--- 'JM 26/05/2004 ---
         btnOK.FlatStyle = FlatStyle.System
         btnBuyNow.FlatStyle = FlatStyle.System
         btnCode.FlatStyle = FlatStyle.System
 
         SetBackcolors()
-        '--- 'JM 26/05/2004 ---
 
-        AddDebugComment("strat3welcome.strat3welcome_Load - End") 'JM 27/08/2004
+        AddDebugComment("strat3welcome.strat3welcome_Load - End")
 
     End Sub
     Private Sub btnOK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOK.Click
-        AddDebugComment("strat3welcome.btnOK_Click") 'JM 27/08/2004
+        AddDebugComment("strat3welcome.btnOK_Click")
         Me.Close()
     End Sub
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
@@ -490,21 +479,21 @@ Friend Class strat3welcome
         lbl10Secs.Visible = False
     End Sub
     Private Sub lnkURL_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs)
-        AddDebugComment("strat3welcome.lnkURL_LinkClicked") 'JM 27/08/2004
+        AddDebugComment("strat3welcome.lnkURL_LinkClicked")
         Process.Start(e.Link.LinkData.ToString)
     End Sub
     Private Sub btnBuyNow_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBuyNow.Click
-        AddDebugComment("strat3welcome.btnBuyNow_Click") 'JM 27/08/2004
-        BrowseToUrl(mstrBuyNowURL, Me) 'JM 16/10/2004 '"http://www.KidsMaskPrint.com/buy.php", Me) 'JM 10/11/2003
+        AddDebugComment("strat3welcome.btnBuyNow_Click")
+        BrowseToUrl(mstrBuyNowURL, Me)  '"http://www.KidsMaskPrint.com/buy.php", Me) 
 
     End Sub
     Private Sub btnCode_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCode.Click
-        AddDebugComment("strat3welcome.btnCode_Click") 'JM 27/08/2004
-        If AcceptLicense(Me) = True Then 'JM 10/11/2003
+        AddDebugComment("strat3welcome.btnCode_Click")
+        If AcceptLicense(Me) = True Then
             StandardUpgradeTidy()
         End If
     End Sub
-    Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message) 'JM 10/11/2003
+    Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
 
 
         Const WM_SYSCOMMAND As Int32 = &H112
@@ -522,7 +511,7 @@ Friend Class strat3welcome
     End Sub
     Private Sub SetBackcolors()
 
-        'Added 'JM 26/05/2004
+
         btnOK.BackColor = Color.FromArgb(0, btnOK.BackColor)
         btnCode.BackColor = Color.FromArgb(0, btnCode.BackColor)
         btnBuyNow.BackColor = Color.FromArgb(0, btnBuyNow.BackColor)
@@ -530,7 +519,7 @@ Friend Class strat3welcome
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        'Added 'JM 26/05/2004
+
         Dim PaintBack As New UIStyle.Painting
         PaintBack.PaintBackground(pevent, Me)
 
@@ -541,6 +530,6 @@ Friend Class strat3welcome
     End Sub
 
     Private Sub strat3welcome_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-        Me.Invalidate() 'JM 21/09/2004
+        Me.Invalidate()
     End Sub
 End Class

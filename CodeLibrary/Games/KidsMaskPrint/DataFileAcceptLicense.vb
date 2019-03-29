@@ -20,7 +20,7 @@ Module DataFileAcceptLicense
 
         Dim dlgResult As DialogResult
 
-        Dim DFAR As New DataFileAcceptReg()
+        Dim DFAR As New DataFileAcceptReg
         With DFAR
             .Owner = pform
             .Caption = NameMe("")
@@ -32,7 +32,7 @@ Module DataFileAcceptLicense
             If dlgResult = DialogResult.OK Then
                 'create temp license file
                 Dim lstrTemp As String
-                Dim clsEnc As New MyCrypto()
+                Dim clsEnc As New MyCrypto
 
                 If x(.LicenseCode) = "" Then
                     Busy(pform, False)

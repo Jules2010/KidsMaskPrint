@@ -61,21 +61,21 @@ Friend Class options
     Friend WithEvents chkBrushWidths As System.Windows.Forms.CheckBox
     Friend WithEvents lblCombo As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.btnOK = New System.Windows.Forms.Button()
-        Me.btnCancel = New System.Windows.Forms.Button()
-        Me.btnApply = New System.Windows.Forms.Button()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New AppBasic.TabPagePaintEv()
-        Me.lblBlackLines = New System.Windows.Forms.Label()
-        Me.rdoBlackLines = New System.Windows.Forms.RadioButton()
-        Me.lblNoFloodfill = New System.Windows.Forms.Label()
-        Me.rdoNoFloodfill = New System.Windows.Forms.RadioButton()
-        Me.lblFloodFill = New System.Windows.Forms.Label()
-        Me.rdoFloodfill = New System.Windows.Forms.RadioButton()
-        Me.chkBrushWidths = New System.Windows.Forms.CheckBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.btnHelp = New System.Windows.Forms.Button()
-        Me.lblCombo = New System.Windows.Forms.Label()
+        Me.btnOK = New System.Windows.Forms.Button
+        Me.btnCancel = New System.Windows.Forms.Button
+        Me.btnApply = New System.Windows.Forms.Button
+        Me.TabControl1 = New System.Windows.Forms.TabControl
+        Me.TabPage1 = New AppBasic.TabPagePaintEv
+        Me.lblBlackLines = New System.Windows.Forms.Label
+        Me.rdoBlackLines = New System.Windows.Forms.RadioButton
+        Me.lblNoFloodfill = New System.Windows.Forms.Label
+        Me.rdoNoFloodfill = New System.Windows.Forms.RadioButton
+        Me.lblFloodFill = New System.Windows.Forms.Label
+        Me.rdoFloodfill = New System.Windows.Forms.RadioButton
+        Me.chkBrushWidths = New System.Windows.Forms.CheckBox
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox
+        Me.btnHelp = New System.Windows.Forms.Button
+        Me.lblCombo = New System.Windows.Forms.Label
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.SuspendLayout()
@@ -230,7 +230,7 @@ Friend Class options
 
 #End Region
     Dim DefaultCombo As String = "(Default for all program users)"
-    Dim DataArr As New ArrayList()
+    Dim DataArr As New ArrayList
     Dim LastIndex As Integer = -1
     Private Sub options_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
@@ -262,7 +262,7 @@ Friend Class options
         For lintArrInc = 0 To ComboBox1.Items.Count - 1
             Dim UserName As String = ComboBox1.Items(lintArrInc)
             If UserName = DefaultCombo Then UserName = "Default"
-            Dim ThisData As New Data()
+            Dim ThisData As New Data
             With ThisData
                 .booFloodfill = CBool(GetSetting("FloodFillAndPalette", rdoFloodfill.Checked, InitalXMLConfig.XmlConfigType.UserSettings, UserName))
                 .booNoFloodfill = CBool(GetSetting("LineAndColour", rdoNoFloodfill.Checked, InitalXMLConfig.XmlConfigType.UserSettings, UserName))
@@ -374,7 +374,7 @@ Friend Class options
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        Dim PaintBack As New UIStyle.Painting()
+        Dim PaintBack As New UIStyle.Painting
         PaintBack.PaintBackground(pevent, Me)
 
     End Sub
@@ -383,7 +383,7 @@ Friend Class options
     End Sub
     Private Sub TabPage1_TabPagePaint(ByVal pevent As System.Windows.Forms.PaintEventArgs, ByVal Tab As System.Windows.Forms.TabPage) Handles TabPage1.TabPagePaint
 
-        Dim PaintBack As New UIStyle.Painting()
+        Dim PaintBack As New UIStyle.Painting
         TabPage1.BackgroundImage = PaintBack.PaintBackgroundToFit(pevent, Me.Height, Me.Width, TabControl1.Top + 20, TabControl1.Left + 3, TabPage1.Width + 12, TabPage1.Height + 28)
 
     End Sub

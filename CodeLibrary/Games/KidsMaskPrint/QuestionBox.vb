@@ -1,7 +1,7 @@
 Friend Class QuestionBox
 
     Inherits System.Windows.Forms.Form
-    Friend WithEvents lblPrompt As New Label()
+    Friend WithEvents lblPrompt As New Label
     'Private txtAnswer As New TextBox()
     Friend WithEvents btnOk As WinOnly.BevelButton
     Friend WithEvents btnCancel As WinOnly.BevelButton
@@ -36,10 +36,10 @@ Friend Class QuestionBox
     'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.btnOk = New WinOnly.BevelButton()
-        Me.btnCancel = New WinOnly.BevelButton()
-        Me.txtAnswer = New System.Windows.Forms.TextBox()
-        Me.lblPrompt = New System.Windows.Forms.Label()
+        Me.btnOk = New WinOnly.BevelButton
+        Me.btnCancel = New WinOnly.BevelButton
+        Me.txtAnswer = New System.Windows.Forms.TextBox
+        Me.lblPrompt = New System.Windows.Forms.Label
         Me.SuspendLayout()
         '
         'btnOk
@@ -174,7 +174,7 @@ Friend Class QuestionBox
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        Dim PaintBack As New UIStyle.Painting()
+        Dim PaintBack As New UIStyle.Painting
         PaintBack.PaintBackground(pevent, Me)
 
     End Sub

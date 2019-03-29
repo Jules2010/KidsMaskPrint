@@ -3,7 +3,7 @@ Module BasicPack
 
         Dim strPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName())
 
-        Dim OgreEye As New Part()
+        Dim OgreEye As New Part
         With OgreEye
             .PartType = FacePartEnums.ePartType.Eye
             .FaceMaster = "Ogre"

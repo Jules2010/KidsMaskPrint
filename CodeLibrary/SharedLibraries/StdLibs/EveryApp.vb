@@ -38,7 +38,6 @@ Friend Module EveryApp
 
     End Function
     Friend Function EssentialFileCheck(ByVal pstrFileArr() As String, ByVal pstrPath As String) As Boolean
-        'JM 14/09/2003
 
         Dim lstrAllFiles(0) As String
         EssProcessDirectory(pstrPath, lstrAllFiles, pstrPath & "\")
@@ -66,7 +65,6 @@ Friend Module EveryApp
 
     End Function
     Private Sub EssProcessDirectory(ByVal targetDirectory As String, ByRef AllFiles() As String, ByVal StartPath As String)
-        'JM 14/09/2003
 
         Dim fileEntries As String() = Directory.GetFiles(targetDirectory)
 
@@ -84,16 +82,14 @@ Friend Module EveryApp
 
     End Sub
     Private Sub EssProcessFile(ByVal path As String, ByRef AllFiles() As String, ByVal StartPath As String)
-        'JM 14/09/2003
 
         If AllFiles(0) <> "" Then
             ReDim Preserve AllFiles(AllFiles.GetUpperBound(0) + 1)
         End If
         AllFiles(AllFiles.GetUpperBound(0)) = path.Replace(StartPath, "")
     End Sub
-    
+
     Friend Function IDate(ByVal pstrDate As String) As Date
-        'added 'JM 23/08/2005 - replacement for CDate
 
         Dim RetVal As Date
 
@@ -101,23 +97,20 @@ Friend Module EveryApp
             IDate = DateTime.Parse(pstrDate)
         Catch err As Exception
 
-            '--- 'JM 24/08/2005 ---
             Try
                 Dim strRegionalDateFormat As String = System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat.FullDateTimePattern.ToString
-                Dim dFormat As New System.Globalization.DateTimeFormatInfo()
+                Dim dFormat As New System.Globalization.DateTimeFormatInfo
                 dFormat.FullDateTimePattern = strRegionalDateFormat
                 IDate = DateTime.ParseExact(pstrDate, strRegionalDateFormat, dFormat)
 
             Catch
-                'AddDebugComment("IDate-Err: #" & pstrDate & "#")
                 Throw err
             End Try
-            '--- 'JM 24/08/2005 ---
         End Try
 
     End Function
     Friend Function IDate(ByVal pDate As Date) As Date
-        'added 'JM 24/08/2005
+
         Return pDate
 
     End Function
@@ -165,16 +158,16 @@ Friend Module CRC
     '''    Dim bCharValue As Byte, lIndex As Integer
     '''    Dim lAccValue As Integer, lTableValue As Integer
     '''    'dim iCounter As Short 
-    '''    Dim iCounter As Long 'JM 24/08/2003
+    '''    Dim iCounter As Long 
     '''    '// Turn on error trapping
     '''    'On Error Resume Next
     '''    '// Iterate through the string that is to be checksum-computed
 
 
-    '''    For iCounter = 1 To Item.Length 'JM 24/08/2003
+    '''    For iCounter = 1 To Item.Length 
     '''        '// Get ASCII value for the current character
     '''        'bCharValue = AscGet(MidGet(Item, iCounter, 1))
-    '''        'JM 07/11/2003 - tried to see if would be faster
+    '''         - tried to see if would be faster
     '''        bCharValue = Asc(Mid(Item, iCounter, 1))
     '''        '// Right shift an Unsigned integer 8 bits
     '''        lAccValue = CRC32 And &HFFFFFF00
@@ -226,42 +219,6 @@ Friend Module CRC
         Return bytes
 
     End Function
-    ''Function GetFirstPartOfFile(ByVal pstrFileName As String, Optional ByVal pbooGetAll As Boolean = False) As String
-
-
-
-    ''    Dim Restrict As Integer = 8
-    ''    If pbooGetAll = True Then
-    ''        Restrict = 0
-    ''    End If
-
-    ''    Dim BR As New BinaryReader(File.OpenRead(pstrFileName), System.Text.Encoding.UTF8)
-    ''    Dim FileLength As Long = New FileInfo(pstrFileName).Length - Restrict
-    ''    Dim Bytes0() As Byte = BR.ReadBytes(FileLength)
-    ''    'Dim DataString As String = System.Text.Encoding.UTF8.GetString(Bytes0)
-    ''    ''Return ReadString(BR, FileLength)
-    ''    'Dim Bytes0(Convert.ToInt32((FileLength - 1) - Restrict)) As Byte
-    ''    'BR.Read(Bytes0, 0, Bytes0.Length - Restrict)
-    ''    BR.Close()
-    ''    'Return BitConverter.ToString(Bytes0)
-    ''    Return System.Text.Encoding.UTF8.GetString(Bytes0)
-
-    ''    'THIS DOES RETURN SOMETHING!!!!!!
-    ''    'JM 24/08/2003
-
-
-
-    ''End Function
-    'Private Function ReadString(ByVal reader As BinaryReader, ByVal length As Integer) As String
-    '    Dim chars(length - 1) As Char
-    '    Dim i As Integer
-
-    '    For i = 0 To length - 1
-    '        chars(i) = ChrW(reader.ReadByte())
-    '    Next
-
-    '    Return New String(chars)
-    'End Function
 
     Friend Function GetWrittenCRC(ByVal pstrFileToCheck As String) As Integer
         'Returns:
@@ -273,33 +230,13 @@ Friend Module CRC
         On Error Resume Next
         Dim Last8Digs As String = GetLast8Digs(pstrFileToCheck)
 
-        '''Dim FileWithoutLast8Digs As String = GetFirstPartOfFile(pstrFileToCheck)
-
-        '''If (Last8Digs).Trim = "" Or (Last8Digs).Trim = StringR(8, ChrGet(0)) Then
-        '''    GetWrittenCRC = -1
-        '''    Exit Function
-        '''End If
-
-        ''''--- compare the two codes ---
-        '''lCrc32Value = InitCrc32()
-
-        '''lCrc32Value = AddCrc32(FileWithoutLast8Digs, lCrc32Value)
-
-        '''Dim RealCRC As String
-        '''RealCRC = CStr(Microsoft.VisualBasic.Hex(GetCrc32(lCrc32Value)))
-
-        'Console.WriteLine("RealCRC=" & RealCRC & " Last8Digs=" & Last8Digs)
-
-
-        '--- 'JM 21/04/2004 ---
-        Dim c As New CRC32()
+        Dim c As New CRC32
         Dim crc As Integer = 0
         Dim f As FileStream = New FileStream(pstrFileToCheck, FileMode.Open, FileAccess.Read, FileShare.Read, 8192)
         crc = c.GetCrc32(f, False)
         f.Close()
         Dim RealCRC As String = String.Format("{0:X8}", crc)
         ''MessageBox.Show("RealCRC=" & RealCRC & " Last8Digs=" & Last8Digs) 'For Testing Purposes ONLY
-        '--- 'JM 21/04/2004 ---
 
         If RealCRC <> Last8Digs Or (Last8Digs).Trim = "" Or (Last8Digs).Trim = StringR(8, ChrGet(0)) Then
             'mxessagebox.show("Real CRC=" & RealCRC & Environment.NewLine & "File CRC=" & Last8Digs, "CRC32 Results for " & pstrFileToCheck)
@@ -315,7 +252,7 @@ Friend Module CRC
 
 
 End Module
-Friend Class CRC32 'added 'JM 21/04/2004
+Friend Class CRC32
 
     ' This is v2 of the VB CRC32 algorithm provided by Paul
     ' (wpsjr1@succeed.net) - much quicker than the nasty

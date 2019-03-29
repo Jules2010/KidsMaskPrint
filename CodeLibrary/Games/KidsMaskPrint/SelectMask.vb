@@ -16,7 +16,7 @@ Friend Class SelectMask
             mRetMaskFile = Value
         End Set
     End Property
-    Dim mLicensedFaceParts As New ArrayList()
+    Dim mLicensedFaceParts As New ArrayList
     Friend Property LicensedFaceParts() As ArrayList
         Get
             Return mLicensedFaceParts
@@ -62,12 +62,12 @@ Friend Class SelectMask
     Friend WithEvents lblDirectory As System.Windows.Forms.Label
     Friend WithEvents btnBrowse As System.Windows.Forms.Button
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.ListView1 = New System.Windows.Forms.ListView()
-        Me.btnClose = New System.Windows.Forms.Button()
-        Me.btnSelect = New System.Windows.Forms.Button()
-        Me.picPreview = New System.Windows.Forms.PictureBox()
-        Me.lblDirectory = New System.Windows.Forms.Label()
-        Me.btnBrowse = New System.Windows.Forms.Button()
+        Me.ListView1 = New System.Windows.Forms.ListView
+        Me.btnClose = New System.Windows.Forms.Button
+        Me.btnSelect = New System.Windows.Forms.Button
+        Me.picPreview = New System.Windows.Forms.PictureBox
+        Me.lblDirectory = New System.Windows.Forms.Label
+        Me.btnBrowse = New System.Windows.Forms.Button
         Me.SuspendLayout()
         '
         'ListView1
@@ -208,7 +208,7 @@ Friend Class SelectMask
 
         SetDirectory(mDir)
 
-                If IsAboveOrEqualWinXp() = True Then
+        If IsAboveOrEqualWinXp() = True Then
             btnBrowse.FlatStyle = FlatStyle.System
             btnSelect.FlatStyle = FlatStyle.System
             btnClose.FlatStyle = FlatStyle.System
@@ -234,7 +234,7 @@ Friend Class SelectMask
 
         Dim Ctr As Integer
 
-        Dim ImgList As New ImageList()
+        Dim ImgList As New ImageList
         ImgList.ImageSize = New System.Drawing.Size(32, 32)
 
         ListView1.LargeImageList = ImgList
@@ -246,7 +246,7 @@ Friend Class SelectMask
                 LoadMask(pfile.FullName, Nothing, Temp, True, Nothing, Nothing, Nothing, Nothing, mLicensedFaceParts, Nothing, Nothing)
 
                 ImgList.Images.Add(Temp)
-                Dim item As New ListViewItem()
+                Dim item As New ListViewItem
                 item.ImageIndex = Ctr
                 item.Text = NiceName
                 item.Tag = pfile.Name
@@ -262,7 +262,7 @@ Friend Class SelectMask
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        Dim PaintBack As New UIStyle.Painting()
+        Dim PaintBack As New UIStyle.Painting
         PaintBack.PaintBackground(pevent, Me)
 
     End Sub
@@ -273,7 +273,7 @@ Friend Class SelectMask
 
     Private Sub btnBrowse_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnBrowse.Click
 
-        Dim db As New WinOnly.DirBrowser()
+        Dim db As New WinOnly.DirBrowser
         db.Description = "Choose a folder"
         db.StartLocation = 0
         db.Style = 1

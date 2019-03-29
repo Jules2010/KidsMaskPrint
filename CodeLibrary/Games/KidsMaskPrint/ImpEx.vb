@@ -58,10 +58,10 @@ Friend Class ImpEx
     Friend WithEvents btnOK As System.Windows.Forms.Button
     Friend WithEvents btnCancel As System.Windows.Forms.Button
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.lblRegisterInstructions = New System.Windows.Forms.Label()
-        Me.txtTextBlock = New System.Windows.Forms.TextBox()
-        Me.btnOK = New System.Windows.Forms.Button()
-        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.lblRegisterInstructions = New System.Windows.Forms.Label
+        Me.txtTextBlock = New System.Windows.Forms.TextBox
+        Me.btnOK = New System.Windows.Forms.Button
+        Me.btnCancel = New System.Windows.Forms.Button
         Me.SuspendLayout()
         '
         'lblRegisterInstructions
@@ -131,7 +131,7 @@ Friend Class ImpEx
 
         AddDebugComment("ImpEx.ImpEx_Load - start")
 
-                If IsAboveOrEqualWinXp() = True Then
+        If IsAboveOrEqualWinXp() = True Then
             btnOK.FlatStyle = FlatStyle.System
             btnCancel.FlatStyle = FlatStyle.System
         End If
@@ -150,7 +150,7 @@ Friend Class ImpEx
 
         AddDebugComment("ImpEx.btnOK_Click - start")
 
-                If txtTextBlock.Text = "" Then
+        If txtTextBlock.Text = "" Then
             Exit Sub
         End If
 
@@ -181,7 +181,7 @@ Friend Class ImpEx
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        Dim PaintBack As New UIStyle.Painting()
+        Dim PaintBack As New UIStyle.Painting
         PaintBack.PaintBackground(pevent, Me)
 
     End Sub

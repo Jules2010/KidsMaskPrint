@@ -6,7 +6,7 @@ Imports System.Runtime.Serialization.Formatters.Binary
 <DoNotObfuscateAttribute(), Serializable()> Friend Class FacePartStuctureDataFile
     Friend Description As String
     Friend DescImage As Image
-    Friend Parts As New ArrayList()
+    Friend Parts As New ArrayList
     Friend ProductNumber As String
     Friend VersionNum As String
     '--- Reserved for future use ---
@@ -18,8 +18,8 @@ Imports System.Runtime.Serialization.Formatters.Binary
     Friend AdditionalO3 As Object
     Friend AdditionalI1 As Image
     Friend AdditionalI2 As Image
-    Friend AdditionalA1 As New ArrayList()
-    Friend AdditionalA2 As New ArrayList()
+    Friend AdditionalA1 As New ArrayList
+    Friend AdditionalA2 As New ArrayList
     '--- Reserved for future use ---
 End Class
 <DoNotObfuscateAttribute(), Serializable()> Public Class Part
@@ -34,8 +34,8 @@ End Class
     Friend ThumbImage As Image
     Friend FullImage As Image
     Friend BothParts As Boolean
-    Friend LeftPart As New Point()
-    Friend RightPart As New Point()
+    Friend LeftPart As New Point
+    Friend RightPart As New Point
     '--- Reserved for future use ---
     Friend AdditionalS1 As String
     Friend AdditionalS2 As String

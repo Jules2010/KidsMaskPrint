@@ -50,12 +50,12 @@ Friend Class NewUser
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Dim resources As System.Resources.ResourceManager = New System.Resources.ResourceManager(GetType(NewUser))
-        Me.lblWhatsName = New System.Windows.Forms.Label()
-        Me.txtName = New System.Windows.Forms.TextBox()
-        Me.btnOK = New WinOnly.BevelButton()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.btnHelp = New WinOnly.BevelButton()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.lblWhatsName = New System.Windows.Forms.Label
+        Me.txtName = New System.Windows.Forms.TextBox
+        Me.btnOK = New WinOnly.BevelButton
+        Me.Panel1 = New System.Windows.Forms.Panel
+        Me.btnHelp = New WinOnly.BevelButton
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -155,7 +155,7 @@ Friend Class NewUser
 
         Me.Text = NameMe("Welcome")
 
-                Dim InitialConfig As New InitalXMLConfig(InitalXMLConfig.XmlConfigType.AppSettings)
+        Dim InitialConfig As New InitalXMLConfig(InitalXMLConfig.XmlConfigType.AppSettings)
         Dim lstrUsersStr As String
 
         With InitialConfig
@@ -211,7 +211,7 @@ Friend Class NewUser
             Exit Sub
         End If
 
-                UIStyle.gPaintClr1 = Color.Empty
+        UIStyle.gPaintClr1 = Color.Empty
         UIStyle.gPaintClr2 = Color.Empty
 
         AddDebugComment("NewUser.btnOK_Click - 1")

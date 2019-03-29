@@ -37,12 +37,12 @@ Public Class InformParent
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents btnOK As WinOnly.BevelButton
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.chkDontShow = New System.Windows.Forms.CheckBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.btnOK = New WinOnly.BevelButton()
+        Me.Label1 = New System.Windows.Forms.Label
+        Me.Label2 = New System.Windows.Forms.Label
+        Me.Label3 = New System.Windows.Forms.Label
+        Me.chkDontShow = New System.Windows.Forms.CheckBox
+        Me.Panel1 = New System.Windows.Forms.Panel
+        Me.btnOK = New WinOnly.BevelButton
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -138,7 +138,7 @@ Public Class InformParent
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        Dim PaintBack As New UIStyle.Painting()
+        Dim PaintBack As New UIStyle.Painting
         PaintBack.PaintBackground(pevent, Me)
 
     End Sub

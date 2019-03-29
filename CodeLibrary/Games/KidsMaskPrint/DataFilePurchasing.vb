@@ -106,12 +106,12 @@ Friend Class DataFilePurchasing
     Friend WithEvents chkDontShowNext As System.Windows.Forms.CheckBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.lstDataFiles = New System.Windows.Forms.ListBox()
-        Me.btnBuy = New WinOnly.BevelButton()
-        Me.btnLicense = New WinOnly.BevelButton()
-        Me.btnClose = New WinOnly.BevelButton()
-        Me.chkDontShowNext = New System.Windows.Forms.CheckBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lstDataFiles = New System.Windows.Forms.ListBox
+        Me.btnBuy = New WinOnly.BevelButton
+        Me.btnLicense = New WinOnly.BevelButton
+        Me.btnClose = New WinOnly.BevelButton
+        Me.chkDontShowNext = New System.Windows.Forms.CheckBox
+        Me.Label1 = New System.Windows.Forms.Label
         Me.SuspendLayout()
         '
         'lstDataFiles
@@ -285,7 +285,7 @@ Friend Class DataFilePurchasing
     End Function
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        Dim PaintBack As New UIStyle.Painting()
+        Dim PaintBack As New UIStyle.Painting
         PaintBack.PaintBackground(pevent, Me)
 
     End Sub

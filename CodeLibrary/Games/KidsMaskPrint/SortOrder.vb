@@ -6,7 +6,7 @@ Imports System.Drawing.Drawing2D
         ReverseGraphicsPath
         UserPieces
     End Enum
-    Friend DataType As New ArrayList()
+    Friend DataType As New ArrayList
 
     Private intPieceCount As Integer
     Private intMousePathCount As Integer

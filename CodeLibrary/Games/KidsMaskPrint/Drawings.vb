@@ -17,8 +17,8 @@ Friend Class Drawings
     Public lPaintBrush(0) As PaintBrush
     Public lPaintReverseBrush(0) As PaintBrush
 
-    Dim RedoNormalArr As New Collections.Stack()
-    Dim RedoReverseArr As New Collections.Stack()
+    Dim RedoNormalArr As New Collections.Stack
+    Dim RedoReverseArr As New Collections.Stack
 
     Dim lintDrawingInProgress As Integer
 
@@ -28,14 +28,14 @@ Friend Class Drawings
     Dim lintLastReverseYCoord As Integer
     Friend Sub New(ByVal CurrentBrushColour As Color, ByVal CurrentBrushWidth As Integer)
 
-        mousePath(0) = New GraphicsPath()
-        ReversemousePath(0) = New GraphicsPath()
+        mousePath(0) = New GraphicsPath
+        ReversemousePath(0) = New GraphicsPath
 
-        lPaintBrush(0) = New PaintBrush()
+        lPaintBrush(0) = New PaintBrush
         lPaintBrush(0).BrushColour = CurrentBrushColour
         lPaintBrush(0).BrushWidth = CurrentBrushWidth
 
-        lPaintReverseBrush(0) = New PaintBrush()
+        lPaintReverseBrush(0) = New PaintBrush
         lPaintReverseBrush(0).BrushColour = CurrentBrushColour
         lPaintReverseBrush(0).BrushWidth = CurrentBrushWidth
 
@@ -50,13 +50,13 @@ Friend Class Drawings
 
                 lCurReverseColIdx += 1
                 ReDim Preserve lPaintReverseBrush(lCurReverseColIdx)
-                lPaintReverseBrush(lCurReverseColIdx) = New PaintBrush()
+                lPaintReverseBrush(lCurReverseColIdx) = New PaintBrush
 
                 lPaintReverseBrush(lCurReverseColIdx).BrushColour = lLastRevColour
                 lPaintReverseBrush(lCurReverseColIdx).BrushWidth = CurrentBrushWidth
 
                 ReDim Preserve ReversemousePath(lCurReverseColIdx)
-                ReversemousePath(lCurReverseColIdx) = New GraphicsPath()
+                ReversemousePath(lCurReverseColIdx) = New GraphicsPath
             End If
             Try : ReversemousePath(lCurReverseColIdx).StartFigure() : Catch : End Try
         End If
@@ -83,19 +83,19 @@ Friend Class Drawings
 
             lCurColIdx += 1
             ReDim Preserve mousePath(lCurColIdx)
-            mousePath(lCurColIdx) = New GraphicsPath()
+            mousePath(lCurColIdx) = New GraphicsPath
             mousePath(lCurColIdx).StartFigure()
             ReDim Preserve lPaintBrush(lCurColIdx)
-            lPaintBrush(lCurColIdx) = New PaintBrush()
+            lPaintBrush(lCurColIdx) = New PaintBrush
             lPaintBrush(lCurColIdx).BrushColour = lLastRevColour
             lPaintBrush(lCurColIdx).BrushWidth = CurrentBrushWidth
 
             lCurReverseColIdx += 1
             ReDim Preserve ReversemousePath(lCurReverseColIdx)
-            ReversemousePath(lCurReverseColIdx) = New GraphicsPath()
+            ReversemousePath(lCurReverseColIdx) = New GraphicsPath
             ReversemousePath(lCurReverseColIdx).StartFigure()
             ReDim Preserve lPaintReverseBrush(lCurReverseColIdx)
-            lPaintReverseBrush(lCurReverseColIdx) = New PaintBrush()
+            lPaintReverseBrush(lCurReverseColIdx) = New PaintBrush
             lPaintReverseBrush(lCurReverseColIdx).BrushColour = lLastRevColour
             lPaintReverseBrush(lCurReverseColIdx).BrushWidth = CurrentBrushWidth
 
@@ -111,7 +111,7 @@ Friend Class Drawings
         If lCurColIdx > 0 Then
             '  Try : RedoArr.Dequeue() : Catch : End Try
             Dim l_UndoRedo As UndoRedo
-            l_UndoRedo = New UndoRedo()
+            l_UndoRedo = New UndoRedo
             With l_UndoRedo
                 .CurColIdx = lCurColIdx
                 .mousePath = mousePath '.Clone
@@ -124,9 +124,9 @@ Friend Class Drawings
             lCurColIdx -= 1
 
             ReDim Preserve mousePath(lCurColIdx)
-            mousePath(lCurColIdx) = New GraphicsPath()
+            mousePath(lCurColIdx) = New GraphicsPath
             ReDim Preserve lPaintBrush(lCurColIdx)
-            lPaintBrush(lCurColIdx) = New PaintBrush()
+            lPaintBrush(lCurColIdx) = New PaintBrush
             lPaintBrush(lCurColIdx).BrushColour = lLastRevColour
             lPaintBrush(lCurColIdx).BrushWidth = CurrentBrushWidth
 
@@ -135,7 +135,7 @@ Friend Class Drawings
         If lCurReverseColIdx > 0 Then
 
             Dim l_UndoRedo As UndoRedo
-            l_UndoRedo = New UndoRedo()
+            l_UndoRedo = New UndoRedo
             With l_UndoRedo
                 .CurColIdx = lCurReverseColIdx
                 .mousePath = ReversemousePath '.Clone
@@ -148,9 +148,9 @@ Friend Class Drawings
 
             lCurReverseColIdx -= 1
             ReDim Preserve ReversemousePath(lCurReverseColIdx)
-            ReversemousePath(lCurReverseColIdx) = New GraphicsPath()
+            ReversemousePath(lCurReverseColIdx) = New GraphicsPath
             ReDim Preserve lPaintReverseBrush(lCurReverseColIdx)
-            lPaintReverseBrush(lCurReverseColIdx) = New PaintBrush()
+            lPaintReverseBrush(lCurReverseColIdx) = New PaintBrush
             lPaintReverseBrush(lCurReverseColIdx).BrushColour = lLastRevColour
             lPaintReverseBrush(lCurReverseColIdx).BrushWidth = CurrentBrushWidth
         End If
@@ -209,7 +209,7 @@ Friend Class Drawings
     End Function
     Private Function GetLastRedo(ByVal pbooNormal As Boolean) As UndoRedo
 
-        Dim lRempt As New UndoRedo()
+        Dim lRempt As New UndoRedo
 
         Dim EnumerShowNow As System.Collections.IEnumerator
         If pbooNormal = True Then
@@ -234,9 +234,9 @@ Friend Class Drawings
 
         lCurColIdx += 1
         ReDim Preserve mousePath(lCurColIdx)
-        mousePath(lCurColIdx) = New GraphicsPath()
+        mousePath(lCurColIdx) = New GraphicsPath
         ReDim Preserve lPaintBrush(lCurColIdx)
-        lPaintBrush(lCurColIdx) = New PaintBrush()
+        lPaintBrush(lCurColIdx) = New PaintBrush
         lPaintBrush(lCurColIdx).BrushColour = pColour
         lPaintBrush(lCurColIdx).BrushWidth = CurrentBrushWidth
 
@@ -245,9 +245,9 @@ Friend Class Drawings
 
         lCurColIdx += 1
         ReDim Preserve mousePath(lCurColIdx)
-        mousePath(lCurColIdx) = New GraphicsPath()
+        mousePath(lCurColIdx) = New GraphicsPath
         ReDim Preserve lPaintBrush(lCurColIdx)
-        lPaintBrush(lCurColIdx) = New PaintBrush()
+        lPaintBrush(lCurColIdx) = New PaintBrush
         lPaintBrush(lCurColIdx).BrushColour = CurrentBrushColour
 
         lPaintBrush(lCurColIdx).BrushWidth = CurrentBrushWidth
@@ -257,9 +257,9 @@ Friend Class Drawings
 
         lCurReverseColIdx += 1
         ReDim Preserve ReversemousePath(lCurReverseColIdx)
-        ReversemousePath(lCurReverseColIdx) = New GraphicsPath()
+        ReversemousePath(lCurReverseColIdx) = New GraphicsPath
         ReDim Preserve lPaintReverseBrush(lCurReverseColIdx)
-        lPaintReverseBrush(lCurReverseColIdx) = New PaintBrush()
+        lPaintReverseBrush(lCurReverseColIdx) = New PaintBrush
         lPaintReverseBrush(lCurReverseColIdx).BrushColour = CurrentBrushColour
 
         lPaintReverseBrush(lCurReverseColIdx).BrushWidth = CurrentBrushWidth
@@ -280,10 +280,10 @@ Friend Class Drawings
             If lCurColIdx = -1 Then
                 lCurColIdx = 0
                 ReDim mousePath(lCurColIdx)
-                mousePath(lCurColIdx) = New GraphicsPath()
+                mousePath(lCurColIdx) = New GraphicsPath
                 ReDim lPaintBrush(lCurColIdx)
             End If
-            lPaintBrush(lCurColIdx) = New PaintBrush()
+            lPaintBrush(lCurColIdx) = New PaintBrush
             lPaintBrush(lCurColIdx).BrushColour = CurrentBrushColour
             lPaintBrush(lCurColIdx).BrushWidth = CurrentBrushWidth
 
@@ -294,10 +294,10 @@ Friend Class Drawings
             If lCurReverseColIdx = -1 Then
                 lCurReverseColIdx = 0
                 ReDim ReversemousePath(lCurReverseColIdx)
-                ReversemousePath(lCurReverseColIdx) = New GraphicsPath()
+                ReversemousePath(lCurReverseColIdx) = New GraphicsPath
                 ReDim lPaintReverseBrush(lCurReverseColIdx)
             End If
-            lPaintReverseBrush(lCurReverseColIdx) = New PaintBrush()
+            lPaintReverseBrush(lCurReverseColIdx) = New PaintBrush
             lPaintReverseBrush(lCurReverseColIdx).BrushColour = CurrentBrushColour
 
             lPaintReverseBrush(lCurReverseColIdx).BrushWidth = CurrentBrushWidth
@@ -310,17 +310,17 @@ Friend Class Drawings
         lCurColIdx = 0
         lCurReverseColIdx = 0
         ReDim mousePath(0)
-        mousePath(0) = New GraphicsPath()
+        mousePath(0) = New GraphicsPath
         ReDim ReversemousePath(0)
-        ReversemousePath(0) = New GraphicsPath()
+        ReversemousePath(0) = New GraphicsPath
         ReDim lPaintBrush(0)
         ReDim lPaintReverseBrush(0)
-        lPaintBrush(0) = New PaintBrush()
+        lPaintBrush(0) = New PaintBrush
         lPaintBrush(0).BrushColour = CurrentBrushColour
 
         lPaintBrush(0).BrushWidth = CurrentBrushWidth
 
-        lPaintReverseBrush(0) = New PaintBrush()
+        lPaintReverseBrush(0) = New PaintBrush
         lPaintReverseBrush(0).BrushColour = CurrentBrushColour
         lPaintReverseBrush(0).BrushWidth = CurrentBrushWidth
 

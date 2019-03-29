@@ -62,7 +62,7 @@ Friend Class PrintPreview
             mThisPaintReverseBrush = Value
         End Set
     End Property
-    Dim lUserPieces As New FacePartStuctureDataFile()
+    Dim lUserPieces As New FacePartStuctureDataFile
     Friend Property UserPieces() As FacePartStuctureDataFile
         Get
             Return lUserPieces
@@ -71,7 +71,7 @@ Friend Class PrintPreview
             lUserPieces = Value
         End Set
     End Property
-    Dim lSortOrderForData As New SortOrderForData()
+    Dim lSortOrderForData As New SortOrderForData
     Friend Property SortOrder() As SortOrderForData
         Get
             Return lSortOrderForData
@@ -126,20 +126,20 @@ Friend Class PrintPreview
     Friend WithEvents pdActualPrint As System.Drawing.Printing.PrintDocument
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Dim resources As System.Resources.ResourceManager = New System.Resources.ResourceManager(GetType(PrintPreview))
-        Me.PrintPreviewControl1 = New System.Windows.Forms.PrintPreviewControl()
-        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.btnNeg = New System.Windows.Forms.Button()
-        Me.btnPlus = New System.Windows.Forms.Button()
-        Me.btnSetup = New WinOnly.BevelButton()
-        Me.btExit = New WinOnly.BevelButton()
-        Me.btnPages = New WinOnly.BevelButton()
-        Me.btnHelp = New WinOnly.BevelButton()
-        Me.btnLandscape = New WinOnly.BevelButton()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.btnPrint = New WinOnly.BevelButton()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.pdActualPrint = New System.Drawing.Printing.PrintDocument()
+        Me.PrintPreviewControl1 = New System.Windows.Forms.PrintPreviewControl
+        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument
+        Me.Panel1 = New System.Windows.Forms.Panel
+        Me.btnNeg = New System.Windows.Forms.Button
+        Me.btnPlus = New System.Windows.Forms.Button
+        Me.btnSetup = New WinOnly.BevelButton
+        Me.btExit = New WinOnly.BevelButton
+        Me.btnPages = New WinOnly.BevelButton
+        Me.btnHelp = New WinOnly.BevelButton
+        Me.btnLandscape = New WinOnly.BevelButton
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox
+        Me.btnPrint = New WinOnly.BevelButton
+        Me.Label1 = New System.Windows.Forms.Label
+        Me.pdActualPrint = New System.Drawing.Printing.PrintDocument
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -301,12 +301,12 @@ Friend Class PrintPreview
     Dim RightOff As Single '= 150
     Dim Fac As Single ' = 2
     Dim LeftOff As Single '= -250
-        Const Size1 As String = "1 Year" ' "Size 1"
+    Const Size1 As String = "1 Year" ' "Size 1"
     Const Size2 As String = "2 Years" '"Size 2"
     Const Size3 As String = "4 Years" '"Size 3"
     Const Size4 As String = "6 Years" '"Size 4"
     Const Size5 As String = "Adult" '"Size 5"
-        Dim DownOff As Single ' bottom of first page offset
+    Dim DownOff As Single ' bottom of first page offset
     Dim UpOff As Single ' top of second page offsett
 
     Dim m_HardLeft As Single
@@ -330,7 +330,7 @@ Friend Class PrintPreview
         'Console.WriteLine("Graphics.VisibleClipBounds.Height=" & e.Graphics.VisibleClipBounds.Height)
         'Console.WriteLine(m_HardLeft & " " & m_HardTop & " " & m_HardRight & " " & m_HardBottom)
 
-                If PrintDocument1.DefaultPageSettings.Landscape = True Then
+        If PrintDocument1.DefaultPageSettings.Landscape = True Then
             PrintPreviewControl1.Rows = 2
             PrintPreviewControl1.Columns = 1
         Else
@@ -405,13 +405,13 @@ Friend Class PrintPreview
                 Case Size3 '"Small"
                     Fac = 2
                     RightOff = 159 '148
-                                    Case Size2
+                Case Size2
                     Fac = 1.75
                     RightOff = 217 '210
                 Case Size1
                     Fac = 1.5
                     RightOff = 296 '300
-                                End Select
+            End Select
         End If
 
         PrintPreviewControl1.InvalidatePreview()
@@ -442,7 +442,7 @@ Friend Class PrintPreview
 
         AddDebugComment("PrintPreview.OnPaintBackground - start")
 
-        Dim PaintBack As New UIStyle.Painting()
+        Dim PaintBack As New UIStyle.Painting
         PaintBack.PaintBackground(pevent, Me)
 
         AddDebugComment("PrintPreview.OnPaintBackground - end")
@@ -532,7 +532,7 @@ Friend Class PrintPreview
         AddDebugComment("Preview.btnSetup_Click - start")
 
         Try
-            Dim PgSetupDlg As New PageSetupDialog()
+            Dim PgSetupDlg As New PageSetupDialog
             PgSetupDlg.PageSettings = m_PageSettings
             PgSetupDlg.AllowPrinter = True
             PgSetupDlg.AllowPaper = True

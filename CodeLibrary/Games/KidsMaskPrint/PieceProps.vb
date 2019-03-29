@@ -45,8 +45,8 @@ Friend Class PieceProps
     Friend WithEvents btnCancel As WinOnly.BevelButton
     Friend WithEvents btnDelete As WinOnly.BevelButton
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.btnCancel = New WinOnly.BevelButton()
-        Me.btnDelete = New WinOnly.BevelButton()
+        Me.btnCancel = New WinOnly.BevelButton
+        Me.btnDelete = New WinOnly.BevelButton
         Me.SuspendLayout()
         '
         'btnCancel
@@ -113,7 +113,7 @@ Friend Class PieceProps
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        Dim PaintBack As New UIStyle.Painting()
+        Dim PaintBack As New UIStyle.Painting
         PaintBack.PaintBackground(pevent, Me)
 
     End Sub

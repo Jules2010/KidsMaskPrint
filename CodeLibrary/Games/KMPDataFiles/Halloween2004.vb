@@ -3,7 +3,7 @@ Module Halloween2004
 
         Dim strPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName())
 
-        Dim FrankEye As New Part()
+        Dim FrankEye As New Part
         With FrankEye
             .PartType = FacePartEnums.ePartType.Eye
             .FaceMaster = "Frank"

@@ -3,7 +3,7 @@ Imports System.Runtime.Serialization.Formatters.Binary
 
 Friend Class Slots
     Inherits System.Windows.Forms.Form
-    #Region "Friend Properties"
+#Region "Friend Properties"
     Friend Enum eTranType
         Save
         Load
@@ -64,7 +64,7 @@ Friend Class Slots
         End Set
     End Property
 
-        Dim mLicensedFaceParts As New ArrayList()
+    Dim mLicensedFaceParts As New ArrayList
     Friend Property LicensedFaceParts() As ArrayList
         Get
             Return mLicensedFaceParts
@@ -74,7 +74,7 @@ Friend Class Slots
         End Set
     End Property
 
-    Dim lUserPieces As New FacePartStuctureDataFile()
+    Dim lUserPieces As New FacePartStuctureDataFile
     Friend Property UserPieces() As FacePartStuctureDataFile
         Get
             Return lUserPieces
@@ -83,7 +83,7 @@ Friend Class Slots
             lUserPieces = Value
         End Set
     End Property
-    Dim lSortOrderForData As New SortOrderForData()
+    Dim lSortOrderForData As New SortOrderForData
     Friend Property SortOrderForData() As SortOrderForData
         Get
             Return lSortOrderForData
@@ -126,9 +126,9 @@ Friend Class Slots
     Friend WithEvents btnCancel As WinOnly.BevelButton
     Friend WithEvents btnHelp As WinOnly.BevelButton
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.lblTran = New System.Windows.Forms.Label()
-        Me.btnCancel = New WinOnly.BevelButton()
-        Me.btnHelp = New WinOnly.BevelButton()
+        Me.lblTran = New System.Windows.Forms.Label
+        Me.btnCancel = New WinOnly.BevelButton
+        Me.btnHelp = New WinOnly.BevelButton
         Me.SuspendLayout()
         '
         'lblTran
@@ -217,7 +217,7 @@ Friend Class Slots
             Dim ThisFile As String = UserSettings.GetValue("MaskFile" & lintArrInc + 1, "")
             Dim ThisFileDesc As String = UserSettings.GetValue("MaskFileDesc" & lintArrInc + 1, "Empty")
 
-            BevelButton(lintArrInc) = New BevelButton()
+            BevelButton(lintArrInc) = New BevelButton
             'Dim ThisItem() As String = Microsoft.VisualBasic.Split(UserMaskFile(lintArrInc), "#")
             With BevelButton(lintArrInc)
                 .BackColor = System.Drawing.Color.AliceBlue
@@ -229,7 +229,7 @@ Friend Class Slots
                 .Tag = lintArrInc + 1
                 .ImageAlign = ContentAlignment.MiddleRight
                 .Font = New Font("Arial", 16, FontStyle.Bold)
-                                .Text = ThisFileDesc '"Empty"
+                .Text = ThisFileDesc '"Empty"
                 If IO.File.Exists(ThisFile) = True Then
                     Dim Temp As Image
                     'LoadMask(ThisFile, Nothing, Temp, True)
@@ -238,7 +238,7 @@ Friend Class Slots
 
                     .Image = Temp
                 End If
-                                .TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+                .TextAlign = System.Drawing.ContentAlignment.MiddleLeft
                 .TurnOffRoundedRect = True
                 .BackColor = Color.FromArgb(0, .BackColor)
                 AddHandler BevelButton(lintArrInc).Click, evOnClick
@@ -268,16 +268,16 @@ Friend Class Slots
         lbooButtonSelected = True
 
         If mTranType = eTranType.Load Then
-                        mMaskToLoad = GetSetting("MaskFile" & sender.tag, "", InitalXMLConfig.XmlConfigType.UserSettings, mSelectedUser)
+            mMaskToLoad = GetSetting("MaskFile" & sender.tag, "", InitalXMLConfig.XmlConfigType.UserSettings, mSelectedUser)
             Me.Close()
-                    ElseIf mTranType = eTranType.Save Then
-            Dim QB As New QuestionBox()
+        ElseIf mTranType = eTranType.Save Then
+            Dim QB As New QuestionBox
             Dim SlotName As String = QB.Display("What's this mask called?", NameMe("Save Mask"), mSelectedUser & " Mask " & sender.tag)
 
             If SlotName = "" Then Exit Sub
             sender.text = SlotName
 
-                        Dim dlgRes As DialogResult
+            Dim dlgRes As DialogResult
             If GetSetting("MaskFile" & sender.tag, "", InitalXMLConfig.XmlConfigType.UserSettings, mSelectedUser) <> "" Then
                 dlgRes = MessageBox.Show("Overwrite?", NameMe(""), MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                 Application.DoEvents()
@@ -330,7 +330,7 @@ Friend Class Slots
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        Dim PaintBack As New UIStyle.Painting()
+        Dim PaintBack As New UIStyle.Painting
         PaintBack.PaintBackground(pevent, Me)
 
     End Sub

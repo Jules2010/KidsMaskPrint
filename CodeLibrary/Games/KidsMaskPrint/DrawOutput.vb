@@ -60,7 +60,7 @@ Friend Module DrawOutput
             '----- PREDRAW SO USERS CAN SEE DRAWING IN REAL TIME ----------
             If Not mousePath Is Nothing Then
                 For lintArrInc = 0 To pBrush.GetUpperBound(0)
-                    Dim ThisGraphicsPath As New GraphicsPath()
+                    Dim ThisGraphicsPath As New GraphicsPath
                     Try
                         ThisGraphicsPath = mousePath(lintArrInc).Clone
                     Catch
@@ -77,7 +77,7 @@ Friend Module DrawOutput
 
             If Not ReversemousePath Is Nothing Then
                 For lintArrInc = 0 To pReverseBrush.GetUpperBound(0)
-                    Dim ThisGraphicsPath As New GraphicsPath()
+                    Dim ThisGraphicsPath As New GraphicsPath
                     Try
                         ThisGraphicsPath = ReversemousePath(lintArrInc).Clone
                     Catch
@@ -144,7 +144,7 @@ Friend Module DrawOutput
                         If Not mousePath Is Nothing Then
                             errpos = 7
                             errpos = 8
-                            Dim ThisGraphicsPath As New GraphicsPath()
+                            Dim ThisGraphicsPath As New GraphicsPath
                             Try
                                 ThisGraphicsPath = mousePath(NormalGPInc).Clone
                             Catch 'EX As Exception
@@ -174,7 +174,7 @@ Friend Module DrawOutput
                         If Not ReversemousePath Is Nothing Then
                             errpos = 14
                             errpos = 15
-                            Dim ThisGraphicsPath As New GraphicsPath()
+                            Dim ThisGraphicsPath As New GraphicsPath
                             errpos = 16
                             Try
                                 ThisGraphicsPath = ReversemousePath(ReverseGPInc).Clone
@@ -246,7 +246,7 @@ Friend Module DrawOutput
     End Sub
     Private Sub MoveGP(ByVal x As Single, ByVal y As Single, ByRef gp As GraphicsPath)
 
-        Dim objTranslateMatrix As New Drawing2D.Matrix()
+        Dim objTranslateMatrix As New Drawing2D.Matrix
         With objTranslateMatrix
 
             'move the path to zero, scale it, move the             path(back)
@@ -281,7 +281,7 @@ Friend Module DrawOutput
             gstrProbDrawComtStack &= " #5"
             For lintArrInc = 0 To pBrush.GetUpperBound(0)
                 gstrProbDrawComtStack &= " #6"
-                Dim ThisGraphicsPath As New GraphicsPath()
+                Dim ThisGraphicsPath As New GraphicsPath
                 Try
                     gstrProbDrawComtStack &= " #7"
                     ThisGraphicsPath = mousePath(lintArrInc).Clone
@@ -304,7 +304,7 @@ Friend Module DrawOutput
             gstrProbDrawComtStack &= " #14"
             For lintArrInc = 0 To pReverseBrush.GetUpperBound(0)
                 gstrProbDrawComtStack &= " #15"
-                Dim ThisGraphicsPath As New GraphicsPath()
+                Dim ThisGraphicsPath As New GraphicsPath
                 Try
                     gstrProbDrawComtStack &= " #16"
                     ThisGraphicsPath = ReversemousePath(lintArrInc).Clone
@@ -366,7 +366,7 @@ Friend Module DrawOutput
                     If Not mousePath Is Nothing Then
                         gstrProbDrawComtStack &= " #32"
 
-                        Dim ThisGraphicsPath As New GraphicsPath()
+                        Dim ThisGraphicsPath As New GraphicsPath
                         Try
                             ThisGraphicsPath = mousePath(NormalGPInc).Clone
                         Catch
@@ -385,7 +385,7 @@ Friend Module DrawOutput
                     If Not ReversemousePath Is Nothing Then
 
                         gstrProbDrawComtStack &= " #36"
-                        Dim ThisGraphicsPath As New GraphicsPath()
+                        Dim ThisGraphicsPath As New GraphicsPath
                         gstrProbDrawComtStack &= " #37"
                         Try
                             ThisGraphicsPath = ReversemousePath(ReverseGPInc).Clone
@@ -508,7 +508,7 @@ Friend Module DrawOutput
                 errpos = 7
                 For lintArrInc = 0 To pBrush.GetUpperBound(0)
                     errpos = 8
-                    Dim ThisGraphicsPath As New GraphicsPath()
+                    Dim ThisGraphicsPath As New GraphicsPath
                     Try
                         ThisGraphicsPath = mousePath(lintArrInc).Clone
                     Catch 'EX As Exception
@@ -536,7 +536,7 @@ Friend Module DrawOutput
                 errpos = 14
                 For lintArrInc = 0 To pReverseBrush.GetUpperBound(0)
                     errpos = 15
-                    Dim ThisGraphicsPath As New GraphicsPath()
+                    Dim ThisGraphicsPath As New GraphicsPath
                     errpos = 16
                     Try
                         ThisGraphicsPath = ReversemousePath(lintArrInc).Clone
@@ -620,7 +620,7 @@ Friend Module DrawOutput
 
         If Not mousePath Is Nothing Then
             For lintArrInc = 0 To pBrush.GetUpperBound(0)
-                Dim ThisGraphicsPath As New GraphicsPath()
+                Dim ThisGraphicsPath As New GraphicsPath
                 Try
                     ThisGraphicsPath = mousePath(lintArrInc).Clone
                 Catch
@@ -633,7 +633,7 @@ Friend Module DrawOutput
 
         If Not ReversemousePath Is Nothing Then
             For lintArrInc = 0 To pReverseBrush.GetUpperBound(0)
-                Dim ThisGraphicsPath As New GraphicsPath()
+                Dim ThisGraphicsPath As New GraphicsPath
                 Try
                     ThisGraphicsPath = ReversemousePath(lintArrInc).Clone
                 Catch

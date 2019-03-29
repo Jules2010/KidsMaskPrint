@@ -30,7 +30,7 @@ Imports System.IO
 
 <Obfuscate()> Public Class frmMain
     Inherits System.Windows.Forms.Form
-    Private mPieces As New ArrayList() 'Piece objects
+    Private mPieces As New ArrayList   'Piece objects
     Private mMousePieceStart As Point = Point.Empty 'During mouse moves, the starting location of a puzzle piece
     Private mMouseDownStart As Point = Point.Empty 'During mouse moves, the starting location of the mouse
     Private mMousePiece As Piece = Nothing 'During mouse moves, the piece being moved
@@ -50,7 +50,7 @@ Imports System.IO
 
     Dim lbooSomethingDrawn As Boolean = False
 
-    Dim mLicensedFaceParts As New ArrayList()
+    Dim mLicensedFaceParts As New ArrayList
 
     Dim lintDrawingInProgress As Integer
 
@@ -75,10 +75,10 @@ Imports System.IO
 
     Dim m_CurrentBrushWidth As Integer = 4
 
-    Dim RedoPackPieceArr As New Collections.Stack()
-    Dim RedoUserPieceArr As New Collections.Stack()
+    Dim RedoPackPieceArr As New Collections.Stack
+    Dim RedoUserPieceArr As New Collections.Stack
     'Dim LastUndoActivity As SortOrderForData.eDataType
-    Dim RedoSortOrderStack As New Collections.Stack()
+    Dim RedoSortOrderStack As New Collections.Stack
     Friend WithEvents btnDebug As Button
 
     Dim lintCustomColours() As Integer
@@ -219,104 +219,104 @@ Imports System.IO
     Friend WithEvents ImageList1 As System.Windows.Forms.ImageList
     Friend WithEvents btnBuy As WinOnly.BevelButton
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
+        Me.components = New System.ComponentModel.Container
         Dim resources As System.Resources.ResourceManager = New System.Resources.ResourceManager(GetType(frmMain))
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.chkMirror = New System.Windows.Forms.CheckBox()
-        Me.btnExit = New WinOnly.BevelButton()
-        Me.MainMenu1 = New System.Windows.Forms.MainMenu()
-        Me.MenuItem1 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem2 = New System.Windows.Forms.MenuItem()
-        Me.mnuFileLoad = New System.Windows.Forms.MenuItem()
-        Me.mnuFileSave = New System.Windows.Forms.MenuItem()
-        Me.MenuItem6 = New System.Windows.Forms.MenuItem()
-        Me.mnuFileImportx = New System.Windows.Forms.MenuItem()
-        Me.mnuFileImportMask = New System.Windows.Forms.MenuItem()
-        Me.mnuFileImportGraphics = New System.Windows.Forms.MenuItem()
-        Me.mnuFileExportX = New System.Windows.Forms.MenuItem()
-        Me.mnuFileExportMask = New System.Windows.Forms.MenuItem()
-        Me.mnuFileExportGraphics = New System.Windows.Forms.MenuItem()
-        Me.MenuItem12 = New System.Windows.Forms.MenuItem()
-        Me.mnuFilePageSetup = New System.Windows.Forms.MenuItem()
-        Me.MenuItem10 = New System.Windows.Forms.MenuItem()
-        Me.mnuFileExit = New System.Windows.Forms.MenuItem()
-        Me.MenuItem7 = New System.Windows.Forms.MenuItem()
-        Me.mnuToolsDeleteUsers = New System.Windows.Forms.MenuItem()
-        Me.mnuToolsRenameUsers = New System.Windows.Forms.MenuItem()
-        Me.MenuItem4 = New System.Windows.Forms.MenuItem()
-        Me.mnuToolsOptions = New System.Windows.Forms.MenuItem()
-        Me.mnuHelp = New System.Windows.Forms.MenuItem()
-        Me.mnuHelpHelpTopics = New System.Windows.Forms.MenuItem()
-        Me.MenuItem5 = New System.Windows.Forms.MenuItem()
-        Me.mnuHelpCheckForUpdates = New System.Windows.Forms.MenuItem()
-        Me.mnuHelpInstallAddon = New System.Windows.Forms.MenuItem()
-        Me.mnuHelpSupportInfo = New System.Windows.Forms.MenuItem()
-        Me.mnuHelpReportProblem = New System.Windows.Forms.MenuItem()
-        Me.MenuItem3 = New System.Windows.Forms.MenuItem()
-        Me.mnuHelpSubscribeNewsletter = New System.Windows.Forms.MenuItem()
-        Me.mnuHelpEnterCode = New System.Windows.Forms.MenuItem()
-        Me.mnuHelpBuyPacks = New System.Windows.Forms.MenuItem()
-        Me.MenuItem9 = New System.Windows.Forms.MenuItem()
-        Me.mnuHelpLicenseAgreement = New System.Windows.Forms.MenuItem()
-        Me.mnuHelpAbout = New System.Windows.Forms.MenuItem()
-        Me.btnPrint = New WinOnly.BevelButton()
-        Me.btnUndo = New WinOnly.BevelButton()
-        Me.chkGuide = New System.Windows.Forms.CheckBox()
-        Me.btnEars = New WinOnly.BevelButton()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox
+        Me.chkMirror = New System.Windows.Forms.CheckBox
+        Me.btnExit = New WinOnly.BevelButton
+        Me.MainMenu1 = New System.Windows.Forms.MainMenu
+        Me.MenuItem1 = New System.Windows.Forms.MenuItem
+        Me.MenuItem2 = New System.Windows.Forms.MenuItem
+        Me.mnuFileLoad = New System.Windows.Forms.MenuItem
+        Me.mnuFileSave = New System.Windows.Forms.MenuItem
+        Me.MenuItem6 = New System.Windows.Forms.MenuItem
+        Me.mnuFileImportx = New System.Windows.Forms.MenuItem
+        Me.mnuFileImportMask = New System.Windows.Forms.MenuItem
+        Me.mnuFileImportGraphics = New System.Windows.Forms.MenuItem
+        Me.mnuFileExportX = New System.Windows.Forms.MenuItem
+        Me.mnuFileExportMask = New System.Windows.Forms.MenuItem
+        Me.mnuFileExportGraphics = New System.Windows.Forms.MenuItem
+        Me.MenuItem12 = New System.Windows.Forms.MenuItem
+        Me.mnuFilePageSetup = New System.Windows.Forms.MenuItem
+        Me.MenuItem10 = New System.Windows.Forms.MenuItem
+        Me.mnuFileExit = New System.Windows.Forms.MenuItem
+        Me.MenuItem7 = New System.Windows.Forms.MenuItem
+        Me.mnuToolsDeleteUsers = New System.Windows.Forms.MenuItem
+        Me.mnuToolsRenameUsers = New System.Windows.Forms.MenuItem
+        Me.MenuItem4 = New System.Windows.Forms.MenuItem
+        Me.mnuToolsOptions = New System.Windows.Forms.MenuItem
+        Me.mnuHelp = New System.Windows.Forms.MenuItem
+        Me.mnuHelpHelpTopics = New System.Windows.Forms.MenuItem
+        Me.MenuItem5 = New System.Windows.Forms.MenuItem
+        Me.mnuHelpCheckForUpdates = New System.Windows.Forms.MenuItem
+        Me.mnuHelpInstallAddon = New System.Windows.Forms.MenuItem
+        Me.mnuHelpSupportInfo = New System.Windows.Forms.MenuItem
+        Me.mnuHelpReportProblem = New System.Windows.Forms.MenuItem
+        Me.MenuItem3 = New System.Windows.Forms.MenuItem
+        Me.mnuHelpSubscribeNewsletter = New System.Windows.Forms.MenuItem
+        Me.mnuHelpEnterCode = New System.Windows.Forms.MenuItem
+        Me.mnuHelpBuyPacks = New System.Windows.Forms.MenuItem
+        Me.MenuItem9 = New System.Windows.Forms.MenuItem
+        Me.mnuHelpLicenseAgreement = New System.Windows.Forms.MenuItem
+        Me.mnuHelpAbout = New System.Windows.Forms.MenuItem
+        Me.btnPrint = New WinOnly.BevelButton
+        Me.btnUndo = New WinOnly.BevelButton
+        Me.chkGuide = New System.Windows.Forms.CheckBox
+        Me.btnEars = New WinOnly.BevelButton
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
-        Me.StatusBar1 = New AppBasic.ProgressStatusBar()
-        Me.StatusBarPanel1 = New System.Windows.Forms.StatusBarPanel()
-        Me.btnClear = New WinOnly.BevelButton()
-        Me.btnEyes = New WinOnly.BevelButton()
-        Me.btnMouths = New WinOnly.BevelButton()
-        Me.btnNoses = New WinOnly.BevelButton()
-        Me.btnOther = New WinOnly.BevelButton()
+        Me.StatusBar1 = New AppBasic.ProgressStatusBar
+        Me.StatusBarPanel1 = New System.Windows.Forms.StatusBarPanel
+        Me.btnClear = New WinOnly.BevelButton
+        Me.btnEyes = New WinOnly.BevelButton
+        Me.btnMouths = New WinOnly.BevelButton
+        Me.btnNoses = New WinOnly.BevelButton
+        Me.btnOther = New WinOnly.BevelButton
         Me.MenuEnhancer = New WinOnly.EnhancedMenu(Me.components)
-        Me.btnSave = New WinOnly.BevelButton()
-        Me.btnLoad = New WinOnly.BevelButton()
-        Me.btnHelp = New WinOnly.BevelButton()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.btnHead = New WinOnly.BevelButton()
-        Me.pnlPalette = New System.Windows.Forms.Panel()
-        Me.btnPBlack = New System.Windows.Forms.Button()
-        Me.btnMoreColours = New System.Windows.Forms.Button()
-        Me.btnPCustom = New System.Windows.Forms.Button()
-        Me.lblPCustom = New System.Windows.Forms.Label()
-        Me.btnPPink = New System.Windows.Forms.Button()
-        Me.btnPMagenta = New System.Windows.Forms.Button()
-        Me.btnPBlue = New System.Windows.Forms.Button()
-        Me.btnPLightBlue = New System.Windows.Forms.Button()
-        Me.lblPPink = New System.Windows.Forms.Label()
-        Me.lblPMagenta = New System.Windows.Forms.Label()
-        Me.lblPBlue = New System.Windows.Forms.Label()
-        Me.lblPLightBlue = New System.Windows.Forms.Label()
-        Me.btnPCyan = New System.Windows.Forms.Button()
-        Me.lblPCyan = New System.Windows.Forms.Label()
-        Me.btnPLime = New System.Windows.Forms.Button()
-        Me.btnPGreen = New System.Windows.Forms.Button()
-        Me.btnPBrown = New System.Windows.Forms.Button()
-        Me.btnPYellow = New System.Windows.Forms.Button()
-        Me.lblPLime = New System.Windows.Forms.Label()
-        Me.lblPGreen = New System.Windows.Forms.Label()
-        Me.lblPBrown = New System.Windows.Forms.Label()
-        Me.lblPYellow = New System.Windows.Forms.Label()
-        Me.btnPOrange = New System.Windows.Forms.Button()
-        Me.lblPOrange = New System.Windows.Forms.Label()
-        Me.btnPRed = New System.Windows.Forms.Button()
-        Me.lblPRed = New System.Windows.Forms.Label()
-        Me.btnPWhite = New System.Windows.Forms.Button()
-        Me.lblPWhite = New System.Windows.Forms.Label()
-        Me.lblPBlack = New System.Windows.Forms.Label()
-        Me.rdoFreehand = New System.Windows.Forms.RadioButton()
-        Me.rdoFloodFill = New System.Windows.Forms.RadioButton()
-        Me.lstBrushWidth = New System.Windows.Forms.ListBox()
-        Me.lblPen = New System.Windows.Forms.Label()
-        Me.btnBlack = New System.Windows.Forms.Button()
-        Me.btnWhite = New System.Windows.Forms.Button()
-        Me.lblWhite = New System.Windows.Forms.Label()
-        Me.lblBlack = New System.Windows.Forms.Label()
-        Me.pnlBWPens = New System.Windows.Forms.Panel()
-        Me.btnBuy = New WinOnly.BevelButton()
+        Me.btnSave = New WinOnly.BevelButton
+        Me.btnLoad = New WinOnly.BevelButton
+        Me.btnHelp = New WinOnly.BevelButton
+        Me.Panel1 = New System.Windows.Forms.Panel
+        Me.btnHead = New WinOnly.BevelButton
+        Me.pnlPalette = New System.Windows.Forms.Panel
+        Me.btnPBlack = New System.Windows.Forms.Button
+        Me.btnMoreColours = New System.Windows.Forms.Button
+        Me.btnPCustom = New System.Windows.Forms.Button
+        Me.lblPCustom = New System.Windows.Forms.Label
+        Me.btnPPink = New System.Windows.Forms.Button
+        Me.btnPMagenta = New System.Windows.Forms.Button
+        Me.btnPBlue = New System.Windows.Forms.Button
+        Me.btnPLightBlue = New System.Windows.Forms.Button
+        Me.lblPPink = New System.Windows.Forms.Label
+        Me.lblPMagenta = New System.Windows.Forms.Label
+        Me.lblPBlue = New System.Windows.Forms.Label
+        Me.lblPLightBlue = New System.Windows.Forms.Label
+        Me.btnPCyan = New System.Windows.Forms.Button
+        Me.lblPCyan = New System.Windows.Forms.Label
+        Me.btnPLime = New System.Windows.Forms.Button
+        Me.btnPGreen = New System.Windows.Forms.Button
+        Me.btnPBrown = New System.Windows.Forms.Button
+        Me.btnPYellow = New System.Windows.Forms.Button
+        Me.lblPLime = New System.Windows.Forms.Label
+        Me.lblPGreen = New System.Windows.Forms.Label
+        Me.lblPBrown = New System.Windows.Forms.Label
+        Me.lblPYellow = New System.Windows.Forms.Label
+        Me.btnPOrange = New System.Windows.Forms.Button
+        Me.lblPOrange = New System.Windows.Forms.Label
+        Me.btnPRed = New System.Windows.Forms.Button
+        Me.lblPRed = New System.Windows.Forms.Label
+        Me.btnPWhite = New System.Windows.Forms.Button
+        Me.lblPWhite = New System.Windows.Forms.Label
+        Me.lblPBlack = New System.Windows.Forms.Label
+        Me.rdoFreehand = New System.Windows.Forms.RadioButton
+        Me.rdoFloodFill = New System.Windows.Forms.RadioButton
+        Me.lstBrushWidth = New System.Windows.Forms.ListBox
+        Me.lblPen = New System.Windows.Forms.Label
+        Me.btnBlack = New System.Windows.Forms.Button
+        Me.btnWhite = New System.Windows.Forms.Button
+        Me.lblWhite = New System.Windows.Forms.Label
+        Me.lblBlack = New System.Windows.Forms.Label
+        Me.pnlBWPens = New System.Windows.Forms.Panel
+        Me.btnBuy = New WinOnly.BevelButton
         CType(Me.StatusBarPanel1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.pnlPalette.SuspendLayout()
@@ -1315,7 +1315,7 @@ Imports System.IO
         Application.DoEvents()
 
         Try
-            Dim PgSetupDlg As New PageSetupDialog()
+            Dim PgSetupDlg As New PageSetupDialog
             PgSetupDlg.PageSettings = m_PageSettings
             PgSetupDlg.AllowPrinter = True
             PgSetupDlg.AllowPaper = True
@@ -1398,7 +1398,7 @@ Imports System.IO
 
         Application.DoEvents()
 
-        Dim OpenAddon As New OpenFileDialog()
+        Dim OpenAddon As New OpenFileDialog
         With OpenAddon
             .CheckFileExists = True
             .CheckPathExists = True
@@ -1464,7 +1464,7 @@ Imports System.IO
         DeactivatePaintingBeforeDialog()
         Application.DoEvents()
 
-        Dim NewAbout As New frmAbout()
+        Dim NewAbout As New frmAbout
         With NewAbout
             .Owner = Me
             .ShowDialog()
@@ -1523,7 +1523,7 @@ Imports System.IO
         DeactivatePaintingBeforeDialog()
         Application.DoEvents()
 
-        Dim LicenseBox As New LicenceBox()
+        Dim LicenseBox As New LicenceBox
         With LicenseBox
             .FormIcon = Me.Icon
             If InStrGet((NameMe("")).ToUpper, "TRIAL") = 0 Then
@@ -1579,7 +1579,7 @@ Imports System.IO
         gstrProbComtStack = "frmMain.mnuFileExportGraphics_Click - start"
         DeactivatePaintingBeforeDialog()
 
-        Dim saveFileDialog1 As New SaveFileDialog()
+        Dim saveFileDialog1 As New SaveFileDialog
         saveFileDialog1.Filter = "Gif Image|*.gif|" & "Jpeg Image|*.jpg|" & "Bitmap Image|*.bmp|" & "Tiff Image|*.tiff"
         saveFileDialog1.Title = "Save an Image File"
         saveFileDialog1.ShowDialog()
@@ -1628,7 +1628,7 @@ Imports System.IO
 
         DeactivatePaintingBeforeDialog()
 
-        Dim ie As New ImpEx()
+        Dim ie As New ImpEx
         ie.Label = "Please paste in your import mask codes"
         ie.Caption = NameMe("Import Mask")
         ie.Owner = Me
@@ -1662,14 +1662,14 @@ Imports System.IO
                     'do nothing
                 Else
 
-                    Dim ThisPiece As New Piece()
+                    Dim ThisPiece As New Piece
 
                     ThisPiece.SourceDataFileName = AppBasic.ReturnNthStr(de(lintArrInc), 1, "|").Replace(fpDir, "")
                     ThisPiece.DataFileItemNum = CInt(AppBasic.ReturnNthStr(de(lintArrInc), 2, "|"))
                     ThisPiece.VertFlip = (CBool(AppBasic.ReturnNthStr(de(lintArrInc), 5, "|")))
                     ThisPiece.HorizFlip = (CBool(AppBasic.ReturnNthStr(de(lintArrInc), 6, "|")))
 
-                    Dim TempPart As New KidsMaskPrint.Part()
+                    Dim TempPart As New KidsMaskPrint.Part
                     GetDataPreviewImage(ThisPiece.SourceDataFileName, ThisPiece.DataFileItemNum, TempPart, Nothing, Nothing)
                     ThisPiece.SetImageObj(TempPart.FullImage)
 
@@ -1714,7 +1714,7 @@ Imports System.IO
             lintArrInc += 1
         Next iPiece
 
-        Dim ie As New ImpEx()
+        Dim ie As New ImpEx
         ie.Label = "Please copy your masks codes below."
         ie.Caption = NameMe("Export Mask")
         ie.TextBlock = str
@@ -1733,7 +1733,7 @@ Imports System.IO
         DeactivatePaintingBeforeDialog()
 
         Dim MaskFile As String
-        Dim sm As New SelectMask()
+        Dim sm As New SelectMask
 
         sm.LicensedFaceParts = mLicensedFaceParts
 
@@ -1763,7 +1763,7 @@ Imports System.IO
 
         Dim FileName As String = Path.GetDirectoryName( _
             System.Reflection.Assembly.GetExecutingAssembly().Location) & "\" & "\Masks\" 'data.txt"
-        Dim saveFileDialog1 As New SaveFileDialog()
+        Dim saveFileDialog1 As New SaveFileDialog
         saveFileDialog1.Filter = "Mask File|*.mask"
         saveFileDialog1.Title = "Save a mask File"
         saveFileDialog1.InitialDirectory = FileName
@@ -1776,8 +1776,8 @@ Imports System.IO
         FileName = saveFileDialog1.FileName
 
         Dim FullImage As Image
-        Dim hash As New SortedList()
-        Dim keptPieces As New ArrayList()
+        Dim hash As New SortedList
+        Dim keptPieces As New ArrayList
 
         CreateHashAndImage(hash, FullImage, keptPieces)
 
@@ -1797,7 +1797,7 @@ Imports System.IO
 
         SaveBeforeExitProg()
 
-        Dim DUs As New UsersGeneral()
+        Dim DUs As New UsersGeneral
         DUs.Owner = Me
         DUs.TranType = UsersGeneral.UserTranType.Delete
         DUs.ShowDialog()
@@ -1814,7 +1814,7 @@ Imports System.IO
 
         SaveBeforeExitProg()
 
-        Dim RUs As New UsersGeneral()
+        Dim RUs As New UsersGeneral
         RUs.Owner = Me
         RUs.TranType = UsersGeneral.UserTranType.Rename
         RUs.ShowDialog()
@@ -1844,7 +1844,7 @@ Imports System.IO
         Dim FullImage As Image = DrawDetails(PictureBox1, m_Drawings.mousePath, m_Drawings.ReversemousePath, _
             mPieces, m_Drawings.lPaintBrush, m_Drawings.lPaintReverseBrush, m_UserPieces, m_SortOrderForData) ' DrawingWithoutHelpers()
 
-        Dim hash As New SortedList()
+        Dim hash As New SortedList
 
         hash.Add("AVER", "1.0")
 
@@ -1921,7 +1921,7 @@ Imports System.IO
 
         End With
 
-        Dim keptPieces As New ArrayList()
+        Dim keptPieces As New ArrayList
         keptPieces = mPieces
         mPieces = Nothing
 
@@ -2023,7 +2023,7 @@ Imports System.IO
 
                 Dim lintArrInc As Integer
                 For lintArrInc = 0 To FPs.Parts.Count - 1
-                    Dim ThisPart As New KidsMaskPrint.Part()
+                    Dim ThisPart As New KidsMaskPrint.Part
                     ThisPart = FPs.Parts(lintArrInc)
 
                     pLicensedFaceParts.Add(ThisPart.FaceMaster)
@@ -2050,7 +2050,7 @@ Imports System.IO
 
             Select Case pSel
                 Case FacePartEnums.ePositionSelection.Left
-                    Dim ThisPiece As New Piece()
+                    Dim ThisPiece As New Piece
                     ThisPiece.SetImageObj(pFP.FullImage)
                     ThisPiece.Location = pFP.LeftPart
                     ThisPiece.PieceName = pFP.FaceMaster
@@ -2059,7 +2059,7 @@ Imports System.IO
                     mPieces.Add(ThisPiece)
                 Case FacePartEnums.ePositionSelection.Both
 
-                    Dim ThisPiece As New Piece()
+                    Dim ThisPiece As New Piece
                     ThisPiece.HorizFlip = False
                     thispiece.VertFlip = False
                     ThisPiece.SetImageObj(pFP.FullImage.Clone)
@@ -2069,7 +2069,7 @@ Imports System.IO
                     ThisPiece.DataFileItemNum = DataFileItemNum
                     mPieces.Add(ThisPiece)
 
-                    Dim ThisPiece2 As New Piece()
+                    Dim ThisPiece2 As New Piece
                     ThisPiece2.HorizFlip = True
                     ThisPiece2.VertFlip = False
                     ThisPiece2.SetImageObj(pFP.FullImage)
@@ -2080,7 +2080,7 @@ Imports System.IO
                     mPieces.Add(ThisPiece2)
 
                 Case FacePartEnums.ePositionSelection.Right
-                    Dim ThisPiece As New Piece()
+                    Dim ThisPiece As New Piece
                     ThisPiece.HorizFlip = True
                     ThisPiece.SetImageObj(pFP.FullImage)
                     ThisPiece.Location = pFP.RightPart
@@ -2122,7 +2122,7 @@ Imports System.IO
 
 
 
-        Dim PaintBack As New UIStyle.Painting()
+        Dim PaintBack As New UIStyle.Painting
         PaintBack.PaintBackground(pevent, Me)
         Me.Update()
 
@@ -2165,8 +2165,8 @@ Imports System.IO
         DeactivatePaintingBeforeDialog()
 
         Dim FullImage As Image
-        Dim hash As New SortedList()
-        Dim keptPieces As New ArrayList()
+        Dim hash As New SortedList
+        Dim keptPieces As New ArrayList
 
         m_Drawings.PreSave(m_CurrentColour, m_CurrentBrushWidth)
 
@@ -2174,7 +2174,7 @@ Imports System.IO
 
         mPieces = keptPieces
 
-        Dim SaveSlots As New Slots()
+        Dim SaveSlots As New Slots
         With SaveSlots
             .Owner = Me
             .TranType = Slots.eTranType.Save
@@ -2229,7 +2229,7 @@ Imports System.IO
                 If PieceSelected = True Then
                     'MessageBox.Show(lMousePiece.Location.X)
                     Try
-                        Dim Properties As New PieceProps() 'Form()
+                        Dim Properties As New PieceProps   'Form()
                         Properties.Owner = Me
                         'Properties.CallingForm = Me
                         If Not mMousePiece Is Nothing Then
@@ -2356,7 +2356,7 @@ Imports System.IO
 
         DeactivatePaintingBeforeDialog()
 
-        Dim ppScreen As New PrintPreview()
+        Dim ppScreen As New PrintPreview
         With ppScreen
             .MainPictureBox = PictureBox1
             .MousePath = m_Drawings.mousePath
@@ -2386,11 +2386,11 @@ Imports System.IO
             mbooLoadAllDataOnce = False
             gstrMRPs = "0131"
 
-            Dim DataFilesDescImages As New ArrayList()
-            Dim DataFilesDescriptions As New ArrayList()
-            Dim DataFilesProdNums As New ArrayList()
-            Dim DataFiles As New ArrayList()
-            Dim DataFileState As New ArrayList()
+            Dim DataFilesDescImages As New ArrayList
+            Dim DataFilesDescriptions As New ArrayList
+            Dim DataFilesProdNums As New ArrayList
+            Dim DataFiles As New ArrayList
+            Dim DataFileState As New ArrayList
 
             Dim licenseStr As String
             LoadFaceParts(DataFilesDescImages, DataFilesDescriptions, DataFilesProdNums, DataFiles, DataFileState, False, mLicensedFaceParts, licenseStr)
@@ -2412,7 +2412,7 @@ Imports System.IO
 
             If DataFiles.Count > 1 Then
                 If mintVersion = 32 And lbooShowPurchasing = True Then
-                    Dim DFP As New DataFilePurchasing()
+                    Dim DFP As New DataFilePurchasing
                     With DFP
                         .Owner = Me
                         .DataFiles = DataFiles
@@ -2447,7 +2447,7 @@ Imports System.IO
             Else
                 gstrMRPs = "0186"
 
-                Dim frmSignIn As New SignIn()
+                Dim frmSignIn As New SignIn
                 frmSignIn.Owner = Me
                 frmSignIn.ShowDialog()
                 If frmSignIn.Param = SignIn.Params.None Then
@@ -2463,7 +2463,7 @@ Imports System.IO
             gstrProbComtStack &= " #FMA5"
 
             If lbooUseNewUserScreen = True Then
-                Dim frmNewUser As New NewUser()
+                Dim frmNewUser As New NewUser
                 frmNewUser.Owner = Me
                 frmNewUser.ShowDialog()
                 mSelectedUser = frmNewUser.SelectedUser
@@ -2526,7 +2526,7 @@ Imports System.IO
 
             If ShowWelcome = True Then
                 Me.Invalidate()
-                Dim BM As New InformParent()
+                Dim BM As New InformParent
                 BM.Owner = Me
                 BM.ShowDialog()
 
@@ -2541,7 +2541,7 @@ Imports System.IO
             End If
 
             'fixes menu bar not being coloured in problem
-            Dim MenuItem As New MenuItem()
+            Dim MenuItem As New MenuItem
             MainMenu1.MenuItems.Add(MenuItem)
             MainMenu1.MenuItems.Remove(MenuItem)
 
@@ -2563,9 +2563,9 @@ Imports System.IO
 
         m_Drawings = New Drawings(m_CurrentColour, m_CurrentBrushWidth)
 
-        m_UserPieces = New FacePartStuctureDataFile()
+        m_UserPieces = New FacePartStuctureDataFile
 
-        m_SortOrderForData = New SortOrderForData()
+        m_SortOrderForData = New SortOrderForData
 
         If IsAboveOrEqualWinXp() = True Then
             rdoFloodFill.FlatStyle = FlatStyle.System
@@ -2642,7 +2642,7 @@ Imports System.IO
     Private Sub SaveBeforeExitProg()
 
 
-                If mPieces.Count > 0 Or lbooSomethingDrawn = True Then
+        If mPieces.Count > 0 Or lbooSomethingDrawn = True Then
             DeactivatePaintingBeforeDialog()
             Dim dlgRes As DialogResult = MessageBox.Show("Save this Mask?", NameMe(""), MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             Application.DoEvents()
@@ -2654,7 +2654,7 @@ Imports System.IO
             End If
         End If
 
-                Try
+        Try
             Dim lstrCustomColours() As String
             ReDim lstrCustomColours(lintCustomColours.GetUpperBound(0))
             Dim lintArrInc As Integer
@@ -2669,7 +2669,7 @@ Imports System.IO
             SaveSetting("LastCustomColour", ColorToString(btnPCustom.BackColor), InitalXMLConfig.XmlConfigType.UserSettings, mSelectedUser)
         Catch
         End Try
-            End Sub
+    End Sub
     Private Sub btnUndo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUndo.Click
         gstrMRPs = "0330"
 
@@ -2686,7 +2686,7 @@ Imports System.IO
 
         gstrProbComtStack &= " #BU2"
 
-                Try
+        Try
             If m_SortOrderForData.DataType.Count = -1 Then
                 Exit Sub
             End If
@@ -2750,7 +2750,7 @@ Imports System.IO
         Select Case RedoSortOrderStack.Peek
             Case SortOrderForData.eDataType.PackPieces
                 gstrProbComtStack &= " #BR1"
-                Dim lRedoPiece As New Piece()
+                Dim lRedoPiece As New Piece
                 Dim EnumerShowNow As System.Collections.IEnumerator
 
                 gstrProbComtStack &= " #BR1b"
@@ -2792,7 +2792,7 @@ Imports System.IO
             Case SortOrderForData.eDataType.UserPieces
                 gstrProbComtStack &= " #BR3"
                 Try
-                    Dim lRedoUserPiece As New Piece()
+                    Dim lRedoUserPiece As New Piece
                     Dim EnumerShowNow As System.Collections.IEnumerator
 
                     gstrProbComtStack &= " #BR3b"
@@ -2866,10 +2866,10 @@ Imports System.IO
         m_Drawings.Clear(m_CurrentColour, m_CurrentBrushWidth)
 
         mPieces = Nothing
-        mPieces = New ArrayList()
+        mPieces = New ArrayList
 
-        m_UserPieces = New FacePartStuctureDataFile()
-        m_SortOrderForData = New SortOrderForData()
+        m_UserPieces = New FacePartStuctureDataFile
+        m_SortOrderForData = New SortOrderForData
 
         m_SortOrderForData.Add(mPieces, m_Drawings.mousePath, _
             m_Drawings.ReversemousePath, m_UserPieces, m_SortOrderForData, "btnClear_Click")
@@ -2916,7 +2916,7 @@ Imports System.IO
         DeactivatePaintingBeforeDialog()
         gstrProbComtStack = " #bHc1"
 
-        Dim fp As New FacePartDiag()
+        Dim fp As New FacePartDiag
         gstrProbComtStack = " #bHc1a"
         fp.Owner = Me
         gstrProbComtStack = " #bHc1b"
@@ -2944,7 +2944,7 @@ Imports System.IO
 
         DeactivatePaintingBeforeDialog()
         gstrProbComtStack = " #bEyc1"
-        Dim fp As New FacePartDiag()
+        Dim fp As New FacePartDiag
         gstrProbComtStack = " #bEyc1a"
         fp.Owner = Me
         gstrProbComtStack = " #bEyc1b"
@@ -2967,7 +2967,7 @@ Imports System.IO
         gstrProbComtStack = "frmMain.btnEars_Click - start"
         DeactivatePaintingBeforeDialog()
         gstrProbComtStack = " #bEac1"
-        Dim fp As New FacePartDiag()
+        Dim fp As New FacePartDiag
         gstrProbComtStack = " #bEac1a"
         fp.Owner = Me
         gstrProbComtStack = " #bEac1b"
@@ -2991,7 +2991,7 @@ Imports System.IO
 
         DeactivatePaintingBeforeDialog()
         gstrProbComtStack = " #bMoc1"
-        Dim fp As New FacePartDiag() 'FacePartSel()
+        Dim fp As New FacePartDiag   'FacePartSel()
         gstrProbComtStack = " #bMoc1a"
         fp.Owner = Me
         gstrProbComtStack = " #bMoc1b"
@@ -3016,7 +3016,7 @@ Imports System.IO
 
         DeactivatePaintingBeforeDialog()
         gstrProbComtStack = " #bNoc1"
-        Dim fp As New FacePartDiag()
+        Dim fp As New FacePartDiag
         gstrProbComtStack = " #bNoc1a"
         fp.Owner = Me
         gstrProbComtStack = " #bNoc1b"
@@ -3040,7 +3040,7 @@ Imports System.IO
 
         DeactivatePaintingBeforeDialog()
         gstrProbComtStack = " #bOtc1"
-        Dim fp As New FacePartDiag()
+        Dim fp As New FacePartDiag
         gstrProbComtStack = " #bOtc1a"
         fp.Owner = Me
         gstrProbComtStack = " #bOtc1b"
@@ -3062,7 +3062,7 @@ Imports System.IO
         gstrMRPs = "0410"
         gstrProbComtStack = "frmMain.btnLoad_Click - start"
 
-        Dim LoadSlots As New Slots()
+        Dim LoadSlots As New Slots
         With LoadSlots
             .Owner = Me
             .TranType = Slots.eTranType.Load
@@ -3117,11 +3117,11 @@ Imports System.IO
 
         DeactivatePaintingBeforeDialog()
 
-        Dim DataFilesDescImages As New ArrayList()
-        Dim DataFilesDescriptions As New ArrayList()
-        Dim DataFilesProdNums As New ArrayList()
-        Dim DataFiles As New ArrayList()
-        Dim DataFileState As New ArrayList()
+        Dim DataFilesDescImages As New ArrayList
+        Dim DataFilesDescriptions As New ArrayList
+        Dim DataFilesProdNums As New ArrayList
+        Dim DataFiles As New ArrayList
+        Dim DataFileState As New ArrayList
 
         If Not mLicensedFaceParts Is Nothing Then mLicensedFaceParts.Clear()
 
@@ -3130,7 +3130,7 @@ Imports System.IO
         'MessageBox.Show(DataFilesDescImages.Count & " " & DataFilesDescriptions.Count & " " & _
         '    DataFilesProdNums.Count & " " & DataFiles.Count & " " & DataFileState.Count)
 
-        Dim DFP As New DataFilePurchasing()
+        Dim DFP As New DataFilePurchasing
         With DFP
             .Owner = Me
             .DataFiles = DataFiles
@@ -3192,13 +3192,13 @@ Imports System.IO
                 Exit Sub
             End If
 
-            Dim ff As New FloodFill()
+            Dim ff As New FloodFill
             Dim UserFloodPiece As Bitmap
             Dim ClipTop As Integer
             Dim ClipLeft As Integer
             UserFloodPiece = ff.FloodFillIt(New Bitmap(FullImage), CurXPos, CurYPos, m_CurrentColour, Color.Black, ClipTop, ClipLeft)
 
-            Dim ThisFloodFillPart As New Part()
+            Dim ThisFloodFillPart As New Part
             With ThisFloodFillPart
                 .PartType = FacePartEnums.ePartType.Misc
                 .FullImage = UserFloodPiece
@@ -3418,7 +3418,7 @@ Imports System.IO
 
         Application.DoEvents()
         Dim dlgRes As DialogResult
-        Dim CD As New ColorDialog()
+        Dim CD As New ColorDialog
         With CD
             .Color = btnPCustom.BackColor
             Application.DoEvents()
@@ -3457,7 +3457,7 @@ Imports System.IO
 
         DeactivatePaintingBeforeDialog()
         Dim dlgRes As DialogResult
-        Dim Ops As New options()
+        Dim Ops As New options
         Ops.LoginInAs = mSelectedUser
         Ops.Owner = Me
         dlgRes = Ops.ShowDialog()
@@ -3494,7 +3494,7 @@ Imports System.IO
             m_CurrentBrushWidth = 4
         End If
 
-                Try
+        Try
             Dim lstrCustomColours() As String
             'lstrCustomColours = Microsoft.VisualBasic.Split(GetSetting("CustomColours", False, InitalXMLConfig.XmlConfigType.UserSettings, UserName), "#")
             lstrCustomColours = Microsoft.VisualBasic.Split(AppSettings.GetValue("CustomColours", False), "#")
@@ -3516,7 +3516,7 @@ Imports System.IO
     End Sub
     Private Sub lstBrushWidth_DrawItem(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles lstBrushWidth.DrawItem
 
-                If boolstBrushWidth_DrawItemFirstDone = False Then
+        If boolstBrushWidth_DrawItemFirstDone = False Then
             AddDebugComment("Form1.lstBrushWidth_DrawItem")
             boolstBrushWidth_DrawItemFirstDone = True
         End If

@@ -80,12 +80,12 @@ Friend Class DataFileAcceptReg
     Friend WithEvents btnCopyCode As WinOnly.BevelButton
     Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.lblRegisterInstructions = New WinOnly.RichTextBoxLabel()
-        Me.txtRegCode = New System.Windows.Forms.TextBox()
-        Me.btnOK = New WinOnly.BevelButton()
-        Me.btnCancel = New WinOnly.BevelButton()
-        Me.btnCopyCode = New WinOnly.BevelButton()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.lblRegisterInstructions = New WinOnly.RichTextBoxLabel
+        Me.txtRegCode = New System.Windows.Forms.TextBox
+        Me.btnOK = New WinOnly.BevelButton
+        Me.btnCancel = New WinOnly.BevelButton
+        Me.btnCopyCode = New WinOnly.BevelButton
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel
         Me.SuspendLayout()
         '
         'lblRegisterInstructions
@@ -190,7 +190,7 @@ Friend Class DataFileAcceptReg
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        Dim PaintBack As New UIStyle.Painting()
+        Dim PaintBack As New UIStyle.Painting
         PaintBack.PaintBackground(pevent, Me)
 
     End Sub

@@ -2,7 +2,7 @@ Module Overlap
     Public Const ImgSize As Integer = 32
     Friend Function ResizeImageObj(ByVal SoureImage As Image, ByVal maxSize As Integer) As Image
 
-        Dim inp As New IntPtr()
+        Dim inp As New IntPtr
         Dim imgHeight, imgWidth As Double
 
         Dim imageObj As System.Drawing.Image = SoureImage 'System.Drawing.Image.FromFile(pstrSourceFile)

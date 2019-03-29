@@ -3,7 +3,7 @@ Module JunglePack
 
         Dim strPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName())
 
-        Dim RhinoHorns As New Part() 'ok2
+        Dim RhinoHorns As New Part   'ok2
         With RhinoHorns
             .PartType = FacePartEnums.ePartType.Misc
             .FaceMaster = "Rhino Horns"

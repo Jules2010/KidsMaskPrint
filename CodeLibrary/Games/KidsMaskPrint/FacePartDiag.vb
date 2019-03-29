@@ -58,7 +58,7 @@ Friend Class FacePartDiag
             m_PieceName = Value
         End Set
     End Property
-    Dim mm_Pieces As New ArrayList()
+    Dim mm_Pieces As New ArrayList
     Friend Property mPieces() As ArrayList
         Get
             Return mm_Pieces
@@ -134,15 +134,15 @@ Friend Class FacePartDiag
     Friend WithEvents btnHelp As WinOnly.BevelButton
     Friend WithEvents ImageList1 As System.Windows.Forms.ImageList
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
-        Me.ListView1 = New System.Windows.Forms.ListView()
-        Me.btnClose = New WinOnly.BevelButton()
-        Me.btnSelect = New WinOnly.BevelButton()
-        Me.picPreview = New System.Windows.Forms.PictureBox()
-        Me.rdoLeft = New System.Windows.Forms.RadioButton()
-        Me.rdoBoth = New System.Windows.Forms.RadioButton()
-        Me.rdoRight = New System.Windows.Forms.RadioButton()
-        Me.btnHelp = New WinOnly.BevelButton()
+        Me.components = New System.ComponentModel.Container
+        Me.ListView1 = New System.Windows.Forms.ListView
+        Me.btnClose = New WinOnly.BevelButton
+        Me.btnSelect = New WinOnly.BevelButton
+        Me.picPreview = New System.Windows.Forms.PictureBox
+        Me.rdoLeft = New System.Windows.Forms.RadioButton
+        Me.rdoBoth = New System.Windows.Forms.RadioButton
+        Me.rdoRight = New System.Windows.Forms.RadioButton
+        Me.btnHelp = New WinOnly.BevelButton
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.SuspendLayout()
         '
@@ -456,7 +456,7 @@ Friend Class FacePartDiag
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
 
-        Dim PaintBack As New UIStyle.Painting()
+        Dim PaintBack As New UIStyle.Painting
         PaintBack.PaintBackground(pevent, Me)
 
     End Sub
@@ -534,7 +534,7 @@ Friend Class FacePartDiag
 
                 Dim lintArrInc As Integer
                 For lintArrInc = 0 To FPs.Parts.Count  '0 To FPs.Parts.Count - 1
-                    Dim ThisPart As New KidsMaskPrint.Part()
+                    Dim ThisPart As New KidsMaskPrint.Part
                     ThisPart = FPs.Parts(lintArrInc)
 
                     Dim lAdd As Boolean = False
@@ -547,7 +547,7 @@ Friend Class FacePartDiag
 
                         ImageList1.Images.Add(ThisPart.ThumbImage)
 
-                        Dim NewLVItem As New ListViewItem()
+                        Dim NewLVItem As New ListViewItem
                         NewLVItem.Tag = pfile.Name & "# " & lintArrInc & "#"
                         NewLVItem.Text = ThisPart.FaceMaster
                         NewLVItem.ImageIndex = ImageList1.Images.Count - 1
@@ -596,7 +596,7 @@ Friend Class FacePartDiag
             Dim ShowBuyMore As Boolean = CBool(GetSetting("BuyMore", "True", InitalXMLConfig.XmlConfigType.AppSettings, ""))
 
             If ShowBuyMore = True Then
-                Dim BM As New CanBuyPacks()
+                Dim BM As New CanBuyPacks
                 BM.Owner = Me
                 BM.ShowDialog()
 
@@ -616,7 +616,7 @@ Friend Class FacePartDiag
 
             Select Case pSel
                 Case FacePartEnums.ePositionSelection.Left
-                    Dim ThisPiece As New Piece()
+                    Dim ThisPiece As New Piece
                     ThisPiece.SetImageObj(pFP.FullImage)
                     ThisPiece.Location = pFP.LeftPart
                     ThisPiece.PieceName = pFP.FaceMaster
@@ -625,7 +625,7 @@ Friend Class FacePartDiag
                     mm_Pieces.Add(ThisPiece)
                 Case FacePartEnums.ePositionSelection.Both
 
-                    Dim ThisPiece As New Piece()
+                    Dim ThisPiece As New Piece
                     ThisPiece.HorizFlip = False
                     thispiece.VertFlip = False
                     ThisPiece.SetImageObj(pFP.FullImage.Clone)
@@ -635,7 +635,7 @@ Friend Class FacePartDiag
                     ThisPiece.DataFileItemNum = DataFileItemNum
                     mm_Pieces.Add(ThisPiece)
 
-                    Dim ThisPiece2 As New Piece()
+                    Dim ThisPiece2 As New Piece
                     ThisPiece2.HorizFlip = True
                     ThisPiece2.VertFlip = False
                     ThisPiece2.SetImageObj(pFP.FullImage)
@@ -646,7 +646,7 @@ Friend Class FacePartDiag
                     mm_Pieces.Add(ThisPiece2)
 
                 Case FacePartEnums.ePositionSelection.Right
-                    Dim ThisPiece As New Piece()
+                    Dim ThisPiece As New Piece
                     ThisPiece.HorizFlip = True
                     ThisPiece.SetImageObj(pFP.FullImage)
                     ThisPiece.Location = pFP.RightPart
