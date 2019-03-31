@@ -483,7 +483,6 @@ Friend Class frmAbout
         Dim lintResult As Integer
 
         Try
-            'Paramater already used, not sure why file was derived again, must have been a bad day
             lintResult = Unlock(pstrFile, Dets, "", "") 'added ,"" 
         Catch
             lintResult = 3
@@ -508,12 +507,8 @@ Friend Class frmAbout
 
         Select Case lintResult
             Case 0
-                'characters do not match code OR
-                'Shouldn't happen - char not present in function (possible!, but could would be test by MCL first!)
-                'MsgxBox("fail 0")
                 Details = 256
             Case 2
-                'MsgxBox("OK!")
                 Details = 257
             Case 3
                 'MsgxBox("Cracked!")
@@ -545,7 +540,6 @@ Friend Class frmAbout
 
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
-
 
         Dim PaintBack As New UIStyle.Painting
         PaintBack.PaintBackground(pevent, Me)

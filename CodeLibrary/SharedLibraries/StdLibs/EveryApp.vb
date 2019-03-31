@@ -54,8 +54,8 @@ Friend Module EveryApp
                 End If
             Next
             If lbooFoundEssFile = False Then
-#If Debug Then '// JM 03/09/2007 246
-                MessageBox.Show("missing " & pstrFileArr(lintArrInc)) '// JM 03/09/2007 246
+#If Debug Then 
+                MessageBox.Show("missing " & pstrFileArr(lintArrInc)) 
 #End If
 
                 EssentialFileCheck = False
@@ -116,92 +116,9 @@ Friend Module EveryApp
     End Function
 End Module
 Friend Module CRC
-
-    '''Friend Crc32Table(255) As Integer
-    ''''// Then all we have to do is writing public functions like these...
-    '''Friend Function InitCrc32(Optional ByVal Seed As Integer = &HEDB88320, Optional ByVal Precondition As Integer = &HFFFFFFFF) As Integer
-    '''    '// Declare counter variable iBytes, counter variable iBits, value variables lCrc32 and lTempCrc32
-    '''    Dim iBytes As Short, iBits As Short, lCrc32 As Integer, lTempCrc32 As Integer
-    '''    '// Turn on error trapping
-    '''    On Error Resume Next
-    '''    '// Iterate 256 times
-
-    '''    For iBytes = 0 To 255
-    '''        '// Initiate lCrc32 to counter variable
-    '''        lCrc32 = iBytes
-    '''        '// Now iterate through each bit in counter byte
-
-
-    '''        For iBits = 0 To 7
-    '''            '// Right shift unsigned integer 1 bit
-    '''            lTempCrc32 = lCrc32 And &HFFFFFFFE
-    '''            lTempCrc32 = lTempCrc32 \ &H2
-    '''            lTempCrc32 = lTempCrc32 And &H7FFFFFFF
-    '''            '// Now check if temporary is less than zero and then mix Crc32 checksum with Seed value
-
-
-    '''            If (lCrc32 And &H1) <> 0 Then
-    '''                lCrc32 = lTempCrc32 Xor Seed
-    '''            Else
-    '''                lCrc32 = lTempCrc32
-    '''            End If
-    '''        Next
-    '''        '// Put Crc32 checksum value in the holding array
-    '''        Crc32Table(iBytes) = lCrc32
-    '''    Next
-    '''    '// After this is done, set function value to the precondition value
-    '''    InitCrc32 = Precondition
-    '''End Function
-    ''''// The function above is the initializing function, now we have to write the computation function
-    '''Friend Function AddCrc32(ByVal Item As String, ByVal CRC32 As Integer) As Integer
-    '''    '// Declare following variables
-    '''    Dim bCharValue As Byte, lIndex As Integer
-    '''    Dim lAccValue As Integer, lTableValue As Integer
-    '''    'dim iCounter As Short 
-    '''    Dim iCounter As Long 
-    '''    '// Turn on error trapping
-    '''    'On Error Resume Next
-    '''    '// Iterate through the string that is to be checksum-computed
-
-
-    '''    For iCounter = 1 To Item.Length 
-    '''        '// Get ASCII value for the current character
-    '''        'bCharValue = AscGet(MidGet(Item, iCounter, 1))
-    '''         - tried to see if would be faster
-    '''        bCharValue = Asc(Mid(Item, iCounter, 1))
-    '''        '// Right shift an Unsigned integer 8 bits
-    '''        lAccValue = CRC32 And &HFFFFFF00
-    '''        lAccValue = lAccValue \ &H100
-    '''        lAccValue = lAccValue And &HFFFFFF
-    '''        '// Now select the right adding value from the holding table
-    '''        lIndex = CRC32 And &HFF
-    '''        lIndex = lIndex Xor bCharValue
-    '''        lTableValue = Crc32Table(lIndex)
-    '''        '// Then mix new Crc32 value with previous accumulated Crc32 value
-    '''        CRC32 = lAccValue Xor lTableValue
-    '''    Next
-    '''    '// Set function value the the new Crc32 checksum
-    '''    AddCrc32 = CRC32
-    '''End Function
-    ''''// At last, we have to write a function so that we can get the Crc32 checksum value at any time
-    '''Friend Function GetCrc32(ByVal CRC32 As Integer) As Integer
-    '''    '// Turn on error trapping
-    '''    On Error Resume Next
-    '''    '// Set function to the current Crc32 value
-    '''    GetCrc32 = CRC32 Xor &HFFFFFFFF
-    '''End Function
-    ''''// To Test the Routines Above...
-    '''Friend Function Compute(ByVal ToGet As String) As String
-    '''    Dim lCrc32Value As Integer
-    '''    On Error Resume Next
-    '''    lCrc32Value = InitCrc32()
-    '''    lCrc32Value = AddCrc32(ToGet, lCrc32Value)
-    '''    Compute = Microsoft.VisualBasic.Hex$(GetCrc32(lCrc32Value))
-    '''End Function
     Friend Function StringR(ByVal repetitions As Integer, ByVal myCharacter As Char) As String
 
         Dim result As String
-
         result = ""
         StringR = result.PadLeft(repetitions, myCharacter)
 
@@ -236,27 +153,18 @@ Friend Module CRC
         crc = c.GetCrc32(f, False)
         f.Close()
         Dim RealCRC As String = String.Format("{0:X8}", crc)
-        ''MessageBox.Show("RealCRC=" & RealCRC & " Last8Digs=" & Last8Digs) 'For Testing Purposes ONLY
 
         If RealCRC <> Last8Digs Or (Last8Digs).Trim = "" Or (Last8Digs).Trim = StringR(8, ChrGet(0)) Then
-            'mxessagebox.show("Real CRC=" & RealCRC & Environment.NewLine & "File CRC=" & Last8Digs, "CRC32 Results for " & pstrFileToCheck)
             GetWrittenCRC = -2
             Exit Function
         Else
             GetWrittenCRC = 1
             Exit Function
         End If
-        '--- compare the two codes ---
 
     End Function
-
-
 End Module
 Friend Class CRC32
-
-    ' This is v2 of the VB CRC32 algorithm provided by Paul
-    ' (wpsjr1@succeed.net) - much quicker than the nasty
-    ' original version I posted.  Excellent work!
 
     Private crc32Table() As Integer
     Private Const BUFFER_SIZE As Integer = 1024
@@ -296,7 +204,6 @@ Friend Class CRC32
 
         GetCrc32 = Not (crc32Result)
 
-        'MessageBox.Show(lintCtr & " " & RequiredLength)'testing purposes
     End Function
 
     Friend Sub New()

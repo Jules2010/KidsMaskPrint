@@ -416,8 +416,6 @@ Friend Class strat3welcome
 
         Me.Text = NameMe("Evaluation Notice")
 
-        'lblThanks.Text = "Thank you for evaluating " & _
-        '    GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly.Location).ProductName
         If mbooExpired = False Then
             Dim DaysRemain As Integer = 30
             Try : DaysRemain = 30 - CInt(GetSetting("Remain", "0", InitalXMLConfig.XmlConfigType.AppSettings, "")) : Catch : End Try
@@ -431,14 +429,9 @@ Friend Class strat3welcome
             lblSentence1.ForeColor = Color.Yellow
             lblSentence1.Font = New Font(lblSentence1.Font.FontFamily, 12, FontStyle.Bold)
         End If
-        'lblSentence2.Text = "After this point if you wish to continue using the program you must buy the a full version. " & _
-        '    "We value your comments and suggestions please visit :-"
-
-        'lnkURL.Links.Add(0, lnkURL.Text.Length, lnkURL.Text) 
 
         lblBullet1.Image = ilTreeIcons.Images.Item(0)
         lblBullet2.Image = ilTreeIcons.Images.Item(0)
-        'lblBullet3.Image = ilTreeIcons.Images.Item(0)
         lblBullet4.Image = ilTreeIcons.Images.Item(0)
         lblBullet5.Image = ilTreeIcons.Images.Item(0)
 
@@ -448,7 +441,6 @@ Friend Class strat3welcome
         lblBullet4.Text = mstrBullet3
         lblBullet5.Text = mstrBullet4
 
-        '---  Hide Paypal stuff and cards etc---
         PictureBox8.Visible = False
         picMCLLogo.Left = 56 - 20
         picMCLLogo.Top = 60
@@ -458,7 +450,6 @@ Friend Class strat3welcome
         PictureBox6.Left = PictureBox5.Left
         PictureBox3.Visible = False 'discovery
         PictureBox5.Visible = False ' echeck
-        '---  Hide Paypal stuff and cards etc---
 
         btnOK.FlatStyle = FlatStyle.System
         btnBuyNow.FlatStyle = FlatStyle.System
@@ -484,7 +475,7 @@ Friend Class strat3welcome
     End Sub
     Private Sub btnBuyNow_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBuyNow.Click
         AddDebugComment("strat3welcome.btnBuyNow_Click")
-        BrowseToUrl(mstrBuyNowURL, Me)  '"http://www.KidsMaskPrint.com/buy.php", Me) 
+        BrowseToUrl(mstrBuyNowURL, Me)
 
     End Sub
     Private Sub btnCode_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCode.Click
@@ -495,22 +486,17 @@ Friend Class strat3welcome
     End Sub
     Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
 
-
         Const WM_SYSCOMMAND As Int32 = &H112
         Const SC_CLOSE As Int32 = &HF060
 
-        'controlla se   stato scelto il menu della finestra per chiuderla (X o Alt-F4)
         If ((m.Msg = WM_SYSCOMMAND) AndAlso (m.WParam.ToInt32 = SC_CLOSE)) Then
-            's ; minimizza la finestra: il programma puessere chiuso tramite menu
-            'Me.WindowState = FormWindowState.Minimized
+            '
         Else
-            'passa il messaggio alla classe di base
             MyBase.WndProc(m)
         End If
 
     End Sub
     Private Sub SetBackcolors()
-
 
         btnOK.BackColor = Color.FromArgb(0, btnOK.BackColor)
         btnCode.BackColor = Color.FromArgb(0, btnCode.BackColor)
@@ -518,7 +504,6 @@ Friend Class strat3welcome
 
     End Sub
     Protected Overrides Sub OnPaintBackground(ByVal pevent As System.Windows.Forms.PaintEventArgs)
-
 
         Dim PaintBack As New UIStyle.Painting
         PaintBack.PaintBackground(pevent, Me)

@@ -161,20 +161,18 @@ Friend Module strat1
 
             ReDim lstrKeysCharGoodCtr(lstrKeys.GetUpperBound(0))
 
-            Dim lbooBlackKeyFound As Boolean = False 'true 
+            Dim lbooBlackKeyFound As Boolean = False
             Dim lintArrInc3 As Integer
             For lintArrInc3 = 0 To lstrKeys.GetUpperBound(0)
                 Dim lintArrInc2 As Integer
                 Dim lintCharCtr As Integer = 0
-                'You can't include new SerialBlock field in BlackKey check as it isn't present in old unlock codes.
+
                 Dim lstrUnEncodedStr As String = .str1Name & "%@" & .str3City & "%@" & .str4State & "%@" & .str6Country & "%@" & _
                         LeftGet(.str7Email, InStrGet(.str7Email, "@") - 1) & "%@" & .str8OrderDate & "%@" & .str9TransNum & "%@" & .str11LicenseName
                 Dim lintMinLength As Integer
                 If lstrKeys(lintArrInc3).Length > lstrUnEncodedStr.Length Then
                     lintMinLength = lstrUnEncodedStr.Length
                 Else
-                    'Not sure why, but an extra hash is being added to current license.
-                    'this fixes the problem.
                     lintMinLength = lstrKeys(lintArrInc3).Length - 1
                 End If
 
@@ -195,7 +193,6 @@ Friend Module strat1
 
             ReDim lstrKeys(0)
 
-            'Don't need to add SerialBlock here as its isn't used and would cause problems with old codes.
             lstrStr = "#@#" & .str4State & DelimChar & .str2Street & DelimChar & .str1Name & DelimChar & _
                 .str8OrderDate & DelimChar & .str3City & DelimChar & .str9TransNum & DelimChar & _
                 .str7Email & DelimChar & .str5Zip & DelimChar & .str11LicenseName & DelimChar & _
@@ -271,13 +268,11 @@ Friend Module strat1
             Case 0
                 'characters do not match code OR
                 'Shouldn't happen - char not present in function (possible!, but could would be test by MCL first!)
-                'MsgBox("fail 0")
                 Unlock = 256
             Case 2
                 'this should only be used on Product license NOT data files!!
                 Dets.strSerialBlock = HashData(lstrCode, True)
 
-                'MsgBox("OK!")
                 Unlock = 257
             Case 3
                 'MsgBox("Cracked!")
@@ -327,7 +322,7 @@ Friend Module strat1
             'check keyfile
             Try
                 lintThreads = Unlock(System.IO.Path.GetDirectoryName( _
-                System.Reflection.Assembly.GetExecutingAssembly.Location.ToString()) & "\keyfile.mcl", pDets, "", "") 'added ,""  
+                System.Reflection.Assembly.GetExecutingAssembly.Location.ToString()) & "\keyfile.mcl", pDets, "", "")
             Catch
                 Try
                     System.IO.File.Delete(System.IO.Path.GetDirectoryName( _
@@ -353,7 +348,6 @@ Friend Module strat1
 
         strtodecrypt = PutAscBackintoChr(strtodecrypt)
 
-        'ralphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !,.:;?~@#$%^&*()_+-=][}{/><" & ChrGet(34) & "'`|" & ChrGet(129) & ChrGet(131) & ChrGet(132) & ChrGet(133) & ChrGet(134) & ChrGet(135) & ChrGet(136) & ChrGet(137) & ChrGet(138) & ChrGet(139) & ChrGet(140) & ChrGet(141) & ChrGet(142) & ChrGet(143) & ChrGet(144) & ChrGet(145) & ChrGet(147) & ChrGet(148) & ChrGet(149) & ChrGet(150) & ChrGet(151) & ChrGet(152) & ChrGet(153) & ChrGet(154) & ChrGet(156) & ChrGet(157) & ChrGet(160) & ChrGet(161) & ChrGet(162) & ChrGet(163) & ChrGet(165) & ChrGet(167) & ChrGet(181) & ChrGet(182) & ChrGet(183) & ChrGet(199) & ChrGet(209) & ChrGet(212) & ChrGet(216) & ChrGet(224) & ChrGet(225) & ChrGet(226) & ChrGet(227) & ChrGet(229) & ChrGet(230) & ChrGet(231) & ChrGet(233) & ChrGet(234) & ChrGet(235) & ChrGet(237)
         Dim lintArrinc As Integer
         For lintArrinc = 0 To 255
             ralphabet &= Microsoft.VisualBasic.Chr(lintArrinc)
@@ -387,8 +381,6 @@ Friend Module strat1
         decrypted_string = str_replace("[tab]", "t", decrypted_string)
         decrypted_string = str_replace("[new]", "n", decrypted_string) '
         decrypted_string = str_replace("[ret]", "r", decrypted_string) '
-
-
 
         Return decrypted_string
     End Function
