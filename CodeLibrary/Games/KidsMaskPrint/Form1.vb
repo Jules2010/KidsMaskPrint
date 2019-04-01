@@ -328,6 +328,7 @@ Imports System.IO
         Me.PictureBox1.BackColor = System.Drawing.Color.White
         Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PictureBox1.Cursor = System.Windows.Forms.Cursors.Default
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(512, 520)
         Me.PictureBox1.TabIndex = 2
@@ -335,7 +336,7 @@ Imports System.IO
         '
         'chkMirror
         '
-        Me.chkMirror.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
+        Me.chkMirror.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.chkMirror.Appearance = System.Windows.Forms.Appearance.Button
         Me.chkMirror.Cursor = System.Windows.Forms.Cursors.Hand
         Me.chkMirror.FlatStyle = System.Windows.Forms.FlatStyle.System
@@ -349,7 +350,7 @@ Imports System.IO
         '
         'btnExit
         '
-        Me.btnExit.Anchor = (System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right)
+        Me.btnExit.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnExit.BackColor = System.Drawing.Color.Red
         Me.btnExit.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnExit.FlatStyle = WinOnly.BevelButton.FlatStyleEx.Bevel
@@ -612,7 +613,7 @@ Imports System.IO
         '
         'btnPrint
         '
-        Me.btnPrint.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
+        Me.btnPrint.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnPrint.BackColor = System.Drawing.Color.Red
         Me.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnPrint.FlatStyle = WinOnly.BevelButton.FlatStyleEx.Bevel
@@ -626,7 +627,7 @@ Imports System.IO
         '
         'btnUndo
         '
-        Me.btnUndo.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
+        Me.btnUndo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnUndo.BackColor = System.Drawing.Color.Red
         Me.btnUndo.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnUndo.Enabled = False
@@ -641,7 +642,7 @@ Imports System.IO
         '
         'chkGuide
         '
-        Me.chkGuide.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
+        Me.chkGuide.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.chkGuide.Appearance = System.Windows.Forms.Appearance.Button
         Me.chkGuide.Cursor = System.Windows.Forms.Cursors.Hand
         Me.chkGuide.FlatStyle = System.Windows.Forms.FlatStyle.System
@@ -660,7 +661,6 @@ Imports System.IO
         Me.btnEars.FlatStyle = WinOnly.BevelButton.FlatStyleEx.Bevel
         Me.btnEars.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEars.ForeColor = System.Drawing.Color.Gold
-        Me.btnEars.Image = CType(resources.GetObject("btnEars.Image"), System.Drawing.Bitmap)
         Me.btnEars.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnEars.ImageIndex = 1
         Me.btnEars.ImageList = Me.ImageList1
@@ -680,7 +680,7 @@ Imports System.IO
         '
         'StatusBar1
         '
-        Me.StatusBar1.Location = New System.Drawing.Point(0, 572)
+        Me.StatusBar1.Location = New System.Drawing.Point(0, 579)
         Me.StatusBar1.Name = "StatusBar1"
         Me.StatusBar1.Panels.AddRange(New System.Windows.Forms.StatusBarPanel() {Me.StatusBarPanel1})
         Me.StatusBar1.ShowPanels = True
@@ -696,7 +696,7 @@ Imports System.IO
         '
         'btnClear
         '
-        Me.btnClear.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
+        Me.btnClear.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnClear.BackColor = System.Drawing.Color.Red
         Me.btnClear.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnClear.FlatStyle = WinOnly.BevelButton.FlatStyleEx.Bevel
@@ -715,7 +715,6 @@ Imports System.IO
         Me.btnEyes.FlatStyle = WinOnly.BevelButton.FlatStyleEx.Bevel
         Me.btnEyes.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEyes.ForeColor = System.Drawing.Color.Gold
-        Me.btnEyes.Image = CType(resources.GetObject("btnEyes.Image"), System.Drawing.Bitmap)
         Me.btnEyes.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnEyes.ImageIndex = 2
         Me.btnEyes.ImageList = Me.ImageList1
@@ -733,7 +732,6 @@ Imports System.IO
         Me.btnMouths.FlatStyle = WinOnly.BevelButton.FlatStyleEx.Bevel
         Me.btnMouths.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnMouths.ForeColor = System.Drawing.Color.Gold
-        Me.btnMouths.Image = CType(resources.GetObject("btnMouths.Image"), System.Drawing.Bitmap)
         Me.btnMouths.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnMouths.ImageIndex = 4
         Me.btnMouths.ImageList = Me.ImageList1
@@ -751,7 +749,6 @@ Imports System.IO
         Me.btnNoses.FlatStyle = WinOnly.BevelButton.FlatStyleEx.Bevel
         Me.btnNoses.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNoses.ForeColor = System.Drawing.Color.Gold
-        Me.btnNoses.Image = CType(resources.GetObject("btnNoses.Image"), System.Drawing.Bitmap)
         Me.btnNoses.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnNoses.ImageIndex = 3
         Me.btnNoses.ImageList = Me.ImageList1
@@ -769,7 +766,6 @@ Imports System.IO
         Me.btnOther.FlatStyle = WinOnly.BevelButton.FlatStyleEx.Bevel
         Me.btnOther.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnOther.ForeColor = System.Drawing.Color.Gold
-        Me.btnOther.Image = CType(resources.GetObject("btnOther.Image"), System.Drawing.Bitmap)
         Me.btnOther.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnOther.ImageIndex = 5
         Me.btnOther.ImageList = Me.ImageList1
@@ -789,7 +785,7 @@ Imports System.IO
         '
         'btnSave
         '
-        Me.btnSave.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
+        Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSave.BackColor = System.Drawing.Color.Red
         Me.btnSave.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSave.FlatStyle = WinOnly.BevelButton.FlatStyleEx.Bevel
@@ -803,7 +799,7 @@ Imports System.IO
         '
         'btnLoad
         '
-        Me.btnLoad.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
+        Me.btnLoad.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnLoad.BackColor = System.Drawing.Color.Red
         Me.btnLoad.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnLoad.FlatStyle = WinOnly.BevelButton.FlatStyleEx.Bevel
@@ -817,7 +813,7 @@ Imports System.IO
         '
         'btnHelp
         '
-        Me.btnHelp.Anchor = (System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left)
+        Me.btnHelp.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnHelp.BackColor = System.Drawing.Color.Red
         Me.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnHelp.FlatStyle = WinOnly.BevelButton.FlatStyleEx.Bevel
@@ -831,12 +827,12 @@ Imports System.IO
         '
         'Panel1
         '
-        Me.Panel1.Anchor = (((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right)
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.LightGray
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel1.Controls.AddRange(New System.Windows.Forms.Control() {Me.PictureBox1})
+        Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Location = New System.Drawing.Point(104, 16)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(512, 499)
@@ -849,7 +845,6 @@ Imports System.IO
         Me.btnHead.FlatStyle = WinOnly.BevelButton.FlatStyleEx.Bevel
         Me.btnHead.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnHead.ForeColor = System.Drawing.Color.Gold
-        Me.btnHead.Image = CType(resources.GetObject("btnHead.Image"), System.Drawing.Bitmap)
         Me.btnHead.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnHead.ImageIndex = 0
         Me.btnHead.ImageList = Me.ImageList1
@@ -862,8 +857,36 @@ Imports System.IO
         '
         'pnlPalette
         '
-        Me.pnlPalette.Anchor = (System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left)
-        Me.pnlPalette.Controls.AddRange(New System.Windows.Forms.Control() {Me.btnPBlack, Me.btnMoreColours, Me.btnPCustom, Me.lblPCustom, Me.btnPPink, Me.btnPMagenta, Me.btnPBlue, Me.btnPLightBlue, Me.lblPPink, Me.lblPMagenta, Me.lblPBlue, Me.lblPLightBlue, Me.btnPCyan, Me.lblPCyan, Me.btnPLime, Me.btnPGreen, Me.btnPBrown, Me.btnPYellow, Me.lblPLime, Me.lblPGreen, Me.lblPBrown, Me.lblPYellow, Me.btnPOrange, Me.lblPOrange, Me.btnPRed, Me.lblPRed, Me.btnPWhite, Me.lblPWhite, Me.lblPBlack})
+        Me.pnlPalette.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.pnlPalette.Controls.Add(Me.btnPBlack)
+        Me.pnlPalette.Controls.Add(Me.btnMoreColours)
+        Me.pnlPalette.Controls.Add(Me.btnPCustom)
+        Me.pnlPalette.Controls.Add(Me.lblPCustom)
+        Me.pnlPalette.Controls.Add(Me.btnPPink)
+        Me.pnlPalette.Controls.Add(Me.btnPMagenta)
+        Me.pnlPalette.Controls.Add(Me.btnPBlue)
+        Me.pnlPalette.Controls.Add(Me.btnPLightBlue)
+        Me.pnlPalette.Controls.Add(Me.lblPPink)
+        Me.pnlPalette.Controls.Add(Me.lblPMagenta)
+        Me.pnlPalette.Controls.Add(Me.lblPBlue)
+        Me.pnlPalette.Controls.Add(Me.lblPLightBlue)
+        Me.pnlPalette.Controls.Add(Me.btnPCyan)
+        Me.pnlPalette.Controls.Add(Me.lblPCyan)
+        Me.pnlPalette.Controls.Add(Me.btnPLime)
+        Me.pnlPalette.Controls.Add(Me.btnPGreen)
+        Me.pnlPalette.Controls.Add(Me.btnPBrown)
+        Me.pnlPalette.Controls.Add(Me.btnPYellow)
+        Me.pnlPalette.Controls.Add(Me.lblPLime)
+        Me.pnlPalette.Controls.Add(Me.lblPGreen)
+        Me.pnlPalette.Controls.Add(Me.lblPBrown)
+        Me.pnlPalette.Controls.Add(Me.lblPYellow)
+        Me.pnlPalette.Controls.Add(Me.btnPOrange)
+        Me.pnlPalette.Controls.Add(Me.lblPOrange)
+        Me.pnlPalette.Controls.Add(Me.btnPRed)
+        Me.pnlPalette.Controls.Add(Me.lblPRed)
+        Me.pnlPalette.Controls.Add(Me.btnPWhite)
+        Me.pnlPalette.Controls.Add(Me.lblPWhite)
+        Me.pnlPalette.Controls.Add(Me.lblPBlack)
         Me.pnlPalette.Location = New System.Drawing.Point(104, 520)
         Me.pnlPalette.Name = "pnlPalette"
         Me.pnlPalette.Size = New System.Drawing.Size(496, 32)
@@ -1154,6 +1177,7 @@ Imports System.IO
         '
         Me.lblPBlack.BackColor = System.Drawing.SystemColors.Control
         Me.lblPBlack.Cursor = System.Windows.Forms.Cursors.Default
+        Me.lblPBlack.Location = New System.Drawing.Point(0, 0)
         Me.lblPBlack.Name = "lblPBlack"
         Me.lblPBlack.Size = New System.Drawing.Size(30, 30)
         Me.lblPBlack.TabIndex = 71
@@ -1161,7 +1185,7 @@ Imports System.IO
         '
         'rdoFreehand
         '
-        Me.rdoFreehand.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
+        Me.rdoFreehand.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.rdoFreehand.Appearance = System.Windows.Forms.Appearance.Button
         Me.rdoFreehand.Checked = True
         Me.rdoFreehand.Location = New System.Drawing.Point(624, 44)
@@ -1174,7 +1198,7 @@ Imports System.IO
         '
         'rdoFloodFill
         '
-        Me.rdoFloodFill.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
+        Me.rdoFloodFill.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.rdoFloodFill.Appearance = System.Windows.Forms.Appearance.Button
         Me.rdoFloodFill.Location = New System.Drawing.Point(672, 44)
         Me.rdoFloodFill.Name = "rdoFloodFill"
@@ -1185,7 +1209,7 @@ Imports System.IO
         '
         'lstBrushWidth
         '
-        Me.lstBrushWidth.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
+        Me.lstBrushWidth.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lstBrushWidth.Cursor = System.Windows.Forms.Cursors.Hand
         Me.lstBrushWidth.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.lstBrushWidth.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1249,8 +1273,12 @@ Imports System.IO
         '
         'pnlBWPens
         '
-        Me.pnlBWPens.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
-        Me.pnlBWPens.Controls.AddRange(New System.Windows.Forms.Control() {Me.lblPen, Me.btnBlack, Me.btnWhite, Me.lblBlack, Me.lblWhite})
+        Me.pnlBWPens.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.pnlBWPens.Controls.Add(Me.lblPen)
+        Me.pnlBWPens.Controls.Add(Me.btnBlack)
+        Me.pnlBWPens.Controls.Add(Me.btnWhite)
+        Me.pnlBWPens.Controls.Add(Me.lblBlack)
+        Me.pnlBWPens.Controls.Add(Me.lblWhite)
         Me.pnlBWPens.Location = New System.Drawing.Point(628, 16)
         Me.pnlBWPens.Name = "pnlBWPens"
         Me.pnlBWPens.Size = New System.Drawing.Size(80, 64)
@@ -1258,7 +1286,7 @@ Imports System.IO
         '
         'btnBuy
         '
-        Me.btnBuy.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
+        Me.btnBuy.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnBuy.BackColor = System.Drawing.Color.Red
         Me.btnBuy.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnBuy.FlatStyle = WinOnly.BevelButton.FlatStyleEx.Bevel
@@ -1273,8 +1301,30 @@ Imports System.IO
         'frmMain
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(722, 594)
-        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.btnBuy, Me.pnlBWPens, Me.rdoFloodFill, Me.rdoFreehand, Me.pnlPalette, Me.btnHead, Me.Panel1, Me.btnHelp, Me.btnLoad, Me.btnSave, Me.btnOther, Me.btnNoses, Me.btnMouths, Me.btnEyes, Me.btnClear, Me.StatusBar1, Me.btnEars, Me.chkGuide, Me.btnUndo, Me.btnPrint, Me.btnExit, Me.chkMirror, Me.lstBrushWidth})
+        Me.ClientSize = New System.Drawing.Size(722, 601)
+        Me.Controls.Add(Me.btnBuy)
+        Me.Controls.Add(Me.pnlBWPens)
+        Me.Controls.Add(Me.rdoFloodFill)
+        Me.Controls.Add(Me.rdoFreehand)
+        Me.Controls.Add(Me.pnlPalette)
+        Me.Controls.Add(Me.btnHead)
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.btnHelp)
+        Me.Controls.Add(Me.btnLoad)
+        Me.Controls.Add(Me.btnSave)
+        Me.Controls.Add(Me.btnOther)
+        Me.Controls.Add(Me.btnNoses)
+        Me.Controls.Add(Me.btnMouths)
+        Me.Controls.Add(Me.btnEyes)
+        Me.Controls.Add(Me.btnClear)
+        Me.Controls.Add(Me.StatusBar1)
+        Me.Controls.Add(Me.btnEars)
+        Me.Controls.Add(Me.chkGuide)
+        Me.Controls.Add(Me.btnUndo)
+        Me.Controls.Add(Me.btnPrint)
+        Me.Controls.Add(Me.btnExit)
+        Me.Controls.Add(Me.chkMirror)
+        Me.Controls.Add(Me.lstBrushWidth)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Menu = Me.MainMenu1
         Me.MinimumSize = New System.Drawing.Size(720, 628)
