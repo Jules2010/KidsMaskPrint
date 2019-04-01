@@ -7,7 +7,15 @@ Kids Mask Print
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/jules2010/kidsmaskprint.svg)
 [![Languages](https://img.shields.io/badge/language-vb.net-FF69B4.svg)](#)
 
-Kids Mask Print is XXXXXX
+Kids Mask Print is windows desktop app aimed at kids and parents. 
+
+It allows kids to create cool masks out of a range of face parts. 
+
+Then can then either print the black white mask and colour in with felt tip pen. Or use the application to colour in the mask for you. 
+
+It allows multiple kids to save their own accounts and masks. 
+
+Written by [Jules Moorhouse](https://www.julesmoorhouse.com).
 
 # Table of contents
 * [Features and functionality](#features-and-functionality)
@@ -40,7 +48,11 @@ Kids Mask Print is XXXXXX
 
 # Background
 
-Kids Mask Print was written between XXXXX
+Kids Mask Print was written between XXXXX.
+
+Although Kids Mask Print was written in VB.Net, later I moved to Real Basic, as at the time the Dot Net Framework download was quite a burden, with lack of capacity in Internet access. 
+
+With Real Basic I also changed the name of the app to Kids Mask Factory.
 
 <br/>
 
@@ -64,8 +76,7 @@ However you can also use the batch files in the build folder, start with the DLL
 
 # Installation
 
-XXXX
-You can install the app via [Ideaspad.msi](https://github.com/Jules2010/Ideaspad/raw/master/Build/IPStandard/DistBuild/Ideaspad.msi) which will inform you about any system requirements you don't already have.
+You can install the app via [kmpinst.exe](https://github.com/Jules2010/KidsMaskPrint/raw/master/Build/KMP/Nsis/kmpinst.exe) which will inform you about any system requirements you don't already have.
 
 <br/>
 
