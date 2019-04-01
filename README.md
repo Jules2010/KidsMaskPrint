@@ -27,6 +27,17 @@ Written by [Jules Moorhouse](https://www.julesmoorhouse.com).
  
 ## XXXXX
 
+
+<img align="right" src="gfx/cat-big.png" width="" height="">
+<img align="right" src="gfx/clownmask.jpg" width="" height="">
+<img align="right" src="gfx/clownscribble-big.png" width="" height="">
+<img align="right" src="gfx/happykid.jpg" width="" height="">
+<img align="right" src="gfx/kidsmaskprint.png" width="" height="">
+<img align="right" src="gfx/masks.jpg" width="" height="">
+<img align="right" src="gfx/pirate-big.png" width="" height="">
+<img align="right" src="gfx/slots-big.png" width="" height="">
+
+
 <img align="right" src="gfx/XXXXX" width="168" height="114">
 
  * XXXXX
