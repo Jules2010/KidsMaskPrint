@@ -1,11 +1,7 @@
 Kids Mask Print
 =========
 
-![GitHub](https://img.shields.io/github/license/jules2010/kidsmaskprint.svg) 
-![GitHub contributors](https://img.shields.io/github/contributors/jules2010/kidsmaskprint.svg) 
-![GitHub issues](https://img.shields.io/github/issues/jules2010/kidsmaskprint.svg) 
-![GitHub pull requests](https://img.shields.io/github/issues-pr/jules2010/kidsmaskprint.svg)
-[![Languages](https://img.shields.io/badge/language-vb.net-FF69B4.svg)](#)
+![GitHub](https://img.shields.io/github/license/jules2010/kidsmaskprint.svg) ![GitHub contributors](https://img.shields.io/github/contributors/jules2010/kidsmaskprint.svg) ![GitHub issues](https://img.shields.io/github/issues/jules2010/kidsmaskprint.svg) ![GitHub pull requests](https://img.shields.io/github/issues-pr/jules2010/kidsmaskprint.svg) [![Languages](https://img.shields.io/badge/language-vb.net-FF69B4.svg)](#)
 
 Kids Mask Print is windows desktop app aimed at kids and parents. 
 
@@ -18,6 +14,7 @@ It allows multiple kids to save their own accounts and masks.
 Written by [Jules Moorhouse](https://www.julesmoorhouse.com).
 
 # Table of contents
+
 * [Features and functionality](#features-and-functionality)
 * [Background](#background)
 * [How to build / edit the code](#how-to-build--edit-the-code)
@@ -25,37 +22,58 @@ Written by [Jules Moorhouse](https://www.julesmoorhouse.com).
 
 # Features and functionality
  
-## XXXXX
+ <img align="middle" src="gfx/kidsmaskprint.png" width="" height="">
 
-
-<img align="right" src="gfx/cat-big.png" width="" height="">
-<img align="right" src="gfx/clownmask.jpg" width="" height="">
-<img align="right" src="gfx/clownscribble-big.png" width="" height="">
-<img align="right" src="gfx/happykid.jpg" width="" height="">
-<img align="right" src="gfx/kidsmaskprint.png" width="" height="">
-<img align="right" src="gfx/masks.jpg" width="" height="">
-<img align="right" src="gfx/pirate-big.png" width="" height="">
-<img align="right" src="gfx/slots-big.png" width="" height="">
-
-
-<img align="right" src="gfx/XXXXX" width="168" height="114">
-
- * XXXXX
-
-<br/>
-
-
-<br/>
 <br/>
 
 ## Features
 
-<img align="right" src="gfx/XXXX" width="292" height="202">
+<img align="right" src="gfx/clownmask.jpg" width="199" height="133">
 
- * XXXXX
-
+ * Kids Mask Print, lets kids build and draw masks, colour in the program or print and then colour them with a felt tip pen.
+* Keep them occupied with hours of fun and enjoyment.
+* Loads of different face parts, which can be used to create hundreds of different masks.
 
 <br/>
+
+<img align="left" src="gfx/clownscribble-big.png" width="199" height="176">
+<img align="left" src="gfx/spacer.gif" width="10" height="176">
+
+* Build, draw, print out masks and then colour them with felt tip pen.
+* Help your child to play in the safety of your own home.
+* Encourages artistic skills AND basic computer skills
+* You can also change the programs colour, pink, blue, wild etc
+
+<br/>
+
+<img align="right" src="gfx/happykid.jpg" width="199" height="132">
+
+* Kids Mask Print, is a program which is aimed at both children and parents, depending on age and skill. The program is designed to create masks which can be worn. This is done by selecting face parts and adding them to the mask. Freehand lines can also be used with colour to great effect.
+
+<br/>
+
+<img align="left" src="gfx/masks.jpg" width="199" height="133">
+<img align="left" src="gfx/spacer.gif" width="10" height="133">
+
+* Masks can be created in just black and white which can then be printed and coloured in with felt tip by the child; or can be flood filled (filled with colour) so the child does not have to coloured with Felt tip pen. The feature is handled by parent options.
+
+<br/>
+
+<img align="right" src="gfx/cat-big.png" width="199" height="182">
+
+* Kids Mask Print comes with a basic selection of face parts which can be used to create a great number of different mask variations.
+
+<br/>
+
+<img align="left" src="gfx/slots-big.png" width="199" height="212">
+<img align="left" src="gfx/spacer.gif" width="10" height="212">
+
+* This is an ideal gift for a child of any age. The program can also be used by the parent to produce masks for a number of children perhaps for a party.
+
+<br/>
+
+
+<!-- <img align="right" src="gfx/pirate-big.png" width="199" height="181"> -->
 
 # Background
 
