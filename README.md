@@ -6,7 +6,9 @@ Kids Mask Print
 <img align="left" src="gfx/clownscribble-big.png" width="199" height="176">
 <img align="left" src="gfx/spacer.gif" width="10" height="176">
 
-Kids Mask Print is windows desktop app aimed at kids and parents. It allows kids to create cool masks out of a range of face parts. Then can then either print the black white mask and colour in with felt tip pen. Or use the application to colour in the mask for you. It allows multiple kids to save their own accounts and masks. Written by [Jules Moorhouse](https://www.julesmoorhouse.com).
+Kids Mask Print is windows desktop app aimed at kids and parents. It allows kids to create cool masks out of a range of face parts. Then can then either print the black white mask and colour in with felt tip pen. Or use the application to colour in the mask for you. It allows multiple kids to save their own accounts and masks. 
+
+Written by [Jules Moorhouse](https://www.julesmoorhouse.com).
 
 <br/>
 
@@ -33,7 +35,7 @@ Kids Mask Print is windows desktop app aimed at kids and parents. It allows kids
 
 <br/>
 
-<img align="left" src="gfx/clownscribble-big.png" width="199" height="176">
+<img align="left" src="gfx/happykid.jpg" width="199" height="132">
 <img align="left" src="gfx/spacer.gif" width="10" height="176">
 
 * Build, draw, print out masks and then colour them with felt tip pen.
@@ -43,29 +45,22 @@ Kids Mask Print is windows desktop app aimed at kids and parents. It allows kids
 
 <br/>
 
-<img align="right" src="gfx/happykid.jpg" width="199" height="132">
+<img align="right" src="gfx/masks.jpg" width="199" height="133">
 
 * Kids Mask Print, is a program which is aimed at both children and parents, depending on age and skill. The program is designed to create masks which can be worn. This is done by selecting face parts and adding them to the mask. Freehand lines can also be used with colour to great effect.
 
 <br/>
 
-<img align="left" src="gfx/masks.jpg" width="199" height="133">
-<img align="left" src="gfx/spacer.gif" width="10" height="133">
+<img align="left" src="gfx/slots-big.png" width="120" height="128">
+<img align="left" src="gfx/spacer.gif" width="10" height="128">
 
 * Masks can be created in just black and white which can then be printed and coloured in with felt tip by the child; or can be flood filled (filled with colour) so the child does not have to coloured with Felt tip pen. The feature is handled by parent options.
 
-<br/>
-
-<img align="right" src="gfx/pirate-big.png" width="199" height="181">
-
 * Kids Mask Print comes with a basic selection of face parts which can be used to create a great number of different mask variations.
 
-<br/>
-
-<img align="left" src="gfx/slots-big.png" width="199" height="212">
-<img align="left" src="gfx/spacer.gif" width="10" height="212">
-
 * This is an ideal gift for a child of any age. The program can also be used by the parent to produce masks for a number of children perhaps for a party.
+
+<!-- <img align="right" src="gfx/pirate-big.png" width="199" height="181"> -->
 
 <br/>
 
