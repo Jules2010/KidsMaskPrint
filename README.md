@@ -4,9 +4,11 @@ Kids Mask Print
 ![GitHub](https://img.shields.io/github/license/jules2010/kidsmaskprint.svg) ![GitHub contributors](https://img.shields.io/github/contributors/jules2010/kidsmaskprint.svg) ![GitHub issues](https://img.shields.io/github/issues/jules2010/kidsmaskprint.svg) ![GitHub pull requests](https://img.shields.io/github/issues-pr/jules2010/kidsmaskprint.svg) [![Languages](https://img.shields.io/badge/language-vb.net-FF69B4.svg)](#)
 
 <img align="left" src="gfx/clownscribble-big.png" width="199" height="176">
-<img align="left" src="gfx/spacer.gif" width="10" height="176">
+<img align="left" src="gfx/spacer.gif" width="5" height="176">
 
-Kids Mask Print is windows desktop app aimed at kids and parents. It allows kids to create cool masks out of a range of face parts. Then can then either print the black white mask and colour in with felt tip pen. Or use the application to colour in the mask for you. It allows multiple kids to save their own accounts and masks. 
+Kids Mask Print is a windows desktop app aimed at kids and parents. It allows kids to create cool masks out of a range of face parts. 
+
+Then kids can then either print the black white mask and colour in with felt tip pen. Or use the application to colour in the mask for you. It allows multiple kids to save their own accounts and masks. 
 
 Written by [Jules Moorhouse](https://www.julesmoorhouse.com).
 
