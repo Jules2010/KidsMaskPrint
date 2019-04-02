@@ -27,12 +27,13 @@ Written by [Jules Moorhouse](https://www.julesmoorhouse.com).
 
 ## Features
 
-<img align="right" src="gfx/cat-big.png" width="199" height="182">
+<img align="right" src="gfx/cat-big.png" width="170" height="155">
 
  * Kids Mask Print, lets kids build and draw masks, colour in the program or print and then colour them with a felt tip pen.
 * Keep them occupied with hours of fun and enjoyment.
 * Loads of different face parts, which can be used to create hundreds of different masks.
 
+<br/>
 <br/>
 
 <img align="left" src="gfx/happykid.jpg" width="199" height="132">
@@ -44,11 +45,13 @@ Written by [Jules Moorhouse](https://www.julesmoorhouse.com).
 * You can also change the programs colour, pink, blue, wild etc
 
 <br/>
+<br/>
 
 <img align="right" src="gfx/masks.jpg" width="199" height="133">
 
 * Kids Mask Print, is a program which is aimed at both children and parents, depending on age and skill. The program is designed to create masks which can be worn. This is done by selecting face parts and adding them to the mask. Freehand lines can also be used with colour to great effect.
 
+<br/>
 <br/>
 
 <img align="left" src="gfx/slots-big.png" width="120" height="128">
@@ -68,7 +71,7 @@ Written by [Jules Moorhouse](https://www.julesmoorhouse.com).
 
 # Background
 
-Kids Mask Print was written between XXXXX.
+Kids Mask Print was written between 2004 and 2006, I sold copies on CD through email and online downloads.
 
 Although Kids Mask Print was written in VB.Net, later I moved to Real Basic, as at the time the Dot Net Framework download was quite a burden, with lack of capacity in Internet access. 
 
