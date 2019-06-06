@@ -1,7 +1,7 @@
 Kids Mask Print
 =========
 
-![GitHub](https://img.shields.io/github/license/jules2010/kidsmaskprint.svg) ![GitHub contributors](https://img.shields.io/github/contributors/jules2010/kidsmaskprint.svg) ![GitHub issues](https://img.shields.io/github/issues/jules2010/kidsmaskprint.svg) ![GitHub pull requests](https://img.shields.io/github/issues-pr/jules2010/kidsmaskprint.svg) [![Languages](https://img.shields.io/badge/language-vb.net-FF69B4.svg)](#)
+![GitHub](https://img.shields.io/github/license/JulesMoorhouse/kidsmaskprint.svg) ![GitHub contributors](https://img.shields.io/github/contributors/JulesMoorhouse/kidsmaskprint.svg) ![GitHub issues](https://img.shields.io/github/issues/JulesMoorhouse/kidsmaskprint.svg) ![GitHub pull requests](https://img.shields.io/github/issues-pr/JulesMoorhouse/kidsmaskprint.svg) [![Languages](https://img.shields.io/badge/language-vb.net-FF69B4.svg)](#)
 
 <img align="left" src="gfx/clownscribble-big.png" width="199" height="176">
 <img align="left" src="gfx/spacer.gif" width="5" height="176">
@@ -93,7 +93,7 @@ I have included a Components folder which includes most of the required DLLs.
 
 You’ll notice there are two project files for Kids Mask Print and a number of DLLs suffixed with Debug, these are added to one solution for easier debugging. (Why, well there needs to be separate solution to allow for obfuscating / strong name signing, which is used in the batch files.)
 
-So the easiest way to compile the project is to open \CodeLibrary\SharewareProjs\IdeasPad\IdeasPadDebug.sln XXXX
+So the easiest way to compile the project is to open \CodeLibrary\SharewareProjs\IdeasPad\IdeasPadDebug.sln
 
 However you can also use the batch files in the build folder, start with the DLLs.
 
@@ -101,7 +101,7 @@ However you can also use the batch files in the build folder, start with the DLL
 
 # Installation
 
-You can install the app via [kmpinst.exe](https://github.com/Jules2010/KidsMaskPrint/raw/master/Build/KMP/Nsis/kmpinst.exe) which will inform you about any system requirements you don't already have.
+You can install the app via [kmpinst.exe](https://github.com/JulesMoorhouse/KidsMaskPrint/raw/master/Build/KMP/Nsis/kmpinst.exe) which will inform you about any system requirements you don't already have.
 
 <br/>
 
